@@ -247,6 +247,79 @@ PAGES = [
 <p>Utilisez notre <a href="/">outil de tirage gratuit</a> : il gère les exclusions (couples, frères et sœurs) et envoie un lien privé à chacun.</p>
 """},
 {
+"slug": "pere-noel-secret-famille",
+"title": "Père Noël secret en famille : règles, budget et idées",
+"desc": "Organiser un Père Noël secret en famille : un seul cadeau chacun, le bon budget, les exclusions entre couples, les enfants, et des idées pour tous les âges.",
+"date": "2026-11-26",
+"body": """
+<p>Dans une grande famille, acheter un cadeau pour chacun coûte vite cher et prend un temps fou. Le <strong>Père Noël secret en famille</strong> règle le problème : chaque adulte offre un seul cadeau, à une personne tirée au sort, et tout le monde repart gâté.</p>
+<h2>Pourquoi passer au Père Noël secret en famille</h2>
+<ul>
+<li><strong>Moins de dépenses</strong> : un cadeau soigné au lieu de dix petits cadeaux vite oubliés.</li>
+<li><strong>Moins de stress</strong> : une seule personne à qui penser, et plus de temps pour bien choisir.</li>
+<li><strong>Plus de surprise</strong> : le jour J, chacun essaie de deviner qui l'a gâté.</li>
+</ul>
+<h2>Les règles qui marchent en famille</h2>
+<ul>
+<li><strong>Un budget identique pour tous</strong>, souvent entre 20 et 50 € en famille proche.</li>
+<li><strong>Des exclusions entre conjoints</strong> : ils s'offrent déjà un cadeau, autant qu'ils tirent quelqu'un d'autre.</li>
+<li><strong>Les enfants à part</strong> : beaucoup de familles gardent les cadeaux habituels pour les petits et réservent le tirage aux adultes et aux ados.</li>
+<li><strong>Une liste d'envies</strong> de quelques idées par personne, partagée dans le groupe de la famille.</li>
+</ul>
+<h2>Faire le tirage quand la famille est dispersée</h2>
+<p>C'est souvent là que le chapeau et les papiers ne suffisent plus : les cousins vivent loin, les grands-parents ne sont pas là au moment du tirage. Avec <a href="/">Qui offre à qui</a>, vous entrez les prénoms, cochez les couples à séparer, et envoyez à chacun son lien privé par WhatsApp ou SMS. C'est prêt en 2 minutes, sans compte et gratuitement.</p>
+<h2>Des idées pour tous les âges</h2>
+<div class="idees">
+""" + idee("Plaid chauffant", "Pour les grands-parents frileux", "plaid chauffant") + idee("Jeu de société familial", "À ouvrir le soir même", "jeu de societe famille") + idee("Cadre photo numérique", "Pour partager les photos de famille", "cadre photo numerique") + idee("Lampe d'ambiance", "Les ados adorent", "lampe led chambre ado") + idee("Coffret gourmand", "Une valeur sûre pour les adultes", "coffret gourmand") + idee("Livre de recettes", "Pour les cuisiniers de la famille", "livre de recettes") + """
+</div>
+<p>Pour aller plus loin, consultez nos sélections <a href="/idee-cadeau-20-euros/">à 20 €</a>, <a href="/idee-cadeau-30-euros/">à 30 €</a> et <a href="/idee-cadeau-50-euros/">à 50 €</a>.</p>
+<h2>Le jour de l'échange</h2>
+<p>Posez tous les cadeaux sous le sapin avec seulement le prénom du destinataire. Ouvrez-les un par un, du plus jeune au plus âgé par exemple : chacun tente de deviner son Père Noël secret avant la révélation.</p>
+<h2>Questions fréquentes</h2>
+<h3>Faut-il inclure les enfants dans le tirage ?</h3>
+<p>C'est au choix. Beaucoup de familles gardent les cadeaux classiques pour les enfants et font le tirage entre adultes et ados.</p>
+<h3>Comment éviter que deux conjoints se tirent ?</h3>
+<p>Ajoutez une exclusion dans notre outil : ces deux personnes ne pourront pas se tirer l'une l'autre.</p>
+<h3>Quel budget pour un Père Noël secret en famille ?</h3>
+<p>Entre 20 et 50 € en général. Choisissez un montant que tout le monde peut suivre sans difficulté.</p>
+"""},
+{
+"slug": "secret-santa-a-distance",
+"title": "Secret Santa à distance : l'organiser en ligne simplement",
+"desc": "Organiser un Secret Santa ou un Père Noël secret à distance : tirage au sort en ligne sans compte, envoi des cadeaux par la poste et échange en visio.",
+"date": "2026-11-26",
+"body": """
+<p>Télétravail, famille éclatée, amis dans d'autres villes : il est de plus en plus rare que tout le monde soit réuni pour tirer les noms au sort. Bonne nouvelle, un <strong>Secret Santa à distance</strong> s'organise très bien en ligne, du tirage jusqu'à l'ouverture des cadeaux.</p>
+<h2>Étape 1 : le tirage au sort en ligne</h2>
+<p>Sur <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, le budget et la date, puis lance le tirage. Chaque participant reçoit un lien privé par WhatsApp, SMS, Teams ou Slack, et découvre à qui il offre un cadeau. Pas de compte, pas d'e-mail à collecter, et c'est gratuit.</p>
+<h2>Étape 2 : se mettre d'accord sur la livraison</h2>
+<ul>
+<li><strong>Livraison directe</strong> : chacun fait livrer le cadeau chez son destinataire. Il faut alors connaître son adresse : demandez-la discrètement à l'organisateur.</li>
+<li><strong>Livraison au bureau</strong> : pratique entre collègues, les cadeaux attendent à l'accueil.</li>
+<li><strong>Dépôt chez l'organisateur</strong> : il redistribue tout le jour de la rencontre.</li>
+</ul>
+<h2>Étape 3 : l'ouverture en visio</h2>
+<p>Fixez un créneau de 30 minutes en visio. Chacun ouvre son cadeau devant la caméra et tente de deviner son Père Noël secret : c'est souvent le meilleur moment de l'échange.</p>
+<h2>Les pièges à éviter</h2>
+<ul>
+<li><strong>Commander trop tard</strong> : en décembre, comptez au moins une semaine de livraison.</li>
+<li><strong>Oublier un budget clair</strong> : les frais de port ne doivent pas faire exploser le montant prévu.</li>
+<li><strong>Les produits fragiles ou périssables</strong> : préférez ce qui voyage bien.</li>
+</ul>
+<h2>Des idées qui voyagent bien</h2>
+<div class="idees">
+""" + idee("Coffret de thés", "Léger et facile à envoyer", "coffret the") + idee("Carnet de qualité", "Plat et sans risque de casse", "carnet de notes a5") + idee("Chaussettes douillettes", "Rentrent dans une enveloppe", "chaussettes chaudes hiver") + idee("Jeu de cartes", "Petit format, grand plaisir", "jeu de cartes ambiance") + """
+</div>
+<p>Retrouvez aussi nos idées <a href="/idee-cadeau-10-euros/">à 10 €</a> et <a href="/idee-cadeau-20-euros/">à 20 €</a>, et nos conseils pour un <a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a>.</p>
+<h2>Questions fréquentes</h2>
+<h3>Peut-on faire un Secret Santa entièrement en ligne ?</h3>
+<p>Oui : tirage en ligne, cadeaux livrés à domicile ou au bureau, et ouverture en visio.</p>
+<h3>Comment connaître l'adresse de la personne tirée ?</h3>
+<p>Demandez-la à l'organisateur, ou faites livrer au bureau ou chez l'organisateur pour garder le secret.</p>
+<h3>Les participants doivent-ils s'inscrire ?</h3>
+<p>Non : avec Qui offre à qui, ils ouvrent simplement leur lien privé, sans compte et sans e-mail.</p>
+"""},
+{
 "slug": "regles-pere-noel-secret",
 "title": "Père Noël secret : règles, déroulement et astuces",
 "desc": "Comment fonctionne un Père Noël secret ? Les règles simples, le budget, le tirage au sort, la remise des cadeaux et nos astuces pour que tout se passe bien.",

@@ -50,7 +50,7 @@ def head(title, desc, path, schema=None, robots='index,follow'):
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{BASE}{path}">
-<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:type" content="website"><meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:type" content="website"><meta property="og:image" content="{BASE}/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
 {FAVICON}
 {FONTS}
 <style>{CSS}{EXTRA_CSS}</style>
@@ -80,21 +80,48 @@ def w(rel, s):
 def crumb(items):
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": SITE, "item": BASE + "/"}] + items}
 
+SEO_HOME = """<section class="carte"><h2>Comment faire un tirage au sort de cadeaux en ligne ?</h2>
+<p>Qui offre à qui est un <strong>tirage au sort de cadeaux gratuit et sans compte</strong>. En 2 minutes, il remplace les papiers pliés dans un chapeau, même quand tout le monde n'est pas réuni.</p>
+<ol>
+<li><strong>Choisissez l'occasion et le budget</strong> : Noël, Nouvel An, anniversaire, collègues, amis, de 5 à 50 €.</li>
+<li><strong>Ajoutez les prénoms</strong> des participants, et les exclusions si deux personnes ne doivent pas se tirer.</li>
+<li><strong>Lancez le tirage</strong> : chaque participant reçoit un lien privé.</li>
+<li><strong>Envoyez les liens</strong> par WhatsApp, SMS ou messagerie. Chacun ouvre son paquet et découvre à qui il offre un cadeau, avec des idées dans son budget.</li>
+</ol>
+</section>
+<section class="carte"><h2>Pourquoi utiliser Qui offre à qui ?</h2>
+<ul>
+<li><strong>Sans compte et sans e-mail</strong> : seulement des prénoms. Rien à créer, rien à valider.</li>
+<li><strong>100 % gratuit</strong>, sans limite de participants.</li>
+<li><strong>Vraiment secret</strong> : chaque lien n'affiche qu'un seul résultat, et l'organisateur peut participer sans tricher.</li>
+<li><strong>Jamais son propre nom</strong> : le tirage exclut chaque personne d'elle-même et respecte vos exclusions.</li>
+<li><strong>Idées cadeaux incluses</strong> : chacun voit des idées adaptées au budget, de <a href="/idee-cadeau-5-euros/">5 €</a> à <a href="/idee-cadeau-50-euros/">50 €</a>.</li>
+<li><strong>Pour toutes les occasions</strong> : <a href="/regles-pere-noel-secret/">Père Noël secret</a> en famille, <a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a>, échange entre amis, classe ou club.</li>
+</ul>
+</section>
+"""
+
 # Accueil (outil)
 tool = open(os.path.join(HERE, 'tool_body.html')).read()
 tool = tool.replace('<main class="wrap">', '<main class="wrap" id="outil">', 1)
 guides = ''.join(f'<li><a href="/{p["slug"]}/">{esc(p["title"])}</a></li>' for p in PAGES)
 tool = tool.replace('</main>\n</div>\n\n<div id="vue-res"', f'<section class="carte"><h2>Idées et conseils</h2><ul>{guides}</ul></section>\n</main>\n</div>\n\n<div id="vue-res"', 1)
-faq = [("Le tirage au sort est-il gratuit ?", "Oui, entièrement gratuit et sans inscription."),
-       ("L'organisateur peut-il voir qui offre à qui ?", "Non. Chaque lien privé n'affiche que le résultat de la personne concernée. Les résultats ne sont enregistrés nulle part."),
-       ("Peut-on empêcher deux personnes de se tirer ?", "Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs.")]
-sch_home = [{"@context": "https://schema.org", "@type": "WebApplication", "name": SITE, "url": BASE + "/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}},
+faq = [("Le tirage au sort est-il vraiment gratuit ?", "Oui, entièrement gratuit, sans abonnement et sans option payante cachée."),
+       ("Faut-il créer un compte ou donner son e-mail ?", "Non. Vous entrez seulement des prénoms. Aucun compte, aucun e-mail, aucun mot de passe : le tirage est prêt en 2 minutes."),
+       ("L'organisateur peut-il voir qui offre à qui ?", "Non. Chaque lien privé n'affiche que le résultat de la personne concernée, et les résultats ne sont enregistrés nulle part."),
+       ("Comment chaque participant reçoit-il son résultat ?", "Après le tirage, vous envoyez à chacun son lien privé par WhatsApp, SMS ou en le copiant dans n'importe quelle messagerie."),
+       ("Peut-on empêcher deux personnes de se tirer ?", "Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux."),
+       ("Combien de participants faut-il ?", "Au moins 3 personnes. Il n'y a pas de maximum : famille, classe, équipe ou club entier."),
+       ("Peut-on l'utiliser pour autre chose que Noël ?", "Oui : Nouvel An, Saint-Nicolas, anniversaire, échange entre collègues ou entre amis, fin d'année d'une classe ou d'un club."),
+       ("Quel budget choisir ?", "Le plus courant est de 10 à 20 €. Après le tirage, chacun voit des idées de cadeaux adaptées au budget choisi.")]
+howto = {"@context": "https://schema.org", "@type": "HowTo", "name": "Faire un tirage au sort de cadeaux en ligne", "totalTime": "PT2M", "step": [{"@type": "HowToStep", "position": 1, "name": "Choisir l'occasion et le budget", "text": "Indiquez l'occasion, le nom de l'événement, le budget par cadeau et la date de l'échange."}, {"@type": "HowToStep", "position": 2, "name": "Ajouter les participants", "text": "Entrez les prénoms des participants, au moins 3, et les éventuelles exclusions."}, {"@type": "HowToStep", "position": 3, "name": "Lancer le tirage", "text": "Cliquez sur Lancer le tirage au sort : chaque participant obtient un lien privé."}, {"@type": "HowToStep", "position": 4, "name": "Envoyer les liens", "text": "Envoyez à chacun son lien par WhatsApp, SMS ou messagerie. Il découvre à qui il offre un cadeau et des idées selon le budget."}]}
+sch_home = [howto, {"@context": "https://schema.org", "@type": "WebApplication", "name": SITE, "url": BASE + "/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}},
             {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]
 faq_html = '<section class="carte"><h2>Questions fréquentes</h2>' + ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in faq) + '</section>'
-tool = tool.replace('<section class="carte"><h2>Idées et conseils</h2>', faq_html + '<section class="carte"><h2>Idées et conseils</h2>', 1)
+tool = tool.replace('<section class="carte"><h2>Idées et conseils</h2>', SEO_HOME + faq_html + '<section class="carte"><h2>Idées et conseils</h2>', 1)
 js = open(os.path.join(HERE, 'tool.js')).read()
-home = head("Tirage au sort cadeaux gratuit : Père Noël secret, Secret Santa",
-            "Organisez votre Père Noël secret ou un échange de cadeaux en 1 minute : tirage au sort gratuit, sans inscription, un lien privé pour chaque participant.",
+home = head("Tirage au sort cadeau gratuit sans compte : Père Noël secret",
+            "Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte ni e-mail, un lien privé par participant et des idées cadeaux selon le budget.",
             "/", sch_home) + NAV + tool + '<script>\n' + js + '\n</script>\n' + foot()
 w('index.html', home)
 
@@ -110,8 +137,13 @@ for p in PAGES:
         sch.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": re.sub('<[^>]+>', '', q), "acceptedAnswer": {"@type": "Answer", "text": re.sub('<[^>]+>', '', a)}} for q, a in qs]})
     d = datetime.date.fromisoformat(p["date"])
     mois = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"][d.month-1]
-    cta = '<div class="encart"><b>Organisez votre tirage au sort en 1 minute</b><p>Gratuit, sans inscription, avec un lien privé pour chaque participant.</p><a class="btn" href="/#outil">Faire mon tirage</a></div>'
-    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Idées et conseils</p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}</article></main>' + foot()
+    cta = '<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte, sans e-mail et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div>'
+    promo = '<p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>'
+    body = re.sub(r'(</p>)', r'\1' + promo, body, count=1)
+    oth = [q for q in PAGES if q['slug'] != p['slug']]
+    rel = ([q for q in oth if 'euros' not in q['slug']] + [q for q in oth if 'euros' in q['slug']])[:4]
+    related = '<h2>À lire aussi</h2><ul>' + ''.join(f'<li><a href="/{q["slug"]}/">{esc(q["title"])}</a></li>' for q in rel) + '</ul>'
+    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Idées et conseils</p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{related}</article></main>' + foot()
     w(f'{p["slug"]}/index.html', html_)
 
 # Mentions légales
