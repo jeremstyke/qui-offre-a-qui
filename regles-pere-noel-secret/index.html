@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Père Noël secret : règles, déroulement et astuces</title>
+<meta name="description" content="Comment fonctionne un Père Noël secret ? Les règles simples, le budget, le tirage au sort, la remise des cadeaux et nos astuces pour que tout se passe bien.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://qui-offre-a-qui.fr/regles-pere-noel-secret/">
+<meta property="og:title" content="Père Noël secret : règles, déroulement et astuces"><meta property="og:description" content="Comment fonctionne un Père Noël secret ? Les règles simples, le budget, le tirage au sort, la remise des cadeaux et nos astuces pour que tout se passe bien."><meta property="og:url" content="https://qui-offre-a-qui.fr/regles-pere-noel-secret/"><meta property="og:type" content="website"><meta property="og:locale" content="fr_FR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect x=%2210%22 y=%2230%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22%23b8344a%22/%3E%3Crect x=%2244%22 y=%2230%22 width=%2212%22 height=%2260%22 fill=%22%23e9b949%22/%3E%3Crect x=%224%22 y=%2222%22 width=%2292%22 height=%2216%22 rx=%224%22 fill=%22%23123d34%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--pin:#123d34;--pin2:#1d5a4c;--or:#e9b949;--baie:#b8344a;--papier:#f7f8f4;--encre:#17221f;--gris:#5d6b67;--ligne:#d9e1dc}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papier);color:var(--encre);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--pin2)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--pin);color:#fff;padding:44px 0 56px;position:relative;overflow:hidden}
+.hero h1{font:800 clamp(34px,7vw,58px)/1.02 "Bricolage Grotesque",sans-serif;margin:0 0 14px;letter-spacing:-.02em;max-width:12ch}
+.hero p{margin:0;max-width:46ch;color:#d6e6e0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.chips span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 12px;font-size:14px}
+.ruban{position:absolute;right:-40px;top:0;bottom:0;width:120px;background:var(--baie);transform:skewX(-12deg);opacity:.9}
+.ruban:after{content:"";position:absolute;left:44px;top:0;bottom:0;width:12px;background:var(--or)}
+.demo{background:var(--or);color:var(--encre);font-size:14px;text-align:center;padding:6px 12px}
+main{padding:28px 0 60px}
+.carte{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:22px;margin-bottom:18px}
+.carte h2{font:800 22px/1.2 "Bricolage Grotesque",sans-serif;margin:0 0 4px}
+.carte .sous{color:var(--gris);margin:0 0 16px;font-size:15px}
+label{display:block;font-weight:700;font-size:15px;margin:12px 0 6px}
+input,select{width:100%;font:inherit;padding:11px 12px;border:1px solid #b9c6c0;border-radius:10px;background:#fff;color:var(--encre)}
+input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.ligne{display:flex;gap:10px}.ligne>*{flex:1}
+.pers{display:flex;gap:8px;margin-bottom:8px}
+.pers input{flex:1}
+.x{flex:0 0 44px;border:1px solid var(--ligne);background:#fff;border-radius:10px;font-size:20px;color:var(--gris);cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 17px "Atkinson Hyperlegible",sans-serif;border:0;border-radius:12px;padding:13px 20px;cursor:pointer;text-decoration:none}
+.btn.p{background:var(--baie);color:#fff;width:100%;font-size:18px;padding:16px}
+.btn.s{background:#e8efeb;color:var(--pin)}
+.btn.petit{padding:8px 12px;font-size:15px}
+.exc{display:flex;gap:8px;align-items:center;margin-bottom:8px}.exc select{flex:1}
+.err{color:var(--baie);font-weight:700;margin-top:10px;min-height:1em}
+.res li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--ligne);list-style:none}
+.res ul{padding:0;margin:0}
+.res .act{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.note{font-size:14px;color:var(--gris)}
+.reveal{text-align:center}
+.reveal .pour{font:800 clamp(40px,10vw,72px)/1 "Bricolage Grotesque",sans-serif;color:var(--baie);margin:10px 0 4px}
+.paquet{width:180px;height:150px;margin:20px auto;position:relative;cursor:pointer;background:var(--baie);border-radius:10px;transition:transform .5s}
+.paquet:before{content:"";position:absolute;left:78px;top:0;bottom:0;width:24px;background:var(--or)}
+.paquet:after{content:"";position:absolute;left:0;right:0;top:58px;height:24px;background:var(--or)}
+.paquet.ouvert{transform:scale(.6) rotate(-8deg);opacity:.25}
+@media (prefers-reduced-motion:reduce){.paquet{transition:none}}
+.idees{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:12px}
+.idee{border:1px solid var(--ligne);border-radius:12px;padding:14px;background:#fff}
+.idee b{display:block;margin-bottom:4px}.idee span{display:block;color:var(--gris);font-size:14px;margin-bottom:10px}
+.cache{display:none}
+footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
+@media (max-width:600px){.ruban{width:56px;right:-34px}.hero .wrap{padding-right:40px}}
+
+nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
+nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
+nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
+nav.top a.cta{font:700 15px "Atkinson Hyperlegible",sans-serif;background:var(--baie);padding:8px 14px;border-radius:10px}
+article h1{font:800 clamp(30px,6vw,44px)/1.1 "Bricolage Grotesque",sans-serif;margin:8px 0 12px;letter-spacing:-.01em}
+article h2{font:800 24px/1.25 "Bricolage Grotesque",sans-serif;margin:32px 0 10px}
+article h3{font-size:18px;margin:20px 0 6px}
+article .meta{color:var(--gris);font-size:14px}
+.encart{background:var(--pin);color:#fff;border-radius:14px;padding:20px;margin:28px 0}
+.encart a.btn{background:var(--or);color:var(--encre)}
+.liens{display:flex;flex-wrap:wrap;gap:8px 16px;margin:6px 0 0}
+footer a{color:var(--gris)}
+.amz{font-size:13px;color:var(--gris)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Père Noël secret : règles, déroulement et astuces", "description": "Comment fonctionne un Père Noël secret ? Les règles simples, le budget, le tirage au sort, la remise des cadeaux et nos astuces pour que tout se passe bien.", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "inLanguage": "fr", "mainEntityOfPage": "https://qui-offre-a-qui.fr/regles-pere-noel-secret/", "author": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}, "publisher": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Qui offre à qui", "item": "https://qui-offre-a-qui.fr/"}, {"@type": "ListItem", "position": 2, "name": "Père Noël secret : règles, déroulement et astuces", "item": "https://qui-offre-a-qui.fr/regles-pere-noel-secret/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quelle différence entre Père Noël secret et Secret Santa ?", "acceptedAnswer": {"@type": "Answer", "text": "Aucune : Secret Santa est le nom anglais du même jeu."}}, {"@type": "Question", "name": "À partir de combien de personnes peut-on jouer ?", "acceptedAnswer": {"@type": "Answer", "text": "Dès 3 personnes, mais le jeu est plus amusant à partir de 5 ou 6."}}, {"@type": "Question", "name": "Et si quelqu'un tire son propre nom ?", "acceptedAnswer": {"@type": "Answer", "text": "Avec notre outil, c'est impossible : le tirage exclut automatiquement chaque personne d'elle-même."}}]}</script>
+<script src="/assets/track.js" defer></script>
+</head>
+<body>
+<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Idées et conseils</p><h1>Père Noël secret : règles, déroulement et astuces</h1><p class="meta">Publié le 26 novembre 2026</p>
+<p>Le <strong>Père Noël secret</strong>, aussi appelé Secret Santa, permet d'offrir un seul cadeau au lieu d'en acheter pour tout le monde. Chaque participant tire au sort une personne à gâter, sans que celle-ci sache de qui viendra le cadeau. Voici comment l'organiser simplement.</p>
+<h2>Le principe en 4 étapes</h2>
+<ol>
+<li><strong>On réunit les participants</strong> : famille, collègues, amis, club.</li>
+<li><strong>On fixe un budget commun</strong>, le même pour tous.</li>
+<li><strong>On fait le tirage au sort</strong> : chacun découvre en secret à qui il offre un cadeau.</li>
+<li><strong>On échange les cadeaux</strong> le jour prévu, et chacun essaie de deviner qui l'a gâté.</li>
+</ol>
+<h2>Les règles à fixer avant le tirage</h2>
+<ul>
+<li><strong>Le budget</strong> : 10, 20 ou 30 € sont les montants les plus fréquents. L'important est que tout le monde le respecte.</li>
+<li><strong>La date et le lieu de l'échange</strong> : repas de fêtes, pot au bureau, soirée entre amis.</li>
+<li><strong>Les exclusions</strong> : par exemple, deux conjoints qui ne doivent pas se tirer l'un l'autre.</li>
+<li><strong>Le thème, si vous le souhaitez</strong> : fait maison, livres, cadeaux rigolos, tout à moins de 10 €.</li>
+<li><strong>Les listes d'envies</strong> : quelques idées par personne aident beaucoup ceux qui connaissent peu leur destinataire.</li>
+</ul>
+<h2>Faire le tirage sans papier ni chapeau</h2>
+<p>Le tirage avec des papiers pliés a ses limites : quelqu'un tire son propre nom, les absents ne peuvent pas participer, et il faut recommencer. Avec un <a href="/">tirage au sort en ligne</a>, chaque participant reçoit un lien privé qui n'affiche que son propre résultat. Personne ne voit les autres tirages, pas même l'organisateur, et les exclusions sont respectées automatiquement.</p>
+<h2>Le jour de l'échange</h2>
+<ul>
+<li>Déposez les cadeaux au même endroit, avec seulement le prénom du destinataire.</li>
+<li>Ouvrez-les un par un : c'est le moment où chacun essaie de deviner son Père Noël secret.</li>
+<li>Révélez ou non les identités, selon ce que le groupe préfère.</li>
+</ul>
+<h2>Nos astuces pour que tout se passe bien</h2>
+<ul>
+<li><strong>Ne fixez pas un budget trop élevé</strong> entre collègues : tout le monde n'a pas les mêmes moyens.</li>
+<li><strong>Prévoyez un petit cadeau de secours</strong> si quelqu'un oublie ou ne peut pas venir.</li>
+<li><strong>Lancez le tirage au moins deux semaines avant</strong> pour laisser le temps de commander.</li>
+</ul>
+<h2>Besoin d'idées ?</h2>
+<p>Consultez nos sélections par budget : <a href="/idee-cadeau-10-euros/">idées à 10 €</a>, <a href="/idee-cadeau-20-euros/">à 20 €</a> et <a href="/idee-cadeau-30-euros/">à 30 €</a>, ou nos idées pour un <a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a>.</p>
+<h2>Questions fréquentes</h2>
+<h3>Quelle différence entre Père Noël secret et Secret Santa ?</h3>
+<p>Aucune : Secret Santa est le nom anglais du même jeu.</p>
+<h3>À partir de combien de personnes peut-on jouer ?</h3>
+<p>Dès 3 personnes, mais le jeu est plus amusant à partir de 5 ou 6.</p>
+<h3>Et si quelqu'un tire son propre nom ?</h3>
+<p>Avec notre outil, c'est impossible : le tirage exclut automatiquement chaque personne d'elle-même.</p>
+<div class="encart"><b>Organisez votre tirage au sort en 1 minute</b><p>Gratuit, sans inscription, avec un lien privé pour chaque participant.</p><a class="btn" href="/#outil">Faire mon tirage</a></div></article></main><footer><div class="wrap">
+<p class="liens" style="justify-content:center"><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € </a><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € </a><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € </a><a href="/regles-pere-noel-secret/">Père Noël secret </a><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues </a></p>
+<p>Tirage au sort de cadeaux gratuit, sans inscription. <a href="/mentions-legales/">Mentions légales et confidentialité</a>.</p>
+<p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
+</div></footer>
+</body>
+</html>

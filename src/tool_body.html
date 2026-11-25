@@ -1,0 +1,66 @@
+<div id="vue-orga">
+<header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
+<h1>Votre tirage au sort de cadeaux en 1 minute</h1>
+<p>Noël, anniversaire, entre collègues, entre amis : entrez les prénoms, lancez le tirage, envoyez à chacun son lien privé. Personne ne voit qui offre à qui, pas même l'organisateur.</p>
+<div class="chips"><span>Gratuit</span><span>Sans inscription</span><span>Idées cadeaux selon le budget</span></div>
+</div></header>
+<main class="wrap">
+<section class="carte">
+<h2>1. L'événement</h2>
+<p class="sous">Choisissez l'occasion, puis donnez-lui un nom.</p>
+<label for="type">Occasion</label>
+<select id="type"><option value="noel">Noël (Père Noël secret)</option><option value="nouvelan">Nouvel An</option><option value="stnicolas">Saint-Nicolas</option><option value="anniv">Anniversaire</option><option value="collegues">Entre collègues</option><option value="amis">Soirée entre amis</option><option value="classe">Fin d'année (classe, club, asso)</option><option value="autre">Autre occasion</option></select>
+<label for="ev">Nom de l'événement</label>
+<input id="ev" value="Noël en famille 2026">
+<div class="ligne">
+<div><label for="budget">Budget par cadeau</label>
+<select id="budget"><option value="10">10 €</option><option value="15">15 €</option><option value="20" selected>20 €</option><option value="30">30 €</option><option value="50">50 €</option></select></div>
+<div><label for="date">Date de l'échange</label><input id="date" type="date" value="2026-12-24"></div>
+</div>
+</section>
+
+<section class="carte">
+<h2>2. Les participants</h2>
+<p class="sous">Au moins 3 personnes.</p>
+<div id="liste"></div>
+<button class="btn s petit" id="ajout">Ajouter une personne</button>
+</section>
+
+<section class="carte">
+<h2>3. Les exclusions (facultatif)</h2>
+<p class="sous">Par exemple, deux conjoints qui ne doivent pas se tirer l'un l'autre.</p>
+<div id="excs"></div>
+<button class="btn s petit" id="ajoutExc">Ajouter une exclusion</button>
+</section>
+
+<button class="btn p" id="tirer">Lancer le tirage au sort</button>
+<p class="err" id="err" role="alert"></p>
+
+<section class="carte res cache" id="res">
+<h2>C'est tiré !</h2>
+<p class="sous">Envoyez à chaque personne son lien. Il n'affiche que son propre résultat.</p>
+<ul id="liens"></ul>
+<p class="note">Astuce : gardez cette page ouverte jusqu'à ce que tout le monde ait reçu son lien. Les résultats ne sont enregistrés nulle part.</p>
+</section>
+</main>
+</div>
+
+<div id="vue-res" class="cache">
+<header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
+<h1 id="r-titre">Bonjour</h1>
+<p id="r-ev"></p>
+</div></header>
+<main class="wrap">
+<section class="carte reveal">
+<p>Ton tirage est prêt. Appuie sur le paquet pour découvrir à qui tu offres un cadeau.</p>
+<div class="paquet" id="paquet" role="button" tabindex="0" aria-label="Ouvrir le paquet"></div>
+<div id="nom" class="cache"><p>Tu offres un cadeau à</p><div class="pour" id="r-pour"></div><p id="r-budget"></p></div>
+</section>
+<section class="carte cache" id="r-idees">
+<h2>Des idées à moins de <span id="r-b"></span> €</h2>
+<p class="sous">Une sélection simple pour ne pas chercher pendant des heures. <a id="r-guide" href="/idee-cadeau-20-euros/">Plus d'idées</a></p>
+<div class="idees" id="grille"></div>
+</section>
+<p class="note" style="text-align:center"><a href="./">Organiser mon propre tirage (Noël, anniversaire, collègues...)</a></p>
+</main>
+</div>
