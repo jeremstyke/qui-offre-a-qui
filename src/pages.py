@@ -45,6 +45,89 @@ PAGES = [
 <p>Avec notre <a href="/">outil gratuit</a>, vous entrez les prénoms et chacun reçoit un lien privé avec le nom de la personne à gâter, sans inscription.</p>
 """},
 {
+"slug": "idee-cadeau-15-euros",
+"title": "Idée cadeau à 15 € : 15 idées pour un échange réussi",
+"desc": "Un budget de 15 € pour votre Père Noël secret, un échange entre collègues ou entre amis ? 15 idées de cadeaux utiles, gourmands ou drôles.",
+"date": "2026-11-26",
+"body": """
+<p><strong>15 €</strong>, c'est le budget juste au-dessus du petit cadeau symbolique : assez pour offrir un objet de qualité, sans mettre personne mal à l'aise. Voici des idées classées par type de personne.</p>
+<h2>Pour les amateurs de boissons chaudes</h2>
+<div class="idees">
+""" + idee("Coffret de thés", "Pour découvrir de nouveaux parfums", "coffret the") + idee("Mug double paroi", "Élégant et garde la chaleur", "mug double paroi verre") + idee("Mousseur à lait", "Pour un cappuccino maison", "mousseur a lait electrique") + """
+</div>
+<h2>Pour les joueurs</h2>
+<div class="idees">
+""" + idee("Jeu de cartes d'ambiance", "Pour animer une soirée", "jeu de cartes ambiance") + idee("Jeu de dés rapide", "Il tient dans une poche", "jeu de des") + idee("Quiz de culture générale", "Pour les repas de famille", "jeu quiz culture generale") + """
+</div>
+<h2>Pour le confort de la maison</h2>
+<div class="idees">
+""" + idee("Bougie parfumée", "Une ambiance cocooning", "bougie parfumee") + idee("Chaussettes en laine", "Bien au chaud tout l'hiver", "chaussettes laine") + idee("Guirlande lumineuse", "Pour une déco douce", "guirlande lumineuse") + """
+</div>
+<h2>Pour le bureau ou le télétravail</h2>
+<div class="idees">
+""" + idee("Carnet de qualité", "Pour noter idées et rendez-vous", "carnet de notes a5") + idee("Support d'ordinateur", "Meilleure posture devant l'écran", "support ordinateur portable") + idee("Plante facile", "Un peu de vert sans effort", "plante interieur facile") + """
+</div>
+<h2>Pour les gourmands</h2>
+<div class="idees">
+""" + idee("Chocolats de qualité", "Un classique qui plaît", "chocolats coffret") + idee("Pâte à tartiner originale", "Pour les petits-déjeuners", "pate a tartiner") + idee("Coffret d'épices", "Pour cuisiner autrement", "coffret epices") + """
+</div>
+<h2>Bien choisir avec 15 €</h2>
+<ul>
+<li><strong>Un seul bel objet</strong> plutôt que plusieurs petites choses.</li>
+<li><strong>Utile ou gourmand</strong> : ce sont les cadeaux qu'on garde ou qu'on partage.</li>
+<li><strong>Commandez tôt</strong> en décembre pour être livré avant l'échange.</li>
+</ul>
+<h2>Questions fréquentes</h2>
+<h3>15 €, c'est trop pour un Secret Santa au bureau ?</h3>
+<p>Non, c'est un budget courant entre collègues, souvent entre 10 et 20 €. L'essentiel est que tout le monde le respecte.</p>
+<h3>Quel cadeau à 15 € pour un homme ?</h3>
+<p>Un mug double paroi, un jeu de cartes, un support d'ordinateur ou un coffret de chocolats restent des valeurs sûres.</p>
+<h3>Comment organiser le tirage ?</h3>
+<p>Avec notre <a href="/">tirage au sort gratuit</a>, chacun reçoit un lien privé avec le nom de la personne à gâter.</p>
+"""},
+{
+"slug": "idee-cadeau-50-euros",
+"title": "Idée cadeau à 50 € : 15 idées pour un vrai beau cadeau",
+"desc": "50 € pour un cadeau de Noël, d'anniversaire ou un échange en famille ? 15 idées de cadeaux de qualité, high-tech, cuisine, loisirs et bien-être.",
+"date": "2026-11-26",
+"body": """
+<p>Avec <strong>50 €</strong>, on entre dans le vrai beau cadeau : celui qu'on utilise pendant des années. C'est le budget des échanges en famille proche ou des cadeaux d'anniversaire. Voici des idées qui valent la dépense.</p>
+<h2>High-tech</h2>
+<div class="idees">
+""" + idee("Écouteurs sans fil", "Pour la musique et les appels", "ecouteurs sans fil") + idee("Enceinte Bluetooth étanche", "Pour la salle de bain ou l'extérieur", "enceinte bluetooth etanche") + idee("Liseuse ou étui de liseuse", "Pour les grands lecteurs", "etui liseuse") + """
+</div>
+<h2>Cuisine</h2>
+<div class="idees">
+""" + idee("Appareil à raclette", "Pour les soirées d'hiver entre amis", "appareil raclette") + idee("Couteau de cuisine de qualité", "L'outil qu'on garde des années", "couteau de chef") + idee("Machine à pop-corn", "Pour les soirées film", "machine pop corn") + """
+</div>
+<h2>Maison et confort</h2>
+<div class="idees">
+""" + idee("Plaid chauffant", "Le confort absolu en hiver", "plaid chauffant") + idee("Lampe de lecture", "Une lumière agréable pour le soir", "lampe de lecture led") + idee("Diffuseur d'ambiance", "Pour une maison qui sent bon", "diffuseur huiles essentielles") + """
+</div>
+<h2>Loisirs</h2>
+<div class="idees">
+""" + idee("Jeu de société expert", "Des heures de jeu entre amis", "jeu de societe strategie") + idee("Coffret LEGO adulte", "Pour se détendre en construisant", "lego adulte") + idee("Kit de dessin complet", "Pour se lancer ou progresser", "kit dessin complet") + """
+</div>
+<h2>Bien-être</h2>
+<div class="idees">
+""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee("Coffret soin", "Un moment pour soi", "coffret soin") + """
+</div>
+<h2>Bien choisir avec 50 €</h2>
+<ul>
+<li><strong>Vérifiez les avis réels</strong> et la marque : à ce prix, la qualité doit suivre.</li>
+<li><strong>Pensez à l'usage</strong> : un cadeau utilisé chaque semaine vaut mieux qu'un objet de déco.</li>
+<li><strong>Gardez le ticket cadeau</strong> pour un éventuel échange.</li>
+</ul>
+<h2>Questions fréquentes</h2>
+<h3>Quel cadeau à 50 € pour quelqu'un qui a déjà tout ?</h3>
+<p>Un consommable haut de gamme ou un objet de confort, comme un plaid chauffant ou un appareil à raclette pour les repas à plusieurs.</p>
+<h3>Peut-on fixer 50 € pour un Père Noël secret ?</h3>
+<p>Oui, en famille proche ou entre amis qui le souhaitent. Entre collègues, un budget plus modeste évite les malaises.</p>
+<h3>Comment faire le tirage au sort ?</h3>
+<p>Utilisez notre <a href="/">outil gratuit</a> : prénoms, exclusions, et chacun reçoit son lien privé.</p>
+"""},
+
+{
 "slug": "idee-cadeau-20-euros",
 "title": "Idée cadeau à 20 € : 15 idées qui font vraiment plaisir",
 "desc": "Budget de 20 € pour un Père Noël secret, un anniversaire ou un échange entre amis ? 15 idées de cadeaux utiles, gourmands ou originaux.",

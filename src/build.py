@@ -29,6 +29,10 @@ FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="p
 FAVICON = '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect x=%2210%22 y=%2230%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22%23b8344a%22/%3E%3Crect x=%2244%22 y=%2230%22 width=%2212%22 height=%2260%22 fill=%22%23e9b949%22/%3E%3Crect x=%224%22 y=%2222%22 width=%2292%22 height=%2216%22 rx=%224%22 fill=%22%23123d34%22/%3E%3C/svg%3E">'
 
 from pages import PAGES
+def _k(p):
+    m = re.search(r'(\d+)-euros', p['slug'])
+    return (0, int(m.group(1))) if m else (1, 0)
+PAGES = sorted(PAGES, key=_k)
 
 def amz(s):
     return re.sub(r'\{AMZ:([^}]+)\}', lambda m: 'https://www.amazon.fr/s?k=' + quote_plus(m.group(1).strip()) + '&tag=' + TAG, s)
