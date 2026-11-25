@@ -67,6 +67,7 @@ var NOMS={noel:"Père Noël secret",nouvelan:"Échange de cadeaux du Nouvel An",
 var DEF={noel:["Noël en famille 2026","2026-12-24"],nouvelan:["Nouvel An entre amis","2026-12-31"],stnicolas:["Saint-Nicolas en famille","2026-12-06"],anniv:["Anniversaire de Léa",""],collegues:["Cadeaux de l'équipe",""],amis:["Soirée cadeaux entre amis",""],classe:["Fin d'année du club",""],autre:["Échange de cadeaux",""]};
 $("type").onchange=function(){var x=DEF[this.value];$("ev").value=x[0];$("date").value=x[1]};
 var IDEES={
+ "5":[["Bonbons originaux","Toujours un succès","bonbons originaux"],["Chaussettes fantaisie","Drôles et utiles","chaussettes fantaisie"],["Baume à lèvres","Indispensable en hiver","baume levres"],["Mini plante grasse","Un peu de vert","mini plante grasse"]],
  "10":[["Mug original","Un classique qui fait toujours plaisir","mug cadeau original"],["Chaussettes de Noël","Drôles et douillettes","chaussettes noel fantaisie"],["Jeu de cartes d'apéro","Pour rire entre amis","jeu de cartes apero"],["Bougie parfumée","Une ambiance cocooning","bougie parfumee"]],
  "20":[["Plaid tout doux","Pour les soirées d'hiver","plaid polaire doux"],["Jeu de société rapide","Une partie en 15 minutes","jeu de societe ambiance"],["Coffret thé ou café","Pour les gourmands","coffret the cadeau"],["Lampe veilleuse","Jolie sur une table de nuit","lampe veilleuse deco"]],
  "30":[["Enceinte Bluetooth","Petite mais puissante","enceinte bluetooth portable"],["Coffret cocktail","Pour jouer au barman","coffret cocktail"],["Livre de recettes","Du nouveau en cuisine","livre de recettes"],["Gourde isotherme","Utile tous les jours","gourde isotherme inox"]],
@@ -79,7 +80,7 @@ function afficherRes(o){
   var dt=o.d?new Date(o.d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}):"";
   $("r-ev").textContent=o.e+(dt?", échange le "+dt:"");
   if(o.t&&o.t!=="noel"){document.querySelector("#vue-res .hero h1").style.maxWidth="none"}
-  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";$("r-b").textContent=o.b;var gd={"10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
+  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";$("r-b").textContent=o.b;var gd={"5":"/idee-cadeau-5-euros/","10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
   var g=$("grille");g.innerHTML="";
   (IDEES[o.b]||IDEES["20"]).forEach(function(x){
     var a=document.createElement("div");a.className="idee";

@@ -7,6 +7,43 @@ def idee(titre, texte, kw):
 
 PAGES = [
 {
+"slug": "idee-cadeau-5-euros",
+"title": "Idée cadeau à 5 € : 15 petites idées qui font plaisir",
+"desc": "Un tout petit budget de 5 € pour un Père Noël secret, une classe ou un club ? 15 idées de petits cadeaux utiles, gourmands ou rigolos.",
+"date": "2026-11-26",
+"body": """
+<p>Avec <strong>5 €</strong>, on est sur le petit cadeau symbolique, idéal pour une classe, un club, une grande équipe ou un Père Noël secret entre ados. Le but n'est pas d'impressionner, mais de faire sourire. Voici des idées qui y arrivent.</p>
+<h2>Les petites douceurs</h2>
+<div class="idees">
+""" + idee("Sucettes ou bonbons originaux", "Toujours un succès", "bonbons originaux") + idee("Sachets de chocolat chaud", "Pour une pause réconfortante", "chocolat chaud sachet") + idee("Biscuits de Noël", "À partager ou à garder", "biscuits noel") + """
+</div>
+<h2>Les petits objets utiles</h2>
+<div class="idees">
+""" + idee("Baume à lèvres", "Indispensable quand il fait froid", "baume levres") + idee("Petit carnet", "Pour les listes et les idées", "petit carnet") + idee("Porte-clés original", "Un clin d'œil qui sert tous les jours", "porte cle original") + idee("Stylos colorés", "Pour le bureau ou l'école", "stylos couleur") + """
+</div>
+<h2>Les petits cadeaux rigolos</h2>
+<div class="idees">
+""" + idee("Chaussettes fantaisie", "Drôles et utiles en hiver", "chaussettes fantaisie") + idee("Mini jeu de cartes", "Pour une pause ou un trajet", "mini jeu de cartes") + idee("Autocollants amusants", "Pour personnaliser un ordinateur ou un carnet", "stickers") + idee("Balle anti-stress", "Le gadget qui sert vraiment", "balle anti stress") + """
+</div>
+<h2>Les petites attentions cocooning</h2>
+<div class="idees">
+""" + idee("Bougie chauffe-plat parfumée", "Une ambiance douce en un instant", "bougies chauffe plat parfumees") + idee("Sachets de thé ou tisane", "Pour un moment de calme", "assortiment tisane") + idee("Masque visage en tissu", "Un petit moment de soin", "masque visage tissu") + idee("Mini plante grasse", "Un peu de vert sans entretien", "mini plante grasse") + """
+</div>
+<h2>Réussir un cadeau à 5 €</h2>
+<ul>
+<li><strong>Misez sur l'emballage</strong> : un joli papier et un petit mot donnent de la valeur au cadeau.</li>
+<li><strong>Le fait maison marche très bien</strong> à ce budget : biscuits, sablés, bougie.</li>
+<li><strong>Regroupez des petites choses</strong> : un sachet de thé et des biscuits font un vrai petit colis.</li>
+</ul>
+<h2>Questions fréquentes</h2>
+<h3>5 €, ce n'est pas trop peu pour un Père Noël secret ?</h3>
+<p>Non, c'est un budget courant dans les classes, les clubs ou les grandes équipes. Tout le monde peut participer, c'est ce qui compte.</p>
+<h3>Que trouver à 5 € pour un enfant ?</h3>
+<p>Des bonbons originaux, un porte-clés, des autocollants ou un mini jeu de cartes font plaisir aux plus jeunes.</p>
+<h3>Comment organiser le tirage pour une classe ou un club ?</h3>
+<p>Avec notre <a href="/">tirage au sort gratuit</a>, vous entrez les prénoms et vous envoyez son lien à chaque participant ou à ses parents.</p>
+"""},
+{
 "slug": "idee-cadeau-10-euros",
 "title": "Idée cadeau à 10 € : 15 idées pour un Père Noël secret",
 "desc": "Un budget de 10 € pour votre Père Noël secret ou un échange entre collègues ? 15 idées de cadeaux utiles ou drôles qui font vraiment plaisir.",

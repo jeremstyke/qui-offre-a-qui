@@ -93,7 +93,7 @@ footer a{color:var(--gris)}
 <input id="ev" value="Noël en famille 2026">
 <div class="ligne">
 <div><label for="budget">Budget par cadeau</label>
-<select id="budget"><option value="10">10 €</option><option value="15">15 €</option><option value="20" selected>20 €</option><option value="30">30 €</option><option value="50">50 €</option></select></div>
+<select id="budget"><option value="5">5 €</option><option value="10">10 €</option><option value="15">15 €</option><option value="20" selected>20 €</option><option value="30">30 €</option><option value="50">50 €</option></select></div>
 <div><label for="date">Date de l'échange</label><input id="date" type="date" value="2026-12-24"></div>
 </div>
 </section>
@@ -121,7 +121,7 @@ footer a{color:var(--gris)}
 <ul id="liens"></ul>
 <p class="note">Astuce : gardez cette page ouverte jusqu'à ce que tout le monde ait reçu son lien. Les résultats ne sont enregistrés nulle part.</p>
 </section>
-<section class="carte"><h2>Questions fréquentes</h2><h3>Le tirage au sort est-il gratuit ?</h3><p>Oui, entièrement gratuit et sans inscription.</p><h3>L&#x27;organisateur peut-il voir qui offre à qui ?</h3><p>Non. Chaque lien privé n&#x27;affiche que le résultat de la personne concernée. Les résultats ne sont enregistrés nulle part.</p><h3>Peut-on empêcher deux personnes de se tirer ?</h3><p>Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs.</p></section><section class="carte"><h2>Idées et conseils</h2><ul><li><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € : 15 idées pour un Père Noël secret</a></li><li><a href="/idee-cadeau-15-euros/">Idée cadeau à 15 € : 15 idées pour un échange réussi</a></li><li><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € : 15 idées qui font vraiment plaisir</a></li><li><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € : 15 idées pour gâter sans se ruiner</a></li><li><a href="/idee-cadeau-50-euros/">Idée cadeau à 50 € : 15 idées pour un vrai beau cadeau</a></li><li><a href="/regles-pere-noel-secret/">Père Noël secret : règles, déroulement et astuces</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues : idées cadeaux et règles</a></li></ul></section>
+<section class="carte"><h2>Questions fréquentes</h2><h3>Le tirage au sort est-il gratuit ?</h3><p>Oui, entièrement gratuit et sans inscription.</p><h3>L&#x27;organisateur peut-il voir qui offre à qui ?</h3><p>Non. Chaque lien privé n&#x27;affiche que le résultat de la personne concernée. Les résultats ne sont enregistrés nulle part.</p><h3>Peut-on empêcher deux personnes de se tirer ?</h3><p>Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs.</p></section><section class="carte"><h2>Idées et conseils</h2><ul><li><a href="/idee-cadeau-5-euros/">Idée cadeau à 5 € : 15 petites idées qui font plaisir</a></li><li><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € : 15 idées pour un Père Noël secret</a></li><li><a href="/idee-cadeau-15-euros/">Idée cadeau à 15 € : 15 idées pour un échange réussi</a></li><li><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € : 15 idées qui font vraiment plaisir</a></li><li><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € : 15 idées pour gâter sans se ruiner</a></li><li><a href="/idee-cadeau-50-euros/">Idée cadeau à 50 € : 15 idées pour un vrai beau cadeau</a></li><li><a href="/regles-pere-noel-secret/">Père Noël secret : règles, déroulement et astuces</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues : idées cadeaux et règles</a></li></ul></section>
 </main>
 </div>
 
@@ -215,6 +215,7 @@ var NOMS={noel:"Père Noël secret",nouvelan:"Échange de cadeaux du Nouvel An",
 var DEF={noel:["Noël en famille 2026","2026-12-24"],nouvelan:["Nouvel An entre amis","2026-12-31"],stnicolas:["Saint-Nicolas en famille","2026-12-06"],anniv:["Anniversaire de Léa",""],collegues:["Cadeaux de l'équipe",""],amis:["Soirée cadeaux entre amis",""],classe:["Fin d'année du club",""],autre:["Échange de cadeaux",""]};
 $("type").onchange=function(){var x=DEF[this.value];$("ev").value=x[0];$("date").value=x[1]};
 var IDEES={
+ "5":[["Bonbons originaux","Toujours un succès","bonbons originaux"],["Chaussettes fantaisie","Drôles et utiles","chaussettes fantaisie"],["Baume à lèvres","Indispensable en hiver","baume levres"],["Mini plante grasse","Un peu de vert","mini plante grasse"]],
  "10":[["Mug original","Un classique qui fait toujours plaisir","mug cadeau original"],["Chaussettes de Noël","Drôles et douillettes","chaussettes noel fantaisie"],["Jeu de cartes d'apéro","Pour rire entre amis","jeu de cartes apero"],["Bougie parfumée","Une ambiance cocooning","bougie parfumee"]],
  "20":[["Plaid tout doux","Pour les soirées d'hiver","plaid polaire doux"],["Jeu de société rapide","Une partie en 15 minutes","jeu de societe ambiance"],["Coffret thé ou café","Pour les gourmands","coffret the cadeau"],["Lampe veilleuse","Jolie sur une table de nuit","lampe veilleuse deco"]],
  "30":[["Enceinte Bluetooth","Petite mais puissante","enceinte bluetooth portable"],["Coffret cocktail","Pour jouer au barman","coffret cocktail"],["Livre de recettes","Du nouveau en cuisine","livre de recettes"],["Gourde isotherme","Utile tous les jours","gourde isotherme inox"]],
@@ -227,7 +228,7 @@ function afficherRes(o){
   var dt=o.d?new Date(o.d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}):"";
   $("r-ev").textContent=o.e+(dt?", échange le "+dt:"");
   if(o.t&&o.t!=="noel"){document.querySelector("#vue-res .hero h1").style.maxWidth="none"}
-  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";$("r-b").textContent=o.b;var gd={"10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
+  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";$("r-b").textContent=o.b;var gd={"5":"/idee-cadeau-5-euros/","10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
   var g=$("grille");g.innerHTML="";
   (IDEES[o.b]||IDEES["20"]).forEach(function(x){
     var a=document.createElement("div");a.className="idee";
@@ -243,7 +244,7 @@ if(m){try{afficherRes(decode(m[1]))}catch(e){rendreListe();rendreExc()}}else{ren
 })();
 </script>
 <footer><div class="wrap">
-<p class="liens" style="justify-content:center"><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € </a><a href="/idee-cadeau-15-euros/">Idée cadeau à 15 € </a><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € </a><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € </a><a href="/idee-cadeau-50-euros/">Idée cadeau à 50 € </a><a href="/regles-pere-noel-secret/">Père Noël secret </a><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues </a></p>
+<p class="liens" style="justify-content:center"><a href="/idee-cadeau-5-euros/">Idée cadeau à 5 € </a><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € </a><a href="/idee-cadeau-15-euros/">Idée cadeau à 15 € </a><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € </a><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € </a><a href="/idee-cadeau-50-euros/">Idée cadeau à 50 € </a><a href="/regles-pere-noel-secret/">Père Noël secret </a><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues </a></p>
 <p>Tirage au sort de cadeaux gratuit, sans inscription. <a href="/mentions-legales/">Mentions légales et confidentialité</a>.</p>
 <p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
 </div></footer>
