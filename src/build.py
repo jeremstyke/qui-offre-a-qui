@@ -86,12 +86,12 @@ SEO_HOME = """<section class="carte"><h2>Comment faire un tirage au sort de cade
 <li><strong>Choisissez l'occasion et le budget</strong> : Noël, Nouvel An, anniversaire, collègues, amis, de 5 à 50 €.</li>
 <li><strong>Ajoutez les prénoms</strong> des participants, et les exclusions si deux personnes ne doivent pas se tirer.</li>
 <li><strong>Lancez le tirage</strong> : chaque participant reçoit un lien privé.</li>
-<li><strong>Envoyez les liens</strong> par WhatsApp, SMS ou messagerie. Chacun ouvre son paquet et découvre à qui il offre un cadeau, avec des idées dans son budget.</li>
+<li><strong>Envoyez les liens</strong> par e-mail, WhatsApp, SMS ou messagerie. Chacun ouvre son paquet et découvre à qui il offre un cadeau, avec des idées dans son budget.</li>
 </ol>
 </section>
 <section class="carte"><h2>Pourquoi utiliser Qui offre à qui ?</h2>
 <ul>
-<li><strong>Sans compte et sans e-mail</strong> : seulement des prénoms. Rien à créer, rien à valider.</li>
+<li><strong>Sans compte, e-mail facultatif</strong> : des prénoms suffisent. Si vous voulez, chacun reçoit son lien par e-mail et vous recevez le récapitulatif.</li>
 <li><strong>100 % gratuit</strong>, sans limite de participants.</li>
 <li><strong>Vraiment secret</strong> : chaque lien n'affiche qu'un seul résultat, et l'organisateur peut participer sans tricher.</li>
 <li><strong>Jamais son propre nom</strong> : le tirage exclut chaque personne d'elle-même et respecte vos exclusions.</li>
@@ -107,21 +107,23 @@ tool = tool.replace('<main class="wrap">', '<main class="wrap" id="outil">', 1)
 guides = ''.join(f'<li><a href="/{p["slug"]}/">{esc(p["title"])}</a></li>' for p in PAGES)
 tool = tool.replace('</main>\n</div>\n\n<div id="vue-res"', f'<section class="carte"><h2>Idées et conseils</h2><ul>{guides}</ul></section>\n</main>\n</div>\n\n<div id="vue-res"', 1)
 faq = [("Le tirage au sort est-il vraiment gratuit ?", "Oui, entièrement gratuit, sans abonnement et sans option payante cachée."),
-       ("Faut-il créer un compte ou donner son e-mail ?", "Non. Vous entrez seulement des prénoms. Aucun compte, aucun e-mail, aucun mot de passe : le tirage est prêt en 2 minutes."),
-       ("L'organisateur peut-il voir qui offre à qui ?", "Non. Chaque lien privé n'affiche que le résultat de la personne concernée, et les résultats ne sont enregistrés nulle part."),
-       ("Comment chaque participant reçoit-il son résultat ?", "Après le tirage, vous envoyez à chacun son lien privé par WhatsApp, SMS ou en le copiant dans n'importe quelle messagerie."),
+       ("Faut-il créer un compte ou donner son e-mail ?", "Non. Des prénoms suffisent : aucun compte, aucun mot de passe, et le tirage est prêt en 2 minutes. L'e-mail est facultatif, il sert seulement à envoyer les liens par e-mail."),
+       ("Peut-on envoyer les résultats par e-mail ?", "Oui. Ajoutez l'e-mail des participants qui le souhaitent : chacun reçoit son lien privé. L'organisateur peut aussi recevoir un récapitulatif avec tous les liens, pour les renvoyer si quelqu'un perd le sien."),
+       ("Comment retrouver un tirage déjà fait ?", "Le tirage est gardé sur votre appareil : revenez sur le site, il apparaît dans « Vos derniers tirages ». Si vous avez donné votre e-mail, le récapitulatif contient aussi tous les liens."),
+       ("L'organisateur peut-il voir qui offre à qui ?", "Non. Chaque lien privé n'affiche que le résultat de la personne concernée. Tant qu'il n'ouvre pas les liens des autres, l'organisateur peut participer sans connaître le tirage."),
+       ("Comment chaque participant reçoit-il son résultat ?", "Après le tirage, chacun reçoit son lien privé par e-mail, ou vous l'envoyez par WhatsApp, SMS ou n'importe quelle messagerie."),
        ("Peut-on empêcher deux personnes de se tirer ?", "Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux."),
        ("Combien de participants faut-il ?", "Au moins 3 personnes. Il n'y a pas de maximum : famille, classe, équipe ou club entier."),
        ("Peut-on l'utiliser pour autre chose que Noël ?", "Oui : Nouvel An, Saint-Nicolas, anniversaire, échange entre collègues ou entre amis, fin d'année d'une classe ou d'un club."),
        ("Quel budget choisir ?", "Le plus courant est de 10 à 20 €. Après le tirage, chacun voit des idées de cadeaux adaptées au budget choisi.")]
-howto = {"@context": "https://schema.org", "@type": "HowTo", "name": "Faire un tirage au sort de cadeaux en ligne", "totalTime": "PT2M", "step": [{"@type": "HowToStep", "position": 1, "name": "Choisir l'occasion et le budget", "text": "Indiquez l'occasion, le nom de l'événement, le budget par cadeau et la date de l'échange."}, {"@type": "HowToStep", "position": 2, "name": "Ajouter les participants", "text": "Entrez les prénoms des participants, au moins 3, et les éventuelles exclusions."}, {"@type": "HowToStep", "position": 3, "name": "Lancer le tirage", "text": "Cliquez sur Lancer le tirage au sort : chaque participant obtient un lien privé."}, {"@type": "HowToStep", "position": 4, "name": "Envoyer les liens", "text": "Envoyez à chacun son lien par WhatsApp, SMS ou messagerie. Il découvre à qui il offre un cadeau et des idées selon le budget."}]}
+howto = {"@context": "https://schema.org", "@type": "HowTo", "name": "Faire un tirage au sort de cadeaux en ligne", "totalTime": "PT2M", "step": [{"@type": "HowToStep", "position": 1, "name": "Choisir l'occasion et le budget", "text": "Indiquez l'occasion, le nom de l'événement, le budget par cadeau et la date de l'échange."}, {"@type": "HowToStep", "position": 2, "name": "Ajouter les participants", "text": "Entrez les prénoms des participants, au moins 3, et les éventuelles exclusions."}, {"@type": "HowToStep", "position": 3, "name": "Lancer le tirage", "text": "Cliquez sur Lancer le tirage au sort : chaque participant obtient un lien privé."}, {"@type": "HowToStep", "position": 4, "name": "Envoyer les liens", "text": "Envoyez à chacun son lien par e-mail, WhatsApp, SMS ou messagerie. Il découvre à qui il offre un cadeau et des idées selon le budget."}]}
 sch_home = [howto, {"@context": "https://schema.org", "@type": "WebApplication", "name": SITE, "url": BASE + "/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}},
             {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]
 faq_html = '<section class="carte"><h2>Questions fréquentes</h2>' + ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in faq) + '</section>'
 tool = tool.replace('<section class="carte"><h2>Idées et conseils</h2>', SEO_HOME + faq_html + '<section class="carte"><h2>Idées et conseils</h2>', 1)
 js = open(os.path.join(HERE, 'tool.js')).read()
 home = head("Tirage au sort cadeau gratuit sans compte : Père Noël secret",
-            "Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte ni e-mail, un lien privé par participant et des idées cadeaux selon le budget.",
+            "Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte, liens privés par e-mail ou WhatsApp par participant et des idées cadeaux selon le budget.",
             "/", sch_home) + NAV + tool + '<script>\n' + js + '\n</script>\n' + foot()
 w('index.html', home)
 
@@ -137,7 +139,7 @@ for p in PAGES:
         sch.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": re.sub('<[^>]+>', '', q), "acceptedAnswer": {"@type": "Answer", "text": re.sub('<[^>]+>', '', a)}} for q, a in qs]})
     d = datetime.date.fromisoformat(p["date"])
     mois = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"][d.month-1]
-    cta = '<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte, sans e-mail et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div>'
+    cta = '<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé, par e-mail ou WhatsApp.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div>'
     promo = '<p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>'
     body = re.sub(r'(</p>)', r'\1' + promo, body, count=1)
     oth = [q for q in PAGES if q['slug'] != p['slug']]
@@ -150,7 +152,7 @@ for p in PAGES:
 legal = head("Mentions légales et confidentialité", "Mentions légales, données personnelles et liens affiliés du site Qui offre à qui.", "/mentions-legales/", robots='noindex,follow') + NAV + '''<main class="wrap"><article><h1>Mentions légales et confidentialité</h1>
 <h2>Éditeur</h2><p>Jérémy Dacier-Jury, 9 passage des Tisserands, 38790 Charantonnay. Contact : <a href="mailto:contact@cvlibre.com">contact@cvlibre.com</a>.</p>
 <h2>Hébergement</h2><p>GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
-<h2>Données personnelles</h2><p>Le tirage au sort est calculé dans votre navigateur. Les prénoms et les résultats ne sont pas envoyés ni enregistrés sur nos serveurs : ils sont seulement contenus dans les liens privés que vous partagez. Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans cookie publicitaire et sans donnée permettant de vous identifier.</p>
+<h2>Données personnelles</h2><p>Le tirage au sort est calculé dans votre navigateur. Les prénoms et les résultats ne sont pas enregistrés sur nos serveurs : ils sont contenus dans les liens privés que vous partagez. Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) pour que vous puissiez les retrouver ; vous pouvez les effacer à tout moment.</p><p><strong>Envoi par e-mail (facultatif).</strong> Si vous saisissez des adresses e-mail, elles sont transmises à notre prestataire d'envoi Resend uniquement pour envoyer les liens. Les adresses des participants ne sont pas conservées. L'adresse de l'organisateur est conservée seulement s'il coche la case de rappel : elle sert alors à envoyer un e-mail par an pour proposer un nouveau tirage, jusqu'à sa désinscription (lien dans chaque e-mail). Base légale : votre consentement. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans cookie publicitaire et sans donnée permettant de vous identifier.</p>
 <h2>Liens affiliés</h2><p>Certains liens vers Amazon sont des liens affiliés : en tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises, sans surcoût pour vous.</p>
 </article></main>''' + foot()
 w('mentions-legales/index.html', legal)

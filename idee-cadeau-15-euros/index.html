@@ -33,7 +33,8 @@ input,select{width:100%;font:inherit;padding:11px 12px;border:1px solid #b9c6c0;
 input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .ligne{display:flex;gap:10px}.ligne>*{flex:1}
 .pers{display:flex;gap:8px;margin-bottom:8px}
-.pers input{flex:1}
+.pers input.nom{flex:1 1 40%}.pers input.mail{flex:1 1 60%}
+@media(max-width:560px){.pers{flex-wrap:wrap}.pers input.nom{flex:1 1 calc(100% - 52px)}.pers input.mail{order:3;flex:1 1 100%;margin-bottom:10px}}
 .x{flex:0 0 44px;border:1px solid var(--ligne);background:#fff;border-radius:10px;font-size:20px;color:var(--gris);cursor:pointer}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 17px "Atkinson Hyperlegible",sans-serif;border:0;border-radius:12px;padding:13px 20px;cursor:pointer;text-decoration:none}
 .btn.p{background:var(--baie);color:#fff;width:100%;font-size:18px;padding:16px}
@@ -58,6 +59,16 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .cache{display:none}
 footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 @media (max-width:600px){.ruban{width:56px;right:-34px}.hero .wrap{padding-right:40px}}
+
+.mailbox{margin-top:18px;padding-top:16px;border-top:1px solid var(--ligne)}
+.mailbox h3{margin:0 0 4px;font-size:18px}
+.coche{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;margin:12px 0 14px;cursor:pointer}
+.coche input{width:20px;height:20px;flex:0 0 20px;margin:2px 0 0}
+#liens small,.mes small{display:block;font-weight:400;font-size:13px;color:var(--gris)}
+.mes{list-style:none;padding:0;margin:0}
+.mes li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.mes .act{display:flex;gap:6px;align-items:center}
+.garder .act{display:flex;gap:8px;flex-wrap:wrap}
 
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
@@ -112,7 +123,7 @@ footer a{color:var(--gris)}
 <p>Un mug double paroi, un jeu de cartes, un support d'ordinateur ou un coffret de chocolats restent des valeurs sûres.</p>
 <h3>Comment organiser le tirage ?</h3>
 <p>Avec notre <a href="/">tirage au sort gratuit</a>, chacun reçoit un lien privé avec le nom de la personne à gâter.</p>
-<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte, sans e-mail et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><ul><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille : règles, budget et idées</a></li><li><a href="/secret-santa-a-distance/">Secret Santa à distance : l&#x27;organiser en ligne simplement</a></li><li><a href="/regles-pere-noel-secret/">Père Noël secret : règles, déroulement et astuces</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues : idées cadeaux et règles</a></li></ul></article></main><footer><div class="wrap">
+<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé, par e-mail ou WhatsApp.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><ul><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille : règles, budget et idées</a></li><li><a href="/secret-santa-a-distance/">Secret Santa à distance : l&#x27;organiser en ligne simplement</a></li><li><a href="/regles-pere-noel-secret/">Père Noël secret : règles, déroulement et astuces</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues : idées cadeaux et règles</a></li></ul></article></main><footer><div class="wrap">
 <p class="liens" style="justify-content:center"><a href="/idee-cadeau-5-euros/">Idée cadeau à 5 € </a><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € </a><a href="/idee-cadeau-15-euros/">Idée cadeau à 15 € </a><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € </a><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € </a><a href="/idee-cadeau-50-euros/">Idée cadeau à 50 € </a><a href="/pere-noel-secret-famille/">Père Noël secret en famille </a><a href="/secret-santa-a-distance/">Secret Santa à distance </a><a href="/regles-pere-noel-secret/">Père Noël secret </a><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues </a></p>
 <p>Tirage au sort de cadeaux gratuit, sans inscription. <a href="/mentions-legales/">Mentions légales et confidentialité</a>.</p>
 <p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>

@@ -317,7 +317,7 @@ PAGES = [
 <h3>Comment connaître l'adresse de la personne tirée ?</h3>
 <p>Demandez-la à l'organisateur, ou faites livrer au bureau ou chez l'organisateur pour garder le secret.</p>
 <h3>Les participants doivent-ils s'inscrire ?</h3>
-<p>Non : avec Qui offre à qui, ils ouvrent simplement leur lien privé, sans compte et sans e-mail.</p>
+<p>Non : avec Qui offre à qui, ils ouvrent simplement leur lien privé, sans compte. Ils peuvent même le recevoir directement par e-mail.</p>
 """},
 {
 "slug": "regles-pere-noel-secret",

@@ -1,10 +1,16 @@
 <div id="vue-orga">
 <header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
 <h1>Tirage au sort de cadeaux en ligne, gratuit et sans compte</h1>
-<p>Organisez votre Père Noël secret en 2 minutes : entrez les prénoms, lancez le tirage, envoyez à chacun son lien privé. Pas de compte, pas d'e-mail, 100 % gratuit. Personne ne voit qui offre à qui, pas même l'organisateur.</p>
+<p>Organisez votre Père Noël secret en 2 minutes : entrez les prénoms, lancez le tirage, envoyez à chacun son lien privé. Pas de compte, e-mail facultatif, 100 % gratuit. Personne ne voit qui offre à qui, pas même l'organisateur.</p>
 <div class="chips"><span>Prêt en 2 minutes</span><span>Sans compte</span><span>100 % gratuit</span><span>Idées cadeaux selon le budget</span></div>
 </div></header>
 <main class="wrap">
+<section class="carte cache" id="mes">
+<h2>Vos derniers tirages</h2>
+<p class="sous">Gardés sur cet appareil uniquement.</p>
+<ul id="mes-l" class="mes"></ul>
+</section>
+
 <section class="carte">
 <h2>1. L'événement</h2>
 <p class="sous">Choisissez l'occasion, puis donnez-lui un nom.</p>
@@ -21,7 +27,7 @@
 
 <section class="carte">
 <h2>2. Les participants</h2>
-<p class="sous">Au moins 3 personnes.</p>
+<p class="sous">Au moins 3 personnes. L'e-mail est facultatif : si vous le donnez, la personne reçoit son lien directement.</p>
 <div id="liste"></div>
 <button class="btn s petit" id="ajout">Ajouter une personne</button>
 </section>
@@ -40,7 +46,16 @@
 <h2>C'est tiré !</h2>
 <p class="sous">Envoyez à chaque personne son lien. Il n'affiche que son propre résultat.</p>
 <ul id="liens"></ul>
-<p class="note">Astuce : gardez cette page ouverte jusqu'à ce que tout le monde ait reçu son lien. Les résultats ne sont enregistrés nulle part.</p>
+<div class="mailbox">
+<h3>Recevoir les liens par e-mail</h3>
+<p class="sous" id="m-info"></p>
+<label for="m-orga">Votre e-mail (facultatif)</label>
+<input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
+<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
+<button class="btn p" id="m-env">Envoyer les e-mails</button>
+<p class="note" id="m-ok" role="status"></p>
+</div>
+<p class="note">Ce tirage est aussi gardé sur cet appareil : vous le retrouverez en revenant sur le site, dans « Vos derniers tirages ».</p>
 </section>
 </main>
 </div>
@@ -61,6 +76,10 @@
 <p class="sous">Une sélection simple pour ne pas chercher pendant des heures. <a id="r-guide" href="/idee-cadeau-20-euros/">Plus d'idées</a></p>
 <div class="idees" id="grille"></div>
 <p style="margin-top:16px"><a class="btn p" id="r-guide2" href="/idee-cadeau-20-euros/">Voir 15 idées à <span id="r-b2"></span> €</a></p>
+</section>
+<section class="carte garder">
+<p><b>Gardez votre résultat</b> pour le revoir plus tard :</p>
+<p class="act"><a class="btn s petit" id="r-mail" href="#">M'envoyer le lien par e-mail</a><button class="btn s petit" id="r-copie">Copier mon lien</button></p>
 </section>
 <p class="note" style="text-align:center"><a href="./">Organiser mon propre tirage (Noël, anniversaire, collègues...)</a></p>
 </main>

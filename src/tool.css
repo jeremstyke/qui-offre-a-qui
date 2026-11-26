@@ -21,7 +21,8 @@ input,select{width:100%;font:inherit;padding:11px 12px;border:1px solid #b9c6c0;
 input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .ligne{display:flex;gap:10px}.ligne>*{flex:1}
 .pers{display:flex;gap:8px;margin-bottom:8px}
-.pers input{flex:1}
+.pers input.nom{flex:1 1 40%}.pers input.mail{flex:1 1 60%}
+@media(max-width:560px){.pers{flex-wrap:wrap}.pers input.nom{flex:1 1 calc(100% - 52px)}.pers input.mail{order:3;flex:1 1 100%;margin-bottom:10px}}
 .x{flex:0 0 44px;border:1px solid var(--ligne);background:#fff;border-radius:10px;font-size:20px;color:var(--gris);cursor:pointer}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 17px "Atkinson Hyperlegible",sans-serif;border:0;border-radius:12px;padding:13px 20px;cursor:pointer;text-decoration:none}
 .btn.p{background:var(--baie);color:#fff;width:100%;font-size:18px;padding:16px}
@@ -46,3 +47,13 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .cache{display:none}
 footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 @media (max-width:600px){.ruban{width:56px;right:-34px}.hero .wrap{padding-right:40px}}
+
+.mailbox{margin-top:18px;padding-top:16px;border-top:1px solid var(--ligne)}
+.mailbox h3{margin:0 0 4px;font-size:18px}
+.coche{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;margin:12px 0 14px;cursor:pointer}
+.coche input{width:20px;height:20px;flex:0 0 20px;margin:2px 0 0}
+#liens small,.mes small{display:block;font-weight:400;font-size:13px;color:var(--gris)}
+.mes{list-style:none;padding:0;margin:0}
+.mes li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.mes .act{display:flex;gap:6px;align-items:center}
+.garder .act{display:flex;gap:8px;flex-wrap:wrap}
