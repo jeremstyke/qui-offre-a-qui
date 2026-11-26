@@ -154,7 +154,7 @@ PAGES = [
 </div>
 <h2>Bien-être</h2>
 <div class="idees">
-""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française", "https://anita-zaha.com/") + """
+""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française", "https://anita-zaha.com/product-category/idees-cadeaux/") + """
 </div>
 <h2>Bien choisir avec 50 €</h2>
 <ul>
@@ -239,7 +239,7 @@ PAGES = [
 </div>
 <h2>Pour la personne qui aime prendre soin d'elle</h2>
 <div class="idees">
-""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir", "https://anita-zaha.com/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + """
+""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir", "https://anita-zaha.com/product-category/savons-solides/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + """
 </div>
 <h2>Nos conseils pour un cadeau réussi à 20 €</h2>
 <ul>
