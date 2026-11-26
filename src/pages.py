@@ -326,6 +326,7 @@ PAGES = [
 """ + idee("Plaid chauffant", "Pour les grands-parents frileux", "plaid chauffant") + idee("Jeu de société familial", "À ouvrir le soir même", "jeu de societe famille") + idee("Cadre photo numérique", "Pour partager les photos de famille", "cadre photo numerique") + idee("Lampe d'ambiance", "Les ados adorent", "lampe led chambre ado") + idee("Coffret gourmand", "Une valeur sûre pour les adultes", "coffret gourmand") + idee("Livre de recettes", "Pour les cuisiniers de la famille", "livre de recettes") + """
 </div>
 <p>Pour aller plus loin, consultez nos sélections <a href="/idee-cadeau-20-euros/">à 20 €</a>, <a href="/idee-cadeau-30-euros/">à 30 €</a> et <a href="/idee-cadeau-50-euros/">à 50 €</a>.</p>
+<p>Un bébé est arrivé dans l'année ou des jeunes mariés fêtent leur premier Noël ? Nos sites frères ont des idées sur mesure : <a href="https://malistebebe.fr/cadeau-naissance-utile-noel/">cadeaux de naissance utiles à Noël</a> sur Ma liste bébé, et <a href="https://malistedemariage.fr/cadeau-noel-jeunes-maries/">cadeau de Noël pour des jeunes mariés</a> sur Ma liste mariage.</p>
 <h2>Le jour de l'échange</h2>
 <p>Posez tous les cadeaux sous le sapin avec seulement le prénom du destinataire. Ouvrez-les un par un, du plus jeune au plus âgé par exemple : chacun tente de deviner son Père Noël secret avant la révélation.</p>
 <h2>Questions fréquentes</h2>
