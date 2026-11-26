@@ -153,12 +153,13 @@ function afficherRes(o){
   }
   if(o.l&&/^[a-z0-9]{10}$/.test(o.l)){
     var lien="/qui-apporte-quoi/#l="+o.l+"&n="+encodeURIComponent(o.de);$("r-repas-lien").href=lien;
-    var rendreRepas=function(L){
-      var ordre=[],par={};L.items.forEach(function(i){if(!par[i.cat]){par[i.cat]=[];ordre.push(i.cat)}par[i.cat].push(i)});
-      var w=$("r-repas-l");w.innerHTML=ordre.map(function(c){return '<h3 class="rr-cat">'+escH(c)+'</h3><ul class="rp-items">'+par[c].map(function(i){return '<li class="'+(i.qui?"pris":"")+'"><span class="lab">'+escH(i.label)+'</span>'+(i.qui?'<span class="qui">'+escH(i.qui)+'</span>'+(i.qui===o.de?'<button class="x" data-l="'+i.id+'" aria-label="Libérer">×</button>':''):'<button class="btn s petit" data-p="'+i.id+'">Je m\'en occupe</button>')+'</li>'}).join("")+'</ul>'}).join("");
-      w.querySelectorAll("button[data-p],button[data-l]").forEach(function(b){b.onclick=function(){b.disabled=true;post({action:"liste_prendre",id:o.l,item:+(b.dataset.p||b.dataset.l),qui:b.dataset.p?o.de:""}).then(function(x){if(x.ok){rendreRepas(x.liste);try{window.qoaqHit&&window.qoaqHit("liste_maj","tirage")}catch(e){}}else b.disabled=false}).catch(function(){b.disabled=false})}});
+    var monterRepas=function(){
+      if($("r-repas-l").firstChild)return;
+      var f=document.createElement("iframe");f.className="rr-frame";f.title="Tableau du repas : qui apporte quoi";f.loading="lazy";
+      f.src="/qui-apporte-quoi/?e=1#l="+o.l+"&n="+encodeURIComponent(o.de);$("r-repas-l").appendChild(f);
+      window.addEventListener("message",function(ev){if(ev.origin===location.origin&&ev.data&&ev.data.qoaqH&&ev.source===f.contentWindow)f.style.height=Math.min(Math.max(ev.data.qoaqH,420),4000)+"px"});
     };
-    post({action:"liste_lire",id:o.l}).then(function(x){if(x.ok){rendreRepas(x.liste);$("r-repas").dataset.ok="1";if($("paquet").classList.contains("ouvert"))$("r-repas").classList.remove("cache")}}).catch(function(){});
+    post({action:"liste_lire",id:o.l}).then(function(x){if(x.ok){monterRepas();$("r-repas").dataset.ok="1";if($("paquet").classList.contains("ouvert"))$("r-repas").classList.remove("cache")}}).catch(function(){});
     try{var M=JSON.parse(localStorage.getItem("qoaq_listes")||"[]").filter(function(x){return x.id!==o.l});M.unshift({id:o.l,t:o.e,ts:Date.now()});localStorage.setItem("qoaq_listes",JSON.stringify(M.slice(0,12)));localStorage.setItem("qoaq_prenom",o.de)}catch(e){}
   }
   function ouvrir(){if(!$("paquet").classList.contains("ouvert")){if(pm){var d0=false;try{d0=localStorage.getItem("qoaq_nl")==="1"}catch(e){}if(!d0)$("nl").classList.remove("cache")}try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache");$("r-autre").classList.remove("cache");if($("r-repas").dataset.ok)$("r-repas").classList.remove("cache")}

@@ -15,7 +15,8 @@
     var body = JSON.stringify({site: SITE, kind: kind, path: location.pathname.slice(0, 290), ref: ref.slice(0, 290), dev: dev, vid: vid, target: (target || '').slice(0, 290)});
     try { fetch(SB, {method: 'POST', keepalive: true, headers: {'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal'}, body: body}); } catch(e){}
   }
-  hit('view');
+  var EMB = /[?&]e=1/.test(location.search);
+  if (!EMB) hit('view');
   window.qoaqHit = hit;
   // Temps passé : on envoie les secondes visibles à chaque fois que la page passe en arrière-plan ou se ferme
   var vu = document.visibilityState === 'visible' ? Date.now() : 0, cumul = 0;

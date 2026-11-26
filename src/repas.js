@@ -12,6 +12,10 @@ var MODELES={
  auberge:{t:"Auberge espagnole",d:"",c:[["Salé",["Plat salé","Plat salé","Salade"]],["Sucré",["Dessert","Dessert"]],["Boissons",["Boissons","Boissons"]],["Divers",["Pain","Vaisselle jetable"]]]},
  vide:{t:"Notre repas",d:"",c:[["Entrée",[]],["Plat",[]],["Dessert",[]],["Boissons",[]]]}
 };
+var EMB=/[?&]e=1/.test(location.search);
+if(EMB){document.documentElement.classList.add("rp-embed");
+  var envH=function(){try{parent.postMessage({qoaqH:document.documentElement.scrollHeight},location.origin)}catch(e){}};
+  try{new ResizeObserver(envH).observe(document.body)}catch(e){setInterval(envH,1000)}window.addEventListener("load",envH);}
 var choix="noel";
 var boutonsM=document.querySelectorAll("#rp-modeles button");
 boutonsM.forEach(function(b){b.onclick=function(){choix=b.dataset.m;boutonsM.forEach(function(x){x.setAttribute("aria-checked",x===b?"true":"false")});$("rp-titre").value=MODELES[choix].t}});
