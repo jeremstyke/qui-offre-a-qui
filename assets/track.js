@@ -17,7 +17,14 @@
   }
   hit('view');
   window.qoaqHit = hit;
+  // Temps passé : on envoie les secondes visibles à chaque fois que la page passe en arrière-plan ou se ferme
+  var vu = document.visibilityState === 'visible' ? Date.now() : 0, cumul = 0;
+  function envoyerDuree(){ if (vu) { cumul += (Date.now() - vu) / 1000; vu = 0; } var s = Math.round(cumul); if (s >= 2) { hit('duree', String(Math.min(s, 1800))); } cumul = 0; }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') envoyerDuree(); else vu = Date.now(); });
+  window.addEventListener('pagehide', envoyerDuree);
   document.addEventListener('click', function(e){
+    var sh = e.target.closest && e.target.closest('#liens .act a, #liens .act button');
+    if (sh) hit('partage', /wa\.me/.test(sh.href || '') ? 'whatsapp' : /^sms/.test(sh.href || '') ? 'sms' : 'copie');
     var a = e.target.closest && e.target.closest('a[href*="amazon.fr"]');
     if (a) { var m = a.href.match(/[?&]k=([^&]+)/); hit('amz', m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : a.href.split('?')[0]); }
   }, true);

@@ -354,7 +354,7 @@ function afficherRes(o){
   var lienPerso=location.href;
   $("r-mail").href="mailto:?subject="+encodeURIComponent("Mon tirage pour « "+o.e+" »")+"&body="+encodeURIComponent("Mon lien privé pour revoir à qui j'offre un cadeau : "+lienPerso);
   $("r-copie").onclick=function(){var bt=this;navigator.clipboard&&navigator.clipboard.writeText(lienPerso).then(function(){bt.textContent="Lien copié"})};
-  function ouvrir(){$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
+  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
   $("paquet").onclick=ouvrir;$("paquet").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ouvrir()}};
 }
 window.addEventListener("hashchange",function(){if(/r=/.test(location.hash))location.reload()});
