@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8638687738606649" crossorigin="anonymous"></script>
 <meta name="google-site-verification" content="0tjo6Bj7KcNHJMLQKuavVd_d7pBDPoJX3TaLWRm1GA4">
 <title>Qui apporte quoi : liste de repas partagée gratuite</title>
 <meta name="description" content="Créez la liste du repas de Noël ou de la fête, partagez le lien, et chacun coche ce qu&#x27;il apporte. Gratuit, sans compte, mis à jour en direct pour tous.">
@@ -121,6 +122,25 @@ input.attention{outline:3px solid var(--baie)}
 .viral .btn.p{width:auto;font-size:17px;padding:13px 22px}
 .viral-orga{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 0}
 .viral-orga p{margin:0}
+.rp-tab{width:100%;border-collapse:collapse;margin:4px 0 10px}
+.rp-tab th{text-align:left;font-size:13px;color:var(--gris);font-weight:700;padding:4px 4px 6px}
+.rp-tab td{padding:4px;vertical-align:middle;border-top:1px solid var(--ligne)}
+.rp-tab input{padding:9px 10px;border-radius:8px;font-size:16px}
+.rp-tab td:nth-child(2){display:flex;gap:6px;align-items:center}
+.rp-tab tr.pris td:nth-child(2) input{background:#e3f2eb;border-color:#b7dcc9;font-weight:700;color:#1d6b4f}
+.rp-tab .mini{padding:8px 10px;font-size:14px;flex:none}
+.rp-tab td:last-child{width:44px}
+.rp-tab .x.sur{width:auto;padding:0 8px;font-size:13px;color:var(--baie);border-color:var(--baie)}
+.sr{position:absolute;left:-9999px}
+@media(max-width:620px){
+ .rp-tab thead{display:none}
+ .rp-tab tr{display:grid;grid-template-columns:1fr 44px;gap:6px;padding:10px 0;border-top:1px solid var(--ligne)}
+ .rp-tab td{border:0;padding:0}
+ .rp-tab td:nth-child(1){grid-column:1}
+ .rp-tab td:nth-child(4){grid-column:2;grid-row:1}
+ .rp-tab td:nth-child(2),.rp-tab td:nth-child(3){grid-column:1/-1}
+ .rp-tab input[data-f="label"]{font-weight:700}
+}
 
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
@@ -257,7 +277,11 @@ $("rp-go").onclick=function(){
   }).catch(function(){bt.disabled=false;bt.textContent="Créer la liste et la partager";$("rp-err").textContent="Pas de connexion. Réessayez."});
 };
 
-var L=null,id=null,minuteur=null;
+var L=null,id=null,minuteur=null,force=true,enregistre=null;
+function confirmerSuppr(tr){if(tr.dataset.sur){return true}tr.dataset.sur="1";var b=tr.querySelector("[data-del]");b.textContent="Sûr ?";b.classList.add("sur");setTimeout(function(){delete tr.dataset.sur;b.textContent="×";b.classList.remove("sur")},2500);return false}
+var dernierEnvoi={};
+function sauver(iid,f,v){var k=iid+"|"+f;if(dernierEnvoi[k]===v)return;dernierEnvoi[k]=v;var o={action:"liste_maj",id:id,item:iid};o[f]=v;$("rp-maj").textContent="Enregistrement...";
+  post(o).then(function(j){if(j.ok){L=j.liste;clearTimeout(enregistre);$("rp-maj").textContent="Enregistré pour tout le monde à "+new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})+".";hit("liste_maj",f)}else $("rp-maj").textContent="Pas enregistré, réessayez."}).catch(function(){$("rp-maj").textContent="Pas de connexion : la modification n'est pas enregistrée."})}
 function mesListes(){var M=[];try{M=JSON.parse(localStorage.getItem("qoaq_listes")||"[]")}catch(e){}return M}
 function memo(i,t){var M=mesListes().filter(function(x){return x.id!==i});M.unshift({id:i,t:t,ts:Date.now()});try{localStorage.setItem("qoaq_listes",JSON.stringify(M.slice(0,12)))}catch(e){}}
 function rendreMes(){
@@ -273,7 +297,7 @@ try{$("rp-moi").value=localStorage.getItem("qoaq_prenom")||""}catch(e){}
 $("rp-moi").oninput=function(){try{localStorage.setItem("qoaq_prenom",moi())}catch(e){}};
 function act(o,el){
   if(el){el.disabled=true}
-  return post(Object.assign({id:id},o)).then(function(j){if(j.ok){L=j.liste;rendre();hit("liste_maj",o.action)}else if(el){el.disabled=false}}).catch(function(){if(el)el.disabled=false});
+  return post(Object.assign({id:id},o)).then(function(j){if(j.ok){L=j.liste;force=true;rendre();hit("liste_maj",o.action)}else if(el){el.disabled=false}}).catch(function(){if(el)el.disabled=false});
 }
 function rendre(){
   memo(id,L.titre);
@@ -285,30 +309,40 @@ function rendre(){
   $("rp-compte").innerHTML='<b>'+pris+'/'+L.items.length+'</b><span>pris</span>';
   var ordre=[],par={};
   L.items.forEach(function(i){if(!par[i.cat]){par[i.cat]=[];ordre.push(i.cat)}par[i.cat].push(i)});
-  var w=$("rp-liste");w.innerHTML="";
-  ordre.concat(ordre.length?[]:["Entrée"]).forEach(function(cat){
+  if(!ordre.length)ordre=["Entrée","Plat","Dessert","Boissons"];
+  var w=$("rp-liste"),actif=document.activeElement&&w.contains(document.activeElement)?document.activeElement:null;
+  if(actif&&!force)return; force=false;
+  w.innerHTML="";
+  ordre.forEach(function(cat){
     var s=document.createElement("section");s.className="carte rp-bloc";
-    s.innerHTML='<h2>'+esc(cat)+'</h2><ul class="rp-items">'+(par[cat]||[]).map(function(i){
-      return '<li class="'+(i.qui?"pris":"")+'"><span class="lab">'+esc(i.label)+'</span>'+(i.qui?'<span class="qui">'+esc(i.qui)+'</span><button class="x" data-a="lib" data-id="'+i.id+'" aria-label="Libérer">×</button>':'<button class="btn s petit" data-a="prendre" data-id="'+i.id+'">Je m\'en occupe</button>')+'</li>'}).join("")+'</ul><div class="rp-ajout"><input placeholder="Ajouter dans '+esc(cat)+'" aria-label="Ajouter dans '+esc(cat)+'"><button class="btn s petit">Ajouter</button></div>';
-    s.querySelectorAll("button[data-a]").forEach(function(b){b.onclick=function(){
-      if(b.dataset.a==="prendre"){var m=moi();if(!m){$("rp-moi").focus();$("rp-moi").classList.add("attention");setTimeout(function(){$("rp-moi").classList.remove("attention")},1500);return}act({action:"liste_prendre",item:+b.dataset.id,qui:m},b)}
-      else act({action:"liste_prendre",item:+b.dataset.id,qui:""},b)}});
-    var inp=s.querySelector(".rp-ajout input"),ab=s.querySelector(".rp-ajout button");
-    function ajouter(){var v=inp.value.trim();if(!v)return;act({action:"liste_ajouter",cat:cat,label:v,qui:moi()},ab)}
-    ab.onclick=ajouter;inp.onkeydown=function(e){if(e.key==="Enter")ajouter()};
+    s.innerHTML='<h2>'+esc(cat)+'</h2><table class="rp-tab"><thead><tr><th>Quoi</th><th>Qui l\'apporte</th><th>Note</th><th><span class="sr">Supprimer</span></th></tr></thead><tbody>'+(par[cat]||[]).map(function(i){
+      return '<tr data-id="'+i.id+'" class="'+(i.qui?"pris":"")+'"><td><input data-f="label" value="'+esc(i.label)+'" placeholder="Ex. bûche" aria-label="Quoi"></td><td><input data-f="qui" value="'+esc(i.qui||"")+'" placeholder="Personne" aria-label="Qui l\'apporte"><button class="btn s mini" data-moi>Moi</button></td><td><input data-f="note" value="'+esc(i.note||"")+'" placeholder="Quantité, détail" aria-label="Note"></td><td><button class="x" data-del aria-label="Supprimer la ligne">×</button></td></tr>'}).join("")+'</tbody></table><button class="btn s petit rp-plus">Ajouter une ligne</button>';
+    s.querySelectorAll("tr[data-id]").forEach(function(tr){
+      var iid=+tr.dataset.id,t=null;
+      tr.querySelectorAll("input").forEach(function(inp){
+        inp.addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){sauver(iid,inp.dataset.f,inp.value)},700);if(inp.dataset.f==="qui")tr.classList.toggle("pris",!!inp.value.trim())});
+        inp.addEventListener("blur",function(){clearTimeout(t);sauver(iid,inp.dataset.f,inp.value)});
+      });
+      tr.querySelector("[data-moi]").onclick=function(){var m=moi();if(!m){$("rp-moi").focus();$("rp-moi").classList.add("attention");setTimeout(function(){$("rp-moi").classList.remove("attention")},1500);return}var q=tr.querySelector('[data-f="qui"]');q.value=m;tr.classList.add("pris");sauver(iid,"qui",m)};
+      tr.querySelector("[data-del]").onclick=function(){if(tr.querySelector('[data-f="label"]').value.trim()&&!confirmerSuppr(tr))return;force=true;act({action:"liste_suppr",item:iid})};
+    });
+    s.querySelector(".rp-plus").onclick=function(){force=true;post({id:id,action:"liste_ajouter",cat:cat,label:""}).then(function(j){if(j.ok){L=j.liste;force=true;rendre();var rows=w.querySelectorAll(".rp-bloc")[ordre.indexOf(cat)].querySelectorAll('tbody tr');var last=rows[rows.length-1];last&&last.querySelector("input").focus()}})};
     w.appendChild(s);
   });
+  var nc=document.createElement("div");nc.className="rp-ajout";nc.innerHTML='<input placeholder="Nouvelle catégorie (ex. Fromages)" aria-label="Nouvelle catégorie"><button class="btn s petit">Ajouter la catégorie</button>';
+  nc.querySelector("button").onclick=function(){var v=nc.querySelector("input").value.trim();if(!v)return;force=true;act({action:"liste_ajouter",cat:v,label:""})};
+  w.appendChild(nc);
   var url=location.origin+location.pathname+"#l="+id;
   $("rp-wa").href="https://wa.me/?text="+encodeURIComponent("Pour « "+L.titre+" », dites ce que vous apportez ici : "+url);
-  $("rp-maj").textContent="Mis à jour à "+new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})+". La liste se rafraîchit toute seule.";
+  if(!/Enregistr/.test($("rp-maj").textContent))$("rp-maj").textContent="Tout le monde voit et modifie ce tableau. Il se met à jour tout seul.";
 }
 $("rp-copie").onclick=function(){var b=this;try{navigator.clipboard.writeText(location.origin+location.pathname+"#l="+id).then(function(){b.textContent="Lien copié";hit("partage","liste")})}catch(e){}};
 $("rp-wa").addEventListener("click",function(){hit("partage","liste-whatsapp")});
-function charger(){post({action:"liste_lire",id:id}).then(function(j){if(j.ok){L=j.liste;rendre()}else{$("rp-vue").classList.add("cache");$("rp-creer").classList.remove("cache");$("rp-err").textContent="Cette liste n'existe pas ou a été supprimée. Créez-en une nouvelle."}}).catch(function(){})}
+function charger(f){post({action:"liste_lire",id:id}).then(function(j){if(j.ok){L=j.liste;if(f)force=true;rendre()}else{$("rp-vue").classList.add("cache");$("rp-creer").classList.remove("cache");$("rp-err").textContent="Cette liste n'existe pas ou a été supprimée. Créez-en une nouvelle."}}).catch(function(){})}
 function route(){
   var m=location.hash.match(/l=([a-z0-9]{10})/),nm=location.hash.match(/[&]n=([^&]+)/);
   if(nm){try{var pn=decodeURIComponent(nm[1]).slice(0,30);$("rp-moi").value=pn;localStorage.setItem("qoaq_prenom",pn)}catch(e){}}
-  if(m){id=m[1];$("rp-creer").classList.add("cache");$("rp-vue").classList.remove("cache");$("rp-h1").textContent="Qui apporte quoi ?";$("rp-intro").textContent="Choisissez ce que vous apportez : la liste se met à jour pour tout le monde.";charger();
+  if(m){id=m[1];$("rp-creer").classList.add("cache");$("rp-vue").classList.remove("cache");$("rp-h1").textContent="Qui apporte quoi ?";$("rp-intro").textContent="Écrivez directement dans le tableau : ce qu'il faut, qui l'apporte, une note. Tout le monde voit les changements.";charger(true);
     clearInterval(minuteur);minuteur=setInterval(function(){if(document.visibilityState==="visible")charger()},15000);window.scrollTo(0,0)}
   else{id=null;clearInterval(minuteur);$("rp-creer").classList.remove("cache");$("rp-vue").classList.add("cache");$("rp-h1").textContent="Qui apporte quoi ? La liste du repas à partager";modele($("rp-modele").value);rendreMes()}
 }

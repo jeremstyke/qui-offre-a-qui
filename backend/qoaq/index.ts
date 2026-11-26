@@ -137,7 +137,7 @@ async function creerListe(titre: string, date_ev: string | null, occ: string, ip
 async function lireListe(id: string) {
   const { data: l } = await sb.from("qoaq_listes").select("id,titre,date_ev,lieu,updated_at").eq("id", id).maybeSingle();
   if (!l) return null;
-  const { data: it } = await sb.from("qoaq_liste_items").select("id,cat,label,qui,pos").eq("liste_id", id).order("pos").order("id");
+  const { data: it } = await sb.from("qoaq_liste_items").select("id,cat,label,qui,note,pos").eq("liste_id", id).order("pos").order("id");
   return { ...l, items: it || [] };
 }
 
@@ -195,7 +195,14 @@ Deno.serve(async (req) => {
     } else if (b.action === "liste_ajouter") {
       if (l.items.length >= 150) return J({ ok: false, raison: "plein" }, 400);
       const label = court(b.label, 60);
-      if (label) await sb.from("qoaq_liste_items").insert({ liste_id: id, cat: court(b.cat, 30) || "Autre", label, qui: court(b.qui, 30) || null, pos: 1000 + l.items.length });
+      await sb.from("qoaq_liste_items").insert({ liste_id: id, cat: court(b.cat, 30) || "Autre", label, qui: court(b.qui, 30) || null, note: court(b.note, 80) || null, pos: 1000 + l.items.length });
+    } else if (b.action === "liste_maj" && item) {
+      const ch: any = {};
+      if (typeof b.label === "string") ch.label = court(b.label, 60);
+      if (typeof b.qui === "string") ch.qui = court(b.qui, 30) || null;
+      if (typeof b.note === "string") ch.note = court(b.note, 80) || null;
+      if (typeof b.cat === "string" && court(b.cat, 30)) ch.cat = court(b.cat, 30);
+      if (Object.keys(ch).length) await sb.from("qoaq_liste_items").update(ch).eq("id", item).eq("liste_id", id);
     } else if (b.action === "liste_suppr" && item) {
       await sb.from("qoaq_liste_items").delete().eq("id", item).eq("liste_id", id);
     } else if (b.action === "liste_info") {
