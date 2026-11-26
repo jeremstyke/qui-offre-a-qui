@@ -87,7 +87,8 @@ $("rp-copie").onclick=function(){var b=this;try{navigator.clipboard.writeText(lo
 $("rp-wa").addEventListener("click",function(){hit("partage","liste-whatsapp")});
 function charger(){post({action:"liste_lire",id:id}).then(function(j){if(j.ok){L=j.liste;rendre()}else{$("rp-vue").classList.add("cache");$("rp-creer").classList.remove("cache");$("rp-err").textContent="Cette liste n'existe pas ou a été supprimée. Créez-en une nouvelle."}}).catch(function(){})}
 function route(){
-  var m=location.hash.match(/l=([a-z0-9]{10})/);
+  var m=location.hash.match(/l=([a-z0-9]{10})/),nm=location.hash.match(/[&]n=([^&]+)/);
+  if(nm){try{var pn=decodeURIComponent(nm[1]).slice(0,30);$("rp-moi").value=pn;localStorage.setItem("qoaq_prenom",pn)}catch(e){}}
   if(m){id=m[1];$("rp-creer").classList.add("cache");$("rp-vue").classList.remove("cache");$("rp-h1").textContent="Qui apporte quoi ?";$("rp-intro").textContent="Choisissez ce que vous apportez : la liste se met à jour pour tout le monde.";charger();
     clearInterval(minuteur);minuteur=setInterval(function(){if(document.visibilityState==="visible")charger()},15000);window.scrollTo(0,0)}
   else{id=null;clearInterval(minuteur);$("rp-creer").classList.remove("cache");$("rp-vue").classList.add("cache");$("rp-h1").textContent="Qui apporte quoi ? La liste du repas à partager";modele($("rp-modele").value);rendreMes()}

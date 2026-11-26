@@ -111,6 +111,8 @@ input.attention{outline:3px solid var(--baie)}
 .rp-mail{margin:10px 0 4px}
 .rp-mail summary{cursor:pointer;font-weight:700;color:var(--pin2)}
 .mes li .act a.btn{text-decoration:none}
+.rr-cat{font-size:16px;margin:14px 0 4px}
+#res-repas{margin:12px 0 0;font-size:15px}
 
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
@@ -204,6 +206,7 @@ footer .amz{color:#b9cdc5}
 <h2 id="res-titre">C'est tiré et envoyé !</h2>
 <p class="sous" id="res-info"></p>
 <ul id="suivi" class="suivi"></ul>
+<p class="cache" id="res-repas"></p>
 <p class="note">Rien reçu ? Demandez de regarder dans les spams, puis renvoyez ou corrigez l'adresse. Ce suivi est gardé sur cet appareil, dans « Vos derniers tirages ».</p>
 </section>
 <section class="carte"><h2>Comment faire un tirage au sort de cadeaux en ligne ?</h2>
@@ -240,6 +243,12 @@ footer .amz{color:#b9cdc5}
 <p>Ton tirage est prêt. Appuie sur le paquet pour découvrir à qui tu offres un cadeau.</p>
 <div class="paquet" id="paquet" role="button" tabindex="0" aria-label="Ouvrir le paquet"></div>
 <div id="nom" class="cache"><p>Tu offres un cadeau à</p><div class="pour" id="r-pour"></div><p id="r-budget"></p></div>
+</section>
+<section class="carte cache" id="r-repas">
+<h2>Qui apporte quoi au repas ?</h2>
+<p class="sous">Une liste commune pour tous les participants du tirage. Choisissez ce que vous apportez.</p>
+<div id="r-repas-l"></div>
+<p style="margin-top:12px"><a id="r-repas-lien" href="/qui-apporte-quoi/">Ouvrir la liste complète</a></p>
 </section>
 <section class="carte cache" id="r-idees">
 <h2>Des idées à moins de <span id="r-b"></span> €</h2>
@@ -304,6 +313,7 @@ function afficherSuivi(T,parts,neuf){
   var ok=parts.filter(function(p){return p.statut==="envoye"}).length;
   $("res-titre").textContent=neuf?"C'est tiré et envoyé !":"Suivi de votre tirage";
   $("res-info").textContent=(T.ev?"« "+T.ev+" » : ":"")+(ok>1?ok+" participants ont reçu leur résultat":ok+" participant a reçu son résultat")+" par e-mail. Personne ne connaît le tirage, pas même vous."+(ok<parts.length?" Certains envois ont échoué : vérifiez l'adresse et renvoyez.":"");
+  var rr=$("res-repas");if(T.liste){rr.innerHTML='Liste commune du repas : <a href="/qui-apporte-quoi/#l='+escH(T.liste)+'">voir qui apporte quoi</a>. Les participants la retrouvent sous leur résultat.';rr.classList.remove("cache")}else rr.classList.add("cache");
   var ul=$("suivi");ul.innerHTML="";
   parts.forEach(function(p){
     var li=document.createElement("li");
@@ -330,7 +340,7 @@ function memoriser(T){
 function suivre(T){
   $("res").classList.remove("cache");$("suivi").innerHTML="";$("res-titre").textContent="Suivi de votre tirage";$("res-info").textContent="Chargement...";
   post({action:"etat",id:T.id,g:T.g}).then(function(j){
-    if(j.ok){T.ev=j.ev;afficherSuivi(T,j.participants,false)}
+    if(j.ok){T.ev=j.ev;T.liste=j.liste||T.liste;afficherSuivi(T,j.participants,false)}
     else $("res-info").textContent="Ce tirage n'est plus disponible : les adresses sont effacées 30 jours après l'échange.";
   }).catch(function(){$("res-info").textContent="Pas de connexion, réessayez."});
   $("res").scrollIntoView({behavior:"smooth"});
@@ -363,7 +373,7 @@ $("tirer").onclick=function(){
   post({t:ty,ev:ev,b:b,d:d,orga:o,rappel:$("m-rappel").checked,excl:excs,parts:liste.map(function(n,i){return {nom:n,email:mails[i]}})}).then(function(j){
     bt.disabled=false;bt.textContent=avant;
     if(j.id){
-      var T={id:j.id,g:j.g,ev:ev,ts:Date.now(),n:liste.length};
+      var T={id:j.id,g:j.g,ev:ev,ts:Date.now(),n:liste.length,liste:j.liste||null};
       memoriser(T);afficherSuivi(T,j.participants,true);
       try{window.qoaqHit&&window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b);window.qoaqHit("mail",String(j.envoyes))}catch(e){}
       $("res").scrollIntoView({behavior:"smooth"});
@@ -402,7 +412,17 @@ function afficherRes(o){
     if(!dejaNl){$("nl-ok").onclick=function(){var bt=this;bt.disabled=true;bt.textContent="Inscription...";
       post({action:"abo",p:pm[1]}).then(function(x){if(x.ok){bt.textContent="C'est noté, merci !";$("nl-msg").textContent="Vous recevrez nos idées cadeaux et le rappel de l'an prochain.";try{localStorage.setItem("qoaq_nl","1");window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}else{bt.disabled=false;bt.textContent="Réessayer"}}).catch(function(){bt.disabled=false;bt.textContent="Réessayer"})};}
   }
-  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){if(pm){var d0=false;try{d0=localStorage.getItem("qoaq_nl")==="1"}catch(e){}if(!d0)$("nl").classList.remove("cache")}try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
+  if(o.l&&/^[a-z0-9]{10}$/.test(o.l)){
+    var lien="/qui-apporte-quoi/#l="+o.l+"&n="+encodeURIComponent(o.de);$("r-repas-lien").href=lien;
+    var rendreRepas=function(L){
+      var ordre=[],par={};L.items.forEach(function(i){if(!par[i.cat]){par[i.cat]=[];ordre.push(i.cat)}par[i.cat].push(i)});
+      var w=$("r-repas-l");w.innerHTML=ordre.map(function(c){return '<h3 class="rr-cat">'+escH(c)+'</h3><ul class="rp-items">'+par[c].map(function(i){return '<li class="'+(i.qui?"pris":"")+'"><span class="lab">'+escH(i.label)+'</span>'+(i.qui?'<span class="qui">'+escH(i.qui)+'</span>'+(i.qui===o.de?'<button class="x" data-l="'+i.id+'" aria-label="Libérer">×</button>':''):'<button class="btn s petit" data-p="'+i.id+'">Je m\'en occupe</button>')+'</li>'}).join("")+'</ul>'}).join("");
+      w.querySelectorAll("button[data-p],button[data-l]").forEach(function(b){b.onclick=function(){b.disabled=true;post({action:"liste_prendre",id:o.l,item:+(b.dataset.p||b.dataset.l),qui:b.dataset.p?o.de:""}).then(function(x){if(x.ok){rendreRepas(x.liste);try{window.qoaqHit&&window.qoaqHit("liste_maj","tirage")}catch(e){}}else b.disabled=false}).catch(function(){b.disabled=false})}});
+    };
+    post({action:"liste_lire",id:o.l}).then(function(x){if(x.ok){rendreRepas(x.liste);$("r-repas").dataset.ok="1";if($("paquet").classList.contains("ouvert"))$("r-repas").classList.remove("cache")}}).catch(function(){});
+    try{var M=JSON.parse(localStorage.getItem("qoaq_listes")||"[]").filter(function(x){return x.id!==o.l});M.unshift({id:o.l,t:o.e,ts:Date.now()});localStorage.setItem("qoaq_listes",JSON.stringify(M.slice(0,12)));localStorage.setItem("qoaq_prenom",o.de)}catch(e){}
+  }
+  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){if(pm){var d0=false;try{d0=localStorage.getItem("qoaq_nl")==="1"}catch(e){}if(!d0)$("nl").classList.remove("cache")}try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache");if($("r-repas").dataset.ok)$("r-repas").classList.remove("cache")}
   $("paquet").onclick=ouvrir;$("paquet").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ouvrir()}};
 }
 window.addEventListener("hashchange",function(){if(/r=/.test(location.hash))location.reload()});
