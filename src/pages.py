@@ -79,7 +79,7 @@ PAGES = [
 <h3>Peut-on offrir un cadeau fait maison ?</h3>
 <p>Oui, c'est souvent très apprécié : biscuits, confiture, bougie. Prévenez simplement le groupe si vous craignez les allergies.</p>
 <h3>Comment organiser le tirage au sort ?</h3>
-<p>Avec notre <a href="/">outil gratuit</a>, vous entrez les prénoms et chacun reçoit un lien privé avec le nom de la personne à gâter, sans inscription.</p>
+<p>Avec notre <a href="/">outil gratuit</a>, vous entrez les prénoms et chacun reçoit par e-mail le nom de la personne à gâter, sans inscription.</p>
 """},
 {
 "slug": "idee-cadeau-15-euros",
@@ -120,7 +120,7 @@ PAGES = [
 <h3>Quel cadeau à 15 € pour un homme ?</h3>
 <p>Un mug double paroi, un jeu de cartes, un support d'ordinateur ou un coffret de chocolats restent des valeurs sûres.</p>
 <h3>Comment organiser le tirage ?</h3>
-<p>Avec notre <a href="/">tirage au sort gratuit</a>, chacun reçoit un lien privé avec le nom de la personne à gâter.</p>
+<p>Avec notre <a href="/">tirage au sort gratuit</a>, chacun reçoit par e-mail le nom de la personne à gâter.</p>
 """},
 {
 "slug": "idee-cadeau-50-euros",
@@ -161,7 +161,7 @@ PAGES = [
 <h3>Peut-on fixer 50 € pour un Père Noël secret ?</h3>
 <p>Oui, en famille proche ou entre amis qui le souhaitent. Entre collègues, un budget plus modeste évite les malaises.</p>
 <h3>Comment faire le tirage au sort ?</h3>
-<p>Utilisez notre <a href="/">outil gratuit</a> : prénoms, exclusions, et chacun reçoit son lien privé.</p>
+<p>Utilisez notre <a href="/">outil gratuit</a> : prénoms, e-mails, exclusions, et chacun reçoit son résultat en secret.</p>
 """},
 
 {
@@ -203,7 +203,7 @@ PAGES = [
 <h3>Comment savoir ce qui fera plaisir ?</h3>
 <p>Observez ses habitudes : boisson préférée, loisirs, trajet. Une liste d'envies partagée dans le groupe aide aussi beaucoup.</p>
 <h3>Où organiser le tirage gratuitement ?</h3>
-<p>Sur <a href="/">Qui offre à qui</a> : entrez les prénoms, ajoutez les exclusions si besoin, et chacun reçoit son lien privé.</p>
+<p>Sur <a href="/">Qui offre à qui</a> : entrez les prénoms, ajoutez les exclusions si besoin, et chacun reçoit son résultat par e-mail.</p>
 """},
 {
 "slug": "idee-cadeau-30-euros",
@@ -244,7 +244,7 @@ PAGES = [
 <h3>Peut-on se mettre à plusieurs pour un cadeau ?</h3>
 <p>Oui, dans un échange classique chacun offre à une seule personne, mais rien n'empêche de réunir plusieurs budgets pour un cadeau commun.</p>
 <h3>Comment faire le tirage au sort ?</h3>
-<p>Utilisez notre <a href="/">outil de tirage gratuit</a> : il gère les exclusions (couples, frères et sœurs) et envoie un lien privé à chacun.</p>
+<p>Utilisez notre <a href="/">outil de tirage gratuit</a> : il gère les exclusions (couples, frères et sœurs) et envoie son résultat à chacun par e-mail.</p>
 """},
 {
 "slug": "pere-noel-secret-famille",
@@ -267,7 +267,7 @@ PAGES = [
 <li><strong>Une liste d'envies</strong> de quelques idées par personne, partagée dans le groupe de la famille.</li>
 </ul>
 <h2>Faire le tirage quand la famille est dispersée</h2>
-<p>C'est souvent là que le chapeau et les papiers ne suffisent plus : les cousins vivent loin, les grands-parents ne sont pas là au moment du tirage. Avec <a href="/">Qui offre à qui</a>, vous entrez les prénoms, cochez les couples à séparer, et envoyez à chacun son lien privé par WhatsApp ou SMS. C'est prêt en 2 minutes, sans compte et gratuitement.</p>
+<p>C'est souvent là que le chapeau et les papiers ne suffisent plus : les cousins vivent loin, les grands-parents ne sont pas là au moment du tirage. Avec <a href="/">Qui offre à qui</a>, vous entrez les prénoms, cochez les couples à séparer, et chacun reçoit son résultat par e-mail. C'est prêt en 2 minutes, sans compte et gratuitement.</p>
 <h2>Des idées pour tous les âges</h2>
 <div class="idees">
 """ + idee("Plaid chauffant", "Pour les grands-parents frileux", "plaid chauffant") + idee("Jeu de société familial", "À ouvrir le soir même", "jeu de societe famille") + idee("Cadre photo numérique", "Pour partager les photos de famille", "cadre photo numerique") + idee("Lampe d'ambiance", "Les ados adorent", "lampe led chambre ado") + idee("Coffret gourmand", "Une valeur sûre pour les adultes", "coffret gourmand") + idee("Livre de recettes", "Pour les cuisiniers de la famille", "livre de recettes") + """
@@ -291,7 +291,7 @@ PAGES = [
 "body": """
 <p>Télétravail, famille éclatée, amis dans d'autres villes : il est de plus en plus rare que tout le monde soit réuni pour tirer les noms au sort. Bonne nouvelle, un <strong>Secret Santa à distance</strong> s'organise très bien en ligne, du tirage jusqu'à l'ouverture des cadeaux.</p>
 <h2>Étape 1 : le tirage au sort en ligne</h2>
-<p>Sur <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, le budget et la date, puis lance le tirage. Chaque participant reçoit un lien privé par WhatsApp, SMS, Teams ou Slack, et découvre à qui il offre un cadeau. Pas de compte, pas d'e-mail à collecter, et c'est gratuit.</p>
+<p>Sur <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, le budget et la date, puis lance le tirage. Chaque participant reçoit son résultat par e-mail et découvre à qui il offre un cadeau. Pas de compte, et c'est gratuit.</p>
 <h2>Étape 2 : se mettre d'accord sur la livraison</h2>
 <ul>
 <li><strong>Livraison directe</strong> : chacun fait livrer le cadeau chez son destinataire. Il faut alors connaître son adresse : demandez-la discrètement à l'organisateur.</li>
@@ -317,7 +317,7 @@ PAGES = [
 <h3>Comment connaître l'adresse de la personne tirée ?</h3>
 <p>Demandez-la à l'organisateur, ou faites livrer au bureau ou chez l'organisateur pour garder le secret.</p>
 <h3>Les participants doivent-ils s'inscrire ?</h3>
-<p>Non : avec Qui offre à qui, ils ouvrent simplement leur lien privé, sans compte. Ils peuvent même le recevoir directement par e-mail.</p>
+<p>Non : avec Qui offre à qui, ils reçoivent leur résultat par e-mail et l'ouvrent d'un clic, sans compte.</p>
 """},
 {
 "slug": "regles-pere-noel-secret",
@@ -342,7 +342,7 @@ PAGES = [
 <li><strong>Les listes d'envies</strong> : quelques idées par personne aident beaucoup ceux qui connaissent peu leur destinataire.</li>
 </ul>
 <h2>Faire le tirage sans papier ni chapeau</h2>
-<p>Le tirage avec des papiers pliés a ses limites : quelqu'un tire son propre nom, les absents ne peuvent pas participer, et il faut recommencer. Avec un <a href="/">tirage au sort en ligne</a>, chaque participant reçoit un lien privé qui n'affiche que son propre résultat. Personne ne voit les autres tirages, pas même l'organisateur, et les exclusions sont respectées automatiquement.</p>
+<p>Le tirage avec des papiers pliés a ses limites : quelqu'un tire son propre nom, les absents ne peuvent pas participer, et il faut recommencer. Avec un <a href="/">tirage au sort en ligne</a>, chaque participant reçoit son propre résultat par e-mail. Personne ne voit les autres tirages, pas même l'organisateur, et les exclusions sont respectées automatiquement.</p>
 <h2>Le jour de l'échange</h2>
 <ul>
 <li>Déposez les cadeaux au même endroit, avec seulement le prénom du destinataire.</li>
@@ -388,7 +388,7 @@ PAGES = [
 """ + idee("Casse-tête de bureau", "Pour s'occuper pendant une pause", "casse tete bois") + idee("Mini jeu de société", "Pour les pauses déjeuner", "jeu de cartes rapide") + idee("Lampe USB originale", "Pour égayer un bureau", "lampe usb bureau") + """
 </div>
 <h2>Organiser le tirage au bureau</h2>
-<p>Avec le télétravail, il est rare que toute l'équipe soit présente le jour du tirage. Avec <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, lance le tirage et envoie à chacun son lien privé par messagerie. Personne ne voit les résultats des autres.</p>
+<p>Avec le télétravail, il est rare que toute l'équipe soit présente le jour du tirage. Avec <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, lance le tirage, et chacun reçoit son résultat par e-mail. Personne ne voit les résultats des autres.</p>
 <h2>Pour aller plus loin</h2>
 <p>Retrouvez nos <a href="/regles-pere-noel-secret/">règles complètes du Père Noël secret</a> et nos idées <a href="/idee-cadeau-10-euros/">à 10 €</a> ou <a href="/idee-cadeau-20-euros/">à 20 €</a>.</p>
 <h2>Questions fréquentes</h2>

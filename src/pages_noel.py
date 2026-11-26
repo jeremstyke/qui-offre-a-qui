@@ -198,15 +198,14 @@ PAGES_NOEL = [
 {
 "slug": "tirage-au-sort-secret-santa-whatsapp",
 "title": "Secret Santa sur WhatsApp : faire le tirage dans un groupe",
-"desc": "Organiser un Secret Santa sur WhatsApp : tirage au sort en ligne, lien privé pour chacun, rappels dans le groupe. La méthode simple en 2 minutes.",
+"desc": "Organiser un Secret Santa avec un groupe WhatsApp : tirage au sort en ligne, résultats secrets par e-mail, rappels dans le groupe. La méthode en 2 minutes.",
 "date": "2026-11-26",
 "body": """
 <p>Votre famille ou votre bande d'amis a déjà un <strong>groupe WhatsApp</strong> ? C'est l'endroit idéal pour organiser votre Secret Santa. Le seul problème : WhatsApp ne sait pas faire de tirage secret. Si vous tirez les noms vous-même, vous saurez tout. Voici comment garder la surprise, y compris pour l'organisateur.</p>
 <h2>Étape 1 : faire le tirage en ligne</h2>
-<p>Sur <a href="/">Qui offre à qui</a>, entrez les prénoms du groupe, le budget et la date. Ajoutez les exclusions si besoin (par exemple deux conjoints). Lancez le tirage : chaque personne obtient un lien privé, qui n'affiche que son propre résultat.</p>
-<h2>Étape 2 : envoyer chaque lien en message privé</h2>
-<p>À côté de chaque prénom, le bouton <strong>WhatsApp</strong> prépare le message avec le lien. Choisissez la bonne personne dans vos contacts et envoyez. Attention : envoyez les liens en <strong>message privé</strong>, pas dans le groupe, sinon tout le monde pourrait cliquer sur le lien des autres.</p>
-<p>Vous pouvez aussi ajouter l'e-mail de chacun : il reçoit alors son lien directement par e-mail, sans que vous ayez à l'envoyer.</p>
+<p>Sur <a href="/">Qui offre à qui</a>, entrez les prénoms du groupe, le budget et la date. Ajoutez les exclusions si besoin (par exemple deux conjoints). Lancez le tirage : chaque personne reçoit son résultat par e-mail, et personne d'autre ne le voit, pas même vous.</p>
+<h2>Étape 2 : récupérer les e-mails dans le groupe</h2>
+<p>Le plus simple : demandez dans le groupe WhatsApp que chacun vous envoie son adresse e-mail en message privé. En quelques minutes, vous avez tout ce qu'il faut pour lancer le tirage. Annoncez ensuite dans le groupe : « C'est tiré, regardez vos e-mails (et vos spams) ! »</p>
 <h2>Étape 3 : utiliser le groupe pour l'organisation</h2>
 <ul>
 <li><strong>Annoncez les règles</strong> dans le groupe : budget, date, lieu, thème éventuel.</li>
@@ -218,13 +217,13 @@ PAGES_NOEL = [
 <div class="idees">
 """ + idee("Papier cadeau", "Pour que tous les paquets soient jolis", "papier cadeau noel") + idee("Étiquettes « De la part du Père Noël »", "Pour garder le mystère", "etiquettes cadeau pere noel") + idee("Bonnets de Père Noël", "Pour la photo de groupe", "bonnet pere noel lot") + """
 </div>
-<h2>Et si quelqu'un perd son lien ?</h2>
-<p>Pas de problème. L'organisateur retrouve le tirage dans « Vos derniers tirages » sur le site, depuis le même téléphone. S'il a donné son e-mail, il a aussi reçu un récapitulatif avec tous les liens. Il suffit de renvoyer le bon lien à la bonne personne.</p>
+<h2>Et si quelqu'un perd son e-mail ?</h2>
+<p>Pas de problème. L'organisateur ouvre le suivi du tirage (dans « Vos derniers tirages » sur le site, ou depuis l'e-mail de confirmation) et renvoie l'e-mail à la bonne personne, ou corrige son adresse. Il ne voit jamais le résultat.</p>
 <h2>Questions fréquentes</h2>
 <h3>L'organisateur peut-il participer ?</h3>
-<p>Oui. Tant qu'il n'ouvre que son propre lien, il ne connaît pas le reste du tirage.</p>
-<h3>Ça marche aussi avec Messenger, SMS ou Telegram ?</h3>
-<p>Oui, le lien se copie et se colle dans n'importe quelle messagerie. Le bouton SMS est aussi disponible.</p>
+<p>Oui. Il reçoit son propre résultat par e-mail comme les autres et ne voit jamais le reste du tirage.</p>
+<h3>Ça marche aussi avec Messenger ou Telegram ?</h3>
+<p>Oui : le groupe sert à s'organiser, et les résultats arrivent par e-mail, quelle que soit la messagerie utilisée.</p>
 <h3>Et si on est éloignés ?</h3>
 <p>Voyez notre guide <a href="/secret-santa-a-distance/">Secret Santa à distance</a> pour l'envoi des cadeaux.</p>
 """},

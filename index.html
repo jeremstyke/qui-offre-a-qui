@@ -6,10 +6,10 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="google-site-verification" content="0tjo6Bj7KcNHJMLQKuavVd_d7pBDPoJX3TaLWRm1GA4">
 <title>Tirage au sort cadeau gratuit sans compte : Père Noël secret</title>
-<meta name="description" content="Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte, liens privés par e-mail ou WhatsApp par participant et des idées cadeaux selon le budget.">
+<meta name="description" content="Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte, chacun reçoit son résultat par e-mail, même l&#x27;organisateur ne sait rien.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://qui-offre-a-qui.fr/">
-<meta property="og:title" content="Tirage au sort cadeau gratuit sans compte : Père Noël secret"><meta property="og:description" content="Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte, liens privés par e-mail ou WhatsApp par participant et des idées cadeaux selon le budget."><meta property="og:url" content="https://qui-offre-a-qui.fr/"><meta property="og:type" content="website"><meta property="og:image" content="https://qui-offre-a-qui.fr/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Tirage au sort cadeau gratuit sans compte : Père Noël secret"><meta property="og:description" content="Tirage au sort Père Noël secret en ligne en 2 minutes : gratuit, sans compte, chacun reçoit son résultat par e-mail, même l&#x27;organisateur ne sait rien."><meta property="og:url" content="https://qui-offre-a-qui.fr/"><meta property="og:type" content="website"><meta property="og:image" content="https://qui-offre-a-qui.fr/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect x=%2210%22 y=%2230%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22%23b8344a%22/%3E%3Crect x=%2244%22 y=%2230%22 width=%2212%22 height=%2260%22 fill=%22%23e9b949%22/%3E%3Crect x=%224%22 y=%2222%22 width=%2292%22 height=%2216%22 rx=%224%22 fill=%22%23123d34%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -72,6 +72,21 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 .mes .act{display:flex;gap:6px;align-items:center}
 .garder .act{display:flex;gap:8px;flex-wrap:wrap}
 
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -92,6 +107,7 @@ footer a{color:#fff}
 .pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
 .pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles.clair a{background:#eef3f0;color:var(--encre)}
 .pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
 .pied ul{list-style:none;padding:0;margin:0}
 .pied li{margin:0 0 6px}
@@ -103,15 +119,15 @@ footer .amz{color:#b9cdc5}
 @media(max-width:600px){.pied{grid-template-columns:1fr}}
 .amz{font-size:13px;color:var(--gris)}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Faire un tirage au sort de cadeaux en ligne", "totalTime": "PT2M", "step": [{"@type": "HowToStep", "position": 1, "name": "Choisir l'occasion et le budget", "text": "Indiquez l'occasion, le nom de l'événement, le budget par cadeau et la date de l'échange."}, {"@type": "HowToStep", "position": 2, "name": "Ajouter les participants", "text": "Entrez les prénoms des participants, au moins 3, et les éventuelles exclusions."}, {"@type": "HowToStep", "position": 3, "name": "Lancer le tirage", "text": "Cliquez sur Lancer le tirage au sort : chaque participant obtient un lien privé."}, {"@type": "HowToStep", "position": 4, "name": "Envoyer les liens", "text": "Envoyez à chacun son lien par e-mail, WhatsApp, SMS ou messagerie. Il découvre à qui il offre un cadeau et des idées selon le budget."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Le tirage au sort est-il vraiment gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, entièrement gratuit, sans abonnement et sans option payante cachée."}}, {"@type": "Question", "name": "Faut-il créer un compte ou donner son e-mail ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Des prénoms suffisent : aucun compte, aucun mot de passe, et le tirage est prêt en 2 minutes. L'e-mail est facultatif, il sert seulement à envoyer les liens par e-mail."}}, {"@type": "Question", "name": "Peut-on envoyer les résultats par e-mail ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Ajoutez l'e-mail des participants qui le souhaitent : chacun reçoit son lien privé. L'organisateur peut aussi recevoir un récapitulatif avec tous les liens, pour les renvoyer si quelqu'un perd le sien."}}, {"@type": "Question", "name": "Comment retrouver un tirage déjà fait ?", "acceptedAnswer": {"@type": "Answer", "text": "Le tirage est gardé sur votre appareil : revenez sur le site, il apparaît dans « Vos derniers tirages ». Si vous avez donné votre e-mail, le récapitulatif contient aussi tous les liens."}}, {"@type": "Question", "name": "L'organisateur peut-il voir qui offre à qui ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Chaque lien privé n'affiche que le résultat de la personne concernée. Tant qu'il n'ouvre pas les liens des autres, l'organisateur peut participer sans connaître le tirage."}}, {"@type": "Question", "name": "Comment chaque participant reçoit-il son résultat ?", "acceptedAnswer": {"@type": "Answer", "text": "Après le tirage, chacun reçoit son lien privé par e-mail, ou vous l'envoyez par WhatsApp, SMS ou n'importe quelle messagerie."}}, {"@type": "Question", "name": "Peut-on empêcher deux personnes de se tirer ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux."}}, {"@type": "Question", "name": "Combien de participants faut-il ?", "acceptedAnswer": {"@type": "Answer", "text": "Au moins 3 personnes. Il n'y a pas de maximum : famille, classe, équipe ou club entier."}}, {"@type": "Question", "name": "Peut-on l'utiliser pour autre chose que Noël ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : Nouvel An, Saint-Nicolas, anniversaire, échange entre collègues ou entre amis, fin d'année d'une classe ou d'un club."}}, {"@type": "Question", "name": "Quel budget choisir ?", "acceptedAnswer": {"@type": "Answer", "text": "Le plus courant est de 10 à 20 €. Après le tirage, chacun voit des idées de cadeaux adaptées au budget choisi."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Faire un tirage au sort de cadeaux en ligne", "totalTime": "PT2M", "step": [{"@type": "HowToStep", "position": 1, "name": "Choisir l'occasion et le budget", "text": "Indiquez l'occasion, le nom de l'événement, le budget par cadeau et la date de l'échange."}, {"@type": "HowToStep", "position": 2, "name": "Ajouter les participants", "text": "Entrez le prénom et l'e-mail de chaque participant, au moins 3, et les éventuelles exclusions."}, {"@type": "HowToStep", "position": 3, "name": "Lancer le tirage", "text": "Cliquez sur Lancer le tirage et envoyer les e-mails : le tirage est fait en secret sur nos serveurs."}, {"@type": "HowToStep", "position": 4, "name": "Chacun reçoit son résultat", "text": "Chaque participant reçoit un e-mail et découvre à qui il offre un cadeau, avec des idées selon le budget. Personne d'autre ne connaît le tirage."}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Le tirage au sort est-il vraiment gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, entièrement gratuit, sans abonnement et sans option payante cachée."}}, {"@type": "Question", "name": "Faut-il créer un compte ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Vous entrez les prénoms et les e-mails des participants, et c'est tout : aucun compte, aucun mot de passe. Le tirage est prêt en 2 minutes."}}, {"@type": "Question", "name": "Comment chaque participant reçoit-il son résultat ?", "acceptedAnswer": {"@type": "Answer", "text": "Par e-mail, dès que le tirage est lancé. Il clique sur le bouton, ouvre son paquet et découvre à qui il offre un cadeau, avec des idées selon le budget."}}, {"@type": "Question", "name": "L'organisateur peut-il voir qui offre à qui ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Le tirage est fait sur nos serveurs et chaque résultat est envoyé directement au participant concerné. L'organisateur ne voit aucun résultat : il peut participer sans tricher."}}, {"@type": "Question", "name": "Et si quelqu'un ne reçoit pas son e-mail ?", "acceptedAnswer": {"@type": "Answer", "text": "Demandez-lui de regarder dans ses spams. Sinon, la page de suivi du tirage (gardée sur votre appareil et envoyée par e-mail si vous laissez le vôtre) permet de renvoyer l'e-mail ou de corriger l'adresse, sans voir le résultat."}}, {"@type": "Question", "name": "Peut-on empêcher deux personnes de se tirer ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux."}}, {"@type": "Question", "name": "Combien de participants faut-il ?", "acceptedAnswer": {"@type": "Answer", "text": "Au moins 3 personnes, et jusqu'à 40 : famille, classe, équipe ou club entier."}}, {"@type": "Question", "name": "Peut-on l'utiliser pour autre chose que Noël ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : Nouvel An, Saint-Nicolas, anniversaire, échange entre collègues ou entre amis, fin d'année d'une classe ou d'un club."}}, {"@type": "Question", "name": "Quel budget choisir ?", "acceptedAnswer": {"@type": "Answer", "text": "Le plus courant est de 10 à 20 €. Après le tirage, chacun voit des idées de cadeaux adaptées au budget choisi."}}]}</script>
 <script src="/assets/track.js" defer></script>
 </head>
 <body>
 <nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><div id="vue-orga">
 <header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
 <h1>Tirage au sort de cadeaux en ligne, gratuit et sans compte</h1>
-<p>Organisez votre Père Noël secret en 2 minutes : entrez les prénoms, lancez le tirage, envoyez à chacun son lien privé. Pas de compte, e-mail facultatif, 100 % gratuit. Personne ne voit qui offre à qui, pas même l'organisateur.</p>
-<div class="chips"><span>Prêt en 2 minutes</span><span>Sans compte</span><span>100 % gratuit</span><span>Idées cadeaux selon le budget</span></div>
+<p>Organisez votre Père Noël secret en 2 minutes : entrez les prénoms et les e-mails, lancez le tirage, et chacun reçoit son résultat par e-mail. Pas de compte, 100 % gratuit. Personne ne sait qui offre à qui, pas même l'organisateur.</p>
+<div class="chips"><span>Prêt en 2 minutes</span><span>Sans compte</span><span>100 % gratuit</span><span>Vraiment secret</span></div>
 </div></header>
 <main class="wrap" id="outil">
 <section class="carte cache" id="mes">
@@ -136,7 +152,7 @@ footer .amz{color:#b9cdc5}
 
 <section class="carte">
 <h2>2. Les participants</h2>
-<p class="sous">Au moins 3 personnes. L'e-mail est facultatif : si vous le donnez, la personne reçoit son lien directement.</p>
+<p class="sous">Au moins 3 personnes, avec leur e-mail : c'est là que chacun recevra son résultat, en secret.</p>
 <div id="liste"></div>
 <button class="btn s petit" id="ajout">Ajouter une personne</button>
 </section>
@@ -148,36 +164,36 @@ footer .amz{color:#b9cdc5}
 <button class="btn s petit" id="ajoutExc">Ajouter une exclusion</button>
 </section>
 
-<button class="btn p" id="tirer">Lancer le tirage au sort</button>
+<section class="carte">
+<h2>4. Vous (facultatif)</h2>
+<p class="sous">Recevez une confirmation et un lien de suivi pour renvoyer un e-mail si quelqu'un ne le trouve pas. Vous ne verrez aucun résultat.</p>
+<label for="m-orga">Votre e-mail</label>
+<input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
+<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
+</section>
+
+<button class="btn p" id="tirer">Lancer le tirage et envoyer les e-mails</button>
 <p class="err" id="err" role="alert"></p>
 
 <section class="carte res cache" id="res">
-<h2>C'est tiré !</h2>
-<p class="sous">Envoyez à chaque personne son lien. Il n'affiche que son propre résultat.</p>
-<ul id="liens"></ul>
-<div class="mailbox">
-<h3>Recevoir les liens par e-mail</h3>
-<p class="sous" id="m-info"></p>
-<label for="m-orga">Votre e-mail (facultatif)</label>
-<input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
-<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
-<button class="btn p" id="m-env">Envoyer les e-mails</button>
-<p class="note" id="m-ok" role="status"></p>
-</div>
-<p class="note">Ce tirage est aussi gardé sur cet appareil : vous le retrouverez en revenant sur le site, dans « Vos derniers tirages ».</p>
+<h2 id="res-titre">C'est tiré et envoyé !</h2>
+<p class="sous" id="res-info"></p>
+<ul id="suivi" class="suivi"></ul>
+<p class="note">Rien reçu ? Demandez de regarder dans les spams, puis renvoyez ou corrigez l'adresse. Ce suivi est gardé sur cet appareil, dans « Vos derniers tirages ».</p>
 </section>
 <section class="carte"><h2>Comment faire un tirage au sort de cadeaux en ligne ?</h2>
 <p>Qui offre à qui est un <strong>tirage au sort de cadeaux gratuit et sans compte</strong>. En 2 minutes, il remplace les papiers pliés dans un chapeau, même quand tout le monde n'est pas réuni.</p>
 <ol>
 <li><strong>Choisissez l'occasion et le budget</strong> : Noël, Nouvel An, anniversaire, collègues, amis, de 5 à 50 €.</li>
 <li><strong>Ajoutez les prénoms</strong> des participants, et les exclusions si deux personnes ne doivent pas se tirer.</li>
-<li><strong>Lancez le tirage</strong> : chaque participant reçoit un lien privé.</li>
-<li><strong>Envoyez les liens</strong> par e-mail, WhatsApp, SMS ou messagerie. Chacun ouvre son paquet et découvre à qui il offre un cadeau, avec des idées dans son budget.</li>
+<li><strong>Ajoutez l'e-mail de chacun</strong> : c'est là qu'il recevra son résultat.</li>
+<li><strong>Lancez le tirage</strong> : chacun reçoit aussitôt un e-mail, ouvre son paquet et découvre à qui il offre un cadeau, avec des idées dans son budget.</li>
 </ol>
 </section>
 <section class="carte"><h2>Pourquoi utiliser Qui offre à qui ?</h2>
 <ul>
-<li><strong>Sans compte, e-mail facultatif</strong> : des prénoms suffisent. Si vous voulez, chacun reçoit son lien par e-mail et vous recevez le récapitulatif.</li>
+<li><strong>Vraiment secret</strong> : le tirage est fait sur nos serveurs et chaque résultat part directement par e-mail. Personne ne sait qui offre à qui, pas même l'organisateur, qui peut donc participer.</li>
+<li><strong>Sans compte</strong> : rien à créer, aucun mot de passe. Un lien de suivi permet de renvoyer un e-mail perdu, sans voir le résultat.</li>
 <li><strong>100 % gratuit</strong>, sans limite de participants.</li>
 <li><strong>Vraiment secret</strong> : chaque lien n'affiche qu'un seul résultat, et l'organisateur peut participer sans tricher.</li>
 <li><strong>Jamais son propre nom</strong> : le tirage exclut chaque personne d'elle-même et respecte vos exclusions.</li>
@@ -185,7 +201,7 @@ footer .amz{color:#b9cdc5}
 <li><strong>Pour toutes les occasions</strong> : <a href="/regles-pere-noel-secret/">Père Noël secret</a> en famille, <a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a>, échange entre amis, classe ou club.</li>
 </ul>
 </section>
-<section class="carte"><h2>Questions fréquentes</h2><h3>Le tirage au sort est-il vraiment gratuit ?</h3><p>Oui, entièrement gratuit, sans abonnement et sans option payante cachée.</p><h3>Faut-il créer un compte ou donner son e-mail ?</h3><p>Non. Des prénoms suffisent : aucun compte, aucun mot de passe, et le tirage est prêt en 2 minutes. L&#x27;e-mail est facultatif, il sert seulement à envoyer les liens par e-mail.</p><h3>Peut-on envoyer les résultats par e-mail ?</h3><p>Oui. Ajoutez l&#x27;e-mail des participants qui le souhaitent : chacun reçoit son lien privé. L&#x27;organisateur peut aussi recevoir un récapitulatif avec tous les liens, pour les renvoyer si quelqu&#x27;un perd le sien.</p><h3>Comment retrouver un tirage déjà fait ?</h3><p>Le tirage est gardé sur votre appareil : revenez sur le site, il apparaît dans « Vos derniers tirages ». Si vous avez donné votre e-mail, le récapitulatif contient aussi tous les liens.</p><h3>L&#x27;organisateur peut-il voir qui offre à qui ?</h3><p>Non. Chaque lien privé n&#x27;affiche que le résultat de la personne concernée. Tant qu&#x27;il n&#x27;ouvre pas les liens des autres, l&#x27;organisateur peut participer sans connaître le tirage.</p><h3>Comment chaque participant reçoit-il son résultat ?</h3><p>Après le tirage, chacun reçoit son lien privé par e-mail, ou vous l&#x27;envoyez par WhatsApp, SMS ou n&#x27;importe quelle messagerie.</p><h3>Peut-on empêcher deux personnes de se tirer ?</h3><p>Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux.</p><h3>Combien de participants faut-il ?</h3><p>Au moins 3 personnes. Il n&#x27;y a pas de maximum : famille, classe, équipe ou club entier.</p><h3>Peut-on l&#x27;utiliser pour autre chose que Noël ?</h3><p>Oui : Nouvel An, Saint-Nicolas, anniversaire, échange entre collègues ou entre amis, fin d&#x27;année d&#x27;une classe ou d&#x27;un club.</p><h3>Quel budget choisir ?</h3><p>Le plus courant est de 10 à 20 €. Après le tirage, chacun voit des idées de cadeaux adaptées au budget choisi.</p></section><section class="carte"><h2>Idées et conseils</h2><h3>Idées cadeaux par budget</h3><div class="voir"><a href="/idee-cadeau-5-euros/"><b>Idée cadeau à 5 €</b><span>15 petites idées qui font plaisir</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a><a href="/idee-cadeau-15-euros/"><b>Idée cadeau à 15 €</b><span>15 idées pour un échange réussi</span></a><a href="/idee-cadeau-20-euros/"><b>Idée cadeau à 20 €</b><span>15 idées qui font vraiment plaisir</span></a><a href="/idee-cadeau-30-euros/"><b>Idée cadeau à 30 €</b><span>15 idées pour gâter sans se ruiner</span></a><a href="/idee-cadeau-50-euros/"><b>Idée cadeau à 50 €</b><span>15 idées pour un vrai beau cadeau</span></a></div><h3>Idées selon la personne</h3><div class="voir"><a href="/cadeau-secret-santa-collegue/"><b>Secret Santa entre collègues</b><span>Idées cadeaux et règles</span></a><a href="/idee-cadeau-secret-santa-homme/"><b>Idée cadeau Secret Santa homme</b><span>15 idées par budget</span></a><a href="/idee-cadeau-secret-santa-femme/"><b>Idée cadeau Secret Santa femme</b><span>15 idées par budget</span></a><a href="/cadeau-secret-santa-ado/"><b>Cadeau Secret Santa ado</b><span>15 idées qui plaisent vraiment</span></a><a href="/idee-cadeau-humour-secret-santa/"><b>Cadeau rigolo Secret Santa</b><span>15 idées drôles sans gêner</span></a><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a></div><h3>Organiser son échange</h3><div class="voir"><a href="/pere-noel-secret-famille/"><b>Père Noël secret en famille</b><span>Règles, budget et idées</span></a><a href="/secret-santa-a-distance/"><b>Secret Santa à distance</b><span>L&#x27;organiser en ligne simplement</span></a><a href="/regles-pere-noel-secret/"><b>Père Noël secret</b><span>Règles, déroulement et astuces</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/jeux-echange-cadeaux-noel/"><b>Jeux d&#x27;échange de cadeaux à Noël</b><span>6 variantes à tester</span></a><a href="/liste-envies-secret-santa/"><b>Liste d&#x27;envies Secret Santa</b><span>Comment la faire (exemples)</span></a></div><p style="margin-top:14px"><a href="/guides/">Voir tous les guides</a></p></section>
+<section class="carte"><h2>Questions fréquentes</h2><h3>Le tirage au sort est-il vraiment gratuit ?</h3><p>Oui, entièrement gratuit, sans abonnement et sans option payante cachée.</p><h3>Faut-il créer un compte ?</h3><p>Non. Vous entrez les prénoms et les e-mails des participants, et c&#x27;est tout : aucun compte, aucun mot de passe. Le tirage est prêt en 2 minutes.</p><h3>Comment chaque participant reçoit-il son résultat ?</h3><p>Par e-mail, dès que le tirage est lancé. Il clique sur le bouton, ouvre son paquet et découvre à qui il offre un cadeau, avec des idées selon le budget.</p><h3>L&#x27;organisateur peut-il voir qui offre à qui ?</h3><p>Non. Le tirage est fait sur nos serveurs et chaque résultat est envoyé directement au participant concerné. L&#x27;organisateur ne voit aucun résultat : il peut participer sans tricher.</p><h3>Et si quelqu&#x27;un ne reçoit pas son e-mail ?</h3><p>Demandez-lui de regarder dans ses spams. Sinon, la page de suivi du tirage (gardée sur votre appareil et envoyée par e-mail si vous laissez le vôtre) permet de renvoyer l&#x27;e-mail ou de corriger l&#x27;adresse, sans voir le résultat.</p><h3>Peut-on empêcher deux personnes de se tirer ?</h3><p>Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux.</p><h3>Combien de participants faut-il ?</h3><p>Au moins 3 personnes, et jusqu&#x27;à 40 : famille, classe, équipe ou club entier.</p><h3>Peut-on l&#x27;utiliser pour autre chose que Noël ?</h3><p>Oui : Nouvel An, Saint-Nicolas, anniversaire, échange entre collègues ou entre amis, fin d&#x27;année d&#x27;une classe ou d&#x27;un club.</p><h3>Quel budget choisir ?</h3><p>Le plus courant est de 10 à 20 €. Après le tirage, chacun voit des idées de cadeaux adaptées au budget choisi.</p></section><section class="carte"><h2>Idées et conseils</h2><p class="sous">Des idées par budget :</p><div class="pastilles clair"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div><h3 style="margin-top:18px">Les guides les plus lus</h3><div class="voir"><a href="/idee-cadeau-secret-santa-homme/"><b>Idée cadeau Secret Santa homme</b><span>15 idées par budget</span></a><a href="/idee-cadeau-secret-santa-femme/"><b>Idée cadeau Secret Santa femme</b><span>15 idées par budget</span></a><a href="/regles-pere-noel-secret/"><b>Père Noël secret</b><span>Règles, déroulement et astuces</span></a><a href="/cadeau-secret-santa-collegue/"><b>Secret Santa entre collègues</b><span>Idées cadeaux et règles</span></a></div><p style="margin-top:14px"><a href="/guides/">Voir tous les guides</a></p></section>
 </main>
 </div>
 
@@ -207,8 +223,8 @@ footer .amz{color:#b9cdc5}
 <p style="margin-top:16px"><a class="btn p" id="r-guide2" href="/idee-cadeau-20-euros/">Voir 15 idées à <span id="r-b2"></span> €</a></p>
 </section>
 <section class="carte garder">
-<p><b>Gardez votre résultat</b> pour le revoir plus tard :</p>
-<p class="act"><a class="btn s petit" id="r-mail" href="#">M'envoyer le lien par e-mail</a><button class="btn s petit" id="r-copie">Copier mon lien</button></p>
+<p><b>Gardez l'e-mail reçu</b> pour revoir votre résultat plus tard, ou copiez votre lien :</p>
+<p class="act"><button class="btn s petit" id="r-copie">Copier mon lien</button></p>
 </section>
 <p class="note" style="text-align:center"><a href="./">Organiser mon propre tirage (Noël, anniversaire, collègues...)</a></p>
 </main>
@@ -223,7 +239,7 @@ function rendreListe(){
   var l=$("liste");l.innerHTML="";
   noms.forEach(function(n,i){
     var d=document.createElement("div");d.className="pers";
-    d.innerHTML='<input class="nom" aria-label="Prénom '+(i+1)+'" placeholder="Prénom" value="'+escH(n)+'"><input class="mail" type="email" inputmode="email" autocomplete="off" aria-label="E-mail de la personne '+(i+1)+' (facultatif)" placeholder="E-mail (facultatif)" value="'+escH(mails[i])+'"><button class="x" aria-label="Retirer">×</button>';
+    d.innerHTML='<input class="nom" aria-label="Prénom '+(i+1)+'" placeholder="Prénom" value="'+escH(n)+'"><input class="mail" type="email" inputmode="email" autocomplete="off" aria-label="E-mail de la personne '+(i+1)+'" placeholder="E-mail" value="'+escH(mails[i])+'"><button class="x" aria-label="Retirer">×</button>';
     var ins=d.querySelectorAll("input");
     ins[0].oninput=function(e){noms[i]=e.target.value;rendreExc()};
     ins[1].oninput=function(e){mails[i]=e.target.value.trim()};
@@ -248,83 +264,80 @@ function rendreExc(){
 $("ajout").onclick=function(){noms.push("");mails.push("");rendreListe();rendreExc();var ins=document.querySelectorAll("#liste input.nom");ins[ins.length-1].focus()};
 $("ajoutExc").onclick=function(){if(noms.length>1){excs.push([0,1]);rendreExc()}};
 
-function interdit(a,b){return a===b||excs.some(function(p){return (p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)})}
-function tirage(n){
-  for(var essai=0;essai<500;essai++){
-    var ordre=[],pris={},ok=true;
-    for(var i=0;i<n&&ok;i++){
-      var c=[];for(var j=0;j<n;j++)if(!pris[j]&&!interdit(i,j))c.push(j);
-      if(!c.length){ok=false;break}
-      var k=c[Math.floor(Math.random()*c.length)];ordre.push(k);pris[k]=1;
-    }
-    if(ok)return ordre;
-  }
-  return null;
-}
-function code(o){var s=unescape(encodeURIComponent(JSON.stringify(o))),r="";for(var i=0;i<s.length;i++)r+=String.fromCharCode(s.charCodeAt(i)^23);return btoa(r).replace(/=+$/,"")}
 function decode(t){var s=atob(t),r="";for(var i=0;i<s.length;i++)r+=String.fromCharCode(s.charCodeAt(i)^23);return JSON.parse(decodeURIComponent(escape(r)))}
-
 var EMAIL=/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,24}$/i;
-var dernier=null;
-function afficherLiens(T){
-  dernier=T;var ul=$("liens");ul.innerHTML="";
-  T.parts.forEach(function(p){
-    var msg=encodeURIComponent("Ton tirage pour « "+T.ev+" » est prêt : "+p.url);
+var courant=null;
+function post(o){return fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o)}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})})}
+function afficherSuivi(T,parts,neuf){
+  courant=T;$("res").classList.remove("cache");
+  var ok=parts.filter(function(p){return p.statut==="envoye"}).length;
+  $("res-titre").textContent=neuf?"C'est tiré et envoyé !":"Suivi de votre tirage";
+  $("res-info").textContent=(T.ev?"« "+T.ev+" » : ":"")+(ok>1?ok+" participants ont reçu leur résultat":ok+" participant a reçu son résultat")+" par e-mail. Personne ne connaît le tirage, pas même vous."+(ok<parts.length?" Certains envois ont échoué : vérifiez l'adresse et renvoyez.":"");
+  var ul=$("suivi");ul.innerHTML="";
+  parts.forEach(function(p){
     var li=document.createElement("li");
-    li.innerHTML='<b>'+escH(p.nom)+(p.email?' <small>'+escH(p.email)+'</small>':'')+'</b><span class="act"><button class="btn s petit">Copier le lien</button><a class="btn s petit" target="_blank" rel="noopener" href="https://wa.me/?text='+msg+'">WhatsApp</a><a class="btn s petit" href="sms:?&body='+msg+'">SMS</a></span>';
-    li.querySelector("button").onclick=function(){var bt=this;navigator.clipboard&&navigator.clipboard.writeText(p.url).then(function(){bt.textContent="Copié"})};
+    var st=p.statut==="envoye"?'<span class="ok">Envoyé</span>':'<span class="ko">Échec de l\'envoi</span>';
+    li.innerHTML='<div class="l1"><b>'+escH(p.nom)+'</b>'+st+'</div><div class="l2"><span class="em">'+escH(p.email)+'</span><span class="act"><button class="btn s petit r1">Renvoyer</button><button class="btn s petit r2">Corriger l\'e-mail</button></span></div><div class="l3 cache"><input type="email" inputmode="email" aria-label="Nouvelle adresse de '+escH(p.nom)+'" value="'+escH(p.email)+'"><button class="btn s petit r3">Envoyer</button></div><p class="msg" role="status"></p>';
+    var msg=li.querySelector(".msg");
+    function renvoyer(email,bt){
+      bt.disabled=true;var avant=bt.textContent;bt.textContent="Envoi...";msg.textContent="";
+      post({action:"renvoyer",id:T.id,g:T.g,i:p.i,email:email||""}).then(function(j){
+        if(j.ok){afficherSuivi(T,j.participants,false);}
+        else{bt.disabled=false;bt.textContent=avant;msg.textContent=j._s===429?"Trop de renvois pour ce tirage.":j.raison==="email"?"Cette adresse n'est pas valide.":"L'envoi n'a pas marché, réessayez."}
+      }).catch(function(){bt.disabled=false;bt.textContent=avant;msg.textContent="Pas de connexion, réessayez."});
+    }
+    li.querySelector(".r1").onclick=function(){renvoyer("",this)};
+    li.querySelector(".r2").onclick=function(){li.querySelector(".l3").classList.toggle("cache");li.querySelector(".l3 input").focus()};
+    li.querySelector(".r3").onclick=function(){var v=li.querySelector(".l3 input").value.trim();if(!EMAIL.test(v)){msg.textContent="Cette adresse n'est pas valide.";return}renvoyer(v,this)};
     ul.appendChild(li);
   });
-  var n=T.parts.filter(function(p){return p.email}).length;
-  $("m-info").textContent=n?(n>1?n+" participants recevront leur lien par e-mail.":"1 participant recevra son lien par e-mail.")+(" Ajoutez le vôtre pour recevoir le récapitulatif."):"Recevez tous les liens par e-mail pour les retrouver facilement. Vous pouvez aussi ajouter l'e-mail des participants à l'étape 2.";
-  $("m-ok").textContent="";$("m-env").disabled=false;$("m-env").textContent=n?"Envoyer les e-mails":"M'envoyer les liens";
-  $("res").classList.remove("cache");
 }
 function memoriser(T){
-  try{var L=JSON.parse(localStorage.getItem("qoaq_tirages")||"[]");L.unshift(T);localStorage.setItem("qoaq_tirages",JSON.stringify(L.slice(0,8)))}catch(e){}
+  try{var L=JSON.parse(localStorage.getItem("qoaq_suivis")||"[]");L.unshift(T);localStorage.setItem("qoaq_suivis",JSON.stringify(L.slice(0,8)))}catch(e){}
   rendreMes();
 }
+function suivre(T){
+  $("res").classList.remove("cache");$("suivi").innerHTML="";$("res-titre").textContent="Suivi de votre tirage";$("res-info").textContent="Chargement...";
+  post({action:"etat",id:T.id,g:T.g}).then(function(j){
+    if(j.ok){T.ev=j.ev;afficherSuivi(T,j.participants,false)}
+    else $("res-info").textContent="Ce tirage n'est plus disponible : les adresses sont effacées 30 jours après l'échange.";
+  }).catch(function(){$("res-info").textContent="Pas de connexion, réessayez."});
+  $("res").scrollIntoView({behavior:"smooth"});
+}
 function rendreMes(){
-  var L=[];try{L=JSON.parse(localStorage.getItem("qoaq_tirages")||"[]")}catch(e){}
+  var L=[];try{L=JSON.parse(localStorage.getItem("qoaq_suivis")||"[]")}catch(e){}
   var c=$("mes");if(!c)return;
   if(!L.length){c.classList.add("cache");return}
   c.classList.remove("cache");var ul=$("mes-l");ul.innerHTML="";
   L.forEach(function(T,k){
     var li=document.createElement("li");
     var dt=new Date(T.ts).toLocaleDateString("fr-FR",{day:"numeric",month:"long"});
-    li.innerHTML='<span><b>'+escH(T.ev)+'</b><small>'+T.parts.length+' participants, tiré le '+dt+'</small></span><span class="act"><button class="btn s petit">Revoir les liens</button><button class="x" aria-label="Oublier ce tirage">×</button></span>';
+    li.innerHTML='<span><b>'+escH(T.ev)+'</b><small>'+T.n+' participants, tiré le '+dt+'</small></span><span class="act"><button class="btn s petit">Suivre</button><button class="x" aria-label="Oublier ce tirage">×</button></span>';
     var b=li.querySelectorAll("button");
-    b[0].onclick=function(){afficherLiens(T);$("res").scrollIntoView({behavior:"smooth"})};
-    b[1].onclick=function(){L.splice(k,1);try{localStorage.setItem("qoaq_tirages",JSON.stringify(L))}catch(e){}rendreMes()};
+    b[0].onclick=function(){suivre(T)};
+    b[1].onclick=function(){L.splice(k,1);try{localStorage.setItem("qoaq_suivis",JSON.stringify(L))}catch(e){}rendreMes()};
     ul.appendChild(li);
   });
 }
 
 $("tirer").onclick=function(){
+  var bt=this,err=$("err");err.textContent="";
   var liste=noms.map(function(n){return n.trim()});
-  $("err").textContent="";
-  if(liste.filter(Boolean).length<3||liste.some(function(n){return !n})){$("err").textContent="Il faut au moins 3 prénoms, sans ligne vide.";return}
-  for(var q=0;q<liste.length;q++){if(mails[q]&&!EMAIL.test(mails[q])){$("err").textContent="L'e-mail de "+liste[q]+" n'est pas valide. Corrigez-le ou laissez la case vide.";return}}
-  var t=tirage(liste.length);
-  if(!t){$("err").textContent="Impossible avec ces exclusions. Retirez-en une et relancez.";return}
+  if(liste.length<3||liste.some(function(n){return !n})){err.textContent="Il faut au moins 3 prénoms, sans ligne vide.";return}
+  for(var q=0;q<liste.length;q++){if(!EMAIL.test(mails[q]||"")){err.textContent=mails[q]?"L'e-mail de "+liste[q]+" n'est pas valide.":"Il manque l'e-mail de "+liste[q]+" : c'est là que son résultat sera envoyé.";var m=document.querySelectorAll("#liste input.mail")[q];m&&m.focus();return}}
+  var o=$("m-orga").value.trim();
+  if(o&&!EMAIL.test(o)){err.textContent="Votre e-mail n'est pas valide (ou laissez la case vide).";return}
   var ty=$("type").value,ev=$("ev").value.trim()||NOMS[ty],b=$("budget").value,d=$("date").value;
-  var base=location.origin+location.pathname;
-  var T={ev:ev,t:ty,b:b,d:d,ts:Date.now(),parts:liste.map(function(n,i){return {nom:n,email:mails[i]||"",url:base+"#r="+code({e:ev,t:ty,b:b,d:d,de:n,a:liste[t[i]]})}})};
-  afficherLiens(T);memoriser(T);
-  try{window.qoaqHit&&window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b)}catch(e){}$("res").scrollIntoView({behavior:"smooth"});
-};
-$("m-env").onclick=function(){
-  var T=dernier;if(!T)return;
-  var o=$("m-orga").value.trim(),ok=$("m-ok");
-  if(o&&!EMAIL.test(o)){ok.textContent="Votre e-mail n'est pas valide.";return}
-  if(!o&&!T.parts.some(function(p){return p.email})){ok.textContent="Entrez votre e-mail pour recevoir les liens.";$("m-orga").focus();return}
-  var bt=this;bt.disabled=true;bt.textContent="Envoi en cours...";ok.textContent="";
-  fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ev:T.ev,t:T.t,b:T.b,d:T.d,orga:o,rappel:$("m-rappel").checked,parts:T.parts})})
-  .then(function(r){return r.json().then(function(j){return {s:r.status,j:j}})})
-  .then(function(x){
-    if(x.j&&x.j.ok){bt.textContent="E-mails envoyés";ok.textContent=x.j.envoyes>1?x.j.envoyes+" e-mails envoyés. Pensez à regarder dans les spams.":"E-mail envoyé. Pensez à regarder dans les spams.";try{window.qoaqHit&&window.qoaqHit("mail",String(x.j.envoyes))}catch(e){}}
-    else{bt.disabled=false;bt.textContent="Réessayer";ok.textContent=x.s===429?"Trop d'envois depuis votre connexion. Réessayez dans une heure ou partagez les liens ci-dessus.":"L'envoi n'a pas marché. Partagez les liens ci-dessus par WhatsApp ou SMS, ils fonctionnent pareil."}
-  }).catch(function(){bt.disabled=false;bt.textContent="Réessayer";ok.textContent="Pas de connexion. Réessayez ou partagez les liens ci-dessus."});
+  bt.disabled=true;var avant=bt.textContent;bt.textContent="Tirage et envoi en cours...";
+  post({t:ty,ev:ev,b:b,d:d,orga:o,rappel:$("m-rappel").checked,excl:excs,parts:liste.map(function(n,i){return {nom:n,email:mails[i]}})}).then(function(j){
+    bt.disabled=false;bt.textContent=avant;
+    if(j.id){
+      var T={id:j.id,g:j.g,ev:ev,ts:Date.now(),n:liste.length};
+      memoriser(T);afficherSuivi(T,j.participants,true);
+      try{window.qoaqHit&&window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b);window.qoaqHit("mail",String(j.envoyes))}catch(e){}
+      $("res").scrollIntoView({behavior:"smooth"});
+    } else err.textContent=j.raison==="exclusions"?"Impossible avec ces exclusions. Retirez-en une et relancez.":j.raison==="email"?"Une adresse e-mail n'est pas valide : vérifiez la liste.":j._s===429?"Trop de tirages depuis votre connexion. Réessayez dans une heure.":"Le tirage n'a pas marché. Réessayez dans un instant.";
+  }).catch(function(){bt.disabled=false;bt.textContent=avant;err.textContent="Pas de connexion. Vérifiez votre réseau et réessayez."});
 };
 
 var NOMS={noel:"Père Noël secret",nouvelan:"Échange de cadeaux du Nouvel An",stnicolas:"Saint-Nicolas",anniv:"Échange de cadeaux d'anniversaire",collegues:"Échange de cadeaux entre collègues",amis:"Échange de cadeaux entre amis",classe:"Échange de cadeaux de fin d'année",autre:"Échange de cadeaux"};
@@ -352,14 +365,14 @@ function afficherRes(o){
     g.appendChild(a);
   });
   var lienPerso=location.href;
-  $("r-mail").href="mailto:?subject="+encodeURIComponent("Mon tirage pour « "+o.e+" »")+"&body="+encodeURIComponent("Mon lien privé pour revoir à qui j'offre un cadeau : "+lienPerso);
   $("r-copie").onclick=function(){var bt=this;navigator.clipboard&&navigator.clipboard.writeText(lienPerso).then(function(){bt.textContent="Lien copié"})};
   function ouvrir(){if(!$("paquet").classList.contains("ouvert")){try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
   $("paquet").onclick=ouvrir;$("paquet").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ouvrir()}};
 }
 window.addEventListener("hashchange",function(){if(/r=/.test(location.hash))location.reload()});
+var gm=location.hash.match(/g=(\d+)\.([a-f0-9]{24})/);
 var m=location.hash.match(/r=([^&]+)/);
-if(m){try{afficherRes(decode(m[1]))}catch(e){rendreListe();rendreExc();rendreMes()}}else{rendreListe();rendreExc();rendreMes()}
+if(m){try{afficherRes(decode(m[1]))}catch(e){rendreListe();rendreExc();rendreMes()}}else{rendreListe();rendreExc();rendreMes();if(gm){var GT={id:+gm[1],g:gm[2],ev:"",ts:Date.now(),n:0};suivre(GT)}}
 })();
 </script>
 <footer><div class="wrap">

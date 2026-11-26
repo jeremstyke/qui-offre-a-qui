@@ -57,3 +57,18 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 .mes li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
 .mes .act{display:flex;gap:6px;align-items:center}
 .garder .act{display:flex;gap:8px;flex-wrap:wrap}
+
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}

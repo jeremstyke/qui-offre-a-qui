@@ -7,7 +7,7 @@ function rendreListe(){
   var l=$("liste");l.innerHTML="";
   noms.forEach(function(n,i){
     var d=document.createElement("div");d.className="pers";
-    d.innerHTML='<input class="nom" aria-label="Prénom '+(i+1)+'" placeholder="Prénom" value="'+escH(n)+'"><input class="mail" type="email" inputmode="email" autocomplete="off" aria-label="E-mail de la personne '+(i+1)+' (facultatif)" placeholder="E-mail (facultatif)" value="'+escH(mails[i])+'"><button class="x" aria-label="Retirer">×</button>';
+    d.innerHTML='<input class="nom" aria-label="Prénom '+(i+1)+'" placeholder="Prénom" value="'+escH(n)+'"><input class="mail" type="email" inputmode="email" autocomplete="off" aria-label="E-mail de la personne '+(i+1)+'" placeholder="E-mail" value="'+escH(mails[i])+'"><button class="x" aria-label="Retirer">×</button>';
     var ins=d.querySelectorAll("input");
     ins[0].oninput=function(e){noms[i]=e.target.value;rendreExc()};
     ins[1].oninput=function(e){mails[i]=e.target.value.trim()};
@@ -32,83 +32,80 @@ function rendreExc(){
 $("ajout").onclick=function(){noms.push("");mails.push("");rendreListe();rendreExc();var ins=document.querySelectorAll("#liste input.nom");ins[ins.length-1].focus()};
 $("ajoutExc").onclick=function(){if(noms.length>1){excs.push([0,1]);rendreExc()}};
 
-function interdit(a,b){return a===b||excs.some(function(p){return (p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a)})}
-function tirage(n){
-  for(var essai=0;essai<500;essai++){
-    var ordre=[],pris={},ok=true;
-    for(var i=0;i<n&&ok;i++){
-      var c=[];for(var j=0;j<n;j++)if(!pris[j]&&!interdit(i,j))c.push(j);
-      if(!c.length){ok=false;break}
-      var k=c[Math.floor(Math.random()*c.length)];ordre.push(k);pris[k]=1;
-    }
-    if(ok)return ordre;
-  }
-  return null;
-}
-function code(o){var s=unescape(encodeURIComponent(JSON.stringify(o))),r="";for(var i=0;i<s.length;i++)r+=String.fromCharCode(s.charCodeAt(i)^23);return btoa(r).replace(/=+$/,"")}
 function decode(t){var s=atob(t),r="";for(var i=0;i<s.length;i++)r+=String.fromCharCode(s.charCodeAt(i)^23);return JSON.parse(decodeURIComponent(escape(r)))}
-
 var EMAIL=/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,24}$/i;
-var dernier=null;
-function afficherLiens(T){
-  dernier=T;var ul=$("liens");ul.innerHTML="";
-  T.parts.forEach(function(p){
-    var msg=encodeURIComponent("Ton tirage pour « "+T.ev+" » est prêt : "+p.url);
+var courant=null;
+function post(o){return fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o)}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})})}
+function afficherSuivi(T,parts,neuf){
+  courant=T;$("res").classList.remove("cache");
+  var ok=parts.filter(function(p){return p.statut==="envoye"}).length;
+  $("res-titre").textContent=neuf?"C'est tiré et envoyé !":"Suivi de votre tirage";
+  $("res-info").textContent=(T.ev?"« "+T.ev+" » : ":"")+(ok>1?ok+" participants ont reçu leur résultat":ok+" participant a reçu son résultat")+" par e-mail. Personne ne connaît le tirage, pas même vous."+(ok<parts.length?" Certains envois ont échoué : vérifiez l'adresse et renvoyez.":"");
+  var ul=$("suivi");ul.innerHTML="";
+  parts.forEach(function(p){
     var li=document.createElement("li");
-    li.innerHTML='<b>'+escH(p.nom)+(p.email?' <small>'+escH(p.email)+'</small>':'')+'</b><span class="act"><button class="btn s petit">Copier le lien</button><a class="btn s petit" target="_blank" rel="noopener" href="https://wa.me/?text='+msg+'">WhatsApp</a><a class="btn s petit" href="sms:?&body='+msg+'">SMS</a></span>';
-    li.querySelector("button").onclick=function(){var bt=this;navigator.clipboard&&navigator.clipboard.writeText(p.url).then(function(){bt.textContent="Copié"})};
+    var st=p.statut==="envoye"?'<span class="ok">Envoyé</span>':'<span class="ko">Échec de l\'envoi</span>';
+    li.innerHTML='<div class="l1"><b>'+escH(p.nom)+'</b>'+st+'</div><div class="l2"><span class="em">'+escH(p.email)+'</span><span class="act"><button class="btn s petit r1">Renvoyer</button><button class="btn s petit r2">Corriger l\'e-mail</button></span></div><div class="l3 cache"><input type="email" inputmode="email" aria-label="Nouvelle adresse de '+escH(p.nom)+'" value="'+escH(p.email)+'"><button class="btn s petit r3">Envoyer</button></div><p class="msg" role="status"></p>';
+    var msg=li.querySelector(".msg");
+    function renvoyer(email,bt){
+      bt.disabled=true;var avant=bt.textContent;bt.textContent="Envoi...";msg.textContent="";
+      post({action:"renvoyer",id:T.id,g:T.g,i:p.i,email:email||""}).then(function(j){
+        if(j.ok){afficherSuivi(T,j.participants,false);}
+        else{bt.disabled=false;bt.textContent=avant;msg.textContent=j._s===429?"Trop de renvois pour ce tirage.":j.raison==="email"?"Cette adresse n'est pas valide.":"L'envoi n'a pas marché, réessayez."}
+      }).catch(function(){bt.disabled=false;bt.textContent=avant;msg.textContent="Pas de connexion, réessayez."});
+    }
+    li.querySelector(".r1").onclick=function(){renvoyer("",this)};
+    li.querySelector(".r2").onclick=function(){li.querySelector(".l3").classList.toggle("cache");li.querySelector(".l3 input").focus()};
+    li.querySelector(".r3").onclick=function(){var v=li.querySelector(".l3 input").value.trim();if(!EMAIL.test(v)){msg.textContent="Cette adresse n'est pas valide.";return}renvoyer(v,this)};
     ul.appendChild(li);
   });
-  var n=T.parts.filter(function(p){return p.email}).length;
-  $("m-info").textContent=n?(n>1?n+" participants recevront leur lien par e-mail.":"1 participant recevra son lien par e-mail.")+(" Ajoutez le vôtre pour recevoir le récapitulatif."):"Recevez tous les liens par e-mail pour les retrouver facilement. Vous pouvez aussi ajouter l'e-mail des participants à l'étape 2.";
-  $("m-ok").textContent="";$("m-env").disabled=false;$("m-env").textContent=n?"Envoyer les e-mails":"M'envoyer les liens";
-  $("res").classList.remove("cache");
 }
 function memoriser(T){
-  try{var L=JSON.parse(localStorage.getItem("qoaq_tirages")||"[]");L.unshift(T);localStorage.setItem("qoaq_tirages",JSON.stringify(L.slice(0,8)))}catch(e){}
+  try{var L=JSON.parse(localStorage.getItem("qoaq_suivis")||"[]");L.unshift(T);localStorage.setItem("qoaq_suivis",JSON.stringify(L.slice(0,8)))}catch(e){}
   rendreMes();
 }
+function suivre(T){
+  $("res").classList.remove("cache");$("suivi").innerHTML="";$("res-titre").textContent="Suivi de votre tirage";$("res-info").textContent="Chargement...";
+  post({action:"etat",id:T.id,g:T.g}).then(function(j){
+    if(j.ok){T.ev=j.ev;afficherSuivi(T,j.participants,false)}
+    else $("res-info").textContent="Ce tirage n'est plus disponible : les adresses sont effacées 30 jours après l'échange.";
+  }).catch(function(){$("res-info").textContent="Pas de connexion, réessayez."});
+  $("res").scrollIntoView({behavior:"smooth"});
+}
 function rendreMes(){
-  var L=[];try{L=JSON.parse(localStorage.getItem("qoaq_tirages")||"[]")}catch(e){}
+  var L=[];try{L=JSON.parse(localStorage.getItem("qoaq_suivis")||"[]")}catch(e){}
   var c=$("mes");if(!c)return;
   if(!L.length){c.classList.add("cache");return}
   c.classList.remove("cache");var ul=$("mes-l");ul.innerHTML="";
   L.forEach(function(T,k){
     var li=document.createElement("li");
     var dt=new Date(T.ts).toLocaleDateString("fr-FR",{day:"numeric",month:"long"});
-    li.innerHTML='<span><b>'+escH(T.ev)+'</b><small>'+T.parts.length+' participants, tiré le '+dt+'</small></span><span class="act"><button class="btn s petit">Revoir les liens</button><button class="x" aria-label="Oublier ce tirage">×</button></span>';
+    li.innerHTML='<span><b>'+escH(T.ev)+'</b><small>'+T.n+' participants, tiré le '+dt+'</small></span><span class="act"><button class="btn s petit">Suivre</button><button class="x" aria-label="Oublier ce tirage">×</button></span>';
     var b=li.querySelectorAll("button");
-    b[0].onclick=function(){afficherLiens(T);$("res").scrollIntoView({behavior:"smooth"})};
-    b[1].onclick=function(){L.splice(k,1);try{localStorage.setItem("qoaq_tirages",JSON.stringify(L))}catch(e){}rendreMes()};
+    b[0].onclick=function(){suivre(T)};
+    b[1].onclick=function(){L.splice(k,1);try{localStorage.setItem("qoaq_suivis",JSON.stringify(L))}catch(e){}rendreMes()};
     ul.appendChild(li);
   });
 }
 
 $("tirer").onclick=function(){
+  var bt=this,err=$("err");err.textContent="";
   var liste=noms.map(function(n){return n.trim()});
-  $("err").textContent="";
-  if(liste.filter(Boolean).length<3||liste.some(function(n){return !n})){$("err").textContent="Il faut au moins 3 prénoms, sans ligne vide.";return}
-  for(var q=0;q<liste.length;q++){if(mails[q]&&!EMAIL.test(mails[q])){$("err").textContent="L'e-mail de "+liste[q]+" n'est pas valide. Corrigez-le ou laissez la case vide.";return}}
-  var t=tirage(liste.length);
-  if(!t){$("err").textContent="Impossible avec ces exclusions. Retirez-en une et relancez.";return}
+  if(liste.length<3||liste.some(function(n){return !n})){err.textContent="Il faut au moins 3 prénoms, sans ligne vide.";return}
+  for(var q=0;q<liste.length;q++){if(!EMAIL.test(mails[q]||"")){err.textContent=mails[q]?"L'e-mail de "+liste[q]+" n'est pas valide.":"Il manque l'e-mail de "+liste[q]+" : c'est là que son résultat sera envoyé.";var m=document.querySelectorAll("#liste input.mail")[q];m&&m.focus();return}}
+  var o=$("m-orga").value.trim();
+  if(o&&!EMAIL.test(o)){err.textContent="Votre e-mail n'est pas valide (ou laissez la case vide).";return}
   var ty=$("type").value,ev=$("ev").value.trim()||NOMS[ty],b=$("budget").value,d=$("date").value;
-  var base=location.origin+location.pathname;
-  var T={ev:ev,t:ty,b:b,d:d,ts:Date.now(),parts:liste.map(function(n,i){return {nom:n,email:mails[i]||"",url:base+"#r="+code({e:ev,t:ty,b:b,d:d,de:n,a:liste[t[i]]})}})};
-  afficherLiens(T);memoriser(T);
-  try{window.qoaqHit&&window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b)}catch(e){}$("res").scrollIntoView({behavior:"smooth"});
-};
-$("m-env").onclick=function(){
-  var T=dernier;if(!T)return;
-  var o=$("m-orga").value.trim(),ok=$("m-ok");
-  if(o&&!EMAIL.test(o)){ok.textContent="Votre e-mail n'est pas valide.";return}
-  if(!o&&!T.parts.some(function(p){return p.email})){ok.textContent="Entrez votre e-mail pour recevoir les liens.";$("m-orga").focus();return}
-  var bt=this;bt.disabled=true;bt.textContent="Envoi en cours...";ok.textContent="";
-  fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ev:T.ev,t:T.t,b:T.b,d:T.d,orga:o,rappel:$("m-rappel").checked,parts:T.parts})})
-  .then(function(r){return r.json().then(function(j){return {s:r.status,j:j}})})
-  .then(function(x){
-    if(x.j&&x.j.ok){bt.textContent="E-mails envoyés";ok.textContent=x.j.envoyes>1?x.j.envoyes+" e-mails envoyés. Pensez à regarder dans les spams.":"E-mail envoyé. Pensez à regarder dans les spams.";try{window.qoaqHit&&window.qoaqHit("mail",String(x.j.envoyes))}catch(e){}}
-    else{bt.disabled=false;bt.textContent="Réessayer";ok.textContent=x.s===429?"Trop d'envois depuis votre connexion. Réessayez dans une heure ou partagez les liens ci-dessus.":"L'envoi n'a pas marché. Partagez les liens ci-dessus par WhatsApp ou SMS, ils fonctionnent pareil."}
-  }).catch(function(){bt.disabled=false;bt.textContent="Réessayer";ok.textContent="Pas de connexion. Réessayez ou partagez les liens ci-dessus."});
+  bt.disabled=true;var avant=bt.textContent;bt.textContent="Tirage et envoi en cours...";
+  post({t:ty,ev:ev,b:b,d:d,orga:o,rappel:$("m-rappel").checked,excl:excs,parts:liste.map(function(n,i){return {nom:n,email:mails[i]}})}).then(function(j){
+    bt.disabled=false;bt.textContent=avant;
+    if(j.id){
+      var T={id:j.id,g:j.g,ev:ev,ts:Date.now(),n:liste.length};
+      memoriser(T);afficherSuivi(T,j.participants,true);
+      try{window.qoaqHit&&window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b);window.qoaqHit("mail",String(j.envoyes))}catch(e){}
+      $("res").scrollIntoView({behavior:"smooth"});
+    } else err.textContent=j.raison==="exclusions"?"Impossible avec ces exclusions. Retirez-en une et relancez.":j.raison==="email"?"Une adresse e-mail n'est pas valide : vérifiez la liste.":j._s===429?"Trop de tirages depuis votre connexion. Réessayez dans une heure.":"Le tirage n'a pas marché. Réessayez dans un instant.";
+  }).catch(function(){bt.disabled=false;bt.textContent=avant;err.textContent="Pas de connexion. Vérifiez votre réseau et réessayez."});
 };
 
 var NOMS={noel:"Père Noël secret",nouvelan:"Échange de cadeaux du Nouvel An",stnicolas:"Saint-Nicolas",anniv:"Échange de cadeaux d'anniversaire",collegues:"Échange de cadeaux entre collègues",amis:"Échange de cadeaux entre amis",classe:"Échange de cadeaux de fin d'année",autre:"Échange de cadeaux"};
@@ -136,12 +133,12 @@ function afficherRes(o){
     g.appendChild(a);
   });
   var lienPerso=location.href;
-  $("r-mail").href="mailto:?subject="+encodeURIComponent("Mon tirage pour « "+o.e+" »")+"&body="+encodeURIComponent("Mon lien privé pour revoir à qui j'offre un cadeau : "+lienPerso);
   $("r-copie").onclick=function(){var bt=this;navigator.clipboard&&navigator.clipboard.writeText(lienPerso).then(function(){bt.textContent="Lien copié"})};
   function ouvrir(){if(!$("paquet").classList.contains("ouvert")){try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
   $("paquet").onclick=ouvrir;$("paquet").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ouvrir()}};
 }
 window.addEventListener("hashchange",function(){if(/r=/.test(location.hash))location.reload()});
+var gm=location.hash.match(/g=(\d+)\.([a-f0-9]{24})/);
 var m=location.hash.match(/r=([^&]+)/);
-if(m){try{afficherRes(decode(m[1]))}catch(e){rendreListe();rendreExc();rendreMes()}}else{rendreListe();rendreExc();rendreMes()}
+if(m){try{afficherRes(decode(m[1]))}catch(e){rendreListe();rendreExc();rendreMes()}}else{rendreListe();rendreExc();rendreMes();if(gm){var GT={id:+gm[1],g:gm[2],ev:"",ts:Date.now(),n:0};suivre(GT)}}
 })();

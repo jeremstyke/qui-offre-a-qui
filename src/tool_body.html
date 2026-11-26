@@ -1,8 +1,8 @@
 <div id="vue-orga">
 <header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
 <h1>Tirage au sort de cadeaux en ligne, gratuit et sans compte</h1>
-<p>Organisez votre Père Noël secret en 2 minutes : entrez les prénoms, lancez le tirage, envoyez à chacun son lien privé. Pas de compte, e-mail facultatif, 100 % gratuit. Personne ne voit qui offre à qui, pas même l'organisateur.</p>
-<div class="chips"><span>Prêt en 2 minutes</span><span>Sans compte</span><span>100 % gratuit</span><span>Idées cadeaux selon le budget</span></div>
+<p>Organisez votre Père Noël secret en 2 minutes : entrez les prénoms et les e-mails, lancez le tirage, et chacun reçoit son résultat par e-mail. Pas de compte, 100 % gratuit. Personne ne sait qui offre à qui, pas même l'organisateur.</p>
+<div class="chips"><span>Prêt en 2 minutes</span><span>Sans compte</span><span>100 % gratuit</span><span>Vraiment secret</span></div>
 </div></header>
 <main class="wrap">
 <section class="carte cache" id="mes">
@@ -27,7 +27,7 @@
 
 <section class="carte">
 <h2>2. Les participants</h2>
-<p class="sous">Au moins 3 personnes. L'e-mail est facultatif : si vous le donnez, la personne reçoit son lien directement.</p>
+<p class="sous">Au moins 3 personnes, avec leur e-mail : c'est là que chacun recevra son résultat, en secret.</p>
 <div id="liste"></div>
 <button class="btn s petit" id="ajout">Ajouter une personne</button>
 </section>
@@ -39,23 +39,22 @@
 <button class="btn s petit" id="ajoutExc">Ajouter une exclusion</button>
 </section>
 
-<button class="btn p" id="tirer">Lancer le tirage au sort</button>
+<section class="carte">
+<h2>4. Vous (facultatif)</h2>
+<p class="sous">Recevez une confirmation et un lien de suivi pour renvoyer un e-mail si quelqu'un ne le trouve pas. Vous ne verrez aucun résultat.</p>
+<label for="m-orga">Votre e-mail</label>
+<input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
+<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
+</section>
+
+<button class="btn p" id="tirer">Lancer le tirage et envoyer les e-mails</button>
 <p class="err" id="err" role="alert"></p>
 
 <section class="carte res cache" id="res">
-<h2>C'est tiré !</h2>
-<p class="sous">Envoyez à chaque personne son lien. Il n'affiche que son propre résultat.</p>
-<ul id="liens"></ul>
-<div class="mailbox">
-<h3>Recevoir les liens par e-mail</h3>
-<p class="sous" id="m-info"></p>
-<label for="m-orga">Votre e-mail (facultatif)</label>
-<input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
-<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
-<button class="btn p" id="m-env">Envoyer les e-mails</button>
-<p class="note" id="m-ok" role="status"></p>
-</div>
-<p class="note">Ce tirage est aussi gardé sur cet appareil : vous le retrouverez en revenant sur le site, dans « Vos derniers tirages ».</p>
+<h2 id="res-titre">C'est tiré et envoyé !</h2>
+<p class="sous" id="res-info"></p>
+<ul id="suivi" class="suivi"></ul>
+<p class="note">Rien reçu ? Demandez de regarder dans les spams, puis renvoyez ou corrigez l'adresse. Ce suivi est gardé sur cet appareil, dans « Vos derniers tirages ».</p>
 </section>
 </main>
 </div>
@@ -78,8 +77,8 @@
 <p style="margin-top:16px"><a class="btn p" id="r-guide2" href="/idee-cadeau-20-euros/">Voir 15 idées à <span id="r-b2"></span> €</a></p>
 </section>
 <section class="carte garder">
-<p><b>Gardez votre résultat</b> pour le revoir plus tard :</p>
-<p class="act"><a class="btn s petit" id="r-mail" href="#">M'envoyer le lien par e-mail</a><button class="btn s petit" id="r-copie">Copier mon lien</button></p>
+<p><b>Gardez l'e-mail reçu</b> pour revoir votre résultat plus tard, ou copiez votre lien :</p>
+<p class="act"><button class="btn s petit" id="r-copie">Copier mon lien</button></p>
 </section>
 <p class="note" style="text-align:center"><a href="./">Organiser mon propre tirage (Noël, anniversaire, collègues...)</a></p>
 </main>

@@ -72,6 +72,21 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 .mes .act{display:flex;gap:6px;align-items:center}
 .garder .act{display:flex;gap:8px;flex-wrap:wrap}
 
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -92,6 +107,7 @@ footer a{color:#fff}
 .pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
 .pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles.clair a{background:#eef3f0;color:var(--encre)}
 .pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
 .pied ul{list-style:none;padding:0;margin:0}
 .pied li{margin:0 0 6px}
@@ -110,7 +126,7 @@ footer .amz{color:#b9cdc5}
 <nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><h1>Mentions légales et confidentialité</h1>
 <h2>Éditeur</h2><p>Jérémy Dacier-Jury, 9 passage des Tisserands, 38790 Charantonnay. Contact : <a href="mailto:contact@cvlibre.com">contact@cvlibre.com</a>.</p>
 <h2>Hébergement</h2><p>GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
-<h2>Données personnelles</h2><p>Le tirage au sort est calculé dans votre navigateur. Les prénoms et les résultats ne sont pas enregistrés sur nos serveurs : ils sont contenus dans les liens privés que vous partagez. Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) pour que vous puissiez les retrouver ; vous pouvez les effacer à tout moment.</p><p><strong>Envoi par e-mail (facultatif).</strong> Si vous saisissez des adresses e-mail, elles sont transmises à notre prestataire d'envoi Resend uniquement pour envoyer les liens. Les adresses des participants ne sont pas conservées. L'adresse de l'organisateur est conservée seulement s'il coche la case de rappel : elle sert alors à envoyer un e-mail par an pour proposer un nouveau tirage, jusqu'à sa désinscription (lien dans chaque e-mail). Base légale : votre consentement. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans cookie publicitaire et sans donnée permettant de vous identifier.</p>
+<h2>Données personnelles</h2><p>Le tirage au sort est fait sur nos serveurs (Supabase, hébergé dans l'Union européenne) pour que personne, pas même l'organisateur, ne connaisse les résultats. Les prénoms et les adresses e-mail des participants servent uniquement à leur envoyer leur résultat (prestataire d'envoi : Resend) et à permettre à l'organisateur de renvoyer un e-mail. Ils sont supprimés automatiquement 30 jours après la date de l'échange (60 jours après le tirage au plus tard). Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) ; vous pouvez les effacer à tout moment.</p><p><strong>E-mail de l'organisateur (facultatif).</strong> L'adresse de l'organisateur est conservée seulement s'il coche la case de rappel : elle sert alors à envoyer un e-mail par an pour proposer un nouveau tirage, jusqu'à sa désinscription (lien dans chaque e-mail). Base légale : votre consentement. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans cookie publicitaire et sans donnée permettant de vous identifier.</p>
 <h2>Liens affiliés</h2><p>Certains liens vers Amazon sont des liens affiliés : en tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises, sans surcoût pour vous.</p>
 </article></main><footer><div class="wrap">
 <div class="pied">

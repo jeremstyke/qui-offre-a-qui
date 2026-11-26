@@ -1,12 +1,12 @@
 # Qui offre à qui
 
-> Qui offre à qui (qui-offre-a-qui.fr) est un outil gratuit de tirage au sort de cadeaux en ligne, en français : Père Noël secret, Secret Santa, échange de cadeaux du Nouvel An, de la Saint-Nicolas, d'anniversaire, entre collègues, entre amis ou dans une classe. Le tirage se fait en 2 minutes, sans compte et sans inscription. L'e-mail est facultatif.
+> Qui offre à qui (qui-offre-a-qui.fr) est un outil gratuit de tirage au sort de cadeaux en ligne, en français : Père Noël secret, Secret Santa, échange de cadeaux du Nouvel An, de la Saint-Nicolas, d'anniversaire, entre collègues, entre amis ou dans une classe. Le tirage se fait en 2 minutes, sans compte et sans inscription, et chaque résultat est envoyé par e-mail.
 
 ## Ce que fait l'outil
 - L'organisateur entre les prénoms (au moins 3), l'occasion, le budget par cadeau (5, 10, 15, 20, 30 ou 50 euros) et la date de l'échange.
 - Il peut ajouter des exclusions : deux personnes qui ne doivent pas se tirer (par exemple un couple).
-- Le tirage est calculé dans le navigateur. Chaque participant reçoit un lien privé qui n'affiche que son propre résultat : personne ne voit qui offre à qui, pas même l'organisateur.
-- Les liens s'envoient par e-mail, WhatsApp, SMS ou n'importe quelle messagerie. L'organisateur peut recevoir un récapitulatif par e-mail.
+- L'organisateur entre aussi l'e-mail de chaque participant. Le tirage est fait en secret sur le serveur et chaque participant reçoit son résultat par e-mail : personne ne sait qui offre à qui, pas même l'organisateur.
+- L'organisateur peut recevoir une confirmation et un lien de suivi pour renvoyer un e-mail ou corriger une adresse, sans voir les résultats.
 - Les derniers tirages sont gardés sur l'appareil pour les retrouver.
 - Après la révélation, chaque participant voit des idées de cadeaux adaptées au budget.
 - Gratuit, sans publicité intrusive. Le site gagne de l'argent grâce aux liens affiliés Amazon des idées cadeaux.
@@ -32,7 +32,7 @@
 - [Cadeau Secret Santa ado : 15 idées qui plaisent vraiment](https://qui-offre-a-qui.fr/cadeau-secret-santa-ado/): Un ado tiré au Père Noël secret ? 15 idées de cadeaux pour adolescents de 12 à 17 ans, par budget : high-tech, déco de chambre, jeux et gourmandises.
 - [Cadeau rigolo Secret Santa : 15 idées drôles sans gêner](https://qui-offre-a-qui.fr/idee-cadeau-humour-secret-santa/): Un cadeau drôle pour votre Secret Santa, sans mettre mal à l'aise ? 15 idées de cadeaux rigolos et utiles, et ce qu'il vaut mieux éviter au bureau.
 - [Cadeau Secret Santa de dernière minute : 12 idées rapides](https://qui-offre-a-qui.fr/cadeau-secret-santa-dernier-moment/): L'échange est demain et vous n'avez rien ? 12 idées de cadeaux de dernière minute pour un Secret Santa : livraison rapide, cartes cadeaux, fait maison.
-- [Secret Santa sur WhatsApp : faire le tirage dans un groupe](https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/): Organiser un Secret Santa sur WhatsApp : tirage au sort en ligne, lien privé pour chacun, rappels dans le groupe. La méthode simple en 2 minutes.
+- [Secret Santa sur WhatsApp : faire le tirage dans un groupe](https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/): Organiser un Secret Santa avec un groupe WhatsApp : tirage au sort en ligne, résultats secrets par e-mail, rappels dans le groupe. La méthode en 2 minutes.
 - [Jeux d'échange de cadeaux à Noël : 6 variantes à tester](https://qui-offre-a-qui.fr/jeux-echange-cadeaux-noel/): Cadeau volé, jeu des dés, Yankee swap, Secret Santa : 6 jeux d'échange de cadeaux pour Noël, avec les règles simples et le matériel à prévoir.
 - [Liste d'envies Secret Santa : comment la faire (exemples)](https://qui-offre-a-qui.fr/liste-envies-secret-santa/): Comment faire une bonne liste d'envies pour un Secret Santa ou un Père Noël secret : ce qu'il faut écrire, ce qu'il faut éviter et des exemples à copier.
 

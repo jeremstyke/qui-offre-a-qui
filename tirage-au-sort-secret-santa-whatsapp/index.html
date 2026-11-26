@@ -6,10 +6,10 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="google-site-verification" content="0tjo6Bj7KcNHJMLQKuavVd_d7pBDPoJX3TaLWRm1GA4">
 <title>Secret Santa sur WhatsApp : faire le tirage dans un groupe</title>
-<meta name="description" content="Organiser un Secret Santa sur WhatsApp : tirage au sort en ligne, lien privé pour chacun, rappels dans le groupe. La méthode simple en 2 minutes.">
+<meta name="description" content="Organiser un Secret Santa avec un groupe WhatsApp : tirage au sort en ligne, résultats secrets par e-mail, rappels dans le groupe. La méthode en 2 minutes.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/">
-<meta property="og:title" content="Secret Santa sur WhatsApp : faire le tirage dans un groupe"><meta property="og:description" content="Organiser un Secret Santa sur WhatsApp : tirage au sort en ligne, lien privé pour chacun, rappels dans le groupe. La méthode simple en 2 minutes."><meta property="og:url" content="https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/"><meta property="og:type" content="website"><meta property="og:image" content="https://qui-offre-a-qui.fr/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Secret Santa sur WhatsApp : faire le tirage dans un groupe"><meta property="og:description" content="Organiser un Secret Santa avec un groupe WhatsApp : tirage au sort en ligne, résultats secrets par e-mail, rappels dans le groupe. La méthode en 2 minutes."><meta property="og:url" content="https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/"><meta property="og:type" content="website"><meta property="og:image" content="https://qui-offre-a-qui.fr/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect x=%2210%22 y=%2230%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22%23b8344a%22/%3E%3Crect x=%2244%22 y=%2230%22 width=%2212%22 height=%2260%22 fill=%22%23e9b949%22/%3E%3Crect x=%224%22 y=%2222%22 width=%2292%22 height=%2216%22 rx=%224%22 fill=%22%23123d34%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -72,6 +72,21 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 .mes .act{display:flex;gap:6px;align-items:center}
 .garder .act{display:flex;gap:8px;flex-wrap:wrap}
 
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -92,6 +107,7 @@ footer a{color:#fff}
 .pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
 .pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles.clair a{background:#eef3f0;color:var(--encre)}
 .pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
 .pied ul{list-style:none;padding:0;margin:0}
 .pied li{margin:0 0 6px}
@@ -103,17 +119,16 @@ footer .amz{color:#b9cdc5}
 @media(max-width:600px){.pied{grid-template-columns:1fr}}
 .amz{font-size:13px;color:var(--gris)}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Secret Santa sur WhatsApp : faire le tirage dans un groupe", "description": "Organiser un Secret Santa sur WhatsApp : tirage au sort en ligne, lien privé pour chacun, rappels dans le groupe. La méthode simple en 2 minutes.", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "inLanguage": "fr", "mainEntityOfPage": "https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/", "author": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}, "publisher": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Qui offre à qui", "item": "https://qui-offre-a-qui.fr/"}, {"@type": "ListItem", "position": 2, "name": "Secret Santa sur WhatsApp : faire le tirage dans un groupe", "item": "https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "L'organisateur peut-il participer ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Tant qu'il n'ouvre que son propre lien, il ne connaît pas le reste du tirage."}}, {"@type": "Question", "name": "Ça marche aussi avec Messenger, SMS ou Telegram ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, le lien se copie et se colle dans n'importe quelle messagerie. Le bouton SMS est aussi disponible."}}, {"@type": "Question", "name": "Et si on est éloignés ?", "acceptedAnswer": {"@type": "Answer", "text": "Voyez notre guide Secret Santa à distance pour l'envoi des cadeaux."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Secret Santa sur WhatsApp : faire le tirage dans un groupe", "description": "Organiser un Secret Santa avec un groupe WhatsApp : tirage au sort en ligne, résultats secrets par e-mail, rappels dans le groupe. La méthode en 2 minutes.", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "inLanguage": "fr", "mainEntityOfPage": "https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/", "author": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}, "publisher": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Qui offre à qui", "item": "https://qui-offre-a-qui.fr/"}, {"@type": "ListItem", "position": 2, "name": "Secret Santa sur WhatsApp : faire le tirage dans un groupe", "item": "https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "L'organisateur peut-il participer ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Il reçoit son propre résultat par e-mail comme les autres et ne voit jamais le reste du tirage."}}, {"@type": "Question", "name": "Ça marche aussi avec Messenger ou Telegram ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : le groupe sert à s'organiser, et les résultats arrivent par e-mail, quelle que soit la messagerie utilisée."}}, {"@type": "Question", "name": "Et si on est éloignés ?", "acceptedAnswer": {"@type": "Answer", "text": "Voyez notre guide Secret Santa à distance pour l'envoi des cadeaux."}}]}</script>
 <script src="/assets/track.js" defer></script>
 </head>
 <body>
 <nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>Secret Santa sur WhatsApp : faire le tirage dans un groupe</h1><p class="meta">Publié le 26 novembre 2026</p>
 <p>Votre famille ou votre bande d'amis a déjà un <strong>groupe WhatsApp</strong> ? C'est l'endroit idéal pour organiser votre Secret Santa. Le seul problème : WhatsApp ne sait pas faire de tirage secret. Si vous tirez les noms vous-même, vous saurez tout. Voici comment garder la surprise, y compris pour l'organisateur.</p><p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>
 <h2>Étape 1 : faire le tirage en ligne</h2>
-<p>Sur <a href="/">Qui offre à qui</a>, entrez les prénoms du groupe, le budget et la date. Ajoutez les exclusions si besoin (par exemple deux conjoints). Lancez le tirage : chaque personne obtient un lien privé, qui n'affiche que son propre résultat.</p>
-<h2>Étape 2 : envoyer chaque lien en message privé</h2>
-<p>À côté de chaque prénom, le bouton <strong>WhatsApp</strong> prépare le message avec le lien. Choisissez la bonne personne dans vos contacts et envoyez. Attention : envoyez les liens en <strong>message privé</strong>, pas dans le groupe, sinon tout le monde pourrait cliquer sur le lien des autres.</p>
-<p>Vous pouvez aussi ajouter l'e-mail de chacun : il reçoit alors son lien directement par e-mail, sans que vous ayez à l'envoyer.</p>
+<p>Sur <a href="/">Qui offre à qui</a>, entrez les prénoms du groupe, le budget et la date. Ajoutez les exclusions si besoin (par exemple deux conjoints). Lancez le tirage : chaque personne reçoit son résultat par e-mail, et personne d'autre ne le voit, pas même vous.</p>
+<h2>Étape 2 : récupérer les e-mails dans le groupe</h2>
+<p>Le plus simple : demandez dans le groupe WhatsApp que chacun vous envoie son adresse e-mail en message privé. En quelques minutes, vous avez tout ce qu'il faut pour lancer le tirage. Annoncez ensuite dans le groupe : « C'est tiré, regardez vos e-mails (et vos spams) ! »</p>
 <h2>Étape 3 : utiliser le groupe pour l'organisation</h2>
 <ul>
 <li><strong>Annoncez les règles</strong> dans le groupe : budget, date, lieu, thème éventuel.</li>
@@ -125,16 +140,16 @@ footer .amz{color:#b9cdc5}
 <div class="idees">
 <div class="idee"><b>Papier cadeau</b><span>Pour que tous les paquets soient jolis</span><a class="btn s petit" href="https://www.amazon.fr/s?k=papier+cadeau+noel&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Étiquettes « De la part du Père Noël »</b><span>Pour garder le mystère</span><a class="btn s petit" href="https://www.amazon.fr/s?k=etiquettes+cadeau+pere+noel&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Bonnets de Père Noël</b><span>Pour la photo de groupe</span><a class="btn s petit" href="https://www.amazon.fr/s?k=bonnet+pere+noel+lot&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div>
 </div>
-<h2>Et si quelqu'un perd son lien ?</h2>
-<p>Pas de problème. L'organisateur retrouve le tirage dans « Vos derniers tirages » sur le site, depuis le même téléphone. S'il a donné son e-mail, il a aussi reçu un récapitulatif avec tous les liens. Il suffit de renvoyer le bon lien à la bonne personne.</p>
+<h2>Et si quelqu'un perd son e-mail ?</h2>
+<p>Pas de problème. L'organisateur ouvre le suivi du tirage (dans « Vos derniers tirages » sur le site, ou depuis l'e-mail de confirmation) et renvoie l'e-mail à la bonne personne, ou corrige son adresse. Il ne voit jamais le résultat.</p>
 <h2>Questions fréquentes</h2>
 <h3>L'organisateur peut-il participer ?</h3>
-<p>Oui. Tant qu'il n'ouvre que son propre lien, il ne connaît pas le reste du tirage.</p>
-<h3>Ça marche aussi avec Messenger, SMS ou Telegram ?</h3>
-<p>Oui, le lien se copie et se colle dans n'importe quelle messagerie. Le bouton SMS est aussi disponible.</p>
+<p>Oui. Il reçoit son propre résultat par e-mail comme les autres et ne voit jamais le reste du tirage.</p>
+<h3>Ça marche aussi avec Messenger ou Telegram ?</h3>
+<p>Oui : le groupe sert à s'organiser, et les résultats arrivent par e-mail, quelle que soit la messagerie utilisée.</p>
 <h3>Et si on est éloignés ?</h3>
 <p>Voyez notre guide <a href="/secret-santa-a-distance/">Secret Santa à distance</a> pour l'envoi des cadeaux.</p>
-<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé, par e-mail ou WhatsApp.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><div class="voir"><a href="/idee-cadeau-secret-santa-homme/"><b>Idée cadeau Secret Santa homme</b><span>15 idées par budget</span></a><a href="/idee-cadeau-secret-santa-femme/"><b>Idée cadeau Secret Santa femme</b><span>15 idées par budget</span></a><a href="/cadeau-secret-santa-ado/"><b>Cadeau Secret Santa ado</b><span>15 idées qui plaisent vraiment</span></a><a href="/idee-cadeau-20-euros/"><b>Idée cadeau à 20 €</b><span>15 idées qui font vraiment plaisir</span></a><a href="/idee-cadeau-30-euros/"><b>Idée cadeau à 30 €</b><span>15 idées pour gâter sans se ruiner</span></a></div></article></main><footer><div class="wrap">
+<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et les e-mails, chacun reçoit son résultat en secret.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><div class="voir"><a href="/idee-cadeau-secret-santa-homme/"><b>Idée cadeau Secret Santa homme</b><span>15 idées par budget</span></a><a href="/idee-cadeau-secret-santa-femme/"><b>Idée cadeau Secret Santa femme</b><span>15 idées par budget</span></a><a href="/cadeau-secret-santa-ado/"><b>Cadeau Secret Santa ado</b><span>15 idées qui plaisent vraiment</span></a><a href="/idee-cadeau-20-euros/"><b>Idée cadeau à 20 €</b><span>15 idées qui font vraiment plaisir</span></a><a href="/idee-cadeau-30-euros/"><b>Idée cadeau à 30 €</b><span>15 idées pour gâter sans se ruiner</span></a></div></article></main><footer><div class="wrap">
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>

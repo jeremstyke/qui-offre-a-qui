@@ -72,6 +72,21 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 .mes .act{display:flex;gap:6px;align-items:center}
 .garder .act{display:flex;gap:8px;flex-wrap:wrap}
 
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -92,6 +107,7 @@ footer a{color:#fff}
 .pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
 .pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles.clair a{background:#eef3f0;color:var(--encre)}
 .pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
 .pied ul{list-style:none;padding:0;margin:0}
 .pied li{margin:0 0 6px}
@@ -123,7 +139,7 @@ footer .amz{color:#b9cdc5}
 <li><strong>Une liste d'envies</strong> de quelques idées par personne, partagée dans le groupe de la famille.</li>
 </ul>
 <h2>Faire le tirage quand la famille est dispersée</h2>
-<p>C'est souvent là que le chapeau et les papiers ne suffisent plus : les cousins vivent loin, les grands-parents ne sont pas là au moment du tirage. Avec <a href="/">Qui offre à qui</a>, vous entrez les prénoms, cochez les couples à séparer, et envoyez à chacun son lien privé par WhatsApp ou SMS. C'est prêt en 2 minutes, sans compte et gratuitement.</p>
+<p>C'est souvent là que le chapeau et les papiers ne suffisent plus : les cousins vivent loin, les grands-parents ne sont pas là au moment du tirage. Avec <a href="/">Qui offre à qui</a>, vous entrez les prénoms, cochez les couples à séparer, et chacun reçoit son résultat par e-mail. C'est prêt en 2 minutes, sans compte et gratuitement.</p>
 <h2>Des idées pour tous les âges</h2>
 <div class="idees">
 <div class="idee"><b>Plaid chauffant</b><span>Pour les grands-parents frileux</span><a class="btn s petit" href="https://www.amazon.fr/s?k=plaid+chauffant&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Jeu de société familial</b><span>À ouvrir le soir même</span><a class="btn s petit" href="https://www.amazon.fr/s?k=jeu+de+societe+famille&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Cadre photo numérique</b><span>Pour partager les photos de famille</span><a class="btn s petit" href="https://www.amazon.fr/s?k=cadre+photo+numerique&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Lampe d'ambiance</b><span>Les ados adorent</span><a class="btn s petit" href="https://www.amazon.fr/s?k=lampe+led+chambre+ado&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Coffret gourmand</b><span>Une valeur sûre pour les adultes</span><a class="btn s petit" href="https://www.amazon.fr/s?k=coffret+gourmand&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div><div class="idee"><b>Livre de recettes</b><span>Pour les cuisiniers de la famille</span><a class="btn s petit" href="https://www.amazon.fr/s?k=livre+de+recettes&tag=quioffreaqui-21" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div>
@@ -138,7 +154,7 @@ footer .amz{color:#b9cdc5}
 <p>Ajoutez une exclusion dans notre outil : ces deux personnes ne pourront pas se tirer l'une l'autre.</p>
 <h3>Quel budget pour un Père Noël secret en famille ?</h3>
 <p>Entre 20 et 50 € en général. Choisissez un montant que tout le monde peut suivre sans difficulté.</p>
-<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé, par e-mail ou WhatsApp.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><div class="voir"><a href="/idee-cadeau-humour-secret-santa/"><b>Cadeau rigolo Secret Santa</b><span>15 idées drôles sans gêner</span></a><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/idee-cadeau-5-euros/"><b>Idée cadeau à 5 €</b><span>15 petites idées qui font plaisir</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a></div></article></main><footer><div class="wrap">
+<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et les e-mails, chacun reçoit son résultat en secret.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><div class="voir"><a href="/idee-cadeau-humour-secret-santa/"><b>Cadeau rigolo Secret Santa</b><span>15 idées drôles sans gêner</span></a><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/idee-cadeau-5-euros/"><b>Idée cadeau à 5 €</b><span>15 petites idées qui font plaisir</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a></div></article></main><footer><div class="wrap">
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>

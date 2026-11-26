@@ -72,6 +72,21 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 .mes .act{display:flex;gap:6px;align-items:center}
 .garder .act{display:flex;gap:8px;flex-wrap:wrap}
 
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -92,6 +107,7 @@ footer a{color:#fff}
 .pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
 .pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles.clair a{background:#eef3f0;color:var(--encre)}
 .pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
 .pied ul{list-style:none;padding:0;margin:0}
 .pied li{margin:0 0 6px}
@@ -103,14 +119,14 @@ footer .amz{color:#b9cdc5}
 @media(max-width:600px){.pied{grid-template-columns:1fr}}
 .amz{font-size:13px;color:var(--gris)}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Secret Santa à distance : l'organiser en ligne simplement", "description": "Organiser un Secret Santa ou un Père Noël secret à distance : tirage au sort en ligne sans compte, envoi des cadeaux par la poste et échange en visio.", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "inLanguage": "fr", "mainEntityOfPage": "https://qui-offre-a-qui.fr/secret-santa-a-distance/", "author": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}, "publisher": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Qui offre à qui", "item": "https://qui-offre-a-qui.fr/"}, {"@type": "ListItem", "position": 2, "name": "Secret Santa à distance : l'organiser en ligne simplement", "item": "https://qui-offre-a-qui.fr/secret-santa-a-distance/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Peut-on faire un Secret Santa entièrement en ligne ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : tirage en ligne, cadeaux livrés à domicile ou au bureau, et ouverture en visio."}}, {"@type": "Question", "name": "Comment connaître l'adresse de la personne tirée ?", "acceptedAnswer": {"@type": "Answer", "text": "Demandez-la à l'organisateur, ou faites livrer au bureau ou chez l'organisateur pour garder le secret."}}, {"@type": "Question", "name": "Les participants doivent-ils s'inscrire ?", "acceptedAnswer": {"@type": "Answer", "text": "Non : avec Qui offre à qui, ils ouvrent simplement leur lien privé, sans compte. Ils peuvent même le recevoir directement par e-mail."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Secret Santa à distance : l'organiser en ligne simplement", "description": "Organiser un Secret Santa ou un Père Noël secret à distance : tirage au sort en ligne sans compte, envoi des cadeaux par la poste et échange en visio.", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "inLanguage": "fr", "mainEntityOfPage": "https://qui-offre-a-qui.fr/secret-santa-a-distance/", "author": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}, "publisher": {"@type": "Organization", "name": "Qui offre à qui", "url": "https://qui-offre-a-qui.fr/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Qui offre à qui", "item": "https://qui-offre-a-qui.fr/"}, {"@type": "ListItem", "position": 2, "name": "Secret Santa à distance : l'organiser en ligne simplement", "item": "https://qui-offre-a-qui.fr/secret-santa-a-distance/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Peut-on faire un Secret Santa entièrement en ligne ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : tirage en ligne, cadeaux livrés à domicile ou au bureau, et ouverture en visio."}}, {"@type": "Question", "name": "Comment connaître l'adresse de la personne tirée ?", "acceptedAnswer": {"@type": "Answer", "text": "Demandez-la à l'organisateur, ou faites livrer au bureau ou chez l'organisateur pour garder le secret."}}, {"@type": "Question", "name": "Les participants doivent-ils s'inscrire ?", "acceptedAnswer": {"@type": "Answer", "text": "Non : avec Qui offre à qui, ils reçoivent leur résultat par e-mail et l'ouvrent d'un clic, sans compte."}}]}</script>
 <script src="/assets/track.js" defer></script>
 </head>
 <body>
 <nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>Secret Santa à distance : l&#x27;organiser en ligne simplement</h1><p class="meta">Publié le 26 novembre 2026</p>
 <p>Télétravail, famille éclatée, amis dans d'autres villes : il est de plus en plus rare que tout le monde soit réuni pour tirer les noms au sort. Bonne nouvelle, un <strong>Secret Santa à distance</strong> s'organise très bien en ligne, du tirage jusqu'à l'ouverture des cadeaux.</p><p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>
 <h2>Étape 1 : le tirage au sort en ligne</h2>
-<p>Sur <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, le budget et la date, puis lance le tirage. Chaque participant reçoit un lien privé par WhatsApp, SMS, Teams ou Slack, et découvre à qui il offre un cadeau. Pas de compte, pas d'e-mail à collecter, et c'est gratuit.</p>
+<p>Sur <a href="/">Qui offre à qui</a>, l'organisateur entre les prénoms, le budget et la date, puis lance le tirage. Chaque participant reçoit son résultat par e-mail et découvre à qui il offre un cadeau. Pas de compte, et c'est gratuit.</p>
 <h2>Étape 2 : se mettre d'accord sur la livraison</h2>
 <ul>
 <li><strong>Livraison directe</strong> : chacun fait livrer le cadeau chez son destinataire. Il faut alors connaître son adresse : demandez-la discrètement à l'organisateur.</li>
@@ -136,8 +152,8 @@ footer .amz{color:#b9cdc5}
 <h3>Comment connaître l'adresse de la personne tirée ?</h3>
 <p>Demandez-la à l'organisateur, ou faites livrer au bureau ou chez l'organisateur pour garder le secret.</p>
 <h3>Les participants doivent-ils s'inscrire ?</h3>
-<p>Non : avec Qui offre à qui, ils ouvrent simplement leur lien privé, sans compte. Ils peuvent même le recevoir directement par e-mail.</p>
-<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et chacun reçoit son lien privé, par e-mail ou WhatsApp.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><div class="voir"><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/jeux-echange-cadeaux-noel/"><b>Jeux d&#x27;échange de cadeaux à Noël</b><span>6 variantes à tester</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a><a href="/idee-cadeau-15-euros/"><b>Idée cadeau à 15 €</b><span>15 idées pour un échange réussi</span></a></div></article></main><footer><div class="wrap">
+<p>Non : avec Qui offre à qui, ils reçoivent leur résultat par e-mail et l'ouvrent d'un clic, sans compte.</p>
+<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et les e-mails, chacun reçoit son résultat en secret.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div><h2>À lire aussi</h2><div class="voir"><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/jeux-echange-cadeaux-noel/"><b>Jeux d&#x27;échange de cadeaux à Noël</b><span>6 variantes à tester</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a><a href="/idee-cadeau-15-euros/"><b>Idée cadeau à 15 €</b><span>15 idées pour un échange réussi</span></a></div></article></main><footer><div class="wrap">
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
