@@ -32,14 +32,14 @@
 - [ ] cadeau-invite-diner/ | cadeau invité dîner | idées autres que le vin | toute l'année
 - [ ] cadeau-retraite-collegue/ | cadeau départ retraite | idées et cadeau commun | toute l'année
 - [ ] idee-cadeau-naissance-collegue/ | cadeau naissance collègue | cadeau commun, idées | toute l'année
-- [ ] jeu-ange-gardien/ | jeu de l'ange gardien | règles, idées d'attentions, EVJF, mariage, colo, séminaire | toute l'année
+- [x] jeu-ange-gardien/ | jeu de l'ange gardien | règles, idées d'attentions, EVJF, mariage, colo, séminaire | toute l'année
 - [ ] secret-santa-ete/ | secret santa été | échange de cadeaux en été entre collègues | dès 2027-05-15
 
 # Outils de tirage au sort toute l'année (décision du 26 nov 2026) : à partir du lundi 4 janvier 2027, le LUNDI on crée un outil (au lieu d'un guide), dans l'ordre, jusqu'à la fin de cette liste. Chaque outil est une page autonome (HTML + JS dans le navigateur, aucun appel au serveur, tirage avec crypto.getRandomValues), mobile d'abord, même design que le site, résultat partageable (copier, WhatsApp), 400 à 700 mots d'explication en dessous (comment ça marche, exemples d'usage, 3 questions fréquentes), lien vers le tirage de cadeaux et 2 guides. Ajouter chaque outil au menu et au pied de page (bloc « Autres tirages au sort »).
 - [ ] tirage-au-sort-equipes/ | faire des équipes au hasard | coller une liste de noms, choisir le nombre d'équipes ou de joueurs par équipe
 - [ ] tirage-au-sort-nom/ | tirage au sort nom en ligne | tirer un ou plusieurs gagnants dans une liste, sans doublon
 - [ ] tirage-au-sort-binomes/ | tirer des binômes au hasard | paires aléatoires, nombre impair géré (un trio)
-- [ ] tirage-au-sort-ange-gardien/ | tirage ange gardien | même principe que le Secret Santa, résultat par lien privé à chacun
+- [x] tirage-au-sort-ange-gardien/ | tirage ange gardien | même principe que le Secret Santa, résultat par lien privé à chacun
 - [ ] tirage-au-sort-ordre-passage/ | ordre de passage aléatoire | exposés, oraux, tours de jeu
 - [ ] tirage-au-sort-taches-menageres/ | répartir les tâches ménagères | tâches réparties au hasard, par semaine, à imprimer
 - [ ] roue-tirage-au-sort/ | roue aléatoire en ligne | roue qui tourne avec les noms saisis

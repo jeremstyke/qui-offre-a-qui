@@ -118,9 +118,10 @@ $("tirer").onclick=function(){
   }).catch(function(){bt.disabled=false;bt.textContent=avant;err.textContent="Pas de connexion. Vérifiez votre réseau et réessayez."});
 };
 
-var NOMS={noel:"Père Noël secret",nouvelan:"Échange de cadeaux du Nouvel An",stnicolas:"Saint-Nicolas",anniv:"Échange de cadeaux d'anniversaire",collegues:"Échange de cadeaux entre collègues",amis:"Échange de cadeaux entre amis",classe:"Échange de cadeaux de fin d'année",autre:"Échange de cadeaux"};
-var DEF={noel:["Noël en famille 2026","2026-12-24"],nouvelan:["Nouvel An entre amis","2026-12-31"],stnicolas:["Saint-Nicolas en famille","2026-12-06"],anniv:["Anniversaire de Léa",""],collegues:["Cadeaux de l'équipe",""],amis:["Soirée cadeaux entre amis",""],classe:["Fin d'année du club",""],autre:["Échange de cadeaux",""]};
+var NOMS={noel:"Père Noël secret",nouvelan:"Échange de cadeaux du Nouvel An",stnicolas:"Saint-Nicolas",anniv:"Échange de cadeaux d'anniversaire",collegues:"Échange de cadeaux entre collègues",amis:"Échange de cadeaux entre amis",classe:"Échange de cadeaux de fin d'année",ange:"Jeu de l'ange gardien",autre:"Échange de cadeaux"};
+var DEF={noel:["Noël en famille 2026","2026-12-24"],nouvelan:["Nouvel An entre amis","2026-12-31"],stnicolas:["Saint-Nicolas en famille","2026-12-06"],anniv:["Anniversaire de Léa",""],collegues:["Cadeaux de l'équipe",""],amis:["Soirée cadeaux entre amis",""],classe:["Fin d'année du club",""],ange:["EVJF de Léa",""],autre:["Échange de cadeaux",""]};
 $("type").onchange=function(){var x=DEF[this.value];$("ev").value=x[0];$("date").value=x[1]};
+try{var tq=(location.search.match(/[?&]t=([a-z]{3,12})/)||[])[1];if(tq&&DEF[tq]){$("type").value=tq;$("type").onchange()}}catch(e){}
 var IDEES={
  "5":[["Bonbons originaux","Toujours un succès","bonbons originaux"],["Chaussettes fantaisie","Drôles et utiles","chaussettes fantaisie"],["Baume à lèvres","Indispensable en hiver","baume levres"],["Mini plante grasse","Un peu de vert","mini plante grasse"]],
  "10":[["Mug original","Un classique qui fait toujours plaisir","mug cadeau original"],["Chaussettes de Noël","Drôles et douillettes","chaussettes noel fantaisie"],["Jeu de cartes d'apéro","Pour rire entre amis","jeu de cartes apero"],["Bougie parfumée","Une ambiance cocooning","bougie parfumee"]],
@@ -137,7 +138,7 @@ function afficherRes(o){
   var dt=o.d?new Date(o.d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}):"";
   $("r-ev").textContent=o.e+(dt?", échange le "+dt:"");
   if(o.t&&o.t!=="noel"){document.querySelector("#vue-res .hero h1").style.maxWidth="none"}
-  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";$("r-b").textContent=o.b;var gd={"5":"/idee-cadeau-5-euros/","10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
+  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";if(o.t==="ange"){$("r-intro").textContent="Ton tirage est prêt. Appuie sur le paquet pour découvrir de qui tu es l'ange gardien.";$("r-qui").textContent="Tu es l'ange gardien de";$("r-budget").textContent="Fais-lui de petites attentions en secret, sans te faire démasquer 😇"+(o.b?" (budget : "+o.b+"\u00a0€ environ)":"")}$("r-b").textContent=o.b;var gd={"5":"/idee-cadeau-5-euros/","10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
   var g=$("grille");g.innerHTML="";
   (IDEES[o.b]||IDEES["20"]).forEach(function(x){
     var a=document.createElement("div");a.className="idee";

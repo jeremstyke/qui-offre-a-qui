@@ -16,7 +16,7 @@
 <h2>1. L'événement</h2>
 <p class="sous">Choisissez l'occasion, puis donnez-lui un nom.</p>
 <label for="type">Occasion</label>
-<select id="type"><option value="noel">Noël (Père Noël secret)</option><option value="nouvelan">Nouvel An</option><option value="stnicolas">Saint-Nicolas</option><option value="anniv">Anniversaire</option><option value="collegues">Entre collègues</option><option value="amis">Soirée entre amis</option><option value="classe">Fin d'année (classe, club, asso)</option><option value="autre">Autre occasion</option></select>
+<select id="type"><option value="noel">Noël (Père Noël secret)</option><option value="nouvelan">Nouvel An</option><option value="stnicolas">Saint-Nicolas</option><option value="anniv">Anniversaire</option><option value="collegues">Entre collègues</option><option value="amis">Soirée entre amis</option><option value="classe">Fin d'année (classe, club, asso)</option><option value="ange">Ange gardien (EVJF, colo, séminaire)</option><option value="autre">Autre occasion</option></select>
 <label for="ev">Nom de l'événement</label>
 <input id="ev" value="Noël en famille 2026">
 <div class="ligne">
@@ -69,9 +69,9 @@
 </div></header>
 <main class="wrap">
 <section class="carte reveal">
-<p>Ton tirage est prêt. Appuie sur le paquet pour découvrir à qui tu offres un cadeau.</p>
+<p id="r-intro">Ton tirage est prêt. Appuie sur le paquet pour découvrir à qui tu offres un cadeau.</p>
 <div class="paquet" id="paquet" role="button" tabindex="0" aria-label="Ouvrir le paquet"></div>
-<div id="nom" class="cache"><p>Tu offres un cadeau à</p><div class="pour" id="r-pour"></div><p id="r-budget"></p></div>
+<div id="nom" class="cache"><p id="r-qui">Tu offres un cadeau à</p><div class="pour" id="r-pour"></div><p id="r-budget"></p></div>
 </section>
 <section class="carte cache nlbox" id="nl">
 <h2>Gardez une longueur d'avance 🎁</h2>

@@ -216,7 +216,7 @@ for p in PAGES:
         sch.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": re.sub('<[^>]+>', '', q), "acceptedAnswer": {"@type": "Answer", "text": re.sub('<[^>]+>', '', a)}} for q, a in qs]})
     d = datetime.date.fromisoformat(p["date"])
     mois = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"][d.month-1]
-    cta = '<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et les e-mails, chacun reçoit son résultat en secret.</p><a class="btn" href="/#outil">Faire mon tirage gratuit</a></div>'
+    cta = '<div class="encart"><b>Faites votre tirage au sort en 2 minutes</b><p>Sans compte et 100 % gratuit : entrez les prénoms et les e-mails, chacun reçoit son résultat en secret.</p><a class="btn" href="' + p.get("outil", "/#outil") + '">' + p.get("outil_txt", "Faire mon tirage gratuit") + '</a></div>'
     promo = '<p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>'
     body = re.sub(r'(</p>)', r'\1' + promo, body, count=1)
     oth = [q for q in PAGES if q['slug'] != p['slug']]

@@ -399,4 +399,59 @@ PAGES = [
 <h3>Peut-on faire un Secret Santa à distance ?</h3>
 <p>Oui : le tirage se fait en ligne, et chacun envoie son cadeau par la poste ou le dépose au bureau.</p>
 """},
+{
+"slug": "jeu-ange-gardien",
+"title": "Jeu de l'ange gardien : règles, idées et tirage en ligne",
+"desc": "Le jeu de l'ange gardien pour un EVJF, un mariage, une colo ou un séminaire : les règles, 30 idées d'attentions et le tirage au sort gratuit en ligne.",
+"date": "2026-11-26",
+"outil": "/?t=ange#outil",
+"outil_txt": "Faire mon tirage d'ange gardien",
+"body": """
+<p>Le <strong>jeu de l'ange gardien</strong> est un tirage au sort secret, comme le Père Noël secret, mais sans date de remise de cadeau. Chacun tire le nom d'une personne du groupe et devient son ange gardien pendant toute la durée de l'événement : il lui fait de petites attentions en cachette, sans se faire démasquer. À la fin, chacun essaie de deviner qui veillait sur lui. C'est simple, ça crée du lien et ça fait beaucoup rire.</p>
+<h2>Les règles du jeu en 4 étapes</h2>
+<ol>
+<li><strong>Le tirage au sort</strong> : chaque participant reçoit en secret le nom de son protégé. Personne ne doit se tirer lui-même, et l'idéal est que même l'organisateur ignore les résultats pour pouvoir jouer.</li>
+<li><strong>La durée</strong> : un week-end d'EVJF, une semaine de colo, trois jours de séminaire, ou tout un mois pour une équipe de travail. Annoncez clairement la date de fin.</li>
+<li><strong>Les attentions</strong> : petits mots, services rendus, douceurs, défis gentils. Le but est de faire plaisir, jamais de mettre mal à l'aise.</li>
+<li><strong>La révélation</strong> : au dernier repas ou à la dernière réunion, chacun tente de deviner son ange gardien, puis on révèle tout.</li>
+</ol>
+<p>Avec le tirage en ligne, chacun reçoit le nom de son protégé par e-mail. Il n'y a pas de papiers à cacher ni de risque de tirer son propre nom, et l'organisateur peut participer comme les autres.</p>
+<h2>Où jouer à l'ange gardien ?</h2>
+<ul>
+<li><strong>EVJF et EVG</strong> : parfait pour souder un groupe d'amies qui ne se connaissent pas toutes. La future mariée peut jouer ou recevoir plusieurs anges.</li>
+<li><strong>Mariage</strong> : entre témoins et demoiselles d'honneur pendant les préparatifs, ou entre invités sur un week-end.</li>
+<li><strong>Colonies de vacances et camps scouts</strong> : un classique pour créer de l'entraide entre enfants qui ne se connaissent pas.</li>
+<li><strong>Séminaires et équipes de travail</strong> : une semaine d'ange gardien améliore l'ambiance, surtout dans une équipe récente.</li>
+<li><strong>Associations, retraites, groupes de jeunes</strong> : le jeu fonctionne partout où un groupe vit quelques jours ensemble.</li>
+</ul>
+<h2>Idées d'attentions gratuites</h2>
+<ul>
+<li>Un petit mot d'encouragement glissé dans un sac ou sous une porte.</li>
+<li>Un café ou un thé préparé comme il l'aime, posé à sa place.</li>
+<li>Un service rendu : ranger son plateau, garder sa place, porter son sac.</li>
+<li>Un dessin ou un poème anonyme.</li>
+<li>Une chanson qu'il aime demandée à la soirée.</li>
+<li>Un compliment transmis par une autre personne, pour brouiller les pistes.</li>
+</ul>
+<h2>Petites attentions à offrir</h2>
+<p>Si vous voulez ajouter un petit cadeau, restez sur des budgets de 2 à 10 € : l'intérêt est dans le geste, pas dans le prix.</p>
+<div class="idees">
+""" + idee("Bonbons ou chocolats", "La douceur qui marche à tous les coups", "bonbons assortiment") + idee("Carte à message", "Pour un mot doux anonyme", "cartes a message") + idee("Petit carnet", "Avec un premier message déjà écrit", "petit carnet") + idee("Baume à lèvres", "Utile en week-end comme en colo", "baume levres") + idee("Masque pour les yeux", "Pour les nuits courtes d'EVJF", "masque de nuit") + idee("Mini bougie parfumée", "Une attention cocooning", "mini bougie parfumee") + """
+</div>
+<h2>Les pièges à éviter</h2>
+<ul>
+<li><strong>Les attentions trop voyantes</strong> : tout le monde devinerait tout de suite. Variez les moments et les complices.</li>
+<li><strong>Les blagues qui vexent</strong> : un ange gardien protège, il ne piège pas.</li>
+<li><strong>Le déséquilibre</strong> : rappelez à mi-parcours que chacun doit penser à son protégé, pour que personne ne soit oublié.</li>
+<li><strong>Le tirage raté</strong> : avec des papiers, quelqu'un finit toujours par tirer son propre nom. Le tirage en ligne règle le problème.</li>
+</ul>
+<p>Vous organisez plutôt un échange de cadeaux ? Voyez nos <a href="/regles-pere-noel-secret/">règles du Père Noël secret</a> et nos <a href="/idee-cadeau-5-euros/">idées de cadeaux à 5 €</a>, parfaites aussi pour un ange gardien.</p>
+<h2>Questions fréquentes</h2>
+<h3>Combien de temps dure le jeu de l'ange gardien ?</h3>
+<p>Le temps de l'événement : un week-end pour un EVJF, une semaine pour une colo ou un séminaire. Au-delà d'un mois, l'enthousiasme retombe souvent.</p>
+<h3>Faut-il offrir un cadeau à son protégé ?</h3>
+<p>Non. Les attentions gratuites suffisent largement. Si le groupe veut des cadeaux, fixez un petit budget commun, par exemple 5 €.</p>
+<h3>Peut-on jouer à distance ?</h3>
+<p>Oui : messages, cartes postales, playlist partagée ou petit colis. Le tirage se fait en ligne et chacun reçoit le nom de son protégé par e-mail.</p>
+"""},
 ]
