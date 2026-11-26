@@ -36,7 +36,7 @@ const SEG={json.dumps(cfg['seg'],ensure_ascii=False)}, CAPS={json.dumps(cfg['cap
 const ease=x=>x<0?0:x>1?1:1-Math.pow(1-x,3), cl=x=>x<0?0:x>1?1:x, io=x=>x<0?0:x>1?1:(x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2);
 const $=i=>document.getElementById(i);
 function setT(t){{
- const hk=$('hook'); const a=ease(t/0.5); hk.style.opacity=t<2.6?a:cl(1-(t-2.6)/0.25); hk.style.transform=`scale(${{0.85+0.15*a}})`;
+ const hk=$('hook'); hk.style.opacity=t<2.6?1:cl(1-(t-2.6)/0.25); hk.style.transform=`scale(${{1+0.03*Math.sin(Math.min(t,2.6)*1.2)}})`;
  const hp=hk.querySelector('p'); hp.style.opacity=cl((t-1.2)/0.2); hp.style.transform=`scale(${{1.3-0.3*ease((t-1.2)/0.3)}})`;
  const ph=$('phone'); const pin=ease((t-2.6)/0.45), pout=cl((t-12)/0.3);
  ph.style.opacity=t<12?cl((t-2.6)/0.2):1-pout; ph.style.transform=`translateY(${{(1-pin)*500}}px)`;

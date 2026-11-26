@@ -9,3 +9,5 @@ Fabrication : captures du vrai site avec Playwright (polices locales via fonts.p
 5. Copier le mp4 dans /media/ (exclu de Google par robots.txt), pousser, puis programmer sur Metricool (marque 8318595, YouTube + Facebook) avec l'adresse https://qui-offre-a-qui.fr/media/....
 
 Règle Shorts : l'écran final affiche toujours « 🔗 Lien dans la bio » (les liens ne sont pas cliquables dans les Shorts), et le texte de la publication le rappelle aussi.
+
+Couverture : chaque Short a une image de couverture 1080x1920 (cover.py : accroche en gros + téléphone incliné avec une capture), passée en videoThumbnailUrl à Metricool. La première image de la vidéo montre déjà l'accroche (jamais un fond vide).
