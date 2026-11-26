@@ -122,25 +122,59 @@ input.attention{outline:3px solid var(--baie)}
 .viral .btn.p{width:auto;font-size:17px;padding:13px 22px}
 .viral-orga{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 0}
 .viral-orga p{margin:0}
-.rp-tab{width:100%;border-collapse:collapse;margin:4px 0 10px}
-.rp-tab th{text-align:left;font-size:13px;color:var(--gris);font-weight:700;padding:4px 4px 6px}
-.rp-tab td{padding:4px;vertical-align:middle;border-top:1px solid var(--ligne)}
-.rp-tab input{padding:9px 10px;border-radius:8px;font-size:16px}
-.rp-tab td:nth-child(2){display:flex;gap:6px;align-items:center}
-.rp-tab tr.pris td:nth-child(2) input{background:#e3f2eb;border-color:#b7dcc9;font-weight:700;color:#1d6b4f}
-.rp-tab .mini{padding:8px 10px;font-size:14px;flex:none}
-.rp-tab td:last-child{width:44px}
-.rp-tab .x.sur{width:auto;padding:0 8px;font-size:13px;color:var(--baie);border-color:var(--baie)}
 .sr{position:absolute;left:-9999px}
-@media(max-width:620px){
- .rp-tab thead{display:none}
- .rp-tab tr{display:grid;grid-template-columns:1fr 44px;gap:6px;padding:10px 0;border-top:1px solid var(--ligne)}
- .rp-tab td{border:0;padding:0}
- .rp-tab td:nth-child(1){grid-column:1}
- .rp-tab td:nth-child(4){grid-column:2;grid-row:1}
- .rp-tab td:nth-child(2),.rp-tab td:nth-child(3){grid-column:1/-1}
- .rp-tab input[data-f="label"]{font-weight:700}
-}
+
+/* Qui apporte quoi : tableau façon tableur */
+.rp-modeles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:6px 0 16px}
+.rp-modeles button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:2px solid var(--ligne);border-radius:14px;background:#fff}
+.rp-modeles button b{font-size:16px}
+.rp-modeles button span{font-size:13px;color:var(--gris)}
+.rp-modeles button[aria-checked="true"]{border-color:var(--pin2);background:#eef6f2;box-shadow:0 0 0 2px var(--pin2) inset}
+.rp-modeles button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+#rp-go{margin-top:14px}
+.rp-barre{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--papier);padding:10px 0;margin-bottom:6px}
+.rp-barre #rp-share{width:auto;flex:1 1 220px;font-size:17px;padding:13px 18px}
+.rp-barre .act{display:flex;gap:8px}
+#rp-share.pulse{animation:rp-pulse 1.2s ease-in-out 4}
+@keyframes rp-pulse{50%{box-shadow:0 0 0 8px rgba(179,38,58,.25)}}
+@media (prefers-reduced-motion:reduce){#rp-share.pulse{animation:none}}
+.rp-feuille{padding:16px 14px}
+.rp-titre{width:100%;font:800 26px/1.15 "Bricolage Grotesque",sans-serif;border:2px solid transparent;border-radius:10px;padding:4px 6px;margin:0 0 6px;background:transparent}
+.rp-titre:hover{border-color:var(--ligne)}.rp-titre:focus{border-color:var(--pin2);background:#fff}
+.rp-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 10px}
+.rp-meta label{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--gris);margin:0;font-weight:700}
+.rp-meta input{padding:7px 9px;font-size:15px;border-radius:8px;width:auto;max-width:170px}
+.rp-meta .rp-moi input{border-color:var(--or)}
+#rp-moi.attention{outline:3px solid var(--baie)}
+.rp-etat{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--gris);margin:0 0 8px}
+.rp-etat b{color:var(--encre);font-size:16px}
+#rp-maj.ok{color:#1d6b4f;font-weight:700}
+.rp-scroll{overflow-x:auto;margin:0 -14px;padding:0 14px}
+.rp-grille{width:100%;min-width:320px;border-collapse:collapse;table-layout:fixed;font-size:15px}
+.rp-grille .c-quoi{width:40%}.rp-grille .c-qui{width:29%}.rp-grille .c-note{width:23%}.rp-grille .c-x{width:34px}
+.rp-grille thead th{position:sticky;top:0;background:#123d34;color:#fff;font-size:13px;text-align:left;padding:8px 6px;font-weight:700}
+.rp-grille thead th:first-child{border-top-left-radius:8px}.rp-grille thead th:last-child{border-top-right-radius:8px}
+.rp-grille td{border:1px solid #dbe4e0;padding:0;background:#fff;position:relative}
+.rp-grille tr.cat th{background:#eef3f0;color:#123d34;text-align:left;padding:7px 8px;font-size:14px;border:1px solid #dbe4e0;letter-spacing:.01em}
+.rp-grille tr.cat th span{float:right;font-weight:400;color:var(--gris);font-size:13px}
+.rp-grille input{display:block;width:100%;border:0;border-radius:0;background:transparent;padding:11px 7px;font-size:15px;line-height:1.2;min-height:44px}
+.rp-grille input:focus{outline:2px solid #1f6b4f;outline-offset:-2px;background:#fffef5}
+.rp-grille [data-f="label"]{font-weight:700}
+.rp-grille tr[data-pris] td.qui{background:#e3f2eb}
+.rp-grille tr[data-pris] td.qui input{color:#1d6b4f;font-weight:700}
+.rp-grille td.qui input{padding-right:44px}
+.rp-grille td.qui .moi{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:1px solid #b7dcc9;background:#eef6f2;color:#1d6b4f;font:700 12px system-ui,sans-serif;border-radius:999px;padding:5px 8px;cursor:pointer}
+.rp-grille tr.fantome [data-f="label"]{font-weight:400}
+.rp-grille tr.fantome [data-f="label"]::placeholder{color:#1f6b4f;font-weight:700}
+.rp-grille tr.fantome td{background:#fbfcfb}
+.rp-grille td.x{text-align:center}
+.rp-grille .del{border:0;background:none;color:#9aa7a2;font-size:20px;cursor:pointer;padding:6px 0;width:100%}
+.rp-grille .del:hover{color:var(--baie)}
+.rp-grille .del.sur{font-size:11px;color:var(--baie);font-weight:700}
+.rp-feuille .rp-ajout{margin-top:14px}
+body.rp-mode-tab .hero p,body.rp-mode-tab .hero .chips{display:none}
+body.rp-mode-tab .hero h1{margin-bottom:0}
+@media(max-width:480px){.rp-titre{font-size:22px}.rp-grille{font-size:14px}.rp-grille input{padding:10px 5px;font-size:14px}.rp-grille td.qui input{padding-right:40px}.rp-meta input{max-width:130px}}
 
 .vid{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#123d34;margin:10px 0 6px}
 .vid button{all:unset;cursor:pointer;display:block;width:100%;height:100%;position:relative}
@@ -197,53 +231,59 @@ footer .amz{color:#b9cdc5}
 </head>
 <body>
 <nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><span class="nav-d"><a class="nav-l" href="/qui-apporte-quoi/">Qui apporte quoi</a><a class="cta" href="/#outil">Faire un tirage</a></span></div></nav><header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
-<h1 id="rp-h1">Qui apporte quoi ? La liste du repas à partager</h1>
-<p id="rp-intro">Créez la liste du repas en 1 minute, partagez le lien dans le groupe, et chacun coche ce qu'il apporte. Fini les trois bûches et zéro pain. Gratuit, sans compte.</p>
-<div class="chips"><span>1 minute</span><span>Sans compte</span><span>Un seul lien pour tous</span><span>Mis à jour en direct</span></div>
+<h1 id="rp-h1">Qui apporte quoi ? Le tableau du repas à partager</h1>
+<p id="rp-intro">Un tableau en ligne que tout le monde remplit : ce qu'il faut, qui l'apporte, une note. Un lien à envoyer dans le groupe, et c'est réglé. Gratuit, sans compte.</p>
+<div class="chips"><span>Prêt en 1 clic</span><span>Sans compte</span><span>Un seul lien pour tous</span><span>Mis à jour en direct</span></div>
 </div></header>
 <main class="wrap" id="outil">
 
 <div id="rp-creer">
-<section class="carte cache" id="rp-mes">
-<h2>Vos listes</h2>
-<p class="sous">Les listes que vous avez créées ou ouvertes sur cet appareil.</p>
-<ul class="mes" id="rp-mes-l"></ul>
-</section>
 <section class="carte">
-<h2>1. Le repas</h2>
+<h2>Quel repas ?</h2>
+<p class="sous">Choisissez un modèle : le tableau est prêt tout de suite, vous le modifiez ensuite comme vous voulez.</p>
+<div class="rp-modeles" id="rp-modeles" role="radiogroup" aria-label="Modèle de tableau">
+<button type="button" role="radio" data-m="noel" aria-checked="true"><b>🎄 Repas de Noël</b><span>Apéro, entrée, plat, bûche, boissons</span></button>
+<button type="button" role="radio" data-m="nouvelan" aria-checked="false"><b>🥂 Nouvel An</b><span>Apéro, plat, dessert, champagne, fête</span></button>
+<button type="button" role="radio" data-m="anniv" aria-checked="false"><b>🎂 Anniversaire</b><span>Salé, gâteau, boissons, déco</span></button>
+<button type="button" role="radio" data-m="pique" aria-checked="false"><b>🧺 Pique-nique, barbecue</b><span>Salé, grillades, boissons, matériel</span></button>
+<button type="button" role="radio" data-m="auberge" aria-checked="false"><b>🍲 Auberge espagnole</b><span>Chacun apporte un plat</span></button>
+<button type="button" role="radio" data-m="vide" aria-checked="false"><b>📝 Tableau vide</b><span>Vous remplissez tout</span></button>
+</div>
 <label for="rp-titre">Nom du repas</label>
 <input id="rp-titre" value="Repas de Noël en famille">
-<div class="ligne">
-<div><label for="rp-date">Date</label><input id="rp-date" type="date" value="2026-12-25"></div>
-<div><label for="rp-lieu">Lieu (facultatif)</label><input id="rp-lieu" placeholder="Chez Mamie"></div>
-</div>
-<label for="rp-modele">Modèle de liste</label>
-<select id="rp-modele"><option value="noel">Repas de Noël</option><option value="nouvelan">Réveillon du Nouvel An</option><option value="anniv">Anniversaire</option><option value="pique">Pique-nique ou barbecue</option><option value="auberge">Auberge espagnole</option><option value="vide">Liste vide</option></select>
-</section>
-<section class="carte">
-<h2>2. Ce qu'il faut apporter</h2>
-<p class="sous">Modifiez, supprimez ou ajoutez des lignes. Les invités pourront aussi en ajouter.</p>
-<div id="rp-cats"></div>
-</section>
-<button class="btn p" id="rp-go">Créer la liste et la partager</button>
+<button class="btn p" id="rp-go">Créer mon tableau</button>
 <p class="err" id="rp-err" role="alert"></p>
+</section>
+<section class="carte cache" id="rp-mes">
+<h2>Vos tableaux</h2>
+<p class="sous">Ceux que vous avez créés ou ouverts sur cet appareil.</p>
+<ul class="mes" id="rp-mes-l"></ul>
+</section>
 </div>
 
 <div id="rp-vue" class="cache">
-<section class="carte">
-<div class="rp-tete"><div><h2 id="rp-v-titre"></h2><p class="sous" id="rp-v-info"></p></div><div class="rp-compte" id="rp-compte"></div></div>
-<div class="rp-partage">
-<p><b>Partagez ce lien avec les invités</b> : chacun pourra cocher ce qu'il apporte.</p>
+<section class="rp-barre" aria-label="Partager le tableau">
+<button class="btn p" id="rp-share">Partager le tableau</button>
 <div class="act"><a class="btn s petit" id="rp-wa" target="_blank" rel="noopener">WhatsApp</a><button class="btn s petit" id="rp-copie">Copier le lien</button></div>
+</section>
+<section class="carte rp-feuille">
+<input id="rp-v-titre" class="rp-titre" aria-label="Nom du repas" maxlength="80">
+<div class="rp-meta">
+<label>Date <input id="rp-v-date" type="date"></label>
+<label>Lieu <input id="rp-v-lieu" placeholder="Chez qui ?" maxlength="80"></label>
+<label class="rp-moi">Vous êtes <input id="rp-moi" placeholder="Votre prénom" autocomplete="given-name" maxlength="30"></label>
 </div>
-<details class="rp-mail"><summary>Recevoir le lien par e-mail pour retrouver la liste</summary>
+<div class="rp-etat"><span id="rp-compte"></span><span id="rp-maj" role="status">Tout le monde voit et modifie ce tableau.</span></div>
+<div class="rp-scroll"><table class="rp-grille" id="rp-grille">
+<colgroup><col class="c-quoi"><col class="c-qui"><col class="c-note"><col class="c-x"></colgroup>
+<thead><tr><th>Quoi</th><th>Qui</th><th>Note</th><th><span class="sr">Supprimer</span></th></tr></thead>
+<tbody id="rp-corps"></tbody>
+</table></div>
+<div class="rp-ajout"><input id="rp-ncat" placeholder="Nouvelle catégorie (ex. Fromages)" aria-label="Nouvelle catégorie" maxlength="30"><button class="btn s petit" id="rp-ncat-ok">Ajouter</button></div>
+<details class="rp-mail"><summary>Recevoir le lien par e-mail pour retrouver le tableau</summary>
 <div class="rp-ajout"><input id="rp-mail" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr" aria-label="Votre e-mail"><button class="btn s petit" id="rp-mail-ok">Envoyer</button></div>
 <p class="note" id="rp-mail-msg" role="status"></p></details>
-<label for="rp-moi">Votre prénom</label>
-<input id="rp-moi" placeholder="Pour cocher ce que vous apportez" autocomplete="given-name">
 </section>
-<div id="rp-liste"></div>
-<p class="note" id="rp-maj" style="text-align:center"></p>
 </div>
 
 <section class="carte"><h2>Organiser un repas où chacun apporte quelque chose</h2><p>Le repas de Noël en famille, le réveillon entre amis ou l'auberge espagnole du bureau ont tous le même piège : sans liste, on se retrouve avec trois desserts et pas de pain. Une liste partagée règle le problème en quelques minutes.</p><ol><li><strong>Créez la liste</strong> à partir d'un modèle (Noël, Nouvel An, anniversaire, pique-nique) et ajustez les lignes.</li><li><strong>Partagez le lien</strong> dans le groupe WhatsApp ou par SMS.</li><li><strong>Chacun choisit</strong> ce qu'il apporte avec son prénom. La liste se met à jour pour tout le monde.</li></ol><p>Astuce : laissez les plats principaux à ceux qui reçoivent ou qui aiment cuisiner, et proposez les boissons, le pain et les fromages à ceux qui viennent de loin.</p></section><section class="carte"><h2>Questions fréquentes</h2><h3>Faut-il créer un compte ?</h3><p>Non. Vous créez la liste, vous partagez le lien, et chaque invité choisit ce qu&#x27;il apporte avec son prénom. Aucun compte, aucun mot de passe.</p><h3>Comment les invités reçoivent-ils la liste ?</h3><p>Par un simple lien, à envoyer dans le groupe WhatsApp de la famille ou par SMS. Tout le monde voit la même liste, mise à jour en direct.</p><h3>Peut-on ajouter des choses après coup ?</h3><p>Oui. Chaque invité peut ajouter une ligne dans une catégorie, ou libérer ce qu&#x27;il avait pris s&#x27;il change d&#x27;avis.</p><h3>C&#x27;est seulement pour Noël ?</h3><p>Non : réveillon du Nouvel An, anniversaire, pique-nique, barbecue ou auberge espagnole. Choisissez un modèle ou partez d&#x27;une liste vide.</p></section>
@@ -269,103 +309,144 @@ var MODELES={
  auberge:{t:"Auberge espagnole",d:"",c:[["Salé",["Plat salé","Plat salé","Salade"]],["Sucré",["Dessert","Dessert"]],["Boissons",["Boissons","Boissons"]],["Divers",["Pain","Vaisselle jetable"]]]},
  vide:{t:"Notre repas",d:"",c:[["Entrée",[]],["Plat",[]],["Dessert",[]],["Boissons",[]]]}
 };
-var cats=[];
-function modele(k){var m=MODELES[k];cats=m.c.map(function(x){return {nom:x[0],items:x[1].slice()}});rendreCats()}
-function rendreCats(){
-  var w=$("rp-cats");w.innerHTML="";
-  cats.forEach(function(c,ci){
-    var d=document.createElement("div");d.className="rp-cat";
-    d.innerHTML='<h3>'+esc(c.nom)+'</h3>'+c.items.map(function(it,ii){return '<div class="pers"><input class="nom" aria-label="'+esc(c.nom)+' '+(ii+1)+'" value="'+esc(it)+'" data-i="'+ii+'"><button class="x" aria-label="Retirer" data-i="'+ii+'">×</button></div>'}).join("")+'<button class="btn s petit ajout">Ajouter une ligne</button>';
-    d.querySelectorAll("input").forEach(function(inp){inp.oninput=function(){c.items[+inp.dataset.i]=inp.value}});
-    d.querySelectorAll("button.x").forEach(function(b){b.onclick=function(){c.items.splice(+b.dataset.i,1);rendreCats()}});
-    d.querySelector(".ajout").onclick=function(){c.items.push("");rendreCats();var ins=w.querySelectorAll(".rp-cat")[ci].querySelectorAll("input");ins[ins.length-1].focus()};
-    w.appendChild(d);
-  });
-}
-$("rp-modele").onchange=function(){var m=MODELES[this.value];$("rp-titre").value=m.t;if(m.d)$("rp-date").value=m.d;modele(this.value)};
+var choix="noel";
+var boutonsM=document.querySelectorAll("#rp-modeles button");
+boutonsM.forEach(function(b){b.onclick=function(){choix=b.dataset.m;boutonsM.forEach(function(x){x.setAttribute("aria-checked",x===b?"true":"false")});$("rp-titre").value=MODELES[choix].t}});
+
 $("rp-go").onclick=function(){
-  var bt=this,items=[];
-  cats.forEach(function(c){c.items.forEach(function(it){if(it.trim())items.push({cat:c.nom,label:it.trim()})})});
-  if(!items.length){$("rp-err").textContent="Ajoutez au moins une chose à apporter.";return}
+  var bt=this,m=MODELES[choix],items=[];
+  m.c.forEach(function(c){c[1].forEach(function(it){items.push({cat:c[0],label:it})})});
   bt.disabled=true;bt.textContent="Création...";
-  post({action:"liste_creer",titre:$("rp-titre").value,date:$("rp-date").value,lieu:$("rp-lieu").value,items:items}).then(function(j){
-    bt.disabled=false;bt.textContent="Créer la liste et la partager";
-    if(j.ok){hit("liste",$("rp-modele").value);memo(j.liste.id,j.liste.titre);location.hash="l="+j.liste.id;}
-    else $("rp-err").textContent=j._s===429?"Trop de listes créées depuis votre connexion. Réessayez dans une heure.":"La création n'a pas marché. Réessayez.";
-  }).catch(function(){bt.disabled=false;bt.textContent="Créer la liste et la partager";$("rp-err").textContent="Pas de connexion. Réessayez."});
+  var fin=function(){bt.disabled=false;bt.textContent="Créer mon tableau"};
+  post({action:"liste_creer",titre:$("rp-titre").value,date:m.d,lieu:"",items:items}).then(function(j){
+    if(!j.ok){fin();$("rp-err").textContent=j._s===429?"Trop de tableaux créés depuis votre connexion. Réessayez dans une heure.":"La création n'a pas marché. Réessayez.";return}
+    var lid=j.liste.id,suite=Promise.resolve();
+    if(!items.length)m.c.forEach(function(c){suite=suite.then(function(){return post({id:lid,action:"liste_ajouter",cat:c[0],label:""})})});
+    suite.then(function(){fin();hit("liste",choix);memo(lid,j.liste.titre);nouveau=true;location.hash="l="+lid});
+  }).catch(function(){fin();$("rp-err").textContent="Pas de connexion. Réessayez."});
 };
 
-var L=null,id=null,minuteur=null,force=true,enregistre=null;
-function confirmerSuppr(tr){if(tr.dataset.sur){return true}tr.dataset.sur="1";var b=tr.querySelector("[data-del]");b.textContent="Sûr ?";b.classList.add("sur");setTimeout(function(){delete tr.dataset.sur;b.textContent="×";b.classList.remove("sur")},2500);return false}
-var dernierEnvoi={};
-function sauver(iid,f,v){var k=iid+"|"+f;if(dernierEnvoi[k]===v)return;dernierEnvoi[k]=v;var o={action:"liste_maj",id:id,item:iid};o[f]=v;$("rp-maj").textContent="Enregistrement...";
-  post(o).then(function(j){if(j.ok){L=j.liste;clearTimeout(enregistre);$("rp-maj").textContent="Enregistré pour tout le monde à "+new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})+".";hit("liste_maj",f)}else $("rp-maj").textContent="Pas enregistré, réessayez."}).catch(function(){$("rp-maj").textContent="Pas de connexion : la modification n'est pas enregistrée."})}
+var L=null,id=null,minuteur=null,nouveau=false,dernierEnvoi={},attente={};
+function moi(){return $("rp-moi").value.trim()}
+try{$("rp-moi").value=localStorage.getItem("qoaq_prenom")||""}catch(e){}
+$("rp-moi").addEventListener("input",function(){try{localStorage.setItem("qoaq_prenom",moi())}catch(e){}majMoi()});
+function etat(t,ok){var e=$("rp-maj");e.textContent=t;e.className=ok?"ok":""}
+function heure(){return new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})}
+function compte(){if(!L)return;var v=L.items.filter(function(i){return (i.label||"").trim()}),p=v.filter(function(i){return i.qui}).length;$("rp-compte").innerHTML="<b>"+p+"/"+v.length+"</b> déjà pris";
+  document.querySelectorAll("#rp-corps tr.cat").forEach(function(r){var c=r.dataset.c,a=v.filter(function(i){return i.cat===c});var sp=r.querySelector("span");if(sp)sp.textContent=a.filter(function(i){return i.qui}).length+"/"+a.length})}
+function sauver(iid,f,v){var k=iid+"|"+f;if(dernierEnvoi[k]===v)return;dernierEnvoi[k]=v;var o={action:"liste_maj",id:id,item:iid};o[f]=v;etat("Enregistrement...");
+  post(o).then(function(j){if(j.ok){L=j.liste;compte();etat("✓ Enregistré pour tout le monde à "+heure(),true);hit("liste_maj",f)}else{delete dernierEnvoi[k];etat("Pas enregistré, réessayez.")}}).catch(function(){delete dernierEnvoi[k];etat("Pas de connexion : la modification n'est pas enregistrée.")})}
+
+function ligne(i,cat){
+  var vide=!(i&&i.qui);
+  return '<tr'+(i?' data-id="'+i.id+'"':' class="fantome"')+' data-cat="'+esc(cat)+'"'+(i&&i.qui?' data-pris="1"':'')+'>'
+   +'<td><input data-f="label" value="'+esc(i?i.label:"")+'" placeholder="'+(i?"Quoi ?":"+ Ajouter")+'" aria-label="Quoi ('+esc(cat)+')" maxlength="60"></td>'
+   +'<td class="qui"><input data-f="qui" value="'+esc(i?i.qui||"":"")+'" placeholder="Qui ?" aria-label="Qui l\'apporte" maxlength="30"><button type="button" class="moi'+(vide&&i?'':' cache')+'" tabindex="-1">Moi</button></td>'
+   +'<td><input data-f="note" value="'+esc(i?i.note||"":"")+'" placeholder="…" aria-label="Note" maxlength="80"></td>'
+   +'<td class="x">'+(i?'<button type="button" class="del" aria-label="Supprimer la ligne">×</button>':'')+'</td></tr>';
+}
+function rendre(forcer){
+  if(!L)return;
+  memo(id,L.titre);
+  var g=$("rp-grille");
+  if(!forcer&&document.activeElement&&g.contains(document.activeElement)){compte();return}
+  if(document.activeElement!==$("rp-v-titre"))$("rp-v-titre").value=L.titre;
+  if(document.activeElement!==$("rp-v-date"))$("rp-v-date").value=L.date_ev||"";
+  if(document.activeElement!==$("rp-v-lieu"))$("rp-v-lieu").value=L.lieu||"";
+  document.title=L.titre+" : qui apporte quoi ?";
+  var ordre=[],par={};
+  L.items.forEach(function(i){if(!par[i.cat]){par[i.cat]=[];ordre.push(i.cat)}par[i.cat].push(i)});
+  var h="";
+  ordre.forEach(function(cat){
+    var its=par[cat],pl=its.filter(function(i){return (i.label||"").trim()}),pr=pl.filter(function(i){return i.qui}).length;
+    h+='<tr class="cat" data-c="'+esc(cat)+'"><th colspan="4">'+esc(cat)+'<span>'+pr+'/'+pl.length+'</span></th></tr>';
+    its.forEach(function(i){h+=ligne(i,cat)});
+    if(!its.some(function(i){return !(i.label||"").trim()}))h+=ligne(null,cat);
+  });
+  $("rp-corps").innerHTML=h;
+  majMoi();compte();
+  var url=lien();
+  $("rp-wa").href="https://wa.me/?text="+encodeURIComponent(texte()+" "+url);
+}
+function lien(){return location.origin+location.pathname+"#l="+id}
+function texte(){return "Pour « "+(L?L.titre:"notre repas")+" », notez ce que vous apportez dans le tableau :"}
+function majMoi(){var m=moi();document.querySelectorAll("#rp-corps .moi").forEach(function(b){b.textContent=m?"Moi":"Moi ?"})}
+
+// Saisie façon tableur : enregistrement automatique, ligne fantôme qui devient une vraie ligne
+var corps=$("rp-corps"),minut={};
+corps.addEventListener("input",function(e){
+  var inp=e.target;if(!inp.dataset.f)return;var tr=inp.closest("tr");
+  if(inp.dataset.f==="qui"){tr.querySelector(".moi").classList.toggle("cache",!!inp.value.trim());tr.toggleAttribute("data-pris",!!inp.value.trim())}
+  if(tr.dataset.id){var k=tr.dataset.id+"|"+inp.dataset.f;clearTimeout(minut[k]);minut[k]=setTimeout(function(){sauver(+tr.dataset.id,inp.dataset.f,inp.value)},600)}
+  else if(!tr.dataset.cree)creer(tr);
+});
+corps.addEventListener("focusout",function(e){var inp=e.target,tr=inp.closest&&inp.closest("tr");if(!tr||!inp.dataset.f||!tr.dataset.id)return;var k=tr.dataset.id+"|"+inp.dataset.f;clearTimeout(minut[k]);sauver(+tr.dataset.id,inp.dataset.f,inp.value)});
+function val(tr,f){return tr.querySelector('[data-f="'+f+'"]').value}
+function creer(tr){
+  tr.dataset.cree="1";tr.classList.remove("fantome");var cat=tr.dataset.cat;etat("Enregistrement...");
+  var envoye={label:val(tr,"label"),qui:val(tr,"qui"),note:val(tr,"note")};
+  post({id:id,action:"liste_ajouter",cat:cat,label:envoye.label,qui:envoye.qui,note:envoye.note}).then(function(j){
+    if(!j.ok){delete tr.dataset.cree;tr.classList.add("fantome");etat(j.raison==="plein"?"Le tableau est plein (150 lignes).":"Pas enregistré, réessayez.");return}
+    L=j.liste;var mx=0;L.items.forEach(function(i){if(i.cat===cat&&i.id>mx)mx=i.id});
+    tr.dataset.id=mx;["label","qui","note"].forEach(function(f){dernierEnvoi[mx+"|"+f]=envoye[f];if(val(tr,f)!==envoye[f])sauver(mx,f,val(tr,f))});
+    tr.querySelector("td.x").innerHTML='<button type="button" class="del" aria-label="Supprimer la ligne">×</button>';
+    tr.querySelector('[data-f="label"]').placeholder="Quoi ?";tr.querySelector(".moi").classList.toggle("cache",!!val(tr,"qui").trim());
+    var t=document.createElement("tbody");t.innerHTML=ligne(null,cat);tr.after(t.firstChild);majMoi();
+    compte();etat("✓ Enregistré pour tout le monde à "+heure(),true);hit("liste_maj","ajout");
+  }).catch(function(){delete tr.dataset.cree;tr.classList.add("fantome");etat("Pas de connexion : la ligne n'est pas enregistrée.")});
+}
+corps.addEventListener("click",function(e){
+  var b=e.target;
+  if(b.classList.contains("moi")){var tr=b.closest("tr"),m=moi();if(!m){var p=$("rp-moi");p.focus();p.classList.add("attention");setTimeout(function(){p.classList.remove("attention")},1500);return}
+    var q=tr.querySelector('[data-f="qui"]');q.value=m;q.dispatchEvent(new Event("input",{bubbles:true}));if(tr.dataset.id)sauver(+tr.dataset.id,"qui",m);return}
+  if(b.classList.contains("del")){var r=b.closest("tr");
+    if(val(r,"label").trim()&&!r.dataset.sur){r.dataset.sur="1";b.textContent="Sûr ?";b.classList.add("sur");setTimeout(function(){delete r.dataset.sur;b.textContent="×";b.classList.remove("sur")},2500);return}
+    post({id:id,action:"liste_suppr",item:+r.dataset.id}).then(function(j){if(j.ok){L=j.liste;rendre(true);etat("✓ Ligne supprimée à "+heure(),true)}})}
+});
+// Entrée : passer à la ligne du dessous, même colonne
+corps.addEventListener("keydown",function(e){
+  if(e.key!=="Enter"||!e.target.dataset.f)return;e.preventDefault();
+  var f=e.target.dataset.f,tr=e.target.closest("tr"),n=tr.nextElementSibling;
+  while(n&&n.classList.contains("cat"))n=n.nextElementSibling;
+  if(n)n.querySelector('[data-f="'+f+'"]').focus();else e.target.blur();
+});
+
+// Titre, date, lieu
+var tInfo=null;
+function info(){clearTimeout(tInfo);tInfo=setTimeout(function(){etat("Enregistrement...");post({id:id,action:"liste_info",titre:$("rp-v-titre").value,date:$("rp-v-date").value,lieu:$("rp-v-lieu").value}).then(function(j){if(j.ok){L=j.liste;memo(id,L.titre);document.title=L.titre+" : qui apporte quoi ?";$("rp-wa").href="https://wa.me/?text="+encodeURIComponent(texte()+" "+lien());etat("✓ Enregistré pour tout le monde à "+heure(),true)}})},700)}
+["rp-v-titre","rp-v-date","rp-v-lieu"].forEach(function(k){$(k).addEventListener("input",info)});
+$("rp-ncat-ok").onclick=function(){var v=$("rp-ncat").value.trim();if(!v)return;post({id:id,action:"liste_ajouter",cat:v,label:""}).then(function(j){if(j.ok){L=j.liste;$("rp-ncat").value="";rendre(true);var r=corps.querySelectorAll('tr[data-cat="'+v.replace(/"/g,'\\"')+'"] [data-f="label"]');r.length&&r[0].focus()}})};
+
+// Partage
+$("rp-share").onclick=function(){
+  var u=lien();
+  if(navigator.share){navigator.share({title:L?L.titre:"Qui apporte quoi ?",text:texte(),url:u}).then(function(){hit("partage","liste-natif")}).catch(function(){})}
+  else{window.open($("rp-wa").href,"_blank","noopener");hit("partage","liste-whatsapp")}
+};
+$("rp-copie").onclick=function(){var b=this;try{navigator.clipboard.writeText(lien()).then(function(){b.textContent="Lien copié ✓";hit("partage","liste");setTimeout(function(){b.textContent="Copier le lien"},2500)})}catch(e){}};
+$("rp-wa").addEventListener("click",function(){hit("partage","liste-whatsapp")});
+
 function mesListes(){var M=[];try{M=JSON.parse(localStorage.getItem("qoaq_listes")||"[]")}catch(e){}return M}
 function memo(i,t){var M=mesListes().filter(function(x){return x.id!==i});M.unshift({id:i,t:t,ts:Date.now()});try{localStorage.setItem("qoaq_listes",JSON.stringify(M.slice(0,12)))}catch(e){}}
 function rendreMes(){
   var M=mesListes(),c=$("rp-mes");if(!M.length){c.classList.add("cache");return}
   c.classList.remove("cache");var ul=$("rp-mes-l");ul.innerHTML="";
   M.forEach(function(x,k){var li=document.createElement("li");
-    li.innerHTML='<span><b>'+esc(x.t||"Liste")+'</b>'+(x.ts?'<small>ouverte le '+new Date(x.ts).toLocaleDateString("fr-FR",{day:"numeric",month:"long"})+'</small>':'')+'</span><span class="act"><a class="btn s petit" href="#l='+esc(x.id)+'">Suivre</a><button class="x" aria-label="Oublier cette liste">×</button></span>';
+    li.innerHTML='<span><b>'+esc(x.t||"Tableau")+'</b>'+(x.ts?'<small>ouvert le '+new Date(x.ts).toLocaleDateString("fr-FR",{day:"numeric",month:"long"})+'</small>':'')+'</span><span class="act"><a class="btn s petit" href="#l='+esc(x.id)+'">Ouvrir</a><button class="x" aria-label="Oublier ce tableau">×</button></span>';
     li.querySelector("button").onclick=function(){var M2=mesListes();M2.splice(k,1);try{localStorage.setItem("qoaq_listes",JSON.stringify(M2))}catch(e){}rendreMes()};
     ul.appendChild(li)});
 }
-function moi(){return $("rp-moi").value.trim()}
-try{$("rp-moi").value=localStorage.getItem("qoaq_prenom")||""}catch(e){}
-$("rp-moi").oninput=function(){try{localStorage.setItem("qoaq_prenom",moi())}catch(e){}};
-function act(o,el){
-  if(el){el.disabled=true}
-  return post(Object.assign({id:id},o)).then(function(j){if(j.ok){L=j.liste;force=true;rendre();hit("liste_maj",o.action)}else if(el){el.disabled=false}}).catch(function(){if(el)el.disabled=false});
-}
-function rendre(){
-  memo(id,L.titre);
-  $("rp-v-titre").textContent=L.titre;
-  var dt=L.date_ev?new Date(L.date_ev+"T12:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"}):"";
-  $("rp-v-info").textContent=[dt,L.lieu].filter(Boolean).join(", ");
-  document.title=L.titre+" : qui apporte quoi ?";
-  var pris=L.items.filter(function(i){return i.qui}).length;
-  $("rp-compte").innerHTML='<b>'+pris+'/'+L.items.length+'</b><span>pris</span>';
-  var ordre=[],par={};
-  L.items.forEach(function(i){if(!par[i.cat]){par[i.cat]=[];ordre.push(i.cat)}par[i.cat].push(i)});
-  if(!ordre.length)ordre=["Entrée","Plat","Dessert","Boissons"];
-  var w=$("rp-liste"),actif=document.activeElement&&w.contains(document.activeElement)?document.activeElement:null;
-  if(actif&&!force)return; force=false;
-  w.innerHTML="";
-  ordre.forEach(function(cat){
-    var s=document.createElement("section");s.className="carte rp-bloc";
-    s.innerHTML='<h2>'+esc(cat)+'</h2><table class="rp-tab"><thead><tr><th>Quoi</th><th>Qui l\'apporte</th><th>Note</th><th><span class="sr">Supprimer</span></th></tr></thead><tbody>'+(par[cat]||[]).map(function(i){
-      return '<tr data-id="'+i.id+'" class="'+(i.qui?"pris":"")+'"><td><input data-f="label" value="'+esc(i.label)+'" placeholder="Ex. bûche" aria-label="Quoi"></td><td><input data-f="qui" value="'+esc(i.qui||"")+'" placeholder="Personne" aria-label="Qui l\'apporte"><button class="btn s mini" data-moi>Moi</button></td><td><input data-f="note" value="'+esc(i.note||"")+'" placeholder="Quantité, détail" aria-label="Note"></td><td><button class="x" data-del aria-label="Supprimer la ligne">×</button></td></tr>'}).join("")+'</tbody></table><button class="btn s petit rp-plus">Ajouter une ligne</button>';
-    s.querySelectorAll("tr[data-id]").forEach(function(tr){
-      var iid=+tr.dataset.id,t=null;
-      tr.querySelectorAll("input").forEach(function(inp){
-        inp.addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){sauver(iid,inp.dataset.f,inp.value)},700);if(inp.dataset.f==="qui")tr.classList.toggle("pris",!!inp.value.trim())});
-        inp.addEventListener("blur",function(){clearTimeout(t);sauver(iid,inp.dataset.f,inp.value)});
-      });
-      tr.querySelector("[data-moi]").onclick=function(){var m=moi();if(!m){$("rp-moi").focus();$("rp-moi").classList.add("attention");setTimeout(function(){$("rp-moi").classList.remove("attention")},1500);return}var q=tr.querySelector('[data-f="qui"]');q.value=m;tr.classList.add("pris");sauver(iid,"qui",m)};
-      tr.querySelector("[data-del]").onclick=function(){if(tr.querySelector('[data-f="label"]').value.trim()&&!confirmerSuppr(tr))return;force=true;act({action:"liste_suppr",item:iid})};
-    });
-    s.querySelector(".rp-plus").onclick=function(){force=true;post({id:id,action:"liste_ajouter",cat:cat,label:""}).then(function(j){if(j.ok){L=j.liste;force=true;rendre();var rows=w.querySelectorAll(".rp-bloc")[ordre.indexOf(cat)].querySelectorAll('tbody tr');var last=rows[rows.length-1];last&&last.querySelector("input").focus()}})};
-    w.appendChild(s);
-  });
-  var nc=document.createElement("div");nc.className="rp-ajout";nc.innerHTML='<input placeholder="Nouvelle catégorie (ex. Fromages)" aria-label="Nouvelle catégorie"><button class="btn s petit">Ajouter la catégorie</button>';
-  nc.querySelector("button").onclick=function(){var v=nc.querySelector("input").value.trim();if(!v)return;force=true;act({action:"liste_ajouter",cat:v,label:""})};
-  w.appendChild(nc);
-  var url=location.origin+location.pathname+"#l="+id;
-  $("rp-wa").href="https://wa.me/?text="+encodeURIComponent("Pour « "+L.titre+" », dites ce que vous apportez ici : "+url);
-  if(!/Enregistr/.test($("rp-maj").textContent))$("rp-maj").textContent="Tout le monde voit et modifie ce tableau. Il se met à jour tout seul.";
-}
-$("rp-copie").onclick=function(){var b=this;try{navigator.clipboard.writeText(location.origin+location.pathname+"#l="+id).then(function(){b.textContent="Lien copié";hit("partage","liste")})}catch(e){}};
-$("rp-wa").addEventListener("click",function(){hit("partage","liste-whatsapp")});
-function charger(f){post({action:"liste_lire",id:id}).then(function(j){if(j.ok){L=j.liste;if(f)force=true;rendre()}else{$("rp-vue").classList.add("cache");$("rp-creer").classList.remove("cache");$("rp-err").textContent="Cette liste n'existe pas ou a été supprimée. Créez-en une nouvelle."}}).catch(function(){})}
+function charger(f){post({action:"liste_lire",id:id}).then(function(j){if(j.ok){L=j.liste;rendre(f)}else if(j._s===404){$("rp-vue").classList.add("cache");$("rp-creer").classList.remove("cache");$("rp-err").textContent="Ce tableau n'existe pas ou a été supprimé. Créez-en un nouveau."}}).catch(function(){})}
 function route(){
   var m=location.hash.match(/l=([a-z0-9]{10})/),nm=location.hash.match(/[&]n=([^&]+)/);
   if(nm){try{var pn=decodeURIComponent(nm[1]).slice(0,30);$("rp-moi").value=pn;localStorage.setItem("qoaq_prenom",pn)}catch(e){}}
-  if(m){id=m[1];$("rp-creer").classList.add("cache");$("rp-vue").classList.remove("cache");$("rp-h1").textContent="Qui apporte quoi ?";$("rp-intro").textContent="Écrivez directement dans le tableau : ce qu'il faut, qui l'apporte, une note. Tout le monde voit les changements.";charger(true);
-    clearInterval(minuteur);minuteur=setInterval(function(){if(document.visibilityState==="visible")charger()},15000);window.scrollTo(0,0)}
-  else{id=null;clearInterval(minuteur);$("rp-creer").classList.remove("cache");$("rp-vue").classList.add("cache");$("rp-h1").textContent="Qui apporte quoi ? La liste du repas à partager";modele($("rp-modele").value);rendreMes()}
+  if(m){id=m[1];$("rp-creer").classList.add("cache");$("rp-vue").classList.remove("cache");$("rp-h1").textContent="Qui apporte quoi\u00a0?";document.body.classList.add("rp-mode-tab");charger(true);
+    clearInterval(minuteur);minuteur=setInterval(function(){if(document.visibilityState==="visible")charger()},8000);window.scrollTo(0,0);
+    if(nouveau){nouveau=false;var s=$("rp-share");s.classList.add("pulse");etat("✓ Tableau créé. Partagez-le avec le bouton ci-dessus.",true);setTimeout(function(){s.classList.remove("pulse")},6000)}}
+  else{id=null;clearInterval(minuteur);document.body.classList.remove("rp-mode-tab");$("rp-creer").classList.remove("cache");$("rp-vue").classList.add("cache");$("rp-h1").textContent="Qui apporte quoi\u00a0? Le tableau du repas à partager";rendreMes()}
 }
 $("rp-mail-ok").onclick=function(){var bt=this,v=$("rp-mail").value.trim(),m=$("rp-mail-msg");if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)){m.textContent="Cette adresse n'est pas valide.";return}
-  bt.disabled=true;post({action:"liste_mail",id:id,email:v}).then(function(x){bt.disabled=false;m.textContent=x.ok?"C'est envoyé. Gardez cet e-mail pour retrouver la liste.":x._s===429?"Trop de demandes, réessayez plus tard.":"L'envoi n'a pas marché, réessayez."}).catch(function(){bt.disabled=false;m.textContent="Pas de connexion."})};
+  bt.disabled=true;post({action:"liste_mail",id:id,email:v}).then(function(x){bt.disabled=false;m.textContent=x.ok?"C'est envoyé. Gardez cet e-mail pour retrouver le tableau.":x._s===429?"Trop de demandes, réessayez plus tard.":"L'envoi n'a pas marché, réessayez."}).catch(function(){bt.disabled=false;m.textContent="Pas de connexion."})};
 document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"&&id)charger()});
 window.addEventListener("hashchange",route);
 var IDEES=[["Nappe de fête","Pour une jolie table","nappe noel"],["Bougies de table","L'ambiance en un instant","bougies de table"],["Crackers de Noël","Pour rire à table","crackers de noel"],["Vaisselle jetable chic","Moins de vaisselle à faire","vaisselle jetable elegante"]];

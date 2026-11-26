@@ -108,22 +108,56 @@ input.attention{outline:3px solid var(--baie)}
 .viral .btn.p{width:auto;font-size:17px;padding:13px 22px}
 .viral-orga{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 0}
 .viral-orga p{margin:0}
-.rp-tab{width:100%;border-collapse:collapse;margin:4px 0 10px}
-.rp-tab th{text-align:left;font-size:13px;color:var(--gris);font-weight:700;padding:4px 4px 6px}
-.rp-tab td{padding:4px;vertical-align:middle;border-top:1px solid var(--ligne)}
-.rp-tab input{padding:9px 10px;border-radius:8px;font-size:16px}
-.rp-tab td:nth-child(2){display:flex;gap:6px;align-items:center}
-.rp-tab tr.pris td:nth-child(2) input{background:#e3f2eb;border-color:#b7dcc9;font-weight:700;color:#1d6b4f}
-.rp-tab .mini{padding:8px 10px;font-size:14px;flex:none}
-.rp-tab td:last-child{width:44px}
-.rp-tab .x.sur{width:auto;padding:0 8px;font-size:13px;color:var(--baie);border-color:var(--baie)}
 .sr{position:absolute;left:-9999px}
-@media(max-width:620px){
- .rp-tab thead{display:none}
- .rp-tab tr{display:grid;grid-template-columns:1fr 44px;gap:6px;padding:10px 0;border-top:1px solid var(--ligne)}
- .rp-tab td{border:0;padding:0}
- .rp-tab td:nth-child(1){grid-column:1}
- .rp-tab td:nth-child(4){grid-column:2;grid-row:1}
- .rp-tab td:nth-child(2),.rp-tab td:nth-child(3){grid-column:1/-1}
- .rp-tab input[data-f="label"]{font-weight:700}
-}
+
+/* Qui apporte quoi : tableau façon tableur */
+.rp-modeles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:6px 0 16px}
+.rp-modeles button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:2px solid var(--ligne);border-radius:14px;background:#fff}
+.rp-modeles button b{font-size:16px}
+.rp-modeles button span{font-size:13px;color:var(--gris)}
+.rp-modeles button[aria-checked="true"]{border-color:var(--pin2);background:#eef6f2;box-shadow:0 0 0 2px var(--pin2) inset}
+.rp-modeles button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+#rp-go{margin-top:14px}
+.rp-barre{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--papier);padding:10px 0;margin-bottom:6px}
+.rp-barre #rp-share{width:auto;flex:1 1 220px;font-size:17px;padding:13px 18px}
+.rp-barre .act{display:flex;gap:8px}
+#rp-share.pulse{animation:rp-pulse 1.2s ease-in-out 4}
+@keyframes rp-pulse{50%{box-shadow:0 0 0 8px rgba(179,38,58,.25)}}
+@media (prefers-reduced-motion:reduce){#rp-share.pulse{animation:none}}
+.rp-feuille{padding:16px 14px}
+.rp-titre{width:100%;font:800 26px/1.15 "Bricolage Grotesque",sans-serif;border:2px solid transparent;border-radius:10px;padding:4px 6px;margin:0 0 6px;background:transparent}
+.rp-titre:hover{border-color:var(--ligne)}.rp-titre:focus{border-color:var(--pin2);background:#fff}
+.rp-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 10px}
+.rp-meta label{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--gris);margin:0;font-weight:700}
+.rp-meta input{padding:7px 9px;font-size:15px;border-radius:8px;width:auto;max-width:170px}
+.rp-meta .rp-moi input{border-color:var(--or)}
+#rp-moi.attention{outline:3px solid var(--baie)}
+.rp-etat{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--gris);margin:0 0 8px}
+.rp-etat b{color:var(--encre);font-size:16px}
+#rp-maj.ok{color:#1d6b4f;font-weight:700}
+.rp-scroll{overflow-x:auto;margin:0 -14px;padding:0 14px}
+.rp-grille{width:100%;min-width:320px;border-collapse:collapse;table-layout:fixed;font-size:15px}
+.rp-grille .c-quoi{width:40%}.rp-grille .c-qui{width:29%}.rp-grille .c-note{width:23%}.rp-grille .c-x{width:34px}
+.rp-grille thead th{position:sticky;top:0;background:#123d34;color:#fff;font-size:13px;text-align:left;padding:8px 6px;font-weight:700}
+.rp-grille thead th:first-child{border-top-left-radius:8px}.rp-grille thead th:last-child{border-top-right-radius:8px}
+.rp-grille td{border:1px solid #dbe4e0;padding:0;background:#fff;position:relative}
+.rp-grille tr.cat th{background:#eef3f0;color:#123d34;text-align:left;padding:7px 8px;font-size:14px;border:1px solid #dbe4e0;letter-spacing:.01em}
+.rp-grille tr.cat th span{float:right;font-weight:400;color:var(--gris);font-size:13px}
+.rp-grille input{display:block;width:100%;border:0;border-radius:0;background:transparent;padding:11px 7px;font-size:15px;line-height:1.2;min-height:44px}
+.rp-grille input:focus{outline:2px solid #1f6b4f;outline-offset:-2px;background:#fffef5}
+.rp-grille [data-f="label"]{font-weight:700}
+.rp-grille tr[data-pris] td.qui{background:#e3f2eb}
+.rp-grille tr[data-pris] td.qui input{color:#1d6b4f;font-weight:700}
+.rp-grille td.qui input{padding-right:44px}
+.rp-grille td.qui .moi{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:1px solid #b7dcc9;background:#eef6f2;color:#1d6b4f;font:700 12px system-ui,sans-serif;border-radius:999px;padding:5px 8px;cursor:pointer}
+.rp-grille tr.fantome [data-f="label"]{font-weight:400}
+.rp-grille tr.fantome [data-f="label"]::placeholder{color:#1f6b4f;font-weight:700}
+.rp-grille tr.fantome td{background:#fbfcfb}
+.rp-grille td.x{text-align:center}
+.rp-grille .del{border:0;background:none;color:#9aa7a2;font-size:20px;cursor:pointer;padding:6px 0;width:100%}
+.rp-grille .del:hover{color:var(--baie)}
+.rp-grille .del.sur{font-size:11px;color:var(--baie);font-weight:700}
+.rp-feuille .rp-ajout{margin-top:14px}
+body.rp-mode-tab .hero p,body.rp-mode-tab .hero .chips{display:none}
+body.rp-mode-tab .hero h1{margin-bottom:0}
+@media(max-width:480px){.rp-titre{font-size:22px}.rp-grille{font-size:14px}.rp-grille input{padding:10px 5px;font-size:14px}.rp-grille td.qui input{padding-right:40px}.rp-meta input{max-width:130px}}
