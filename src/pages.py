@@ -6,11 +6,14 @@ def idee(titre, texte, kw):
     return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{{AMZ:{kw}}}" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div>'
 
 
-AZ = "https://www.awin1.com/cread.php?awinmid=115393&awinaffid=3158017"
-def idee_az(titre, texte, ued=""):
+def idee_awin(titre, texte, mid, marque, ued=""):
     from urllib.parse import quote
-    url = AZ + ("&ued=" + quote(ued, safe="") if ued else "")
-    return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{url}" rel="sponsored nofollow">Voir chez ANITA &amp; ZAHA</a></div>'
+    url = f"https://www.awin1.com/cread.php?awinmid={mid}&awinaffid=3158017" + ("&ued=" + quote(ued, safe="") if ued else "")
+    return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{url}" rel="sponsored nofollow">Voir chez {marque}</a></div>'
+def idee_az(titre, texte, ued=""):
+    return idee_awin(titre, texte, 115393, "ANITA &amp; ZAHA", ued)
+def idee_bdl(titre, texte, ued=""):
+    return idee_awin(titre, texte, 128881, "Bonheur de Lune", ued)
 
 PAGES = [
 {
@@ -71,7 +74,7 @@ PAGES = [
 </div>
 <h2>Les idées douceur et cocooning</h2>
 <div class="idees">
-""" + idee("Bougie parfumée", "Une ambiance chaleureuse à la maison", "bougie parfumee") + idee("Baume à lèvres de soin", "Indispensable quand il fait froid", "baume levres") + idee("Bouillotte", "Le petit confort des soirées d'hiver", "bouillotte") + idee("Masque de nuit", "Pour mieux dormir ou voyager", "masque de nuit soie") + """
+""" + idee("Bougie parfumée", "Une ambiance chaleureuse à la maison", "bougie parfumee") + idee("Baume à lèvres de soin", "Indispensable quand il fait froid", "baume levres") + idee("Bouillotte", "Le petit confort des soirées d'hiver", "bouillotte") + idee("Masque de nuit", "Pour mieux dormir ou voyager", "masque de nuit soie") + idee_bdl("Encens et porte-encens", "Sauge, palo santo ou encens parfumé pour une ambiance zen", "https://www.bonheurdelune.com/collections/encens-et-fumigations") + """
 </div>
 <h2>Comment bien choisir avec 10 €</h2>
 <ul>
@@ -105,7 +108,7 @@ PAGES = [
 </div>
 <h2>Pour le confort de la maison</h2>
 <div class="idees">
-""" + idee("Bougie parfumée", "Une ambiance cocooning", "bougie parfumee") + idee("Chaussettes en laine", "Bien au chaud tout l'hiver", "chaussettes laine") + idee("Guirlande lumineuse", "Pour une déco douce", "guirlande lumineuse") + """
+""" + idee("Bougie parfumée", "Une ambiance cocooning", "bougie parfumee") + idee("Chaussettes en laine", "Bien au chaud tout l'hiver", "chaussettes laine") + idee("Guirlande lumineuse", "Pour une déco douce", "guirlande lumineuse") + idee_bdl("Bracelet en pierres naturelles", "Quartz rose, turquoise ou labradorite, à choisir selon ses goûts", "https://www.bonheurdelune.com/collections/bracelets-6-mm") + """
 </div>
 <h2>Pour le bureau ou le télétravail</h2>
 <div class="idees">
@@ -154,7 +157,7 @@ PAGES = [
 </div>
 <h2>Bien-être</h2>
 <div class="idees">
-""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française", "https://anita-zaha.com/product-category/idees-cadeaux/") + """
+""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_bdl("Box cadeau ésotérique de Noël", "Une box à surprises pour les amateurs de pierres et d'encens", "https://www.bonheurdelune.com/collections/box-selections-magiques") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française", "https://anita-zaha.com/product-category/idees-cadeaux/") + """
 </div>
 <h2>Bien choisir avec 50 €</h2>
 <ul>
@@ -239,7 +242,7 @@ PAGES = [
 </div>
 <h2>Pour la personne qui aime prendre soin d'elle</h2>
 <div class="idees">
-""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir", "https://anita-zaha.com/product-category/savons-solides/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + """
+""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir", "https://anita-zaha.com/product-category/savons-solides/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + idee_bdl("Bougie d'intention", "Une bougie à thème pour un moment à soi", "https://www.bonheurdelune.com/collections/bougies-dintentions") + """
 </div>
 <h2>Nos conseils pour un cadeau réussi à 20 €</h2>
 <ul>
