@@ -73,6 +73,15 @@ function cadre(titre: string, corps: string, pied: string) {
 }
 const bouton = (url: string, txt: string) => `<p style="margin:20px 0"><a href="${esc(url)}" style="display:inline-block;background:#b3263a;color:#fff;text-decoration:none;font-weight:bold;padding:14px 22px;border-radius:10px">${txt}</a></p>`;
 
+const MOI = "juryjeremy@gmail.com";
+async function alerteMoi(sujet: string, lignes: string[]) {
+  try {
+    await envoyerLot([{ from: "Alertes Jérémy <alertes@qui-offre-a-qui.fr>", to: [MOI], subject: sujet,
+      html: cadre(esc(sujet), `<ul style="padding-left:18px;margin:0 0 8px;font-size:15px;line-height:1.6">${lignes.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>`, "Alerte automatique envoyée à toi seul."),
+      text: lignes.join("\n") }]);
+  } catch (_) { /* rien */ }
+}
+
 async function envoyerLot(mails: unknown[]) {
   const k = await cle();
   if (!k) return mails.map(() => false);
@@ -276,6 +285,12 @@ Deno.serve(async (req) => {
     return J({ ok: true });
   }
 
+  if (b.action === "alerte") {
+    const { data: sec } = await sb.from("tm_cfg").select("v").eq("k", "alerte_secret").maybeSingle();
+    if (!sec?.v || String(b.s || "") !== sec.v) return J({ ok: false }, 403);
+    await alerteMoi(court(b.sujet, 120) || "Alerte", (Array.isArray(b.lignes) ? b.lignes : []).slice(0, 10).map((x: unknown) => court(x, 200)));
+    return J({ ok: true });
+  }
   if (b.action === "abo") return J({ ok: await abonner(String(b.p || ""), "resultat") });
 
   // Inscription depuis un formulaire du site : e-mail de confirmation (double opt-in)
@@ -377,5 +392,7 @@ Deno.serve(async (req) => {
   await sb.from("qoaq_participants").insert(lignes.map((l, i) => ({ ...l, envois: 1, statut: oks[i] ? "envoye" : "echec", last_sent: now })));
   const nOk = oks.slice(0, lignes.length).filter(Boolean).length;
   await sb.from("qoaq_tirages").update({ envoyes: oks.filter(Boolean).length, echecs: oks.filter((x) => !x).length }).eq("id", row.id);
+  const { count: nJour } = await sb.from("qoaq_tirages").select("id", { count: "exact", head: true }).gte("created_at", new Date(new Date().toDateString()).toISOString());
+  await alerteMoi(`🎁 Nouveau tirage : ${ev} (${P.length} pers.)`, [`Événement : ${ev}`, `Occasion : ${occ || "?"}`, `Participants : ${P.length}`, `Budget : ${budget ? budget + " €" : "non précisé"}`, `Mails envoyés : ${nOk}/${lignes.length}`, `Organisateur avec e-mail : ${orga ? (orga === MOI ? "toi (test)" : "oui") : "non"}`, `Tirages aujourd'hui : ${nJour ?? "?"}`]);
   return J({ ok: nOk === lignes.length, envoyes: nOk, id: row.id, g: row.gestion, liste: listeId, participants: await etat(row.id) });
 });
