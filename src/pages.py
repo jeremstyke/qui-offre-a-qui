@@ -157,7 +157,7 @@ PAGES = [
 </div>
 <h2>Bien-être</h2>
 <div class="idees">
-""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_bdl("Box cadeau ésotérique de Noël", "Une box à surprises pour les amateurs de pierres et d'encens", "https://www.bonheurdelune.com/collections/box-selections-magiques") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française", "https://anita-zaha.com/product-category/idees-cadeaux/") + """
+""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_bdl("Box cadeau ésotérique de Noël", "Une box à surprises pour les amateurs de pierres et d'encens", "https://www.bonheurdelune.com/collections/box-selections-magiques") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française. <i>-40 % avec le code ANITAZAHA40 jusqu'au 31 décembre</i>", "https://anita-zaha.com/product-category/idees-cadeaux/") + """
 </div>
 <h2>Bien choisir avec 50 €</h2>
 <ul>
@@ -198,7 +198,7 @@ PAGES = [
 </div>
 <h2>Bien-être</h2>
 <div class="idees">
-""" + idee("Fauteuil ou coussin de massage", "Pour le dos après une longue journée", "coussin de massage shiatsu") + idee_az("Parfum fabriqué à Grasse", "Un parfum unisexe floral et oriental, Made in France", "https://anita-zaha.com/product/parfum-anitazaha/") + idee("Lampe de luminothérapie", "Pour garder le moral en hiver", "lampe luminotherapie") + """
+""" + idee("Fauteuil ou coussin de massage", "Pour le dos après une longue journée", "coussin de massage shiatsu") + idee_az("Parfum fabriqué à Grasse", "Un parfum unisexe floral et oriental, Made in France. <i>-40 % avec le code ANITAZAHA40 jusqu'au 31 décembre</i>", "https://anita-zaha.com/product/parfum-anitazaha/") + idee("Lampe de luminothérapie", "Pour garder le moral en hiver", "lampe luminotherapie") + """
 </div>
 <h2>Bien choisir avec 100 €</h2>
 <ul>
@@ -242,7 +242,7 @@ PAGES = [
 </div>
 <h2>Pour la personne qui aime prendre soin d'elle</h2>
 <div class="idees">
-""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir", "https://anita-zaha.com/product-category/savons-solides/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + idee_bdl("Bougie d'intention", "Une bougie à thème pour un moment à soi", "https://www.bonheurdelune.com/collections/bougies-dintentions") + """
+""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir. <i>-40 % avec le code ANITAZAHA40 jusqu'au 31 décembre</i>", "https://anita-zaha.com/product-category/savons-solides/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + idee_bdl("Bougie d'intention", "Une bougie à thème pour un moment à soi", "https://www.bonheurdelune.com/collections/bougies-dintentions") + """
 </div>
 <h2>Nos conseils pour un cadeau réussi à 20 €</h2>
 <ul>
