@@ -271,7 +271,7 @@ urls = [("/", today, "1.0"), ("/qui-apporte-quoi/", today, "0.9"), ("/retrouver/
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n')
 BOTS = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "YandexBot", "Qwantbot", "MistralAI-User", "CCBot"]
 w('ads.txt', 'google.com, pub-8638687738606649, DIRECT, f08c47fec0942fa0\n')
-w('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /404.html\n\n' + ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in BOTS) + f'Sitemap: {BASE}/sitemap.xml\n')
+w('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /404.html\nDisallow: /media/\n\n' + ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in BOTS) + f'Sitemap: {BASE}/sitemap.xml\n')
 # llms.txt : résumé du site pour les assistants IA (ChatGPT, Claude, Perplexity...)
 budg = [p for p in PAGES if 'euros' in p['slug']]
 autres = [p for p in PAGES if 'euros' not in p['slug']]
