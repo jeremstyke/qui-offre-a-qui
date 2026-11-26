@@ -46,6 +46,7 @@ article .meta{color:var(--gris);font-size:14px}
 .voir a:hover{border-color:var(--pin2)}
 .voir b{display:block;font-size:16px;line-height:1.3}
 .voir span{display:block;font-size:14px;color:var(--gris);margin-top:2px}
+.pcode{background:#fff;border:2px dashed #e9b949;border-radius:16px;padding:18px 20px;margin:20px 0}.pcode h2{margin:0 0 6px}.pc-l{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}.pc-l code{background:#123d34;color:#fff;padding:8px 14px;border-radius:8px;font-weight:700;font-size:1.15em;letter-spacing:.04em}.pc-v{color:#6b7a74;font-size:.9em}
 .promos{background:#fff7e6;border:2px dashed #e9b949;border-radius:16px;padding:18px 20px;margin:28px 0}.promos h2{margin-top:0}.promos ul{padding-left:18px}.promos li{margin:8px 0}.promos code{background:#123d34;color:#fff;padding:2px 8px;border-radius:6px;font-weight:700}.promos .pm{font-size:.85em;color:#6b7a74;margin:8px 0 0}
 footer{background:var(--pin);color:#dfe9e4;text-align:left;margin-top:40px;padding:32px 0 36px}
 footer a{color:#fff}
@@ -110,7 +111,7 @@ def promos_html():
     act = [p for p in PROMOS if _d.date.fromisoformat(p[3]) >= _d.date.today()]
     if not act: return ''
     li = ''.join(f'<li data-fin="{fin}"><b>{m}</b> : {t}. Code <code>{c}</code> jusqu\'au {int(fin[8:])} {["","janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"][int(fin[5:7])]}. <a href="{u}" rel="sponsored nofollow">J\'en profite</a></li>' for m, t, c, fin, u in act)
-    return ('<section class="promos"><h2>Codes promo du moment</h2><ul>' + li + '</ul><p class="pm">Liens affiliés : le site touche une commission, sans surcoût pour vous.</p></section>'
+    return ('<section class="promos"><h2>Codes promo chez nos partenaires</h2><ul>' + li + '</ul><p class="pm"><a href="/codes-promo/">Voir tous les codes promo</a>. Liens affiliés : le site touche une commission, sans surcoût pour vous.</p></section>'
             '<script>(function(){var d=new Date().toISOString().slice(0,10);document.querySelectorAll(".promos li").forEach(function(l){if(l.dataset.fin<d)l.remove()});document.querySelectorAll(".promos").forEach(function(s){if(!s.querySelector("li"))s.remove()})})()</script>')
 
 def head(title, desc, path, schema=None, robots='index,follow'):
@@ -159,7 +160,7 @@ def foot():
 <div><h2>Guides</h2><ul>{gd}<li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/retrouver/">Retrouver mon tirage</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
 </div>
 <div class="bas">
-<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p><p>Nos sites frères : <a href="https://malistebebe.fr/">Ma liste bébé</a> et <a href="https://malistedemariage.fr/">Ma liste mariage</a>.</p><div class="soc"><span>Suivez-nous</span><a class="yt" href="https://www.youtube.com/channel/UCLPHpSiWZBkdT8f2UvPYF8w" rel="noopener" aria-label="Notre chaîne YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a class="fb" href="https://www.facebook.com/122096271843567125" rel="noopener" aria-label="Notre page Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.4-.2-2.5 0-4.1 1.5-4.1 4.2v2.7H7.6v3.3h2.8V22z"/></svg></a><a class="pi" href="https://www.pinterest.fr/quioffreaqui/" rel="noopener" aria-label="Notre compte Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.8 3.4-.2 1 .5 1.8 1.5 1.8 1.8 0 3.2-1.9 3.2-4.7 0-2.5-1.8-4.2-4.3-4.2-2.9 0-4.6 2.2-4.6 4.4 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.2c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4 0-3.3 2.4-6.3 6.9-6.3 3.6 0 6.4 2.6 6.4 6 0 3.6-2.3 6.5-5.4 6.5-1.1 0-2.1-.6-2.4-1.2l-.7 2.5c-.2.9-.9 2.1-1.3 2.8A10 10 0 1 0 12 2z"/></svg></a></div>
+<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p><p><a href="/codes-promo/">Codes promo chez nos partenaires</a></p><p>Nos sites frères : <a href="https://malistebebe.fr/">Ma liste bébé</a> et <a href="https://malistedemariage.fr/">Ma liste mariage</a>.</p><div class="soc"><span>Suivez-nous</span><a class="yt" href="https://www.youtube.com/channel/UCLPHpSiWZBkdT8f2UvPYF8w" rel="noopener" aria-label="Notre chaîne YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a class="fb" href="https://www.facebook.com/122096271843567125" rel="noopener" aria-label="Notre page Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.4-.2-2.5 0-4.1 1.5-4.1 4.2v2.7H7.6v3.3h2.8V22z"/></svg></a><a class="pi" href="https://www.pinterest.fr/quioffreaqui/" rel="noopener" aria-label="Notre compte Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.8 3.4-.2 1 .5 1.8 1.5 1.8 1.8 0 3.2-1.9 3.2-4.7 0-2.5-1.8-4.2-4.3-4.2-2.9 0-4.6 2.2-4.6 4.4 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.2c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4 0-3.3 2.4-6.3 6.9-6.3 3.6 0 6.4 2.6 6.4 6 0 3.6-2.3 6.5-5.4 6.5-1.1 0-2.1-.6-2.4-1.2l-.7 2.5c-.2.9-.9 2.1-1.3 2.8A10 10 0 1 0 12 2z"/></svg></a></div>
 <p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
 </div>
 </div></footer>
@@ -298,11 +299,26 @@ legal = head("Mentions légales et confidentialité", "Mentions légales, donné
 </article></main>''' + foot()
 w('mentions-legales/index.html', legal)
 
+# Page codes promo
+import datetime as _dt
+MOISN = ["","janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"]
+_act = [p for p in PROMOS if _dt.date.fromisoformat(p[3]) >= _dt.date.today()]
+_cartes = ''.join(f'''<div class="pcode" data-fin="{fin}"><h2>{m}</h2><p>{t}.</p><div class="pc-l"><code>{c}</code><button type="button" class="btn s petit pc-copy" data-c="{c}">Copier le code</button></div><p class="pc-v">Valable jusqu\'au {int(fin[8:])} {MOISN[int(fin[5:7])]} {fin[:4]}.</p><a class="btn p" href="{u}" rel="sponsored nofollow">Voir la boutique {m}</a></div>''' for m, t, c, fin, u in _act)
+_vide = '<p class="pc-vide"' + (' hidden' if _act else '') + '>Aucun code promo en cours pour le moment. Revenez bientôt : nous ajoutons les nouvelles offres dès qu\'elles sortent.</p>'
+cp = head("Codes promo chez nos partenaires", "Les codes promo en cours chez nos partenaires pour vos cadeaux de Noël et de fêtes : parfums, coffrets beauté, bijoux et idées bien-être. Mis à jour dès qu'une offre sort ou expire.", "/codes-promo/") + NAV + f'''<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Codes promo</p><h1>Codes promo chez nos partenaires</h1>
+<p>Voici les codes promo en cours chez nos partenaires, les boutiques que nous recommandons dans nos guides. Copiez le code, cliquez sur le bouton, puis collez le code au moment de payer. Chaque offre disparaît de cette page à sa date de fin.</p>
+{_cartes}{_vide}
+<p>Besoin d\'idées ? Voyez nos <a href="/guides/">idées cadeaux de 5 à 100 €</a>. Et pour savoir qui offre à qui, le <a href="/#outil">tirage au sort gratuit</a> se fait en 2 minutes.</p>
+<p class="meta">Liens affiliés : le site touche une commission sur les achats, sans surcoût pour vous. Les conditions de chaque offre sont fixées par la boutique.</p>
+</article></main>
+<script>(function(){{var d=new Date().toISOString().slice(0,10);document.querySelectorAll(".pcode").forEach(function(e){{if(e.dataset.fin<d)e.remove()}});if(!document.querySelector(".pcode"))document.querySelector(".pc-vide").hidden=false;document.querySelectorAll(".pc-copy").forEach(function(b){{b.onclick=function(){{try{{navigator.clipboard.writeText(b.dataset.c);b.textContent="Code copié ✓"}}catch(e){{}}}}}})}})()</script>''' + foot()
+w('codes-promo/index.html', cp)
+
 # 404
 w('404.html', head("Page introuvable", "Cette page n'existe pas.", "/404.html", robots='noindex') + NAV + '<main class="wrap"><article><h1>Page introuvable</h1><p>Cette page n\'existe pas ou a été déplacée.</p><p><a class="btn p" href="/">Faire un tirage au sort</a></p></article></main>' + foot())
 
 # Sitemap, robots, CNAME, IndexNow
-urls = [("/", today, "1.0"), ("/qui-apporte-quoi/", today, "0.9"), ("/retrouver/", today, "0.5"), ("/guides/", today, "0.6")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
+urls = [("/", today, "1.0"), ("/qui-apporte-quoi/", today, "0.9"), ("/retrouver/", today, "0.5"), ("/guides/", today, "0.6"), ("/codes-promo/", today, "0.7")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n')
 BOTS = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "YandexBot", "Qwantbot", "MistralAI-User", "CCBot"]
 w('ads.txt', 'google.com, pub-8638687738606649, DIRECT, f08c47fec0942fa0\n')
