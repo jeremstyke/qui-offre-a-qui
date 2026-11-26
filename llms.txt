@@ -1,0 +1,41 @@
+# Qui offre à qui
+
+> Qui offre à qui (qui-offre-a-qui.fr) est un outil gratuit de tirage au sort de cadeaux en ligne, en français : Père Noël secret, Secret Santa, échange de cadeaux du Nouvel An, de la Saint-Nicolas, d'anniversaire, entre collègues, entre amis ou dans une classe. Le tirage se fait en 2 minutes, sans compte et sans inscription. L'e-mail est facultatif.
+
+## Ce que fait l'outil
+- L'organisateur entre les prénoms (au moins 3), l'occasion, le budget par cadeau (5, 10, 15, 20, 30 ou 50 euros) et la date de l'échange.
+- Il peut ajouter des exclusions : deux personnes qui ne doivent pas se tirer (par exemple un couple).
+- Le tirage est calculé dans le navigateur. Chaque participant reçoit un lien privé qui n'affiche que son propre résultat : personne ne voit qui offre à qui, pas même l'organisateur.
+- Les liens s'envoient par e-mail, WhatsApp, SMS ou n'importe quelle messagerie. L'organisateur peut recevoir un récapitulatif par e-mail.
+- Les derniers tirages sont gardés sur l'appareil pour les retrouver.
+- Après la révélation, chaque participant voit des idées de cadeaux adaptées au budget.
+- Gratuit, sans publicité intrusive. Le site gagne de l'argent grâce aux liens affiliés Amazon des idées cadeaux.
+
+## Outil
+- [Faire un tirage au sort de cadeaux](https://qui-offre-a-qui.fr/): l'outil, avec la méthode et la FAQ.
+
+## Idées cadeaux par budget
+- [Idée cadeau à 5 € : 15 petites idées qui font plaisir](https://qui-offre-a-qui.fr/idee-cadeau-5-euros/): Un tout petit budget de 5 € pour un Père Noël secret, une classe ou un club ? 15 idées de petits cadeaux utiles, gourmands ou rigolos.
+- [Idée cadeau à 10 € : 15 idées pour un Père Noël secret](https://qui-offre-a-qui.fr/idee-cadeau-10-euros/): Un budget de 10 € pour votre Père Noël secret ou un échange entre collègues ? 15 idées de cadeaux utiles ou drôles qui font vraiment plaisir.
+- [Idée cadeau à 15 € : 15 idées pour un échange réussi](https://qui-offre-a-qui.fr/idee-cadeau-15-euros/): Un budget de 15 € pour votre Père Noël secret, un échange entre collègues ou entre amis ? 15 idées de cadeaux utiles, gourmands ou drôles.
+- [Idée cadeau à 20 € : 15 idées qui font vraiment plaisir](https://qui-offre-a-qui.fr/idee-cadeau-20-euros/): Budget de 20 € pour un Père Noël secret, un anniversaire ou un échange entre amis ? 15 idées de cadeaux utiles, gourmands ou originaux.
+- [Idée cadeau à 30 € : 15 idées pour gâter sans se ruiner](https://qui-offre-a-qui.fr/idee-cadeau-30-euros/): 30 € pour un cadeau de Noël, d'anniversaire ou un échange en famille ? 15 idées de cadeaux de qualité, classées par profil, pour viser juste.
+- [Idée cadeau à 50 € : 15 idées pour un vrai beau cadeau](https://qui-offre-a-qui.fr/idee-cadeau-50-euros/): 50 € pour un cadeau de Noël, d'anniversaire ou un échange en famille ? 15 idées de cadeaux de qualité, high-tech, cuisine, loisirs et bien-être.
+
+## Guides et conseils
+- [Père Noël secret en famille : règles, budget et idées](https://qui-offre-a-qui.fr/pere-noel-secret-famille/): Organiser un Père Noël secret en famille : un seul cadeau chacun, le bon budget, les exclusions entre couples, les enfants, et des idées pour tous les âges.
+- [Secret Santa à distance : l'organiser en ligne simplement](https://qui-offre-a-qui.fr/secret-santa-a-distance/): Organiser un Secret Santa ou un Père Noël secret à distance : tirage au sort en ligne sans compte, envoi des cadeaux par la poste et échange en visio.
+- [Père Noël secret : règles, déroulement et astuces](https://qui-offre-a-qui.fr/regles-pere-noel-secret/): Comment fonctionne un Père Noël secret ? Les règles simples, le budget, le tirage au sort, la remise des cadeaux et nos astuces pour que tout se passe bien.
+- [Secret Santa entre collègues : idées cadeaux et règles](https://qui-offre-a-qui.fr/cadeau-secret-santa-collegue/): Organiser un Secret Santa au bureau : quel budget, quelles règles, quels cadeaux pour un collègue qu'on connaît peu, et les pièges à éviter.
+- [Idée cadeau Secret Santa homme : 15 idées par budget](https://qui-offre-a-qui.fr/idee-cadeau-secret-santa-homme/): Vous avez tiré un homme au Secret Santa ? 15 idées de cadeaux classées par budget, de 10 à 50 €, utiles, gourmandes ou drôles, loin des clichés.
+- [Idée cadeau Secret Santa femme : 15 idées par budget](https://qui-offre-a-qui.fr/idee-cadeau-secret-santa-femme/): Vous avez tiré une femme au Secret Santa ? 15 idées de cadeaux par budget, de 10 à 50 €, cocooning, gourmandes ou pratiques, pour faire vraiment plaisir.
+- [Cadeau Secret Santa ado : 15 idées qui plaisent vraiment](https://qui-offre-a-qui.fr/cadeau-secret-santa-ado/): Un ado tiré au Père Noël secret ? 15 idées de cadeaux pour adolescents de 12 à 17 ans, par budget : high-tech, déco de chambre, jeux et gourmandises.
+- [Cadeau rigolo Secret Santa : 15 idées drôles sans gêner](https://qui-offre-a-qui.fr/idee-cadeau-humour-secret-santa/): Un cadeau drôle pour votre Secret Santa, sans mettre mal à l'aise ? 15 idées de cadeaux rigolos et utiles, et ce qu'il vaut mieux éviter au bureau.
+- [Cadeau Secret Santa de dernière minute : 12 idées rapides](https://qui-offre-a-qui.fr/cadeau-secret-santa-dernier-moment/): L'échange est demain et vous n'avez rien ? 12 idées de cadeaux de dernière minute pour un Secret Santa : livraison rapide, cartes cadeaux, fait maison.
+- [Secret Santa sur WhatsApp : faire le tirage dans un groupe](https://qui-offre-a-qui.fr/tirage-au-sort-secret-santa-whatsapp/): Organiser un Secret Santa sur WhatsApp : tirage au sort en ligne, lien privé pour chacun, rappels dans le groupe. La méthode simple en 2 minutes.
+- [Jeux d'échange de cadeaux à Noël : 6 variantes à tester](https://qui-offre-a-qui.fr/jeux-echange-cadeaux-noel/): Cadeau volé, jeu des dés, Yankee swap, Secret Santa : 6 jeux d'échange de cadeaux pour Noël, avec les règles simples et le matériel à prévoir.
+- [Liste d'envies Secret Santa : comment la faire (exemples)](https://qui-offre-a-qui.fr/liste-envies-secret-santa/): Comment faire une bonne liste d'envies pour un Secret Santa ou un Père Noël secret : ce qu'il faut écrire, ce qu'il faut éviter et des exemples à copier.
+
+## Informations
+- [Mentions légales et confidentialité](https://qui-offre-a-qui.fr/mentions-legales/)
+- Contact : contact@cvlibre.com

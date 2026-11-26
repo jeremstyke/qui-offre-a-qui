@@ -29,6 +29,8 @@ FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="p
 FAVICON = '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect x=%2210%22 y=%2230%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22%23b8344a%22/%3E%3Crect x=%2244%22 y=%2230%22 width=%2212%22 height=%2260%22 fill=%22%23e9b949%22/%3E%3Crect x=%224%22 y=%2222%22 width=%2292%22 height=%2216%22 rx=%224%22 fill=%22%23123d34%22/%3E%3C/svg%3E">'
 
 from pages import PAGES
+from pages_noel import PAGES_NOEL
+PAGES = PAGES + PAGES_NOEL
 def _k(p):
     m = re.search(r'(\d+)-euros', p['slug'])
     return (0, int(m.group(1))) if m else (1, 0)
@@ -144,7 +146,9 @@ for p in PAGES:
     promo = '<p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>'
     body = re.sub(r'(</p>)', r'\1' + promo, body, count=1)
     oth = [q for q in PAGES if q['slug'] != p['slug']]
-    rel = ([q for q in oth if 'euros' not in q['slug']] + [q for q in oth if 'euros' in q['slug']])[:4]
+    _g = [q for q in oth if 'euros' not in q['slug']]; _b = [q for q in oth if 'euros' in q['slug']]
+    _i = PAGES.index(p)
+    rel = (_g[_i % len(_g):] + _g[:_i % len(_g)])[:3] + (_b[_i % len(_b):] + _b[:_i % len(_b)])[:2]
     related = '<h2>À lire aussi</h2><ul>' + ''.join(f'<li><a href="/{q["slug"]}/">{esc(q["title"])}</a></li>' for q in rel) + '</ul>'
     html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Idées et conseils</p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{related}</article></main>' + foot()
     w(f'{p["slug"]}/index.html', html_)
@@ -164,7 +168,36 @@ w('404.html', head("Page introuvable", "Cette page n'existe pas.", "/404.html", 
 # Sitemap, robots, CNAME, IndexNow
 urls = [("/", today, "1.0")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n')
-w('robots.txt', f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
+BOTS = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "YandexBot", "Qwantbot", "MistralAI-User", "CCBot"]
+w('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /404.html\n\n' + ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in BOTS) + f'Sitemap: {BASE}/sitemap.xml\n')
+# llms.txt : résumé du site pour les assistants IA (ChatGPT, Claude, Perplexity...)
+budg = [p for p in PAGES if 'euros' in p['slug']]
+autres = [p for p in PAGES if 'euros' not in p['slug']]
+llms = f"""# {SITE}
+
+> Qui offre à qui (qui-offre-a-qui.fr) est un outil gratuit de tirage au sort de cadeaux en ligne, en français : Père Noël secret, Secret Santa, échange de cadeaux du Nouvel An, de la Saint-Nicolas, d'anniversaire, entre collègues, entre amis ou dans une classe. Le tirage se fait en 2 minutes, sans compte et sans inscription. L'e-mail est facultatif.
+
+## Ce que fait l'outil
+- L'organisateur entre les prénoms (au moins 3), l'occasion, le budget par cadeau (5, 10, 15, 20, 30 ou 50 euros) et la date de l'échange.
+- Il peut ajouter des exclusions : deux personnes qui ne doivent pas se tirer (par exemple un couple).
+- Le tirage est calculé dans le navigateur. Chaque participant reçoit un lien privé qui n'affiche que son propre résultat : personne ne voit qui offre à qui, pas même l'organisateur.
+- Les liens s'envoient par e-mail, WhatsApp, SMS ou n'importe quelle messagerie. L'organisateur peut recevoir un récapitulatif par e-mail.
+- Les derniers tirages sont gardés sur l'appareil pour les retrouver.
+- Après la révélation, chaque participant voit des idées de cadeaux adaptées au budget.
+- Gratuit, sans publicité intrusive. Le site gagne de l'argent grâce aux liens affiliés Amazon des idées cadeaux.
+
+## Outil
+- [Faire un tirage au sort de cadeaux]({BASE}/): l'outil, avec la méthode et la FAQ.
+
+## Idées cadeaux par budget
+""" + ''.join(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['desc']}\n" for p in budg) + """
+## Guides et conseils
+""" + ''.join(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['desc']}\n" for p in autres) + f"""
+## Informations
+- [Mentions légales et confidentialité]({BASE}/mentions-legales/)
+- Contact : contact@cvlibre.com
+"""
+w('llms.txt', llms)
 w('CNAME', 'qui-offre-a-qui.fr\n')
 w(f'{INDEXNOW}.txt', INDEXNOW)
 w('.nojekyll', '')
