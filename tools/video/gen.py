@@ -30,7 +30,7 @@ body{{width:1080px;height:1920px;background:#123d34;color:#fff;font-family:A;ove
 <div id="hook"><h1>{cfg['h1']}</h1><p>{cfg['p']}</p></div>
 <div id="cap"></div>
 <div id="phone"><div id="scr">{''.join(f'<img id="i{i}" src="{s}">' for i,s in enumerate(imgs))}</div></div>
-<div id="cta">{GIFT}<h2>Qui offre à qui</h2><div class="u">qui-offre-a-qui.fr</div><div class="bio">🔗 Lien dans la bio</div><p>{cfg.get('cta','Gratuit, sans compte,<br>prêt en 2 minutes')}</p></div>
+<div id="cta">{GIFT}<h2>Qui offre à qui</h2><div class="u">qui-offre-a-qui.fr</div>{'<div class="bio">🔗 Lien dans la bio</div>' if cfg.get('bio',True) else '<div class="bio">'+cfg.get('cta2','Clique sur le bouton 👇')+'</div>'}<p>{cfg.get('cta','Gratuit, sans compte,<br>prêt en 2 minutes')}</p></div>
 <script>
 const SEG={json.dumps(cfg['seg'],ensure_ascii=False)}, CAPS={json.dumps(cfg['caps'],ensure_ascii=False)}, N={len(imgs)}, K=760/390;
 const ease=x=>x<0?0:x>1?1:1-Math.pow(1-x,3), cl=x=>x<0?0:x>1?1:x, io=x=>x<0?0:x>1?1:(x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2);
