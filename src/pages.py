@@ -5,6 +5,13 @@
 def idee(titre, texte, kw):
     return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{{AMZ:{kw}}}" rel="sponsored nofollow noopener" target="_blank">Voir les modèles</a></div>'
 
+
+AZ = "https://www.awin1.com/cread.php?awinmid=115393&awinaffid=3158017"
+def idee_az(titre, texte, ued=""):
+    from urllib.parse import quote
+    url = AZ + ("&ued=" + quote(ued, safe="") if ued else "")
+    return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{url}" rel="sponsored nofollow noopener" target="_blank">Voir chez ANITA &amp; ZAHA</a></div>'
+
 PAGES = [
 {
 "slug": "idee-cadeau-5-euros",
@@ -147,7 +154,7 @@ PAGES = [
 </div>
 <h2>Bien-être</h2>
 <div class="idees">
-""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee("Coffret soin", "Un moment pour soi", "coffret soin") + """
+""" + idee("Pistolet de massage", "Pour détendre les muscles", "pistolet de massage") + idee("Coussin chauffant", "Idéal pour le dos et la nuque", "coussin chauffant") + idee_az("Coffret beauté Made in France", "Savons, soins et bougies d'une maison française", "https://anita-zaha.com/") + """
 </div>
 <h2>Bien choisir avec 50 €</h2>
 <ul>
@@ -188,7 +195,7 @@ PAGES = [
 </div>
 <h2>Bien-être</h2>
 <div class="idees">
-""" + idee("Fauteuil ou coussin de massage", "Pour le dos après une longue journée", "coussin de massage shiatsu") + idee("Coffret parfum", "Un cadeau qu'on choisit avec soin", "coffret parfum") + idee("Lampe de luminothérapie", "Pour garder le moral en hiver", "lampe luminotherapie") + """
+""" + idee("Fauteuil ou coussin de massage", "Pour le dos après une longue journée", "coussin de massage shiatsu") + idee_az("Parfum fabriqué à Grasse", "Un parfum unisexe floral et oriental, Made in France", "https://anita-zaha.com/product/parfum-anitazaha/") + idee("Lampe de luminothérapie", "Pour garder le moral en hiver", "lampe luminotherapie") + """
 </div>
 <h2>Bien choisir avec 100 €</h2>
 <ul>
@@ -232,7 +239,7 @@ PAGES = [
 </div>
 <h2>Pour la personne qui aime prendre soin d'elle</h2>
 <div class="idees">
-""" + idee("Coffret bain", "Un moment de détente à la maison", "coffret bain") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + """
+""" + idee_az("Savon végétal artisanal", "Un petit soin Made in France, joli à offrir", "https://anita-zaha.com/") + idee("Brosse démêlante", "Simple et très utile", "brosse demelante") + idee("Diffuseur d'huiles essentielles", "Pour une ambiance apaisante", "diffuseur huiles essentielles") + """
 </div>
 <h2>Nos conseils pour un cadeau réussi à 20 €</h2>
 <ul>
