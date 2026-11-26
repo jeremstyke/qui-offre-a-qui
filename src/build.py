@@ -44,7 +44,7 @@ footer .amz{color:#b9cdc5}
 .amz{font-size:13px;color:var(--gris)}
 """
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">'
-FAVICON = '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect x=%2210%22 y=%2230%22 width=%2280%22 height=%2260%22 rx=%228%22 fill=%22%23b8344a%22/%3E%3Crect x=%2244%22 y=%2230%22 width=%2212%22 height=%2260%22 fill=%22%23e9b949%22/%3E%3Crect x=%224%22 y=%2222%22 width=%2292%22 height=%2216%22 rx=%224%22 fill=%22%23123d34%22/%3E%3C/svg%3E">'
+FAVICON = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#123d34">'
 
 from pages import PAGES
 from pages_noel import PAGES_NOEL
@@ -72,19 +72,20 @@ def amz(s):
 def esc(s): return html.escape(s, quote=True)
 
 def head(title, desc, path, schema=None, robots='index,follow'):
+    _slug = path.strip('/')
+    img = f'/og/{_slug}.png' if _slug and os.path.exists(os.path.join(OUT, 'og', _slug + '.png')) else '/og.png'
     sch = ''.join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + '</script>' for x in (schema or []))
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta name="google-site-verification" content="0tjo6Bj7KcNHJMLQKuavVd_d7pBDPoJX3TaLWRm1GA4">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{BASE}{path}">
-<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:type" content="website"><meta property="og:image" content="{BASE}/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:type" content="website"><meta property="og:image" content="{BASE}{img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(title)}"><meta property="og:site_name" content="Qui offre à qui"><meta name="twitter:image" content="{BASE}{img}"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(desc)}"><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
 {FAVICON}
 {FONTS}
 <style>{CSS}{EXTRA_CSS}</style>
@@ -244,6 +245,7 @@ llms = f"""# {SITE}
 - Contact : contact@cvlibre.com
 """
 w('llms.txt', llms)
+w('site.webmanifest', json.dumps({"name": "Qui offre à qui", "short_name": "Qui offre à qui", "start_url": "/", "display": "standalone", "background_color": "#123d34", "theme_color": "#123d34", "lang": "fr", "icons": [{"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}, {"src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml"}]}, ensure_ascii=False))
 w('CNAME', 'qui-offre-a-qui.fr\n')
 w(f'{INDEXNOW}.txt', INDEXNOW)
 w('.nojekyll', '')
