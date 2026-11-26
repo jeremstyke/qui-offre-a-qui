@@ -105,7 +105,7 @@ def foot():
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles">{bud}</div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
-<div><h2>Guides</h2><ul>{gd}<li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+<div><h2>Guides</h2><ul>{gd}<li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/retrouver/">Retrouver mon tirage</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
 </div>
 <div class="bas">
 <p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>
@@ -156,6 +156,7 @@ faq = [("Le tirage au sort est-il vraiment gratuit ?", "Oui, entièrement gratui
        ("Faut-il créer un compte ?", "Non. Vous entrez les prénoms et les e-mails des participants, et c'est tout : aucun compte, aucun mot de passe. Le tirage est prêt en 2 minutes."),
        ("Comment chaque participant reçoit-il son résultat ?", "Par e-mail, dès que le tirage est lancé. Il clique sur le bouton, ouvre son paquet et découvre à qui il offre un cadeau, avec des idées selon le budget."),
        ("L'organisateur peut-il voir qui offre à qui ?", "Non. Le tirage est fait sur nos serveurs et chaque résultat est envoyé directement au participant concerné. L'organisateur ne voit aucun résultat : il peut participer sans tricher."),
+       ("J'ai perdu l'e-mail de mon tirage, comment le retrouver ?", "Allez sur la page Retrouver mon tirage et entrez votre adresse : vous recevez aussitôt un nouvel e-mail avec votre lien privé, la liste du repas et, si vous êtes l'organisateur, le suivi."),
        ("Et si quelqu'un ne reçoit pas son e-mail ?", "Demandez-lui de regarder dans ses spams. Sinon, la page de suivi du tirage (gardée sur votre appareil et envoyée par e-mail si vous laissez le vôtre) permet de renvoyer l'e-mail ou de corriger l'adresse, sans voir le résultat."),
        ("Peut-on empêcher deux personnes de se tirer ?", "Oui, avec les exclusions : par exemple deux conjoints ou deux frères et sœurs ne se tireront pas entre eux."),
        ("Combien de participants faut-il ?", "Au moins 3 personnes, et jusqu'à 40 : famille, classe, équipe ou club entier."),
@@ -213,6 +214,19 @@ rsch = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Q
         {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in rfaq]}]
 w('qui-apporte-quoi/index.html', head("Qui apporte quoi : liste de repas partagée gratuite", "Créez la liste du repas de Noël ou de la fête, partagez le lien, et chacun coche ce qu'il apporte. Gratuit, sans compte, mis à jour en direct pour tous.", "/qui-apporte-quoi/", rsch) + NAV + rbody + '<script>\n' + rjs + '\n</script>\n' + foot())
 
+# Retrouver mon tirage (lien renvoyé par e-mail, jamais affiché sur le site)
+rt = head("Retrouver mon tirage au sort", "Vous avez perdu l'e-mail de votre tirage ? Entrez votre adresse : vous recevez tout de suite vos liens (résultat, liste du repas, suivi). Gratuit.", "/retrouver/") + NAV + '''<header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap"><h1>Retrouver mon tirage</h1><p>Vous ne trouvez plus l'e-mail de votre tirage ? Entrez votre adresse : nous vous renvoyons vos liens tout de suite.</p></div></header>
+<main class="wrap"><section class="carte"><label for="rt-mail">Votre adresse e-mail</label><input id="rt-mail" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
+<button class="btn p" id="rt-go" style="margin-top:14px">Recevoir mes liens</button><p class="note" id="rt-msg" role="status" style="margin-top:12px"></p></section>
+<section class="carte"><h2>Comment ça marche ?</h2><p>Vous recevez un e-mail avec un lien privé vers chacun de vos tirages : votre résultat si vous participez, la liste du repas, et le suivi si vous êtes l'organisateur. Pour garder le secret, rien ne s'affiche sur cette page : seule la personne qui lit cette boîte mail peut ouvrir les liens.</p><p>Rien reçu après quelques minutes ? Regardez dans les spams, ou essayez une autre adresse : c'est celle que l'organisateur a saisie qui compte.</p></section>
+<div class="encart"><b>Pas encore de tirage ?</b><p>Le tirage au sort se fait en 2 minutes, sans compte : chacun reçoit son résultat par e-mail.</p><a class="btn" href="/#outil">Faire un tirage gratuit</a></div></main>
+<script>(function(){var b=document.getElementById("rt-go"),i=document.getElementById("rt-mail"),m=document.getElementById("rt-msg");
+function go(){var v=i.value.trim();if(!/^[^\\s@]+@[^\\s@]+\\.[a-z]{2,}$/i.test(v)){m.textContent="Cette adresse n'est pas valide.";return}b.disabled=true;b.textContent="Envoi...";
+fetch("https://txvrlvcxfnylnrpdrxtt.supabase.co/functions/v1/qoaq",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"retrouver",email:v})}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})}).then(function(j){b.disabled=false;b.textContent="Recevoir mes liens";
+m.textContent=j.ok?"C'est parti ! Si cette adresse a participé à un tirage, vous allez recevoir un e-mail avec vos liens dans quelques instants. Pensez aux spams.":j._s===429?"Trop de demandes. Réessayez dans une heure.":"Ça n'a pas marché, réessayez.";try{j.ok&&window.qoaqHit&&window.qoaqHit("mail","retrouver")}catch(e){}}).catch(function(){b.disabled=false;b.textContent="Recevoir mes liens";m.textContent="Pas de connexion, réessayez."})}
+b.onclick=go;i.onkeydown=function(e){if(e.key==="Enter")go()};})();</script>''' + foot()
+w('retrouver/index.html', rt)
+
 # Page de retour newsletter (inscription, désinscription)
 nl = head("Newsletter", "Inscription et désinscription à la newsletter de Qui offre à qui.", "/newsletter/", robots='noindex,follow') + NAV + '''<main class="wrap"><article><h1 id="t">Newsletter</h1><p id="m"></p><p><a class="btn p" style="width:auto;display:inline-block" href="/">Faire un tirage au sort</a></p><p><a href="/guides/">Voir les idées cadeaux</a></p></article></main>
 <script>(function(){var r=new URLSearchParams(location.search).get("r"),t=document.getElementById("t"),m=document.getElementById("m");
@@ -234,7 +248,7 @@ w('mentions-legales/index.html', legal)
 w('404.html', head("Page introuvable", "Cette page n'existe pas.", "/404.html", robots='noindex') + NAV + '<main class="wrap"><article><h1>Page introuvable</h1><p>Cette page n\'existe pas ou a été déplacée.</p><p><a class="btn p" href="/">Faire un tirage au sort</a></p></article></main>' + foot())
 
 # Sitemap, robots, CNAME, IndexNow
-urls = [("/", today, "1.0"), ("/qui-apporte-quoi/", today, "0.9"), ("/guides/", today, "0.6")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
+urls = [("/", today, "1.0"), ("/qui-apporte-quoi/", today, "0.9"), ("/retrouver/", today, "0.5"), ("/guides/", today, "0.6")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n')
 BOTS = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "YandexBot", "Qwantbot", "MistralAI-User", "CCBot"]
 w('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /404.html\n\n' + ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in BOTS) + f'Sitemap: {BASE}/sitemap.xml\n')

@@ -74,10 +74,11 @@ function suivre(T){
   $("res").scrollIntoView({behavior:"smooth"});
 }
 function rendreMes(){
-  var L=[];try{L=JSON.parse(localStorage.getItem("qoaq_suivis")||"[]")}catch(e){}
+  var L=[],R=[];try{L=JSON.parse(localStorage.getItem("qoaq_suivis")||"[]");R=JSON.parse(localStorage.getItem("qoaq_resultats")||"[]")}catch(e){}
   var c=$("mes");if(!c)return;
-  if(!L.length){c.classList.add("cache");return}
+  if(!L.length&&!R.length){c.classList.add("cache");return}
   c.classList.remove("cache");var ul=$("mes-l");ul.innerHTML="";
+  R.forEach(function(x){var li=document.createElement("li");li.innerHTML='<span><b>'+escH(x.ev)+'</b><small>Votre résultat ('+escH(x.de)+')</small></span><span class="act"><a class="btn s petit" href="'+escH(x.u)+'">Revoir</a></span>';ul.appendChild(li)});
   L.forEach(function(T,k){
     var li=document.createElement("li");
     var dt=new Date(T.ts).toLocaleDateString("fr-FR",{day:"numeric",month:"long"});
@@ -121,6 +122,7 @@ var IDEES={
  "50":[["Écouteurs sans fil","Un vrai cadeau plaisir","ecouteurs sans fil"],["Appareil à fondue ou raclette","Pour les repas à plusieurs","appareil raclette"],["Lampe de lecture","Pour les lecteurs du soir","lampe de lecture led"],["Coffret jeu de société expert","Des heures de jeu","jeu de societe strategie"]]
 };
 function afficherRes(o){
+  try{var R=JSON.parse(localStorage.getItem("qoaq_resultats")||"[]").filter(function(x){return x.u!==location.href});R.unshift({u:location.href,ev:o.e,de:o.de,ts:Date.now()});localStorage.setItem("qoaq_resultats",JSON.stringify(R.slice(0,8)))}catch(e){}
   $("vue-orga").classList.add("cache");$("vue-res").classList.remove("cache");
   $("r-titre").textContent="Bonjour "+o.de;
   var dt=o.d?new Date(o.d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}):"";
