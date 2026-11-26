@@ -11,6 +11,17 @@ TAG = 'quioffreaqui-21'
 INDEXNOW = 'da4540821acf4048569bad7fbedc3ee1'
 CSS = open(os.path.join(HERE, 'tool.css')).read()
 EXTRA_CSS = """
+.nlbox{border:2px solid var(--or,#e8b04a);background:#fffaf0}
+.nlcoche{background:#fffaf0;border:2px solid var(--or,#e8b04a);border-radius:12px;padding:12px 14px}
+.nlf{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+.nlf input{flex:1 1 200px;min-width:0;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid #c9d6d0}
+.nlf button{flex:0 0 auto;font:700 16px system-ui,sans-serif;padding:12px 18px;border:0;border-radius:10px;background:#b3263a;color:#fff;cursor:pointer}
+.nlf button:disabled{opacity:.6}
+.nlm{font-size:14px;margin:8px 0 0;min-height:1em}
+.nlpied{background:rgba(255,255,255,.08);border-radius:14px;padding:18px 20px;margin:0 0 26px}
+.nlpied h2{font:800 18px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 4px}
+.nlpied p{margin:0}
+.nlpied .nlm{color:#fff}
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -98,11 +109,18 @@ def head(title, desc, path, schema=None, robots='index,follow'):
 
 NAV = '<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><span class="nav-d"><a class="nav-l" href="/qui-apporte-quoi/">Qui apporte quoi</a><a class="cta" href="/#outil">Faire un tirage</a></span></div></nav>'
 
+def nlform(src, clair=False):
+    return f'<form class="nlf" data-src="{src}" novalidate><input type="email" name="email" inputmode="email" autocomplete="email" placeholder="votre@email.fr" aria-label="Votre e-mail" required><button type="submit">Je m\'inscris</button></form><p class="nlm" role="status"></p>'
+NLTXT = "Nos meilleures idées cadeaux avant les fêtes et un rappel pour le tirage de l'an prochain. Pas plus de 2 e-mails par mois, désinscription en un clic."
+def nlencart(src):
+    return f'<div class="carte nlbox" style="margin:24px 0"><h2>Recevez nos idées cadeaux</h2><p class="sous" style="margin:0">{NLTXT}</p>{nlform(src)}</div>'
+
 def foot():
     bud = ''.join(f'<a href="/{p["slug"]}/">{p["slug"].split("-")[-2]} €</a>' for p in PAGES if groupe(p) == 'budget')
     cles = ["regles-pere-noel-secret", "pere-noel-secret-famille", "cadeau-secret-santa-collegue", "tirage-au-sort-secret-santa-whatsapp", "idee-cadeau-secret-santa-homme", "idee-cadeau-secret-santa-femme"]
     gd = ''.join(f'<li><a href="/{p["slug"]}/">{esc(court_titre(p))}</a></li>' for c in cles for p in PAGES if p["slug"] == c)
     return f'''<footer><div class="wrap">
+<div class="nlpied"><h2>Ne ratez pas le tirage de l'an prochain</h2><p>{NLTXT}</p>{nlform("pied")}</div>
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles">{bud}</div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
@@ -195,7 +213,7 @@ for p in PAGES:
     _i = PAGES.index(p)
     rel = (_g[_i % len(_g):] + _g[:_i % len(_g)])[:3] + (_b[_i % len(_b):] + _b[:_i % len(_b)])[:2]
     related = '<h2>À lire aussi</h2>' + cartes(rel)
-    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{related}</article></main>' + foot()
+    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{nlencart('guide')}{related}</article></main>' + foot()
     w(f'{p["slug"]}/index.html', html_)
 
 # Page hub des guides
@@ -240,7 +258,7 @@ w('newsletter/index.html', nl)
 legal = head("Mentions légales et confidentialité", "Mentions légales, données personnelles et liens affiliés du site Qui offre à qui.", "/mentions-legales/", robots='noindex,follow') + NAV + '''<main class="wrap"><article><h1>Mentions légales et confidentialité</h1>
 <h2>Éditeur</h2><p>Jérémy Dacier-Jury, 9 passage des Tisserands, 38790 Charantonnay. Contact : <a href="mailto:contact@cvlibre.com">contact@cvlibre.com</a>.</p>
 <h2>Hébergement</h2><p>GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
-<h2>Données personnelles</h2><p>Le tirage au sort est fait sur nos serveurs (Supabase, hébergé dans l'Union européenne) pour que personne, pas même l'organisateur, ne connaisse les résultats. Les prénoms et les adresses e-mail des participants servent uniquement à leur envoyer leur résultat (prestataire d'envoi : Resend) et à permettre à l'organisateur de renvoyer un e-mail. Ils sont supprimés automatiquement 8 mois après le tirage. Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) ; vous pouvez les effacer à tout moment.</p><p><strong>Newsletter.</strong> Un participant ou un organisateur peut s'inscrire à notre newsletter (idées cadeaux, rappel du tirage de l'année suivante) en cliquant sur « Oui, je m'inscris » ou en cochant la case prévue. Nous gardons alors son prénom et son adresse jusqu'à sa désinscription, possible en un clic dans chaque e-mail. Sans cette inscription, nous n'écrivons jamais aux participants pour autre chose que leur tirage.</p><p><strong>E-mail de l'organisateur (facultatif).</strong> L'adresse de l'organisateur est conservée seulement s'il coche la case de rappel : elle sert alors à envoyer un e-mail par an pour proposer un nouveau tirage, jusqu'à sa désinscription (lien dans chaque e-mail). Base légale : votre consentement. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans donnée permettant de vous identifier.</p><p><strong>Publicité.</strong> Le site affiche des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies pour diffuser des annonces, personnalisées ou non selon votre choix dans le message de consentement. Vous pouvez modifier ce choix à tout moment et en savoir plus sur <a href="https://policies.google.com/technologies/ads?hl=fr" rel="noopener">la page de Google consacrée à la publicité</a>.</p>
+<h2>Données personnelles</h2><p>Le tirage au sort est fait sur nos serveurs (Supabase, hébergé dans l'Union européenne) pour que personne, pas même l'organisateur, ne connaisse les résultats. Les prénoms et les adresses e-mail des participants servent uniquement à leur envoyer leur résultat (prestataire d'envoi : Resend) et à permettre à l'organisateur de renvoyer un e-mail. Ils sont supprimés automatiquement 8 mois après le tirage. Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) ; vous pouvez les effacer à tout moment.</p><p><strong>Newsletter.</strong> Vous pouvez vous inscrire à notre newsletter (idées cadeaux, rappel du tirage de l'année suivante, 2 e-mails par mois au plus) en cliquant sur un bouton d'inscription, en cochant la case prévue lors du tirage ou en saisissant votre adresse dans un formulaire du site (vous confirmez alors par un clic dans un e-mail). Nous gardons votre prénom et votre adresse jusqu'à votre désinscription, possible en un clic dans chaque e-mail. Base légale : votre consentement. Sans cette inscription, nous n'écrivons jamais aux participants pour autre chose que leur tirage.</p><p><strong>E-mail de l'organisateur (facultatif).</strong> Il sert à envoyer la confirmation et le lien de suivi, et à retrouver vos tirages sur demande. Il est supprimé 8 mois après le tirage, sauf si vous vous inscrivez à la newsletter. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans donnée permettant de vous identifier.</p><p><strong>Publicité.</strong> Le site affiche des annonces Google AdSense. Google et ses partenaires peuvent utiliser des cookies pour diffuser des annonces, personnalisées ou non selon votre choix dans le message de consentement. Vous pouvez modifier ce choix à tout moment et en savoir plus sur <a href="https://policies.google.com/technologies/ads?hl=fr" rel="noopener">la page de Google consacrée à la publicité</a>.</p>
 <h2>Liens affiliés</h2><p>Certains liens vers Amazon sont des liens affiliés : en tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises, sans surcoût pour vous.</p>
 </article></main>''' + foot()
 w('mentions-legales/index.html', legal)

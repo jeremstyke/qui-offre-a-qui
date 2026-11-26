@@ -41,6 +41,19 @@ async function abonner(p: string, source: string) {
   await sb.from("qoaq_abonnes").upsert({ email: x.email, prenom: x.nom, source, occasion: t?.occasion || null, actif: true, desabo_at: null }, { onConflict: "email" });
   return true;
 }
+// Inscription directe par adresse (formulaire du site, bouton dans l'e-mail de l'organisateur) : jeton signé, double opt-in
+const b64u = (x: string) => btoa(unescape(encodeURIComponent(x))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const deb64u = (x: string) => { try { return decodeURIComponent(escape(atob(x.replace(/-/g, "+").replace(/_/g, "/")))); } catch { return ""; } };
+async function sigE(e: string, src: string) { return (await sha(`aboe|${e}|${src}|${SECRET}`)).slice(0, 16); }
+async function jetonE(e: string, src: string) { return `${b64u(e)}.${src}.${await sigE(e, src)}`; }
+async function abonnerE(tok: string) {
+  const m = /^([A-Za-z0-9_-]{4,400})\.([a-z]{2,12})\.([a-f0-9]{16})$/.exec(tok || "");
+  if (!m) return false;
+  const e = deb64u(m[1]).toLowerCase();
+  if (!EMAIL.test(e) || (await sigE(e, m[2])) !== m[3]) return false;
+  await sb.from("qoaq_abonnes").upsert({ email: e, source: m[2], actif: true, desabo_at: null }, { onConflict: "email" });
+  return true;
+}
 let KEY = "";
 async function cle() {
   if (KEY) return KEY;
@@ -89,7 +102,7 @@ function mailParticipant(t: T, p: { nom: string; email: string; url: string; jet
     from: FROM, reply_to: REPLY, to: [p.email],
     subject: `${p.nom}, votre tirage pour « ${t.ev} » est prêt`,
     html: cadre(`Bonjour ${esc(p.nom)}, votre tirage est prêt`,
-      `${infos(t)}<p style="margin:0;font-size:15px;line-height:1.5">Le tirage au sort a été fait. Le nom de la personne à qui vous offrez un cadeau vous attend derrière ce bouton. Vous êtes le seul à le voir : même l'organisateur ne le connaît pas. Gardez le secret !</p>${bouton(p.url, "Découvrir à qui j'offre")}<div style="background:#f3f6f4;border-radius:12px;padding:14px 16px;margin:0 0 16px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Besoin d'une idée de cadeau ?</p><p style="margin:0;font-size:15px;line-height:1.5"><a href="${esc(idees(t.budget))}" style="color:#1f6b4f;font-weight:bold">${/^(5|10|15|20|30|50)$/.test(t.budget) ? `Voir 15 idées cadeaux à ${esc(t.budget)} €` : "Voir nos idées cadeaux par budget"}</a>, classées par goût et faciles à commander.</p></div>${t.liste ? `<div style="background:#fdf6e3;border-radius:12px;padding:14px 16px;margin:0 0 16px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Et pour le repas, qui apporte quoi ?</p><p style="margin:0 0 10px;font-size:15px;line-height:1.5">Une liste commune est prête pour tous les participants : dites ce que vous apportez.</p><a href="${esc(lienListe(t.liste, p.nom))}" style="color:#1f6b4f;font-weight:bold">Voir la liste du repas</a></div>` : ""}<p style="margin:0 0 8px;font-size:14px;color:#5b6b66">Gardez ce message : le bouton vous permet de revoir votre résultat à tout moment. Vous l'avez perdu ? <a href="${SITE}/retrouver/" style="color:#5b6b66">Retrouvez votre tirage ici</a>.</p>${p.jeton ? `<div style="border:1px solid #e2e8e5;border-radius:12px;padding:14px 16px;margin:16px 0 8px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Recevoir la newsletter ?</p><p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#5b6b66">Des idées cadeaux de temps en temps et un rappel pour le tirage de l'an prochain. Désinscription en un clic.</p><a href="${FN}?abo=${esc(p.jeton)}" style="display:inline-block;background:#1f6b4f;color:#fff;text-decoration:none;font-weight:bold;padding:10px 16px;border-radius:10px;font-size:14px">Oui, je m'inscris</a></div>` : ""}`,
+      `${infos(t)}<p style="margin:0;font-size:15px;line-height:1.5">Le tirage au sort a été fait. Le nom de la personne à qui vous offrez un cadeau vous attend derrière ce bouton. Vous êtes le seul à le voir : même l'organisateur ne le connaît pas. Gardez le secret !</p>${bouton(p.url, "Découvrir à qui j'offre")}<div style="background:#f3f6f4;border-radius:12px;padding:14px 16px;margin:0 0 16px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Besoin d'une idée de cadeau ?</p><p style="margin:0;font-size:15px;line-height:1.5"><a href="${esc(idees(t.budget))}" style="color:#1f6b4f;font-weight:bold">${/^(5|10|15|20|30|50)$/.test(t.budget) ? `Voir 15 idées cadeaux à ${esc(t.budget)} €` : "Voir nos idées cadeaux par budget"}</a>, classées par goût et faciles à commander.</p></div>${t.liste ? `<div style="background:#fdf6e3;border-radius:12px;padding:14px 16px;margin:0 0 16px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Et pour le repas, qui apporte quoi ?</p><p style="margin:0 0 10px;font-size:15px;line-height:1.5">Une liste commune est prête pour tous les participants : dites ce que vous apportez.</p><a href="${esc(lienListe(t.liste, p.nom))}" style="color:#1f6b4f;font-weight:bold">Voir la liste du repas</a></div>` : ""}<p style="margin:0 0 8px;font-size:14px;color:#5b6b66">Gardez ce message : le bouton vous permet de revoir votre résultat à tout moment. Vous l'avez perdu ? <a href="${SITE}/retrouver/" style="color:#5b6b66">Retrouvez votre tirage ici</a>.</p>${p.jeton ? `<div style="border:1px solid #e2e8e5;border-radius:12px;padding:14px 16px;margin:16px 0 8px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Recevoir nos idées cadeaux ?</p><p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#5b6b66">Nos meilleures trouvailles avant les fêtes, et un rappel pour le tirage de l'an prochain. Pas plus de 2 e-mails par mois, désinscription en un clic.</p><a href="${FN}?abo=${esc(p.jeton)}" style="display:inline-block;background:#1f6b4f;color:#fff;text-decoration:none;font-weight:bold;padding:10px 16px;border-radius:10px;font-size:14px">Oui, je m'inscris</a></div>` : ""}`,
       `Vous recevez ce message parce que l'organisateur de « ${esc(t.ev)} » vous a inscrit au tirage au sort sur <a href="${SITE}/" style="color:#5b6b66">qui-offre-a-qui.fr</a>. Votre adresse sert à vous envoyer ce résultat ; vous ne recevrez rien d'autre sans votre accord.`),
     text: `Bonjour ${p.nom},\n\nLe tirage au sort pour « ${t.ev} » est fait${quand ? ` (échange le ${quand})` : ""}.\nDécouvrez à qui vous offrez un cadeau (vous êtes le seul à le voir) : ${p.url}\n\nBesoin d'une idée de cadeau ? ${idees(t.budget)}\n\nGardez ce message pour revoir votre résultat. Perdu ? ${SITE}/retrouver/\n\nQui offre à qui, ${SITE}/`,
   };
@@ -151,6 +164,8 @@ Deno.serve(async (req) => {
     const go = (r: string) => new Response(null, { status: 302, headers: { Location: `${SITE}/newsletter/?r=${r}` } });
     const abo = u.searchParams.get("abo");
     if (abo) return go((await abonner(abo, "email")) ? "ok" : "lien");
+    const ins = u.searchParams.get("ins");
+    if (ins) return go((await abonnerE(ins)) ? "ok" : "lien");
     const t = u.searchParams.get("stop") || "";
     if (/^[a-f0-9]{24}$/.test(t)) {
       const { data } = await sb.from("qoaq_tirages").select("orga_email").eq("unsub", t).maybeSingle();
@@ -227,7 +242,9 @@ Deno.serve(async (req) => {
 
   // Nettoyage : les adresses des participants sont supprimées 8 mois après le tirage (les abonnés à la newsletter sont gardés à part)
   try {
-    await sb.from("qoaq_participants").delete().lt("created_at", new Date(Date.now() - 240 * 864e5).toISOString());
+    const vieux = new Date(Date.now() - 240 * 864e5).toISOString();
+    await sb.from("qoaq_participants").delete().lt("created_at", vieux);
+    await sb.from("qoaq_tirages").update({ orga_contact: null }).lt("created_at", vieux).not("orga_contact", "is", null);
   } catch (_) { /* ignore */ }
 
   if (b.action === "retrouver") {
@@ -260,6 +277,26 @@ Deno.serve(async (req) => {
   }
 
   if (b.action === "abo") return J({ ok: await abonner(String(b.p || ""), "resultat") });
+
+  // Inscription depuis un formulaire du site : e-mail de confirmation (double opt-in)
+  if (b.action === "inscrire") {
+    const em = court(b.email, 200).toLowerCase();
+    if (!EMAIL.test(em)) return J({ ok: false, raison: "email" }, 400);
+    const src = /^[a-z]{2,12}$/.test(String(b.src || "")) ? String(b.src) : "site";
+    const { data: deja } = await sb.from("qoaq_abonnes").select("actif").eq("email", em).maybeSingle();
+    if (deja?.actif) return J({ ok: true, deja: true });
+    const ipI = await sha("qoaq|" + (req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "?"));
+    const ehI = await sha("ins|" + em), depuisI = new Date(Date.now() - 3600e3).toISOString();
+    const { count: ni } = await sb.from("qoaq_retrouver").select("id", { count: "exact", head: true }).eq("ip_hash", ipI).gte("at", depuisI);
+    const { count: ne } = await sb.from("qoaq_retrouver").select("id", { count: "exact", head: true }).eq("email_hash", ehI).gte("at", depuisI);
+    if ((ni || 0) >= 8 || (ne || 0) >= 2) return J({ ok: false, raison: "limite" }, 429);
+    await sb.from("qoaq_retrouver").insert({ email_hash: ehI, ip_hash: ipI });
+    const lien = `${FN}?ins=${await jetonE(em, src)}`;
+    await envoyerLot([{ from: FROM, reply_to: REPLY, to: [em], subject: "Confirmez votre inscription à Qui offre à qui",
+      html: cadre("Plus qu'un clic", `<p style="margin:0 0 12px;font-size:15px;line-height:1.5">Confirmez votre adresse pour recevoir nos meilleures idées cadeaux avant les fêtes et un rappel pour le tirage de l'an prochain.</p>${bouton(lien, "Oui, je confirme")}`, `Vous recevez ce message parce que cette adresse a été saisie sur <a href="${SITE}/" style="color:#5b6b66">qui-offre-a-qui.fr</a>. Si ce n'est pas vous, ignorez-le : sans clic, vous ne recevrez rien.`),
+      text: `Confirmez votre inscription : ${lien}\n\nSi ce n'est pas vous, ignorez ce message.` }]);
+    return J({ ok: true });
+  }
 
   // Gestion par l'organisateur : voir l'état ou renvoyer un e-mail (sans jamais voir les résultats)
   if (b.action === "etat" || b.action === "renvoyer") {
@@ -322,14 +359,15 @@ Deno.serve(async (req) => {
   const gestion = `${SITE}/#g=${row.id}.${row.gestion}`;
   if (orga) {
     const stop = `${FN}?stop=${row.unsub}`;
+    const insOrga = rappel ? "" : `<div style="border:1px solid #e2e8e5;border-radius:12px;padding:14px 16px;margin:16px 0 8px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">On vous prévient l'an prochain ?</p><p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#5b6b66">Un rappel pour refaire le tirage en 2 minutes et nos meilleures idées cadeaux avant les fêtes. Désinscription en un clic.</p><a href="${FN}?ins=${await jetonE(orga, "orga")}" style="display:inline-block;background:#1f6b4f;color:#fff;text-decoration:none;font-weight:bold;padding:10px 16px;border-radius:10px;font-size:14px">Oui, je m'inscris</a></div>`;
     const liste = P.map((p) => `<li style="margin:0 0 6px"><b>${esc(p.nom)}</b> <span style="color:#5b6b66">${esc(p.email)}</span></li>`).join("");
     mails.push({
       from: FROM, reply_to: REPLY, to: [orga],
       subject: `Tirage « ${ev} » fait : ${P.length} participants prévenus`,
       html: cadre(`Votre tirage « ${esc(ev)} » est fait`,
         `${infos(t)}<p style="margin:0 0 12px;font-size:15px;line-height:1.5">Chaque participant a reçu son résultat par e-mail. Personne d'autre ne le connaît, pas même vous : vous pouvez donc participer sans tricher.</p><ul style="padding-left:18px;margin:0 0 8px;font-size:15px">${liste}</ul><p style="margin:12px 0 0;font-size:15px;line-height:1.5">Quelqu'un n'a rien reçu ou s'est trompé d'adresse ? Renvoyez-lui son e-mail depuis la page de suivi, sans voir son résultat.</p>${bouton(gestion, "Suivre mon tirage")}${listeId ? `<p style="margin:0;font-size:15px;line-height:1.5">Une liste commune « qui apporte quoi » a été créée pour le repas : <a href="${esc(lienListe(listeId))}" style="color:#1f6b4f;font-weight:bold">voir la liste</a>. Les participants la retrouvent sous leur résultat.</p>` : ""}`,
-        rappel ? `Vous avez accepté qu'on vous rappelle l'an prochain de refaire un tirage (un seul e-mail par an). <a href="${esc(stop)}" style="color:#5b6b66">Ne plus recevoir de rappel</a>.` : `Votre adresse sert uniquement à vous envoyer cette confirmation.`),
-      text: `Votre tirage « ${ev} » est fait. Chaque participant a reçu son résultat par e-mail, personne d'autre ne le connaît.\n\n` + P.map((p) => `${p.nom} : ${p.email}`).join("\n") + `\n\nSuivre le tirage et renvoyer un e-mail : ${gestion}\n\nQui offre à qui, ${SITE}/` + (rappel ? `\nNe plus recevoir de rappel : ${stop}` : ""),
+        rappel ? `Vous êtes inscrit à notre newsletter (rappel du tirage de l'an prochain et idées cadeaux). <a href="${esc(stop)}" style="color:#5b6b66">Se désinscrire</a>.` : `Votre adresse sert à cette confirmation et à retrouver vos tirages. Vous ne recevrez rien d'autre sans votre accord.`),
+      text: `Votre tirage « ${ev} » est fait. Chaque participant a reçu son résultat par e-mail, personne d'autre ne le connaît.\n\n` + P.map((p) => `${p.nom} : ${p.email}`).join("\n") + `\n\nSuivre le tirage et renvoyer un e-mail : ${gestion}\n\nQui offre à qui, ${SITE}/` + (rappel ? `\nSe désinscrire de la newsletter : ${stop}` : ""),
       headers: rappel ? { "List-Unsubscribe": `<${stop}>` } : undefined,
     });
   }

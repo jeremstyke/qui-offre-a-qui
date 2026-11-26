@@ -45,7 +45,7 @@
 <p class="sous">Recevez une confirmation et un lien de suivi pour renvoyer un e-mail si quelqu'un ne le trouve pas. Vous ne verrez aucun résultat.</p>
 <label for="m-orga">Votre e-mail pour le suivi</label>
 <input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
-<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
+<label class="coche nlcoche"><input type="checkbox" id="m-rappel"> <span><b>Oui, prévenez-moi l'an prochain</b> pour refaire le tirage en 2 minutes, et envoyez-moi vos meilleures idées cadeaux avant les fêtes. Pas plus de 2 e-mails par mois, désinscription en un clic.</span></label>
 </section>
 
 <button class="btn p" id="tirer">Lancer le tirage et envoyer les e-mails</button>
@@ -73,6 +73,12 @@
 <div class="paquet" id="paquet" role="button" tabindex="0" aria-label="Ouvrir le paquet"></div>
 <div id="nom" class="cache"><p>Tu offres un cadeau à</p><div class="pour" id="r-pour"></div><p id="r-budget"></p></div>
 </section>
+<section class="carte cache nlbox" id="nl">
+<h2>Gardez une longueur d'avance 🎁</h2>
+<p class="sous">Recevez nos meilleures idées cadeaux avant les fêtes et un rappel pour le tirage de l'an prochain. Pas plus de 2 e-mails par mois, désinscription en un clic.</p>
+<button class="btn p" id="nl-ok" style="width:auto;font-size:16px;padding:12px 20px">Oui, je veux les idées</button>
+<p class="note" id="nl-msg" role="status"></p>
+</section>
 <section class="carte cache viral" id="r-autre">
 <h2>Un autre groupe à organiser&nbsp;?</h2>
 <p>Collègues, amis, belle-famille, club... Faites leur tirage en 2 minutes, gratuitement et sans compte.</p>
@@ -90,12 +96,6 @@
 <p class="sous">Une sélection simple pour ne pas chercher pendant des heures. <a id="r-guide" href="/idee-cadeau-20-euros/">Plus d'idées</a></p>
 <div class="idees" id="grille"></div>
 <p style="margin-top:16px"><a class="btn p" id="r-guide2" href="/idee-cadeau-20-euros/">Voir 15 idées à <span id="r-b2"></span> €</a></p>
-</section>
-<section class="carte cache" id="nl">
-<h2>Recevoir la newsletter ?</h2>
-<p class="sous">Des idées cadeaux de temps en temps et un rappel pour le tirage de l'an prochain. Désinscription en un clic.</p>
-<button class="btn p" id="nl-ok" style="width:auto;font-size:16px;padding:12px 20px">Oui, je m'inscris</button>
-<p class="note" id="nl-msg" role="status"></p>
 </section>
 <section class="carte garder">
 <p><b>Gardez l'e-mail reçu</b> pour revoir votre résultat plus tard, ou copiez votre lien :</p>

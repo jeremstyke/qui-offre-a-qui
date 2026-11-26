@@ -29,3 +29,28 @@
     if (a) { var m = a.href.match(/[?&]k=([^&]+)/); hit('amz', m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : a.href.split('?')[0]); }
   }, true);
 })();
+
+// Formulaires d'inscription à la newsletter (double opt-in : un e-mail de confirmation est envoyé)
+(function(){
+  var FN = 'https://txvrlvcxfnylnrpdrxtt.supabase.co/functions/v1/qoaq';
+  document.addEventListener('submit', function(e){
+    var f = e.target; if (!f.classList || !f.classList.contains('nlf')) return;
+    e.preventDefault();
+    var i = f.querySelector('input'), b = f.querySelector('button'), m = f.nextElementSibling;
+    var v = (i.value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)) { m.textContent = 'Cette adresse ne semble pas valide.'; i.focus(); return; }
+    b.disabled = true; b.textContent = 'Envoi...';
+    fetch(FN, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({action: 'inscrire', email: v, src: f.getAttribute('data-src') || 'site'})})
+      .then(function(r){ return r.json().then(function(j){ j._s = r.status; return j; }); })
+      .then(function(j){
+        if (j.ok) {
+          f.style.display = 'none';
+          m.textContent = j.deja ? 'Vous êtes déjà inscrit, merci !' : 'Presque fini : cliquez sur le lien que nous venons de vous envoyer par e-mail (pensez aux spams).';
+          try { window.qoaqHit && window.qoaqHit('lead', 'form_' + (f.getAttribute('data-src') || 'site')); } catch(_){}
+        } else {
+          b.disabled = false; b.textContent = 'Je m\'inscris';
+          m.textContent = j._s === 429 ? 'Trop de demandes, réessayez dans une heure.' : j.raison === 'email' ? 'Cette adresse ne semble pas valide.' : 'Ça n\'a pas marché, réessayez.';
+        }
+      }).catch(function(){ b.disabled = false; b.textContent = 'Je m\'inscris'; m.textContent = 'Pas de connexion, réessayez.'; });
+  });
+})();

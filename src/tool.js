@@ -149,7 +149,7 @@ function afficherRes(o){
   var pm=location.hash.match(/[&#]p=(\d+\.\d+\.[a-f0-9]{16})/);
   if(pm){var dejaNl=false;try{dejaNl=localStorage.getItem("qoaq_nl")==="1"}catch(e){}
     if(!dejaNl){$("nl-ok").onclick=function(){var bt=this;bt.disabled=true;bt.textContent="Inscription...";
-      post({action:"abo",p:pm[1]}).then(function(x){if(x.ok){bt.textContent="C'est noté, merci !";$("nl-msg").textContent="Vous recevrez nos idées cadeaux et le rappel de l'an prochain.";try{localStorage.setItem("qoaq_nl","1");window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}else{bt.disabled=false;bt.textContent="Réessayer"}}).catch(function(){bt.disabled=false;bt.textContent="Réessayer"})};}
+      post({action:"abo",p:pm[1]}).then(function(x){if(x.ok){bt.textContent="C'est noté, merci !";$("nl-msg").textContent="Vous recevrez nos idées cadeaux et le rappel de l'an prochain.";setTimeout(function(){$("nl").classList.add("cache")},4000);try{localStorage.setItem("qoaq_nl","1");window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}else{bt.disabled=false;bt.textContent="Réessayer"}}).catch(function(){bt.disabled=false;bt.textContent="Réessayer"})};}
   }
   if(o.l&&/^[a-z0-9]{10}$/.test(o.l)){
     var lien="/qui-apporte-quoi/#l="+o.l+"&n="+encodeURIComponent(o.de);$("r-repas-lien").href=lien;

@@ -142,6 +142,17 @@ input.attention{outline:3px solid var(--baie)}
  .rp-tab input[data-f="label"]{font-weight:700}
 }
 
+.nlbox{border:2px solid var(--or,#e8b04a);background:#fffaf0}
+.nlcoche{background:#fffaf0;border:2px solid var(--or,#e8b04a);border-radius:12px;padding:12px 14px}
+.nlf{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+.nlf input{flex:1 1 200px;min-width:0;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid #c9d6d0}
+.nlf button{flex:0 0 auto;font:700 16px system-ui,sans-serif;padding:12px 18px;border:0;border-radius:10px;background:#b3263a;color:#fff;cursor:pointer}
+.nlf button:disabled{opacity:.6}
+.nlm{font-size:14px;margin:8px 0 0;min-height:1em}
+.nlpied{background:rgba(255,255,255,.08);border-radius:14px;padding:18px 20px;margin:0 0 26px}
+.nlpied h2{font:800 18px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 4px}
+.nlpied p{margin:0}
+.nlpied .nlm{color:#fff}
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -225,7 +236,7 @@ footer .amz{color:#b9cdc5}
 <p class="sous">Recevez une confirmation et un lien de suivi pour renvoyer un e-mail si quelqu'un ne le trouve pas. Vous ne verrez aucun résultat.</p>
 <label for="m-orga">Votre e-mail pour le suivi</label>
 <input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
-<label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
+<label class="coche nlcoche"><input type="checkbox" id="m-rappel"> <span><b>Oui, prévenez-moi l'an prochain</b> pour refaire le tirage en 2 minutes, et envoyez-moi vos meilleures idées cadeaux avant les fêtes. Pas plus de 2 e-mails par mois, désinscription en un clic.</span></label>
 </section>
 
 <button class="btn p" id="tirer">Lancer le tirage et envoyer les e-mails</button>
@@ -274,6 +285,12 @@ footer .amz{color:#b9cdc5}
 <div class="paquet" id="paquet" role="button" tabindex="0" aria-label="Ouvrir le paquet"></div>
 <div id="nom" class="cache"><p>Tu offres un cadeau à</p><div class="pour" id="r-pour"></div><p id="r-budget"></p></div>
 </section>
+<section class="carte cache nlbox" id="nl">
+<h2>Gardez une longueur d'avance 🎁</h2>
+<p class="sous">Recevez nos meilleures idées cadeaux avant les fêtes et un rappel pour le tirage de l'an prochain. Pas plus de 2 e-mails par mois, désinscription en un clic.</p>
+<button class="btn p" id="nl-ok" style="width:auto;font-size:16px;padding:12px 20px">Oui, je veux les idées</button>
+<p class="note" id="nl-msg" role="status"></p>
+</section>
 <section class="carte cache viral" id="r-autre">
 <h2>Un autre groupe à organiser&nbsp;?</h2>
 <p>Collègues, amis, belle-famille, club... Faites leur tirage en 2 minutes, gratuitement et sans compte.</p>
@@ -291,12 +308,6 @@ footer .amz{color:#b9cdc5}
 <p class="sous">Une sélection simple pour ne pas chercher pendant des heures. <a id="r-guide" href="/idee-cadeau-20-euros/">Plus d'idées</a></p>
 <div class="idees" id="grille"></div>
 <p style="margin-top:16px"><a class="btn p" id="r-guide2" href="/idee-cadeau-20-euros/">Voir 15 idées à <span id="r-b2"></span> €</a></p>
-</section>
-<section class="carte cache" id="nl">
-<h2>Recevoir la newsletter ?</h2>
-<p class="sous">Des idées cadeaux de temps en temps et un rappel pour le tirage de l'an prochain. Désinscription en un clic.</p>
-<button class="btn p" id="nl-ok" style="width:auto;font-size:16px;padding:12px 20px">Oui, je m'inscris</button>
-<p class="note" id="nl-msg" role="status"></p>
 </section>
 <section class="carte garder">
 <p><b>Gardez l'e-mail reçu</b> pour revoir votre résultat plus tard, ou copiez votre lien :</p>
@@ -457,7 +468,7 @@ function afficherRes(o){
   var pm=location.hash.match(/[&#]p=(\d+\.\d+\.[a-f0-9]{16})/);
   if(pm){var dejaNl=false;try{dejaNl=localStorage.getItem("qoaq_nl")==="1"}catch(e){}
     if(!dejaNl){$("nl-ok").onclick=function(){var bt=this;bt.disabled=true;bt.textContent="Inscription...";
-      post({action:"abo",p:pm[1]}).then(function(x){if(x.ok){bt.textContent="C'est noté, merci !";$("nl-msg").textContent="Vous recevrez nos idées cadeaux et le rappel de l'an prochain.";try{localStorage.setItem("qoaq_nl","1");window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}else{bt.disabled=false;bt.textContent="Réessayer"}}).catch(function(){bt.disabled=false;bt.textContent="Réessayer"})};}
+      post({action:"abo",p:pm[1]}).then(function(x){if(x.ok){bt.textContent="C'est noté, merci !";$("nl-msg").textContent="Vous recevrez nos idées cadeaux et le rappel de l'an prochain.";setTimeout(function(){$("nl").classList.add("cache")},4000);try{localStorage.setItem("qoaq_nl","1");window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}else{bt.disabled=false;bt.textContent="Réessayer"}}).catch(function(){bt.disabled=false;bt.textContent="Réessayer"})};}
   }
   if(o.l&&/^[a-z0-9]{10}$/.test(o.l)){
     var lien="/qui-apporte-quoi/#l="+o.l+"&n="+encodeURIComponent(o.de);$("r-repas-lien").href=lien;
@@ -480,6 +491,7 @@ brancherPartage();
 })();
 </script>
 <footer><div class="wrap">
+<div class="nlpied"><h2>Ne ratez pas le tirage de l'an prochain</h2><p>Nos meilleures idées cadeaux avant les fêtes et un rappel pour le tirage de l'an prochain. Pas plus de 2 e-mails par mois, désinscription en un clic.</p><form class="nlf" data-src="pied" novalidate><input type="email" name="email" inputmode="email" autocomplete="email" placeholder="votre@email.fr" aria-label="Votre e-mail" required><button type="submit">Je m'inscris</button></form><p class="nlm" role="status"></p></div>
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
