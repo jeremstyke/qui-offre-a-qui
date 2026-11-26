@@ -7,3 +7,5 @@ Fabrication : captures du vrai site avec Playwright (polices locales via fonts.p
 3. Montage : `python3 gen.py scenes.json test` (images de contrôle), puis `full`.
 4. `ffmpeg -framerate 30 -i X_f/%04d.jpg -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p v.mp4` puis ajout de son-short.wav.
 5. Copier le mp4 dans /media/ (exclu de Google par robots.txt), pousser, puis programmer sur Metricool (marque 8318595, YouTube + Facebook) avec l'adresse https://qui-offre-a-qui.fr/media/....
+
+Règle Shorts : l'écran final affiche toujours « 🔗 Lien dans la bio » (les liens ne sont pas cliquables dans les Shorts), et le texte de la publication le rappelle aussi.
