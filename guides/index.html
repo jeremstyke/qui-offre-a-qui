@@ -86,6 +86,32 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 #suivi .l3.cache{display:none}
 #suivi .act{display:flex;gap:6px;flex-wrap:wrap}
 
+.nav-d{display:flex;align-items:center;gap:14px}
+.nav-l{font-weight:700;font-size:15px}
+@media(max-width:480px){.nav-l{display:none}}
+.rp-cat h3{margin:14px 0 8px;font-size:17px}
+.rp-cat .ajout{margin-bottom:4px}
+.rp-tete{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rp-tete h2{margin:0}
+.rp-compte{text-align:center;background:#eef3f0;border-radius:12px;padding:8px 12px;min-width:74px}
+.rp-compte b{display:block;font-size:22px}
+.rp-compte span{font-size:13px;color:var(--gris)}
+.rp-partage{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 4px}
+.rp-partage p{margin:0 0 8px}
+.rp-partage .act{display:flex;gap:8px;flex-wrap:wrap}
+.rp-bloc h2{margin:0 0 6px}
+.rp-items{list-style:none;padding:0;margin:0}
+.rp-items li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.rp-items .lab{flex:1;font-weight:700}
+.rp-items li.pris .lab{color:var(--gris);font-weight:400}
+.rp-items .qui{background:#e3f2eb;color:#1d6b4f;font-weight:700;font-size:14px;border-radius:999px;padding:4px 12px}
+.rp-ajout{display:flex;gap:8px;margin-top:10px}
+.rp-ajout input{flex:1}
+input.attention{outline:3px solid var(--baie)}
+.rp-mail{margin:10px 0 4px}
+.rp-mail summary{cursor:pointer;font-weight:700;color:var(--pin2)}
+.mes li .act a.btn{text-decoration:none}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -122,11 +148,11 @@ footer .amz{color:#b9cdc5}
 <script src="/assets/track.js" defer></script>
 </head>
 <body>
-<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Guides</p><h1>Tous les guides</h1><p>Des idées de cadeaux pour chaque budget et chaque personne, et des conseils pour organiser votre échange. Le tirage au sort, lui, se fait en 2 minutes sur <a href="/">la page d'accueil</a>, sans compte et gratuitement.</p><h2>Idées cadeaux par budget</h2><div class="voir"><a href="/idee-cadeau-5-euros/"><b>Idée cadeau à 5 €</b><span>15 petites idées qui font plaisir</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a><a href="/idee-cadeau-15-euros/"><b>Idée cadeau à 15 €</b><span>15 idées pour un échange réussi</span></a><a href="/idee-cadeau-20-euros/"><b>Idée cadeau à 20 €</b><span>15 idées qui font vraiment plaisir</span></a><a href="/idee-cadeau-30-euros/"><b>Idée cadeau à 30 €</b><span>15 idées pour gâter sans se ruiner</span></a><a href="/idee-cadeau-50-euros/"><b>Idée cadeau à 50 €</b><span>15 idées pour un vrai beau cadeau</span></a></div><h2>Idées selon la personne</h2><div class="voir"><a href="/cadeau-secret-santa-collegue/"><b>Secret Santa entre collègues</b><span>Idées cadeaux et règles</span></a><a href="/idee-cadeau-secret-santa-homme/"><b>Idée cadeau Secret Santa homme</b><span>15 idées par budget</span></a><a href="/idee-cadeau-secret-santa-femme/"><b>Idée cadeau Secret Santa femme</b><span>15 idées par budget</span></a><a href="/cadeau-secret-santa-ado/"><b>Cadeau Secret Santa ado</b><span>15 idées qui plaisent vraiment</span></a><a href="/idee-cadeau-humour-secret-santa/"><b>Cadeau rigolo Secret Santa</b><span>15 idées drôles sans gêner</span></a><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a></div><h2>Organiser son échange</h2><div class="voir"><a href="/pere-noel-secret-famille/"><b>Père Noël secret en famille</b><span>Règles, budget et idées</span></a><a href="/secret-santa-a-distance/"><b>Secret Santa à distance</b><span>L&#x27;organiser en ligne simplement</span></a><a href="/regles-pere-noel-secret/"><b>Père Noël secret</b><span>Règles, déroulement et astuces</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/jeux-echange-cadeaux-noel/"><b>Jeux d&#x27;échange de cadeaux à Noël</b><span>6 variantes à tester</span></a><a href="/liste-envies-secret-santa/"><b>Liste d&#x27;envies Secret Santa</b><span>Comment la faire (exemples)</span></a></div></article></main><footer><div class="wrap">
+<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><span class="nav-d"><a class="nav-l" href="/qui-apporte-quoi/">Qui apporte quoi</a><a class="cta" href="/#outil">Faire un tirage</a></span></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Guides</p><h1>Tous les guides</h1><p>Des idées de cadeaux pour chaque budget et chaque personne, et des conseils pour organiser votre échange. Le tirage au sort, lui, se fait en 2 minutes sur <a href="/">la page d'accueil</a>, sans compte et gratuitement.</p><h2>Idées cadeaux par budget</h2><div class="voir"><a href="/idee-cadeau-5-euros/"><b>Idée cadeau à 5 €</b><span>15 petites idées qui font plaisir</span></a><a href="/idee-cadeau-10-euros/"><b>Idée cadeau à 10 €</b><span>15 idées pour un Père Noël secret</span></a><a href="/idee-cadeau-15-euros/"><b>Idée cadeau à 15 €</b><span>15 idées pour un échange réussi</span></a><a href="/idee-cadeau-20-euros/"><b>Idée cadeau à 20 €</b><span>15 idées qui font vraiment plaisir</span></a><a href="/idee-cadeau-30-euros/"><b>Idée cadeau à 30 €</b><span>15 idées pour gâter sans se ruiner</span></a><a href="/idee-cadeau-50-euros/"><b>Idée cadeau à 50 €</b><span>15 idées pour un vrai beau cadeau</span></a></div><h2>Idées selon la personne</h2><div class="voir"><a href="/cadeau-secret-santa-collegue/"><b>Secret Santa entre collègues</b><span>Idées cadeaux et règles</span></a><a href="/idee-cadeau-secret-santa-homme/"><b>Idée cadeau Secret Santa homme</b><span>15 idées par budget</span></a><a href="/idee-cadeau-secret-santa-femme/"><b>Idée cadeau Secret Santa femme</b><span>15 idées par budget</span></a><a href="/cadeau-secret-santa-ado/"><b>Cadeau Secret Santa ado</b><span>15 idées qui plaisent vraiment</span></a><a href="/idee-cadeau-humour-secret-santa/"><b>Cadeau rigolo Secret Santa</b><span>15 idées drôles sans gêner</span></a><a href="/cadeau-secret-santa-dernier-moment/"><b>Cadeau Secret Santa de dernière minute</b><span>12 idées rapides</span></a></div><h2>Organiser son échange</h2><div class="voir"><a href="/pere-noel-secret-famille/"><b>Père Noël secret en famille</b><span>Règles, budget et idées</span></a><a href="/secret-santa-a-distance/"><b>Secret Santa à distance</b><span>L&#x27;organiser en ligne simplement</span></a><a href="/regles-pere-noel-secret/"><b>Père Noël secret</b><span>Règles, déroulement et astuces</span></a><a href="/tirage-au-sort-secret-santa-whatsapp/"><b>Secret Santa sur WhatsApp</b><span>Faire le tirage dans un groupe</span></a><a href="/jeux-echange-cadeaux-noel/"><b>Jeux d&#x27;échange de cadeaux à Noël</b><span>6 variantes à tester</span></a><a href="/liste-envies-secret-santa/"><b>Liste d&#x27;envies Secret Santa</b><span>Comment la faire (exemples)</span></a></div></article></main><footer><div class="wrap">
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
-<div><h2>Guides</h2><ul><li><a href="/regles-pere-noel-secret/">Père Noël secret</a></li><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a></li><li><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp</a></li><li><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme</a></li><li><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+<div><h2>Guides</h2><ul><li><a href="/regles-pere-noel-secret/">Père Noël secret</a></li><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a></li><li><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp</a></li><li><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme</a></li><li><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme</a></li><li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
 </div>
 <div class="bas">
 <p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>

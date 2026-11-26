@@ -1,0 +1,57 @@
+<header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
+<h1 id="rp-h1">Qui apporte quoi ? La liste du repas à partager</h1>
+<p id="rp-intro">Créez la liste du repas en 1 minute, partagez le lien dans le groupe, et chacun coche ce qu'il apporte. Fini les trois bûches et zéro pain. Gratuit, sans compte.</p>
+<div class="chips"><span>1 minute</span><span>Sans compte</span><span>Un seul lien pour tous</span><span>Mis à jour en direct</span></div>
+</div></header>
+<main class="wrap" id="outil">
+
+<div id="rp-creer">
+<section class="carte cache" id="rp-mes">
+<h2>Vos listes</h2>
+<p class="sous">Les listes que vous avez créées ou ouvertes sur cet appareil.</p>
+<ul class="mes" id="rp-mes-l"></ul>
+</section>
+<section class="carte">
+<h2>1. Le repas</h2>
+<label for="rp-titre">Nom du repas</label>
+<input id="rp-titre" value="Repas de Noël en famille">
+<div class="ligne">
+<div><label for="rp-date">Date</label><input id="rp-date" type="date" value="2026-12-25"></div>
+<div><label for="rp-lieu">Lieu (facultatif)</label><input id="rp-lieu" placeholder="Chez Mamie"></div>
+</div>
+<label for="rp-modele">Modèle de liste</label>
+<select id="rp-modele"><option value="noel">Repas de Noël</option><option value="nouvelan">Réveillon du Nouvel An</option><option value="anniv">Anniversaire</option><option value="pique">Pique-nique ou barbecue</option><option value="auberge">Auberge espagnole</option><option value="vide">Liste vide</option></select>
+</section>
+<section class="carte">
+<h2>2. Ce qu'il faut apporter</h2>
+<p class="sous">Modifiez, supprimez ou ajoutez des lignes. Les invités pourront aussi en ajouter.</p>
+<div id="rp-cats"></div>
+</section>
+<button class="btn p" id="rp-go">Créer la liste et la partager</button>
+<p class="err" id="rp-err" role="alert"></p>
+</div>
+
+<div id="rp-vue" class="cache">
+<section class="carte">
+<div class="rp-tete"><div><h2 id="rp-v-titre"></h2><p class="sous" id="rp-v-info"></p></div><div class="rp-compte" id="rp-compte"></div></div>
+<div class="rp-partage">
+<p><b>Partagez ce lien avec les invités</b> : chacun pourra cocher ce qu'il apporte.</p>
+<div class="act"><a class="btn s petit" id="rp-wa" target="_blank" rel="noopener">WhatsApp</a><button class="btn s petit" id="rp-copie">Copier le lien</button></div>
+</div>
+<details class="rp-mail"><summary>Recevoir le lien par e-mail pour retrouver la liste</summary>
+<div class="rp-ajout"><input id="rp-mail" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr" aria-label="Votre e-mail"><button class="btn s petit" id="rp-mail-ok">Envoyer</button></div>
+<p class="note" id="rp-mail-msg" role="status"></p></details>
+<label for="rp-moi">Votre prénom</label>
+<input id="rp-moi" placeholder="Pour cocher ce que vous apportez" autocomplete="given-name">
+</section>
+<div id="rp-liste"></div>
+<p class="note" id="rp-maj" style="text-align:center"></p>
+</div>
+
+<section class="carte">
+<h2>Pour la table</h2>
+<p class="sous">Quelques idées pratiques si personne ne s'en occupe.</p>
+<div class="idees" id="rp-idees"></div>
+</section>
+<div class="encart"><b>Vous faites aussi un Père Noël secret ?</b><p>Le tirage au sort se fait en 2 minutes, sans compte : chacun reçoit son résultat par e-mail, même l'organisateur ne sait rien.</p><a class="btn" href="/#outil">Faire le tirage gratuit</a></div>
+</main>

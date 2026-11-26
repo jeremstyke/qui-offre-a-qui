@@ -7,7 +7,7 @@ function rendreListe(){
   var l=$("liste");l.innerHTML="";
   noms.forEach(function(n,i){
     var d=document.createElement("div");d.className="pers";
-    d.innerHTML='<input class="nom" aria-label="Prénom '+(i+1)+'" placeholder="Prénom" value="'+escH(n)+'"><input class="mail" type="email" inputmode="email" autocomplete="off" aria-label="E-mail de la personne '+(i+1)+'" placeholder="E-mail" value="'+escH(mails[i])+'"><button class="x" aria-label="Retirer">×</button>';
+    d.innerHTML='<input class="nom" aria-label="Prénom '+(i+1)+'" placeholder="Prénom" value="'+escH(n)+'"><input class="mail" type="email" inputmode="email" autocomplete="off" aria-label="E-mail de la personne '+(i+1)+'" placeholder="E-mail de '+escH(n||"la personne")+'" value="'+escH(mails[i])+'"><button class="x" aria-label="Retirer">×</button>';
     var ins=d.querySelectorAll("input");
     ins[0].oninput=function(e){noms[i]=e.target.value;rendreExc()};
     ins[1].oninput=function(e){mails[i]=e.target.value.trim()};
@@ -134,7 +134,12 @@ function afficherRes(o){
   });
   var lienPerso=location.href;
   $("r-copie").onclick=function(){var bt=this;navigator.clipboard&&navigator.clipboard.writeText(lienPerso).then(function(){bt.textContent="Lien copié"})};
-  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
+  var pm=location.hash.match(/[&#]p=(\d+\.\d+\.[a-f0-9]{16})/);
+  if(pm){var dejaNl=false;try{dejaNl=localStorage.getItem("qoaq_nl")==="1"}catch(e){}
+    if(!dejaNl){$("nl-ok").onclick=function(){var bt=this;bt.disabled=true;bt.textContent="Inscription...";
+      post({action:"abo",p:pm[1]}).then(function(x){if(x.ok){bt.textContent="C'est noté, merci !";$("nl-msg").textContent="Vous recevrez nos idées cadeaux et le rappel de l'an prochain.";try{localStorage.setItem("qoaq_nl","1");window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}else{bt.disabled=false;bt.textContent="Réessayer"}}).catch(function(){bt.disabled=false;bt.textContent="Réessayer"})};}
+  }
+  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){if(pm){var d0=false;try{d0=localStorage.getItem("qoaq_nl")==="1"}catch(e){}if(!d0)$("nl").classList.remove("cache")}try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache")}
   $("paquet").onclick=ouvrir;$("paquet").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ouvrir()}};
 }
 window.addEventListener("hashchange",function(){if(/r=/.test(location.hash))location.reload()});

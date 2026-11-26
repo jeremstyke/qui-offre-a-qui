@@ -29,6 +29,18 @@ function code(o: unknown) {
   let r = ""; for (const b of bytes) r += String.fromCharCode(b ^ 23);
   return btoa(r).replace(/=+$/, "");
 }
+const SECRET = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "x";
+async function sig(tid: number, idx: number) { return (await sha(`abo|${tid}.${idx}|${SECRET}`)).slice(0, 16); }
+async function jeton(tid: number, idx: number) { return `${tid}.${idx}.${await sig(tid, idx)}`; }
+async function abonner(p: string, source: string) {
+  const m = /^(\d+)\.(\d+)\.([a-f0-9]{16})$/.exec(p || "");
+  if (!m || (await sig(+m[1], +m[2])) !== m[3]) return false;
+  const { data: x } = await sb.from("qoaq_participants").select("nom,email").eq("tirage_id", +m[1]).eq("idx", +m[2]).maybeSingle();
+  if (!x) return false;
+  const { data: t } = await sb.from("qoaq_tirages").select("occasion").eq("id", +m[1]).maybeSingle();
+  await sb.from("qoaq_abonnes").upsert({ email: x.email, prenom: x.nom, source, occasion: t?.occasion || null, actif: true, desabo_at: null }, { onConflict: "email" });
+  return true;
+}
 let KEY = "";
 async function cle() {
   if (KEY) return KEY;
@@ -70,14 +82,14 @@ function infos(t: T) {
   return `<p style="margin:0 0 8px;font-size:15px;line-height:1.5">${esc(t.ev)}${quand ? `, échange le ${esc(quand)}` : ""}${t.budget ? `. Budget : ${esc(t.budget)} € environ.` : "."}</p>`;
 }
 function idees(b: string) { return /^(5|10|15|20|30|50)$/.test(b) ? `${SITE}/idee-cadeau-${b}-euros/?utm_source=email` : `${SITE}/guides/?utm_source=email`; }
-function mailParticipant(t: T, p: { nom: string; email: string; url: string }) {
+function mailParticipant(t: T, p: { nom: string; email: string; url: string; jeton?: string }) {
   const quand = dateFr(t.date_ech);
   return {
     from: FROM, reply_to: REPLY, to: [p.email],
     subject: `${p.nom}, votre tirage pour « ${t.ev} » est prêt`,
     html: cadre(`Bonjour ${esc(p.nom)}, votre tirage est prêt`,
-      `${infos(t)}<p style="margin:0;font-size:15px;line-height:1.5">Le tirage au sort a été fait. Le nom de la personne à qui vous offrez un cadeau vous attend derrière ce bouton. Vous êtes le seul à le voir : même l'organisateur ne le connaît pas. Gardez le secret !</p>${bouton(p.url, "Découvrir à qui j'offre")}<div style="background:#f3f6f4;border-radius:12px;padding:14px 16px;margin:0 0 16px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Besoin d'une idée de cadeau ?</p><p style="margin:0;font-size:15px;line-height:1.5"><a href="${esc(idees(t.budget))}" style="color:#1f6b4f;font-weight:bold">${/^(5|10|15|20|30|50)$/.test(t.budget) ? `Voir 15 idées cadeaux à ${esc(t.budget)} €` : "Voir nos idées cadeaux par budget"}</a>, classées par goût et faciles à commander.</p></div><p style="margin:0 0 8px;font-size:14px;color:#5b6b66">Gardez ce message : le bouton vous permet de revoir votre résultat à tout moment.</p>`,
-      `Vous recevez ce message parce que l'organisateur de « ${esc(t.ev)} » vous a inscrit au tirage au sort sur <a href="${SITE}/" style="color:#5b6b66">qui-offre-a-qui.fr</a>. Votre adresse sert uniquement à vous envoyer ce résultat et sera supprimée après l'échange.`),
+      `${infos(t)}<p style="margin:0;font-size:15px;line-height:1.5">Le tirage au sort a été fait. Le nom de la personne à qui vous offrez un cadeau vous attend derrière ce bouton. Vous êtes le seul à le voir : même l'organisateur ne le connaît pas. Gardez le secret !</p>${bouton(p.url, "Découvrir à qui j'offre")}<div style="background:#f3f6f4;border-radius:12px;padding:14px 16px;margin:0 0 16px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Besoin d'une idée de cadeau ?</p><p style="margin:0;font-size:15px;line-height:1.5"><a href="${esc(idees(t.budget))}" style="color:#1f6b4f;font-weight:bold">${/^(5|10|15|20|30|50)$/.test(t.budget) ? `Voir 15 idées cadeaux à ${esc(t.budget)} €` : "Voir nos idées cadeaux par budget"}</a>, classées par goût et faciles à commander.</p></div><p style="margin:0 0 8px;font-size:14px;color:#5b6b66">Gardez ce message : le bouton vous permet de revoir votre résultat à tout moment.</p>${p.jeton ? `<div style="border:1px solid #e2e8e5;border-radius:12px;padding:14px 16px;margin:16px 0 8px"><p style="margin:0 0 6px;font-size:15px;font-weight:bold">Recevoir la newsletter ?</p><p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#5b6b66">Des idées cadeaux de temps en temps et un rappel pour le tirage de l'an prochain. Désinscription en un clic.</p><a href="${FN}?abo=${esc(p.jeton)}" style="display:inline-block;background:#1f6b4f;color:#fff;text-decoration:none;font-weight:bold;padding:10px 16px;border-radius:10px;font-size:14px">Oui, je m'inscris</a></div>` : ""}`,
+      `Vous recevez ce message parce que l'organisateur de « ${esc(t.ev)} » vous a inscrit au tirage au sort sur <a href="${SITE}/" style="color:#5b6b66">qui-offre-a-qui.fr</a>. Votre adresse sert à vous envoyer ce résultat ; vous ne recevrez rien d'autre sans votre accord.`),
     text: `Bonjour ${p.nom},\n\nLe tirage au sort pour « ${t.ev} » est fait${quand ? ` (échange le ${quand})` : ""}.\nDécouvrez à qui vous offrez un cadeau (vous êtes le seul à le voir) : ${p.url}\n\nBesoin d'une idée de cadeau ? ${idees(t.budget)}\n\nGardez ce message pour revoir votre résultat.\n\nQui offre à qui, ${SITE}/`,
   };
 }
@@ -103,6 +115,16 @@ async function etat(id: number) {
   return (data || []).map((p) => ({ i: p.idx, nom: p.nom, email: p.email, envois: p.envois, statut: p.statut, le: p.last_sent }));
 }
 
+// Listes de repas partagées « qui apporte quoi » : toute personne qui a le lien peut modifier
+const LID = /^[a-z0-9]{10}$/;
+function rid() { const a = new Uint8Array(10); crypto.getRandomValues(a); return [...a].map((x) => "abcdefghijkmnpqrstuvwxyz23456789"[x % 32]).join(""); }
+async function lireListe(id: string) {
+  const { data: l } = await sb.from("qoaq_listes").select("id,titre,date_ev,lieu,updated_at").eq("id", id).maybeSingle();
+  if (!l) return null;
+  const { data: it } = await sb.from("qoaq_liste_items").select("id,cat,label,qui,pos").eq("liste_id", id).order("pos").order("id");
+  return { ...l, items: it || [] };
+}
+
 function pageDesinscription(ok: boolean) {
   const t = ok ? "C'est noté : vous ne recevrez plus de rappel." : "Ce lien n'est plus valable.";
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Désinscription | Qui offre à qui</title></head><body style="font-family:Arial,sans-serif;max-width:520px;margin:60px auto;padding:0 20px;color:#1d2a26"><h1 style="font-size:22px">${t}</h1><p>Votre adresse ne sera plus utilisée pour vous écrire.</p><p><a href="${SITE}/" style="color:#b3263a">Retour sur Qui offre à qui</a></p></body></html>`;
@@ -115,25 +137,82 @@ Deno.serve(async (req) => {
   const u = new URL(req.url);
 
   if (req.method === "GET") {
+    const go = (r: string) => new Response(null, { status: 302, headers: { Location: `${SITE}/newsletter/?r=${r}` } });
+    const abo = u.searchParams.get("abo");
+    if (abo) return go((await abonner(abo, "email")) ? "ok" : "lien");
     const t = u.searchParams.get("stop") || "";
-    let ok = false;
     if (/^[a-f0-9]{24}$/.test(t)) {
       const { data } = await sb.from("qoaq_tirages").select("orga_email").eq("unsub", t).maybeSingle();
-      if (data?.orga_email) { await sb.from("qoaq_tirages").update({ rappel: false }).eq("orga_email", data.orga_email); ok = true; }
+      if (data?.orga_email) {
+        await sb.from("qoaq_tirages").update({ rappel: false }).eq("orga_email", data.orga_email);
+        await sb.from("qoaq_abonnes").update({ actif: false, desabo_at: new Date().toISOString() }).eq("email", data.orga_email);
+        return go("stop");
+      }
+      const { data: ab } = await sb.from("qoaq_abonnes").select("email").eq("unsub", t).maybeSingle();
+      if (ab) { await sb.from("qoaq_abonnes").update({ actif: false, desabo_at: new Date().toISOString() }).eq("email", ab.email); return go("stop"); }
     }
-    return new Response(pageDesinscription(ok), { headers: { "Content-Type": "text/html; charset=utf-8" } });
+    return go("lien");
   }
   if (req.method !== "POST") return J({ ok: false }, 405);
 
   let b: any;
   try { b = await req.json(); } catch { return J({ ok: false, raison: "format" }, 400); }
 
-  // Nettoyage : les adresses des participants sont supprimées 30 jours après l'échange (ou 60 jours après le tirage)
+
+  if (typeof b.action === "string" && b.action.startsWith("liste_")) {
+    const ip0 = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "?";
+    if (b.action === "liste_creer") {
+      const ipH0 = await sha("qoaq|" + ip0);
+      const { count } = await sb.from("qoaq_listes").select("id", { count: "exact", head: true }).eq("ip_hash", ipH0).gte("created_at", new Date(Date.now() - 3600e3).toISOString());
+      if ((count || 0) >= 10) return J({ ok: false, raison: "limite" }, 429);
+      const titre = court(b.titre, 80) || "Notre repas";
+      const date_ev = /^\d{4}-\d{2}-\d{2}$/.test(String(b.date || "")) ? b.date : null;
+      const id = rid();
+      const { error } = await sb.from("qoaq_listes").insert({ id, titre, date_ev, lieu: court(b.lieu, 80) || null, ip_hash: ipH0 });
+      if (error) return J({ ok: false, raison: "serveur" }, 500);
+      const items = (Array.isArray(b.items) ? b.items.slice(0, 80) : []).map((x: any, i: number) => ({ liste_id: id, cat: court(x?.cat, 30) || "Autre", label: court(x?.label, 60), pos: i })).filter((x: any) => x.label);
+      if (items.length) await sb.from("qoaq_liste_items").insert(items);
+      return J({ ok: true, liste: await lireListe(id) });
+    }
+    const id = String(b.id || "");
+    if (!LID.test(id)) return J({ ok: false, raison: "lien" }, 400);
+    const l = await lireListe(id);
+    if (!l) return J({ ok: false, raison: "introuvable" }, 404);
+    const item = parseInt(b.item);
+    if (b.action === "liste_prendre" && item) {
+      await sb.from("qoaq_liste_items").update({ qui: court(b.qui, 30) || null }).eq("id", item).eq("liste_id", id);
+    } else if (b.action === "liste_ajouter") {
+      if (l.items.length >= 150) return J({ ok: false, raison: "plein" }, 400);
+      const label = court(b.label, 60);
+      if (label) await sb.from("qoaq_liste_items").insert({ liste_id: id, cat: court(b.cat, 30) || "Autre", label, qui: court(b.qui, 30) || null, pos: 1000 + l.items.length });
+    } else if (b.action === "liste_suppr" && item) {
+      await sb.from("qoaq_liste_items").delete().eq("id", item).eq("liste_id", id);
+    } else if (b.action === "liste_info") {
+      await sb.from("qoaq_listes").update({ titre: court(b.titre, 80) || l.titre, date_ev: /^\d{4}-\d{2}-\d{2}$/.test(String(b.date || "")) ? b.date : l.date_ev, lieu: court(b.lieu, 80) || null }).eq("id", id);
+    } else if (b.action === "liste_mail") {
+      const em = court(b.email, 254).toLowerCase();
+      if (!EMAIL.test(em)) return J({ ok: false, raison: "email" }, 400);
+      const ipH1 = await sha("qoaq|" + ip0);
+      const { count: nm } = await sb.from("qoaq_retrouver").select("id", { count: "exact", head: true }).eq("ip_hash", ipH1).gte("at", new Date(Date.now() - 3600e3).toISOString());
+      if ((nm || 0) >= 10) return J({ ok: false, raison: "limite" }, 429);
+      await sb.from("qoaq_retrouver").insert({ email_hash: await sha(em), ip_hash: ipH1 });
+      const url = `${SITE}/qui-apporte-quoi/#l=${id}`;
+      const quand = dateFr(l.date_ev);
+      const [ok] = await envoyerLot([{ from: FROM, reply_to: REPLY, to: [em], subject: `Votre liste « ${l.titre} » : qui apporte quoi`,
+        html: cadre(`Votre liste « ${esc(l.titre)} »`, `<p style="margin:0 0 8px;font-size:15px;line-height:1.5">${quand ? `Repas du ${esc(quand)}. ` : ""}Voici le lien de votre liste : gardez cet e-mail pour la retrouver et suivre qui apporte quoi, depuis n'importe quel appareil.</p>${bouton(url, "Ouvrir la liste")}<p style="margin:0;font-size:14px;color:#5b6b66">Partagez ce même lien avec les invités pour qu'ils choisissent ce qu'ils apportent.</p>`, `Vous recevez ce message parce que vous avez demandé le lien de cette liste sur <a href="${SITE}/qui-apporte-quoi/" style="color:#5b6b66">qui-offre-a-qui.fr</a>. Votre adresse n'est pas conservée.`),
+        text: `Votre liste « ${l.titre} » : ${url}\nGardez cet e-mail pour la retrouver.\n\nQui offre à qui, ${SITE}/` }]);
+      return J({ ok });
+    } else if (b.action !== "liste_lire") return J({ ok: false }, 400);
+    if (b.action !== "liste_lire" && b.action !== "liste_mail") await sb.from("qoaq_listes").update({ updated_at: new Date().toISOString() }).eq("id", id);
+    return J({ ok: true, liste: b.action === "liste_lire" ? l : await lireListe(id) });
+  }
+
+  // Nettoyage : les adresses des participants sont supprimées 8 mois après le tirage (les abonnés à la newsletter sont gardés à part)
   try {
-    const lim = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
-    const { data: vieux } = await sb.from("qoaq_tirages").select("id").or(`date_ech.lt.${lim},created_at.lt.${new Date(Date.now() - 60 * 864e5).toISOString()}`).limit(200);
-    if (vieux?.length) await sb.from("qoaq_participants").delete().in("tirage_id", vieux.map((v) => v.id));
+    await sb.from("qoaq_participants").delete().lt("created_at", new Date(Date.now() - 240 * 864e5).toISOString());
   } catch (_) { /* ignore */ }
+
+  if (b.action === "abo") return J({ ok: await abonner(String(b.p || ""), "resultat") });
 
   // Gestion par l'organisateur : voir l'état ou renvoyer un e-mail (sans jamais voir les résultats)
   if (b.action === "etat" || b.action === "renvoyer") {
@@ -149,7 +228,7 @@ Deno.serve(async (req) => {
       let email = p.email;
       const nouv = court(b.email, 254).toLowerCase();
       if (nouv) { if (!EMAIL.test(nouv)) return J({ ok: false, raison: "email" }, 400); email = nouv; }
-      const [ok] = await envoyerLot([mailParticipant(t as T, { nom: p.nom, email, url: p.url })]);
+      const [ok] = await envoyerLot([mailParticipant(t as T, { nom: p.nom, email, url: p.url, jeton: await jeton(id, i) })]);
       await sb.from("qoaq_participants").update({ email, envois: p.envois + 1, statut: ok ? "envoye" : "echec", last_sent: new Date().toISOString() }).eq("id", p.id);
       await sb.from("qoaq_tirages").update({ renvois: t.renvois + 1 }).eq("id", id);
       return J({ ok, participants: await etat(id) });
@@ -188,8 +267,9 @@ Deno.serve(async (req) => {
   if (error || !row) return J({ ok: false, raison: "serveur" }, 500);
 
   const t: T = { ev, budget, date_ech };
-  const lignes = P.map((p, i) => ({ tirage_id: row.id, idx: i, nom: p.nom, email: p.email, url: `${SITE}/#r=${code({ e: ev, t: occ, b: budget, d, de: p.nom, a: P[res[i]].nom })}` }));
-  const mails: unknown[] = lignes.map((l) => mailParticipant(t, l));
+  const jetons = await Promise.all(P.map((_, i) => jeton(row.id, i)));
+  const lignes = P.map((p, i) => ({ tirage_id: row.id, idx: i, nom: p.nom, email: p.email, url: `${SITE}/#r=${code({ e: ev, t: occ, b: budget, d, de: p.nom, a: P[res[i]].nom })}&p=${jetons[i]}` }));
+  const mails: unknown[] = lignes.map((l, i) => mailParticipant(t, { ...l, jeton: jetons[i] }));
   const gestion = `${SITE}/#g=${row.id}.${row.gestion}`;
   if (orga) {
     const stop = `${FN}?stop=${row.unsub}`;
@@ -204,6 +284,7 @@ Deno.serve(async (req) => {
       headers: rappel ? { "List-Unsubscribe": `<${stop}>` } : undefined,
     });
   }
+  if (rappel) await sb.from("qoaq_abonnes").upsert({ email: orga, source: "organisateur", occasion: occ, actif: true, desabo_at: null }, { onConflict: "email" });
   const oks = await envoyerLot(mails);
   const now = new Date().toISOString();
   await sb.from("qoaq_participants").insert(lignes.map((l, i) => ({ ...l, envois: 1, statut: oks[i] ? "envoye" : "echec", last_sent: now })));

@@ -26,7 +26,7 @@
 </section>
 
 <section class="carte">
-<h2>2. Les participants</h2>
+<h2>2. Les participants et leur e-mail</h2>
 <p class="sous">Au moins 3 personnes, avec leur e-mail : c'est là que chacun recevra son résultat, en secret.</p>
 <div id="liste"></div>
 <button class="btn s petit" id="ajout">Ajouter une personne</button>
@@ -40,9 +40,9 @@
 </section>
 
 <section class="carte">
-<h2>4. Vous (facultatif)</h2>
+<h2>4. Vous, l'organisateur (facultatif)</h2>
 <p class="sous">Recevez une confirmation et un lien de suivi pour renvoyer un e-mail si quelqu'un ne le trouve pas. Vous ne verrez aucun résultat.</p>
-<label for="m-orga">Votre e-mail</label>
+<label for="m-orga">Votre e-mail pour le suivi</label>
 <input id="m-orga" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr">
 <label class="coche"><input type="checkbox" id="m-rappel"> Me rappeler l'an prochain de refaire un tirage (un seul e-mail par an, désinscription en un clic)</label>
 </section>
@@ -75,6 +75,12 @@
 <p class="sous">Une sélection simple pour ne pas chercher pendant des heures. <a id="r-guide" href="/idee-cadeau-20-euros/">Plus d'idées</a></p>
 <div class="idees" id="grille"></div>
 <p style="margin-top:16px"><a class="btn p" id="r-guide2" href="/idee-cadeau-20-euros/">Voir 15 idées à <span id="r-b2"></span> €</a></p>
+</section>
+<section class="carte cache" id="nl">
+<h2>Recevoir la newsletter ?</h2>
+<p class="sous">Des idées cadeaux de temps en temps et un rappel pour le tirage de l'an prochain. Désinscription en un clic.</p>
+<button class="btn p" id="nl-ok" style="width:auto;font-size:16px;padding:12px 20px">Oui, je m'inscris</button>
+<p class="note" id="nl-msg" role="status"></p>
 </section>
 <section class="carte garder">
 <p><b>Gardez l'e-mail reçu</b> pour revoir votre résultat plus tard, ou copiez votre lien :</p>

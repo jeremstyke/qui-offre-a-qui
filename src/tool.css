@@ -72,3 +72,29 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 #suivi li{display:block}
 #suivi .l3.cache{display:none}
 #suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
+.nav-d{display:flex;align-items:center;gap:14px}
+.nav-l{font-weight:700;font-size:15px}
+@media(max-width:480px){.nav-l{display:none}}
+.rp-cat h3{margin:14px 0 8px;font-size:17px}
+.rp-cat .ajout{margin-bottom:4px}
+.rp-tete{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rp-tete h2{margin:0}
+.rp-compte{text-align:center;background:#eef3f0;border-radius:12px;padding:8px 12px;min-width:74px}
+.rp-compte b{display:block;font-size:22px}
+.rp-compte span{font-size:13px;color:var(--gris)}
+.rp-partage{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 4px}
+.rp-partage p{margin:0 0 8px}
+.rp-partage .act{display:flex;gap:8px;flex-wrap:wrap}
+.rp-bloc h2{margin:0 0 6px}
+.rp-items{list-style:none;padding:0;margin:0}
+.rp-items li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.rp-items .lab{flex:1;font-weight:700}
+.rp-items li.pris .lab{color:var(--gris);font-weight:400}
+.rp-items .qui{background:#e3f2eb;color:#1d6b4f;font-weight:700;font-size:14px;border-radius:999px;padding:4px 12px}
+.rp-ajout{display:flex;gap:8px;margin-top:10px}
+.rp-ajout input{flex:1}
+input.attention{outline:3px solid var(--baie)}
+.rp-mail{margin:10px 0 4px}
+.rp-mail summary{cursor:pointer;font-weight:700;color:var(--pin2)}
+.mes li .act a.btn{text-decoration:none}

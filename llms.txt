@@ -11,8 +11,9 @@
 - Après la révélation, chaque participant voit des idées de cadeaux adaptées au budget.
 - Gratuit, sans publicité intrusive. Le site gagne de l'argent grâce aux liens affiliés Amazon des idées cadeaux.
 
-## Outil
+## Outils
 - [Faire un tirage au sort de cadeaux](https://qui-offre-a-qui.fr/): l'outil, avec la méthode et la FAQ.
+- [Qui apporte quoi](https://qui-offre-a-qui.fr/qui-apporte-quoi/): liste de repas partagée par lien, chacun coche ce qu'il apporte, sans compte.
 
 ## Idées cadeaux par budget
 - [Idée cadeau à 5 € : 15 petites idées qui font plaisir](https://qui-offre-a-qui.fr/idee-cadeau-5-euros/): Un tout petit budget de 5 € pour un Père Noël secret, une classe ou un club ? 15 idées de petits cadeaux utiles, gourmands ou rigolos.

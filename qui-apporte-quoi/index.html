@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="0tjo6Bj7KcNHJMLQKuavVd_d7pBDPoJX3TaLWRm1GA4">
+<title>Qui apporte quoi : liste de repas partagée gratuite</title>
+<meta name="description" content="Créez la liste du repas de Noël ou de la fête, partagez le lien, et chacun coche ce qu&#x27;il apporte. Gratuit, sans compte, mis à jour en direct pour tous.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://qui-offre-a-qui.fr/qui-apporte-quoi/">
+<meta property="og:title" content="Qui apporte quoi : liste de repas partagée gratuite"><meta property="og:description" content="Créez la liste du repas de Noël ou de la fête, partagez le lien, et chacun coche ce qu&#x27;il apporte. Gratuit, sans compte, mis à jour en direct pour tous."><meta property="og:url" content="https://qui-offre-a-qui.fr/qui-apporte-quoi/"><meta property="og:type" content="website"><meta property="og:image" content="https://qui-offre-a-qui.fr/og/qui-apporte-quoi.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Qui apporte quoi : liste de repas partagée gratuite"><meta property="og:site_name" content="Qui offre à qui"><meta name="twitter:image" content="https://qui-offre-a-qui.fr/og/qui-apporte-quoi.png"><meta name="twitter:title" content="Qui apporte quoi : liste de repas partagée gratuite"><meta name="twitter:description" content="Créez la liste du repas de Noël ou de la fête, partagez le lien, et chacun coche ce qu&#x27;il apporte. Gratuit, sans compte, mis à jour en direct pour tous."><meta name="twitter:card" content="summary_large_image"><meta property="og:locale" content="fr_FR">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#123d34">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--pin:#123d34;--pin2:#1d5a4c;--or:#e9b949;--baie:#b8344a;--papier:#f7f8f4;--encre:#17221f;--gris:#5d6b67;--ligne:#d9e1dc}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papier);color:var(--encre);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--pin2)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--pin);color:#fff;padding:44px 0 56px;position:relative;overflow:hidden}
+.hero h1{font:800 clamp(34px,7vw,58px)/1.02 "Bricolage Grotesque",sans-serif;margin:0 0 14px;letter-spacing:-.02em;max-width:12ch}
+.hero p{margin:0;max-width:46ch;color:#d6e6e0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.chips span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 12px;font-size:14px}
+.ruban{position:absolute;right:-40px;top:0;bottom:0;width:120px;background:var(--baie);transform:skewX(-12deg);opacity:.9}
+.ruban:after{content:"";position:absolute;left:44px;top:0;bottom:0;width:12px;background:var(--or)}
+.demo{background:var(--or);color:var(--encre);font-size:14px;text-align:center;padding:6px 12px}
+main{padding:28px 0 60px}
+.carte{background:#fff;border:1px solid var(--ligne);border-radius:14px;padding:22px;margin-bottom:18px}
+.carte h2{font:800 22px/1.2 "Bricolage Grotesque",sans-serif;margin:0 0 4px}
+.carte .sous{color:var(--gris);margin:0 0 16px;font-size:15px}
+label{display:block;font-weight:700;font-size:15px;margin:12px 0 6px}
+input,select{width:100%;font:inherit;padding:11px 12px;border:1px solid #b9c6c0;border-radius:10px;background:#fff;color:var(--encre)}
+input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.ligne{display:flex;gap:10px}.ligne>*{flex:1}
+.pers{display:flex;gap:8px;margin-bottom:8px}
+.pers input.nom{flex:1 1 40%}.pers input.mail{flex:1 1 60%}
+@media(max-width:560px){.pers{flex-wrap:wrap}.pers input.nom{flex:1 1 calc(100% - 52px)}.pers input.mail{order:3;flex:1 1 100%;margin-bottom:10px}}
+.x{flex:0 0 44px;border:1px solid var(--ligne);background:#fff;border-radius:10px;font-size:20px;color:var(--gris);cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 17px "Atkinson Hyperlegible",sans-serif;border:0;border-radius:12px;padding:13px 20px;cursor:pointer;text-decoration:none}
+.btn.p{background:var(--baie);color:#fff;width:100%;font-size:18px;padding:16px}
+.btn.s{background:#e8efeb;color:var(--pin)}
+.btn.petit{padding:8px 12px;font-size:15px}
+.exc{display:flex;gap:8px;align-items:center;margin-bottom:8px}.exc select{flex:1}
+.err{color:var(--baie);font-weight:700;margin-top:10px;min-height:1em}
+.res li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--ligne);list-style:none}
+.res ul{padding:0;margin:0}
+.res .act{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.note{font-size:14px;color:var(--gris)}
+.reveal{text-align:center}
+.reveal .pour{font:800 clamp(40px,10vw,72px)/1 "Bricolage Grotesque",sans-serif;color:var(--baie);margin:10px 0 4px}
+.paquet{width:180px;height:150px;margin:20px auto;position:relative;cursor:pointer;background:var(--baie);border-radius:10px;transition:transform .5s}
+.paquet:before{content:"";position:absolute;left:78px;top:0;bottom:0;width:24px;background:var(--or)}
+.paquet:after{content:"";position:absolute;left:0;right:0;top:58px;height:24px;background:var(--or)}
+.paquet.ouvert{transform:scale(.6) rotate(-8deg);opacity:.25}
+@media (prefers-reduced-motion:reduce){.paquet{transition:none}}
+.idees{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:12px}
+.idee{border:1px solid var(--ligne);border-radius:12px;padding:14px;background:#fff}
+.idee b{display:block;margin-bottom:4px}.idee span{display:block;color:var(--gris);font-size:14px;margin-bottom:10px}
+.cache{display:none}
+footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
+@media (max-width:600px){.ruban{width:56px;right:-34px}.hero .wrap{padding-right:40px}}
+
+.mailbox{margin-top:18px;padding-top:16px;border-top:1px solid var(--ligne)}
+.mailbox h3{margin:0 0 4px;font-size:18px}
+.coche{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;margin:12px 0 14px;cursor:pointer}
+.coche input{width:20px;height:20px;flex:0 0 20px;margin:2px 0 0}
+#liens small,.mes small{display:block;font-weight:400;font-size:13px;color:var(--gris)}
+.mes{list-style:none;padding:0;margin:0}
+.mes li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.mes .act{display:flex;gap:6px;align-items:center}
+.garder .act{display:flex;gap:8px;flex-wrap:wrap}
+
+.suivi{list-style:none;padding:0;margin:8px 0 0}
+.suivi li{padding:12px 0;border-bottom:1px solid var(--ligne)}
+.suivi .l1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.suivi .l2{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.suivi .em{font-size:14px;color:var(--gris);word-break:break-all}
+.suivi .l3{display:flex;gap:8px;margin-top:8px}
+.suivi .l3 input{flex:1}
+.suivi .ok{font-size:13px;font-weight:700;color:#1d6b4f;background:#e3f2eb;border-radius:999px;padding:3px 10px}
+.suivi .ko{font-size:13px;font-weight:700;color:var(--baie);background:#fbe7ea;border-radius:999px;padding:3px 10px}
+.suivi .msg{margin:6px 0 0;font-size:14px;color:var(--baie)}
+.suivi .msg:empty{display:none}
+#suivi li{display:block}
+#suivi .l3.cache{display:none}
+#suivi .act{display:flex;gap:6px;flex-wrap:wrap}
+
+.nav-d{display:flex;align-items:center;gap:14px}
+.nav-l{font-weight:700;font-size:15px}
+@media(max-width:480px){.nav-l{display:none}}
+.rp-cat h3{margin:14px 0 8px;font-size:17px}
+.rp-cat .ajout{margin-bottom:4px}
+.rp-tete{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rp-tete h2{margin:0}
+.rp-compte{text-align:center;background:#eef3f0;border-radius:12px;padding:8px 12px;min-width:74px}
+.rp-compte b{display:block;font-size:22px}
+.rp-compte span{font-size:13px;color:var(--gris)}
+.rp-partage{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 4px}
+.rp-partage p{margin:0 0 8px}
+.rp-partage .act{display:flex;gap:8px;flex-wrap:wrap}
+.rp-bloc h2{margin:0 0 6px}
+.rp-items{list-style:none;padding:0;margin:0}
+.rp-items li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.rp-items .lab{flex:1;font-weight:700}
+.rp-items li.pris .lab{color:var(--gris);font-weight:400}
+.rp-items .qui{background:#e3f2eb;color:#1d6b4f;font-weight:700;font-size:14px;border-radius:999px;padding:4px 12px}
+.rp-ajout{display:flex;gap:8px;margin-top:10px}
+.rp-ajout input{flex:1}
+input.attention{outline:3px solid var(--baie)}
+.rp-mail{margin:10px 0 4px}
+.rp-mail summary{cursor:pointer;font-weight:700;color:var(--pin2)}
+.mes li .act a.btn{text-decoration:none}
+
+nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
+nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
+nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
+nav.top a.cta{font:700 15px "Atkinson Hyperlegible",sans-serif;background:var(--baie);padding:8px 14px;border-radius:10px}
+article h1{font:800 clamp(30px,6vw,44px)/1.1 "Bricolage Grotesque",sans-serif;margin:8px 0 12px;letter-spacing:-.01em}
+article h2{font:800 24px/1.25 "Bricolage Grotesque",sans-serif;margin:32px 0 10px}
+article h3{font-size:18px;margin:20px 0 6px}
+article .meta{color:var(--gris);font-size:14px}
+.encart{background:var(--pin);color:#fff;border-radius:14px;padding:20px;margin:28px 0}
+.encart a.btn{background:var(--or);color:var(--encre)}
+.voir{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:12px 0 0}
+.voir a{display:block;background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--encre)}
+.voir a:hover{border-color:var(--pin2)}
+.voir b{display:block;font-size:16px;line-height:1.3}
+.voir span{display:block;font-size:14px;color:var(--gris);margin-top:2px}
+footer{background:var(--pin);color:#dfe9e4;text-align:left;margin-top:40px;padding:32px 0 36px}
+footer a{color:#fff}
+.pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
+.pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles.clair a{background:#eef3f0;color:var(--encre)}
+.pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
+.pied ul{list-style:none;padding:0;margin:0}
+.pied li{margin:0 0 6px}
+.pied li a{text-decoration:none}
+.pied li a:hover,.pastilles a:hover{text-decoration:underline}
+.bas{border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:16px;font-size:14px}
+.bas p{margin:4px 0}
+footer .amz{color:#b9cdc5}
+@media(max-width:600px){.pied{grid-template-columns:1fr}}
+.amz{font-size:13px;color:var(--gris)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Qui apporte quoi : liste de repas partagée", "url": "https://qui-offre-a-qui.fr/qui-apporte-quoi/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Faut-il créer un compte ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Vous créez la liste, vous partagez le lien, et chaque invité choisit ce qu'il apporte avec son prénom. Aucun compte, aucun mot de passe."}}, {"@type": "Question", "name": "Comment les invités reçoivent-ils la liste ?", "acceptedAnswer": {"@type": "Answer", "text": "Par un simple lien, à envoyer dans le groupe WhatsApp de la famille ou par SMS. Tout le monde voit la même liste, mise à jour en direct."}}, {"@type": "Question", "name": "Peut-on ajouter des choses après coup ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Chaque invité peut ajouter une ligne dans une catégorie, ou libérer ce qu'il avait pris s'il change d'avis."}}, {"@type": "Question", "name": "C'est seulement pour Noël ?", "acceptedAnswer": {"@type": "Answer", "text": "Non : réveillon du Nouvel An, anniversaire, pique-nique, barbecue ou auberge espagnole. Choisissez un modèle ou partez d'une liste vide."}}]}</script>
+<script src="/assets/track.js" defer></script>
+</head>
+<body>
+<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><span class="nav-d"><a class="nav-l" href="/qui-apporte-quoi/">Qui apporte quoi</a><a class="cta" href="/#outil">Faire un tirage</a></span></div></nav><header class="hero"><div class="ruban" aria-hidden="true"></div><div class="wrap">
+<h1 id="rp-h1">Qui apporte quoi ? La liste du repas à partager</h1>
+<p id="rp-intro">Créez la liste du repas en 1 minute, partagez le lien dans le groupe, et chacun coche ce qu'il apporte. Fini les trois bûches et zéro pain. Gratuit, sans compte.</p>
+<div class="chips"><span>1 minute</span><span>Sans compte</span><span>Un seul lien pour tous</span><span>Mis à jour en direct</span></div>
+</div></header>
+<main class="wrap" id="outil">
+
+<div id="rp-creer">
+<section class="carte cache" id="rp-mes">
+<h2>Vos listes</h2>
+<p class="sous">Les listes que vous avez créées ou ouvertes sur cet appareil.</p>
+<ul class="mes" id="rp-mes-l"></ul>
+</section>
+<section class="carte">
+<h2>1. Le repas</h2>
+<label for="rp-titre">Nom du repas</label>
+<input id="rp-titre" value="Repas de Noël en famille">
+<div class="ligne">
+<div><label for="rp-date">Date</label><input id="rp-date" type="date" value="2026-12-25"></div>
+<div><label for="rp-lieu">Lieu (facultatif)</label><input id="rp-lieu" placeholder="Chez Mamie"></div>
+</div>
+<label for="rp-modele">Modèle de liste</label>
+<select id="rp-modele"><option value="noel">Repas de Noël</option><option value="nouvelan">Réveillon du Nouvel An</option><option value="anniv">Anniversaire</option><option value="pique">Pique-nique ou barbecue</option><option value="auberge">Auberge espagnole</option><option value="vide">Liste vide</option></select>
+</section>
+<section class="carte">
+<h2>2. Ce qu'il faut apporter</h2>
+<p class="sous">Modifiez, supprimez ou ajoutez des lignes. Les invités pourront aussi en ajouter.</p>
+<div id="rp-cats"></div>
+</section>
+<button class="btn p" id="rp-go">Créer la liste et la partager</button>
+<p class="err" id="rp-err" role="alert"></p>
+</div>
+
+<div id="rp-vue" class="cache">
+<section class="carte">
+<div class="rp-tete"><div><h2 id="rp-v-titre"></h2><p class="sous" id="rp-v-info"></p></div><div class="rp-compte" id="rp-compte"></div></div>
+<div class="rp-partage">
+<p><b>Partagez ce lien avec les invités</b> : chacun pourra cocher ce qu'il apporte.</p>
+<div class="act"><a class="btn s petit" id="rp-wa" target="_blank" rel="noopener">WhatsApp</a><button class="btn s petit" id="rp-copie">Copier le lien</button></div>
+</div>
+<details class="rp-mail"><summary>Recevoir le lien par e-mail pour retrouver la liste</summary>
+<div class="rp-ajout"><input id="rp-mail" type="email" inputmode="email" autocomplete="email" placeholder="vous@exemple.fr" aria-label="Votre e-mail"><button class="btn s petit" id="rp-mail-ok">Envoyer</button></div>
+<p class="note" id="rp-mail-msg" role="status"></p></details>
+<label for="rp-moi">Votre prénom</label>
+<input id="rp-moi" placeholder="Pour cocher ce que vous apportez" autocomplete="given-name">
+</section>
+<div id="rp-liste"></div>
+<p class="note" id="rp-maj" style="text-align:center"></p>
+</div>
+
+<section class="carte"><h2>Organiser un repas où chacun apporte quelque chose</h2><p>Le repas de Noël en famille, le réveillon entre amis ou l'auberge espagnole du bureau ont tous le même piège : sans liste, on se retrouve avec trois desserts et pas de pain. Une liste partagée règle le problème en quelques minutes.</p><ol><li><strong>Créez la liste</strong> à partir d'un modèle (Noël, Nouvel An, anniversaire, pique-nique) et ajustez les lignes.</li><li><strong>Partagez le lien</strong> dans le groupe WhatsApp ou par SMS.</li><li><strong>Chacun choisit</strong> ce qu'il apporte avec son prénom. La liste se met à jour pour tout le monde.</li></ol><p>Astuce : laissez les plats principaux à ceux qui reçoivent ou qui aiment cuisiner, et proposez les boissons, le pain et les fromages à ceux qui viennent de loin.</p></section><section class="carte"><h2>Questions fréquentes</h2><h3>Faut-il créer un compte ?</h3><p>Non. Vous créez la liste, vous partagez le lien, et chaque invité choisit ce qu&#x27;il apporte avec son prénom. Aucun compte, aucun mot de passe.</p><h3>Comment les invités reçoivent-ils la liste ?</h3><p>Par un simple lien, à envoyer dans le groupe WhatsApp de la famille ou par SMS. Tout le monde voit la même liste, mise à jour en direct.</p><h3>Peut-on ajouter des choses après coup ?</h3><p>Oui. Chaque invité peut ajouter une ligne dans une catégorie, ou libérer ce qu&#x27;il avait pris s&#x27;il change d&#x27;avis.</p><h3>C&#x27;est seulement pour Noël ?</h3><p>Non : réveillon du Nouvel An, anniversaire, pique-nique, barbecue ou auberge espagnole. Choisissez un modèle ou partez d&#x27;une liste vide.</p></section>
+<section class="carte">
+<h2>Pour la table</h2>
+<p class="sous">Quelques idées pratiques si personne ne s'en occupe.</p>
+<div class="idees" id="rp-idees"></div>
+</section>
+<div class="encart"><b>Vous faites aussi un Père Noël secret ?</b><p>Le tirage au sort se fait en 2 minutes, sans compte : chacun reçoit son résultat par e-mail, même l'organisateur ne sait rien.</p><a class="btn" href="/#outil">Faire le tirage gratuit</a></div>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var API="https://txvrlvcxfnylnrpdrxtt.supabase.co/functions/v1/qoaq";
+function esc(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function post(o){return fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o)}).then(function(r){return r.json().then(function(j){j._s=r.status;return j})})}
+function hit(k,t){try{window.qoaqHit&&window.qoaqHit(k,t)}catch(e){}}
+var MODELES={
+ noel:{t:"Repas de Noël en famille",d:"2026-12-25",c:[["Apéritif",["Biscuits apéro","Toasts et tartinades"]],["Entrée",["Foie gras","Saumon fumé"]],["Plat",["Plat principal","Accompagnement"]],["Fromage",["Plateau de fromages"]],["Dessert",["Bûche de Noël","Chocolats"]],["Boissons",["Champagne","Vin rouge","Vin blanc","Jus de fruits et sodas"]],["Pain et divers",["Pain","Glaçons","Serviettes de table"]]]},
+ nouvelan:{t:"Réveillon du Nouvel An",d:"2026-12-31",c:[["Apéritif",["Biscuits apéro","Verrines","Chips"]],["Plat",["Plat principal","Accompagnement"]],["Dessert",["Dessert","Mignardises"]],["Boissons",["Champagne pour minuit","Vin","Softs"]],["Fête",["Cotillons","Musique","Glaçons","Gobelets"]]]},
+ anniv:{t:"Anniversaire",d:"",c:[["Salé",["Chips","Pizzas ou quiches","Crudités"]],["Sucré",["Gâteau d'anniversaire","Bonbons"]],["Boissons",["Jus de fruits","Sodas","Eau"]],["Fête",["Bougies","Assiettes et gobelets","Décoration"]]]},
+ pique:{t:"Pique-nique entre amis",d:"",c:[["Salé",["Sandwichs","Salade composée","Chips"]],["Barbecue",["Saucisses","Brochettes","Charbon"]],["Sucré",["Dessert","Fruits"]],["Boissons",["Eau","Boissons fraîches"]],["Matériel",["Nappe","Glacière","Gobelets","Sacs poubelle"]]]},
+ auberge:{t:"Auberge espagnole",d:"",c:[["Salé",["Plat salé","Plat salé","Salade"]],["Sucré",["Dessert","Dessert"]],["Boissons",["Boissons","Boissons"]],["Divers",["Pain","Vaisselle jetable"]]]},
+ vide:{t:"Notre repas",d:"",c:[["Entrée",[]],["Plat",[]],["Dessert",[]],["Boissons",[]]]}
+};
+var cats=[];
+function modele(k){var m=MODELES[k];cats=m.c.map(function(x){return {nom:x[0],items:x[1].slice()}});rendreCats()}
+function rendreCats(){
+  var w=$("rp-cats");w.innerHTML="";
+  cats.forEach(function(c,ci){
+    var d=document.createElement("div");d.className="rp-cat";
+    d.innerHTML='<h3>'+esc(c.nom)+'</h3>'+c.items.map(function(it,ii){return '<div class="pers"><input class="nom" aria-label="'+esc(c.nom)+' '+(ii+1)+'" value="'+esc(it)+'" data-i="'+ii+'"><button class="x" aria-label="Retirer" data-i="'+ii+'">×</button></div>'}).join("")+'<button class="btn s petit ajout">Ajouter une ligne</button>';
+    d.querySelectorAll("input").forEach(function(inp){inp.oninput=function(){c.items[+inp.dataset.i]=inp.value}});
+    d.querySelectorAll("button.x").forEach(function(b){b.onclick=function(){c.items.splice(+b.dataset.i,1);rendreCats()}});
+    d.querySelector(".ajout").onclick=function(){c.items.push("");rendreCats();var ins=w.querySelectorAll(".rp-cat")[ci].querySelectorAll("input");ins[ins.length-1].focus()};
+    w.appendChild(d);
+  });
+}
+$("rp-modele").onchange=function(){var m=MODELES[this.value];$("rp-titre").value=m.t;if(m.d)$("rp-date").value=m.d;modele(this.value)};
+$("rp-go").onclick=function(){
+  var bt=this,items=[];
+  cats.forEach(function(c){c.items.forEach(function(it){if(it.trim())items.push({cat:c.nom,label:it.trim()})})});
+  if(!items.length){$("rp-err").textContent="Ajoutez au moins une chose à apporter.";return}
+  bt.disabled=true;bt.textContent="Création...";
+  post({action:"liste_creer",titre:$("rp-titre").value,date:$("rp-date").value,lieu:$("rp-lieu").value,items:items}).then(function(j){
+    bt.disabled=false;bt.textContent="Créer la liste et la partager";
+    if(j.ok){hit("liste",$("rp-modele").value);memo(j.liste.id,j.liste.titre);location.hash="l="+j.liste.id;}
+    else $("rp-err").textContent=j._s===429?"Trop de listes créées depuis votre connexion. Réessayez dans une heure.":"La création n'a pas marché. Réessayez.";
+  }).catch(function(){bt.disabled=false;bt.textContent="Créer la liste et la partager";$("rp-err").textContent="Pas de connexion. Réessayez."});
+};
+
+var L=null,id=null,minuteur=null;
+function mesListes(){var M=[];try{M=JSON.parse(localStorage.getItem("qoaq_listes")||"[]")}catch(e){}return M}
+function memo(i,t){var M=mesListes().filter(function(x){return x.id!==i});M.unshift({id:i,t:t,ts:Date.now()});try{localStorage.setItem("qoaq_listes",JSON.stringify(M.slice(0,12)))}catch(e){}}
+function rendreMes(){
+  var M=mesListes(),c=$("rp-mes");if(!M.length){c.classList.add("cache");return}
+  c.classList.remove("cache");var ul=$("rp-mes-l");ul.innerHTML="";
+  M.forEach(function(x,k){var li=document.createElement("li");
+    li.innerHTML='<span><b>'+esc(x.t||"Liste")+'</b>'+(x.ts?'<small>ouverte le '+new Date(x.ts).toLocaleDateString("fr-FR",{day:"numeric",month:"long"})+'</small>':'')+'</span><span class="act"><a class="btn s petit" href="#l='+esc(x.id)+'">Suivre</a><button class="x" aria-label="Oublier cette liste">×</button></span>';
+    li.querySelector("button").onclick=function(){var M2=mesListes();M2.splice(k,1);try{localStorage.setItem("qoaq_listes",JSON.stringify(M2))}catch(e){}rendreMes()};
+    ul.appendChild(li)});
+}
+function moi(){return $("rp-moi").value.trim()}
+try{$("rp-moi").value=localStorage.getItem("qoaq_prenom")||""}catch(e){}
+$("rp-moi").oninput=function(){try{localStorage.setItem("qoaq_prenom",moi())}catch(e){}};
+function act(o,el){
+  if(el){el.disabled=true}
+  return post(Object.assign({id:id},o)).then(function(j){if(j.ok){L=j.liste;rendre();hit("liste_maj",o.action)}else if(el){el.disabled=false}}).catch(function(){if(el)el.disabled=false});
+}
+function rendre(){
+  memo(id,L.titre);
+  $("rp-v-titre").textContent=L.titre;
+  var dt=L.date_ev?new Date(L.date_ev+"T12:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"}):"";
+  $("rp-v-info").textContent=[dt,L.lieu].filter(Boolean).join(", ");
+  document.title=L.titre+" : qui apporte quoi ?";
+  var pris=L.items.filter(function(i){return i.qui}).length;
+  $("rp-compte").innerHTML='<b>'+pris+'/'+L.items.length+'</b><span>pris</span>';
+  var ordre=[],par={};
+  L.items.forEach(function(i){if(!par[i.cat]){par[i.cat]=[];ordre.push(i.cat)}par[i.cat].push(i)});
+  var w=$("rp-liste");w.innerHTML="";
+  ordre.concat(ordre.length?[]:["Entrée"]).forEach(function(cat){
+    var s=document.createElement("section");s.className="carte rp-bloc";
+    s.innerHTML='<h2>'+esc(cat)+'</h2><ul class="rp-items">'+(par[cat]||[]).map(function(i){
+      return '<li class="'+(i.qui?"pris":"")+'"><span class="lab">'+esc(i.label)+'</span>'+(i.qui?'<span class="qui">'+esc(i.qui)+'</span><button class="x" data-a="lib" data-id="'+i.id+'" aria-label="Libérer">×</button>':'<button class="btn s petit" data-a="prendre" data-id="'+i.id+'">Je m\'en occupe</button>')+'</li>'}).join("")+'</ul><div class="rp-ajout"><input placeholder="Ajouter dans '+esc(cat)+'" aria-label="Ajouter dans '+esc(cat)+'"><button class="btn s petit">Ajouter</button></div>';
+    s.querySelectorAll("button[data-a]").forEach(function(b){b.onclick=function(){
+      if(b.dataset.a==="prendre"){var m=moi();if(!m){$("rp-moi").focus();$("rp-moi").classList.add("attention");setTimeout(function(){$("rp-moi").classList.remove("attention")},1500);return}act({action:"liste_prendre",item:+b.dataset.id,qui:m},b)}
+      else act({action:"liste_prendre",item:+b.dataset.id,qui:""},b)}});
+    var inp=s.querySelector(".rp-ajout input"),ab=s.querySelector(".rp-ajout button");
+    function ajouter(){var v=inp.value.trim();if(!v)return;act({action:"liste_ajouter",cat:cat,label:v,qui:moi()},ab)}
+    ab.onclick=ajouter;inp.onkeydown=function(e){if(e.key==="Enter")ajouter()};
+    w.appendChild(s);
+  });
+  var url=location.origin+location.pathname+"#l="+id;
+  $("rp-wa").href="https://wa.me/?text="+encodeURIComponent("Pour « "+L.titre+" », dites ce que vous apportez ici : "+url);
+  $("rp-maj").textContent="Mis à jour à "+new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})+". La liste se rafraîchit toute seule.";
+}
+$("rp-copie").onclick=function(){var b=this;try{navigator.clipboard.writeText(location.origin+location.pathname+"#l="+id).then(function(){b.textContent="Lien copié";hit("partage","liste")})}catch(e){}};
+$("rp-wa").addEventListener("click",function(){hit("partage","liste-whatsapp")});
+function charger(){post({action:"liste_lire",id:id}).then(function(j){if(j.ok){L=j.liste;rendre()}else{$("rp-vue").classList.add("cache");$("rp-creer").classList.remove("cache");$("rp-err").textContent="Cette liste n'existe pas ou a été supprimée. Créez-en une nouvelle."}}).catch(function(){})}
+function route(){
+  var m=location.hash.match(/l=([a-z0-9]{10})/);
+  if(m){id=m[1];$("rp-creer").classList.add("cache");$("rp-vue").classList.remove("cache");$("rp-h1").textContent="Qui apporte quoi ?";$("rp-intro").textContent="Choisissez ce que vous apportez : la liste se met à jour pour tout le monde.";charger();
+    clearInterval(minuteur);minuteur=setInterval(function(){if(document.visibilityState==="visible")charger()},15000);window.scrollTo(0,0)}
+  else{id=null;clearInterval(minuteur);$("rp-creer").classList.remove("cache");$("rp-vue").classList.add("cache");$("rp-h1").textContent="Qui apporte quoi ? La liste du repas à partager";modele($("rp-modele").value);rendreMes()}
+}
+$("rp-mail-ok").onclick=function(){var bt=this,v=$("rp-mail").value.trim(),m=$("rp-mail-msg");if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)){m.textContent="Cette adresse n'est pas valide.";return}
+  bt.disabled=true;post({action:"liste_mail",id:id,email:v}).then(function(x){bt.disabled=false;m.textContent=x.ok?"C'est envoyé. Gardez cet e-mail pour retrouver la liste.":x._s===429?"Trop de demandes, réessayez plus tard.":"L'envoi n'a pas marché, réessayez."}).catch(function(){bt.disabled=false;m.textContent="Pas de connexion."})};
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"&&id)charger()});
+window.addEventListener("hashchange",route);
+var IDEES=[["Nappe de fête","Pour une jolie table","nappe noel"],["Bougies de table","L'ambiance en un instant","bougies de table"],["Crackers de Noël","Pour rire à table","crackers de noel"],["Vaisselle jetable chic","Moins de vaisselle à faire","vaisselle jetable elegante"]];
+$("rp-idees").innerHTML=IDEES.map(function(x){return '<div class="idee"><b>'+x[0]+'</b><span>'+x[1]+'</span><a class="btn s petit" target="_blank" rel="sponsored nofollow noopener" href="https://www.amazon.fr/s?k='+encodeURIComponent(x[2])+'&tag=quioffreaqui-21">Voir les modèles</a></div>'}).join("");
+route();
+})();
+
+</script>
+<footer><div class="wrap">
+<div class="pied">
+<div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
+<p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
+<div><h2>Guides</h2><ul><li><a href="/regles-pere-noel-secret/">Père Noël secret</a></li><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a></li><li><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp</a></li><li><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme</a></li><li><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme</a></li><li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+</div>
+<div class="bas">
+<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>
+<p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
+</div>
+</div></footer>
+</body>
+</html>

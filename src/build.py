@@ -95,7 +95,7 @@ def head(title, desc, path, schema=None, robots='index,follow'):
 <body>
 '''
 
-NAV = '<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav>'
+NAV = '<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><span class="nav-d"><a class="nav-l" href="/qui-apporte-quoi/">Qui apporte quoi</a><a class="cta" href="/#outil">Faire un tirage</a></span></div></nav>'
 
 def foot():
     bud = ''.join(f'<a href="/{p["slug"]}/">{p["slug"].split("-")[-2]} €</a>' for p in PAGES if groupe(p) == 'budget')
@@ -105,7 +105,7 @@ def foot():
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles">{bud}</div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
-<div><h2>Guides</h2><ul>{gd}<li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+<div><h2>Guides</h2><ul>{gd}<li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
 </div>
 <div class="bas">
 <p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>
@@ -200,11 +200,32 @@ for p in PAGES:
 hub = head("Tous les guides : idées cadeaux et Père Noël secret", "Tous nos guides : idées cadeaux par budget de 5 à 50 €, selon la personne, et conseils pour organiser un Père Noël secret ou un échange de cadeaux.", "/guides/", [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Guides Qui offre à qui", "url": BASE + "/guides/"}]) + NAV + '<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Guides</p><h1>Tous les guides</h1><p>Des idées de cadeaux pour chaque budget et chaque personne, et des conseils pour organiser votre échange. Le tirage au sort, lui, se fait en 2 minutes sur <a href="/">la page d\'accueil</a>, sans compte et gratuitement.</p>' + ''.join(f'<h2>{t}</h2>' + cartes([p for p in PAGES if groupe(p) == g]) for g, t in GROUPES) + '</article></main>' + foot()
 w('guides/index.html', hub)
 
+# Liste partagée « qui apporte quoi »
+rbody = open(os.path.join(HERE, 'repas_body.html')).read()
+rjs = open(os.path.join(HERE, 'repas.js')).read()
+rfaq = [("Faut-il créer un compte ?", "Non. Vous créez la liste, vous partagez le lien, et chaque invité choisit ce qu'il apporte avec son prénom. Aucun compte, aucun mot de passe."),
+        ("Comment les invités reçoivent-ils la liste ?", "Par un simple lien, à envoyer dans le groupe WhatsApp de la famille ou par SMS. Tout le monde voit la même liste, mise à jour en direct."),
+        ("Peut-on ajouter des choses après coup ?", "Oui. Chaque invité peut ajouter une ligne dans une catégorie, ou libérer ce qu'il avait pris s'il change d'avis."),
+        ("C'est seulement pour Noël ?", "Non : réveillon du Nouvel An, anniversaire, pique-nique, barbecue ou auberge espagnole. Choisissez un modèle ou partez d'une liste vide.")]
+rseo = '<section class="carte"><h2>Organiser un repas où chacun apporte quelque chose</h2><p>Le repas de Noël en famille, le réveillon entre amis ou l\'auberge espagnole du bureau ont tous le même piège : sans liste, on se retrouve avec trois desserts et pas de pain. Une liste partagée règle le problème en quelques minutes.</p><ol><li><strong>Créez la liste</strong> à partir d\'un modèle (Noël, Nouvel An, anniversaire, pique-nique) et ajustez les lignes.</li><li><strong>Partagez le lien</strong> dans le groupe WhatsApp ou par SMS.</li><li><strong>Chacun choisit</strong> ce qu\'il apporte avec son prénom. La liste se met à jour pour tout le monde.</li></ol><p>Astuce : laissez les plats principaux à ceux qui reçoivent ou qui aiment cuisiner, et proposez les boissons, le pain et les fromages à ceux qui viennent de loin.</p></section>' + '<section class="carte"><h2>Questions fréquentes</h2>' + ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in rfaq) + '</section>'
+rbody = rbody.replace('<section class="carte">\n<h2>Pour la table</h2>', rseo + '\n<section class="carte">\n<h2>Pour la table</h2>', 1)
+rsch = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "Qui apporte quoi : liste de repas partagée", "url": BASE + "/qui-apporte-quoi/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}},
+        {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in rfaq]}]
+w('qui-apporte-quoi/index.html', head("Qui apporte quoi : liste de repas partagée gratuite", "Créez la liste du repas de Noël ou de la fête, partagez le lien, et chacun coche ce qu'il apporte. Gratuit, sans compte, mis à jour en direct pour tous.", "/qui-apporte-quoi/", rsch) + NAV + rbody + '<script>\n' + rjs + '\n</script>\n' + foot())
+
+# Page de retour newsletter (inscription, désinscription)
+nl = head("Newsletter", "Inscription et désinscription à la newsletter de Qui offre à qui.", "/newsletter/", robots='noindex,follow') + NAV + '''<main class="wrap"><article><h1 id="t">Newsletter</h1><p id="m"></p><p><a class="btn p" style="width:auto;display:inline-block" href="/">Faire un tirage au sort</a></p><p><a href="/guides/">Voir les idées cadeaux</a></p></article></main>
+<script>(function(){var r=new URLSearchParams(location.search).get("r"),t=document.getElementById("t"),m=document.getElementById("m");
+if(r==="ok"){t.textContent="Merci, c'est noté !";m.textContent="Vous recevrez de temps en temps nos idées cadeaux et un rappel pour le tirage de l'an prochain. Chaque e-mail contient un lien pour vous désinscrire.";try{window.qoaqHit&&window.qoaqHit("lead","newsletter")}catch(e){}}
+else if(r==="stop"){t.textContent="Vous êtes désinscrit";m.textContent="Nous ne vous écrirons plus. Vous pouvez toujours utiliser le tirage au sort gratuitement.";}
+else{t.textContent="Ce lien n'est plus valable";m.textContent="Il a peut-être expiré. Rien de grave : vous pouvez faire un nouveau tirage quand vous voulez.";}})();</script>''' + foot()
+w('newsletter/index.html', nl)
+
 # Mentions légales
 legal = head("Mentions légales et confidentialité", "Mentions légales, données personnelles et liens affiliés du site Qui offre à qui.", "/mentions-legales/", robots='noindex,follow') + NAV + '''<main class="wrap"><article><h1>Mentions légales et confidentialité</h1>
 <h2>Éditeur</h2><p>Jérémy Dacier-Jury, 9 passage des Tisserands, 38790 Charantonnay. Contact : <a href="mailto:contact@cvlibre.com">contact@cvlibre.com</a>.</p>
 <h2>Hébergement</h2><p>GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
-<h2>Données personnelles</h2><p>Le tirage au sort est fait sur nos serveurs (Supabase, hébergé dans l'Union européenne) pour que personne, pas même l'organisateur, ne connaisse les résultats. Les prénoms et les adresses e-mail des participants servent uniquement à leur envoyer leur résultat (prestataire d'envoi : Resend) et à permettre à l'organisateur de renvoyer un e-mail. Ils sont supprimés automatiquement 30 jours après la date de l'échange (60 jours après le tirage au plus tard). Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) ; vous pouvez les effacer à tout moment.</p><p><strong>E-mail de l'organisateur (facultatif).</strong> L'adresse de l'organisateur est conservée seulement s'il coche la case de rappel : elle sert alors à envoyer un e-mail par an pour proposer un nouveau tirage, jusqu'à sa désinscription (lien dans chaque e-mail). Base légale : votre consentement. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans cookie publicitaire et sans donnée permettant de vous identifier.</p>
+<h2>Données personnelles</h2><p>Le tirage au sort est fait sur nos serveurs (Supabase, hébergé dans l'Union européenne) pour que personne, pas même l'organisateur, ne connaisse les résultats. Les prénoms et les adresses e-mail des participants servent uniquement à leur envoyer leur résultat (prestataire d'envoi : Resend) et à permettre à l'organisateur de renvoyer un e-mail. Ils sont supprimés automatiquement 8 mois après le tirage. Vos derniers tirages sont gardés sur votre appareil (stockage local du navigateur) ; vous pouvez les effacer à tout moment.</p><p><strong>Newsletter.</strong> Un participant ou un organisateur peut s'inscrire à notre newsletter (idées cadeaux, rappel du tirage de l'année suivante) en cliquant sur « Oui, je m'inscris » ou en cochant la case prévue. Nous gardons alors son prénom et son adresse jusqu'à sa désinscription, possible en un clic dans chaque e-mail. Sans cette inscription, nous n'écrivons jamais aux participants pour autre chose que leur tirage.</p><p><strong>E-mail de l'organisateur (facultatif).</strong> L'adresse de l'organisateur est conservée seulement s'il coche la case de rappel : elle sert alors à envoyer un e-mail par an pour proposer un nouveau tirage, jusqu'à sa désinscription (lien dans chaque e-mail). Base légale : votre consentement. Pour exercer vos droits (accès, suppression), écrivez à contact@cvlibre.com.</p><p>Nous mesurons l'audience de façon anonyme (pages vues, clics vers Amazon), sans cookie publicitaire et sans donnée permettant de vous identifier.</p>
 <h2>Liens affiliés</h2><p>Certains liens vers Amazon sont des liens affiliés : en tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises, sans surcoût pour vous.</p>
 </article></main>''' + foot()
 w('mentions-legales/index.html', legal)
@@ -213,7 +234,7 @@ w('mentions-legales/index.html', legal)
 w('404.html', head("Page introuvable", "Cette page n'existe pas.", "/404.html", robots='noindex') + NAV + '<main class="wrap"><article><h1>Page introuvable</h1><p>Cette page n\'existe pas ou a été déplacée.</p><p><a class="btn p" href="/">Faire un tirage au sort</a></p></article></main>' + foot())
 
 # Sitemap, robots, CNAME, IndexNow
-urls = [("/", today, "1.0"), ("/guides/", today, "0.6")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
+urls = [("/", today, "1.0"), ("/qui-apporte-quoi/", today, "0.9"), ("/guides/", today, "0.6")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n')
 BOTS = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "YandexBot", "Qwantbot", "MistralAI-User", "CCBot"]
 w('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /404.html\n\n' + ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in BOTS) + f'Sitemap: {BASE}/sitemap.xml\n')
@@ -233,8 +254,9 @@ llms = f"""# {SITE}
 - Après la révélation, chaque participant voit des idées de cadeaux adaptées au budget.
 - Gratuit, sans publicité intrusive. Le site gagne de l'argent grâce aux liens affiliés Amazon des idées cadeaux.
 
-## Outil
+## Outils
 - [Faire un tirage au sort de cadeaux]({BASE}/): l'outil, avec la méthode et la FAQ.
+- [Qui apporte quoi]({BASE}/qui-apporte-quoi/): liste de repas partagée par lien, chacun coche ce qu'il apporte, sans compte.
 
 ## Idées cadeaux par budget
 """ + ''.join(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['desc']}\n" for p in budg) + """

@@ -86,6 +86,32 @@ footer{color:var(--gris);font-size:14px;text-align:center;padding:24px 0 40px}
 #suivi .l3.cache{display:none}
 #suivi .act{display:flex;gap:6px;flex-wrap:wrap}
 
+.nav-d{display:flex;align-items:center;gap:14px}
+.nav-l{font-weight:700;font-size:15px}
+@media(max-width:480px){.nav-l{display:none}}
+.rp-cat h3{margin:14px 0 8px;font-size:17px}
+.rp-cat .ajout{margin-bottom:4px}
+.rp-tete{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rp-tete h2{margin:0}
+.rp-compte{text-align:center;background:#eef3f0;border-radius:12px;padding:8px 12px;min-width:74px}
+.rp-compte b{display:block;font-size:22px}
+.rp-compte span{font-size:13px;color:var(--gris)}
+.rp-partage{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 4px}
+.rp-partage p{margin:0 0 8px}
+.rp-partage .act{display:flex;gap:8px;flex-wrap:wrap}
+.rp-bloc h2{margin:0 0 6px}
+.rp-items{list-style:none;padding:0;margin:0}
+.rp-items li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ligne)}
+.rp-items .lab{flex:1;font-weight:700}
+.rp-items li.pris .lab{color:var(--gris);font-weight:400}
+.rp-items .qui{background:#e3f2eb;color:#1d6b4f;font-weight:700;font-size:14px;border-radius:999px;padding:4px 12px}
+.rp-ajout{display:flex;gap:8px;margin-top:10px}
+.rp-ajout input{flex:1}
+input.attention{outline:3px solid var(--baie)}
+.rp-mail{margin:10px 0 4px}
+.rp-mail summary{cursor:pointer;font-weight:700;color:var(--pin2)}
+.mes li .act a.btn{text-decoration:none}
+
 nav.top{background:var(--pin);border-bottom:1px solid rgba(255,255,255,.12)}
 nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
 nav.top a{color:#fff;text-decoration:none;font:800 19px "Bricolage Grotesque",sans-serif}
@@ -122,7 +148,7 @@ footer .amz{color:#b9cdc5}
 <script src="/assets/track.js" defer></script>
 </head>
 <body>
-<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>Secret Santa sur WhatsApp : faire le tirage dans un groupe</h1><p class="meta">Publié le 26 novembre 2026</p>
+<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><span class="nav-d"><a class="nav-l" href="/qui-apporte-quoi/">Qui apporte quoi</a><a class="cta" href="/#outil">Faire un tirage</a></span></div></nav><main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>Secret Santa sur WhatsApp : faire le tirage dans un groupe</h1><p class="meta">Publié le 26 novembre 2026</p>
 <p>Votre famille ou votre bande d'amis a déjà un <strong>groupe WhatsApp</strong> ? C'est l'endroit idéal pour organiser votre Secret Santa. Le seul problème : WhatsApp ne sait pas faire de tirage secret. Si vous tirez les noms vous-même, vous saurez tout. Voici comment garder la surprise, y compris pour l'organisateur.</p><p class="encart" style="padding:14px 18px;margin:18px 0">🎁 <b>Pas encore fait le tirage ?</b> Sur <a href="/" style="color:#fff">Qui offre à qui</a>, il se fait en 2 minutes, sans compte et gratuitement.</p>
 <h2>Étape 1 : faire le tirage en ligne</h2>
 <p>Sur <a href="/">Qui offre à qui</a>, entrez les prénoms du groupe, le budget et la date. Ajoutez les exclusions si besoin (par exemple deux conjoints). Lancez le tirage : chaque personne reçoit son résultat par e-mail, et personne d'autre ne le voit, pas même vous.</p>
@@ -152,7 +178,7 @@ footer .amz{color:#b9cdc5}
 <div class="pied">
 <div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
 <p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
-<div><h2>Guides</h2><ul><li><a href="/regles-pere-noel-secret/">Père Noël secret</a></li><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a></li><li><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp</a></li><li><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme</a></li><li><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+<div><h2>Guides</h2><ul><li><a href="/regles-pere-noel-secret/">Père Noël secret</a></li><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a></li><li><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp</a></li><li><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme</a></li><li><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme</a></li><li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
 </div>
 <div class="bas">
 <p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>
