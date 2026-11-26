@@ -163,6 +163,49 @@ PAGES = [
 <h3>Comment faire le tirage au sort ?</h3>
 <p>Utilisez notre <a href="/">outil gratuit</a> : prénoms, e-mails, exclusions, et chacun reçoit son résultat en secret.</p>
 """},
+{
+"slug": "idee-cadeau-100-euros",
+"title": "Idée cadeau à 100 € : 15 idées pour un cadeau qui marque",
+"desc": "100 € pour un cadeau de Noël en famille, un cadeau commun ou un anniversaire important ? 15 idées utiles et durables : high-tech, cuisine, maison, loisirs.",
+"date": "2026-11-26",
+"body": """
+<p>Avec <strong>100 €</strong>, on offre un cadeau qui compte : un objet de qualité qu'on garde des années. C'est souvent le budget d'un cadeau commun à plusieurs (un Secret Santa entre collègues qui se cotisent, un cadeau des enfants aux parents) ou d'un échange en famille très proche. Voici des idées qui valent vraiment ce prix.</p>
+<h2>High-tech</h2>
+<div class="idees">
+""" + idee("Casque à réduction de bruit", "Pour les trajets et le télétravail", "casque reduction de bruit") + idee("Liseuse", "Des milliers de livres dans la poche", "liseuse") + idee("Montre connectée", "Sport, sommeil et notifications", "montre connectee") + """
+</div>
+<h2>Cuisine</h2>
+<div class="idees">
+""" + idee("Friteuse sans huile", "L'appareil qu'on utilise tous les jours", "friteuse sans huile") + idee("Machine à café à capsules ou à grain", "Pour les amateurs de bon café", "machine a cafe") + idee("Cocotte en fonte", "Pour les plats mijotés pendant des années", "cocotte fonte") + """
+</div>
+<h2>Maison et confort</h2>
+<div class="idees">
+""" + idee("Couverture lestée", "Pour un sommeil plus apaisé", "couverture lestee") + idee("Lampe d'ambiance connectée", "Des couleurs qui changent selon l'humeur", "lampe connectee") + idee("Ensemble de linge de lit de qualité", "Le confort qu'on remarque chaque soir", "parure de lit percale") + """
+</div>
+<h2>Loisirs</h2>
+<div class="idees">
+""" + idee("Grand coffret LEGO", "Des heures de construction", "lego adulte") + idee("Appareil photo instantané", "Des souvenirs imprimés tout de suite", "appareil photo instantane") + idee("Jumelles de qualité", "Pour la nature, la randonnée et les oiseaux", "jumelles 8x42") + """
+</div>
+<h2>Bien-être</h2>
+<div class="idees">
+""" + idee("Fauteuil ou coussin de massage", "Pour le dos après une longue journée", "coussin de massage shiatsu") + idee("Coffret parfum", "Un cadeau qu'on choisit avec soin", "coffret parfum") + idee("Lampe de luminothérapie", "Pour garder le moral en hiver", "lampe luminotherapie") + """
+</div>
+<h2>Bien choisir avec 100 €</h2>
+<ul>
+<li><strong>Misez sur l'usage quotidien</strong> : à ce prix, le cadeau doit servir souvent, pas rester dans un placard.</li>
+<li><strong>Vérifiez la marque et les avis réels</strong> avant d'acheter, et comparez plusieurs modèles.</li>
+<li><strong>Pensez au cadeau commun</strong> : à quatre personnes à 25 €, on offre quelque chose de bien plus marquant que quatre petits cadeaux.</li>
+<li><strong>Gardez le ticket cadeau</strong> pour un échange éventuel.</li>
+</ul>
+<p>Pour un budget plus serré, voyez nos <a href="/idee-cadeau-50-euros/">idées à 50 €</a> ou nos <a href="/idee-cadeau-30-euros/">idées à 30 €</a>.</p>
+<h2>Questions fréquentes</h2>
+<h3>100 €, ce n'est pas trop pour un Père Noël secret ?</h3>
+<p>Entre collègues, oui en général. En famille proche, entre adultes qui le souhaitent, ou pour un cadeau commun, c'est un budget courant. L'important est que tout le monde soit d'accord avant le tirage.</p>
+<h3>Quel cadeau à 100 € pour quelqu'un qui a déjà tout ?</h3>
+<p>Un objet de meilleure qualité que celui qu'il possède déjà (casque, machine à café, linge de lit) ou une expérience à vivre.</p>
+<h3>Comment organiser un cadeau commun à plusieurs ?</h3>
+<p>Fixez le montant de chacun, choisissez une personne qui achète, et faites le tirage au sort en ligne sur notre <a href="/">outil gratuit</a> si chacun doit offrir à quelqu'un d'autre.</p>
+"""},
 
 {
 "slug": "idee-cadeau-20-euros",
