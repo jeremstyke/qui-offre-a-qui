@@ -11,6 +11,8 @@ TAG = 'quioffreaqui-21'
 INDEXNOW = 'da4540821acf4048569bad7fbedc3ee1'
 CSS = open(os.path.join(HERE, 'tool.css')).read()
 EXTRA_CSS = """
+.faq details{border-top:1px solid #e2e8e5}.faq details:last-child{border-bottom:1px solid #e2e8e5}.faq summary{cursor:pointer;font-weight:700;padding:14px 28px 14px 0;list-style:none;position:relative;line-height:1.35}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";position:absolute;right:4px;top:12px;font-size:22px;color:#1f6b4f}.faq details[open] summary:after{content:"\2212"}.faq details p{margin:0 0 14px}.pq li{margin-bottom:6px}
+
 .vid{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#123d34;margin:10px 0 6px}
 .vid button{all:unset;cursor:pointer;display:block;width:100%;height:100%;position:relative}
 .vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
@@ -62,6 +64,7 @@ footer a{color:#fff}
 .soc a:hover,.soc a:focus-visible{transform:translateY(-2px)}
 .soc a.fb:hover,.soc a.fb:focus-visible{background:#1877f2}
 .soc a.yt:hover,.soc a.yt:focus-visible{background:#f00}
+.soc a.pi:hover,.soc a.pi:focus-visible{background:#e60023}
 .soc svg{width:24px;height:24px;fill:currentColor}
 footer .amz{color:#b9cdc5}
 @media(max-width:600px){.pied{grid-template-columns:1fr}}
@@ -140,7 +143,7 @@ def foot():
 <div><h2>Guides</h2><ul>{gd}<li><a href="/qui-apporte-quoi/">Qui apporte quoi au repas</a></li><li><a href="/retrouver/">Retrouver mon tirage</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
 </div>
 <div class="bas">
-<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p><div class="soc"><span>Suivez-nous</span><a class="yt" href="https://www.youtube.com/channel/UCLPHpSiWZBkdT8f2UvPYF8w" rel="noopener" aria-label="Notre chaîne YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a class="fb" href="https://www.facebook.com/122096271843567125" rel="noopener" aria-label="Notre page Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.4-.2-2.5 0-4.1 1.5-4.1 4.2v2.7H7.6v3.3h2.8V22z"/></svg></a></div>
+<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p><div class="soc"><span>Suivez-nous</span><a class="yt" href="https://www.youtube.com/channel/UCLPHpSiWZBkdT8f2UvPYF8w" rel="noopener" aria-label="Notre chaîne YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></a><a class="fb" href="https://www.facebook.com/122096271843567125" rel="noopener" aria-label="Notre page Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.4-.2-2.5 0-4.1 1.5-4.1 4.2v2.7H7.6v3.3h2.8V22z"/></svg></a><a class="pi" href="https://www.pinterest.fr/quioffreaqui/" rel="noopener" aria-label="Notre compte Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.8 3.4-.2 1 .5 1.8 1.5 1.8 1.8 0 3.2-1.9 3.2-4.7 0-2.5-1.8-4.2-4.3-4.2-2.9 0-4.6 2.2-4.6 4.4 0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.2c0 .2-.2.2-.4.1-1.3-.6-2.1-2.5-2.1-4 0-3.3 2.4-6.3 6.9-6.3 3.6 0 6.4 2.6 6.4 6 0 3.6-2.3 6.5-5.4 6.5-1.1 0-2.1-.6-2.4-1.2l-.7 2.5c-.2.9-.9 2.1-1.3 2.8A10 10 0 1 0 12 2z"/></svg></a></div>
 <p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
 </div>
 </div></footer>
@@ -158,7 +161,7 @@ def crumb(items):
 SEO_HOME = """<section class="carte"><h2>Comment faire un tirage au sort de cadeaux en ligne ?</h2>
 <p>Qui offre à qui est un <strong>tirage au sort de cadeaux gratuit et sans compte</strong>. En 2 minutes, il remplace les papiers pliés dans un chapeau, même quand tout le monde n'est pas réuni.</p>
 <ol>
-<li><strong>Choisissez l'occasion et le budget</strong> : Noël, Nouvel An, anniversaire, collègues, amis, de 5 à 50 €.</li>
+<li><strong>Choisissez l'occasion et le budget</strong> : Noël, Nouvel An, anniversaire, collègues, amis, de 5 à 100 €.</li>
 <li><strong>Ajoutez les prénoms</strong> des participants, et les exclusions si deux personnes ne doivent pas se tirer.</li>
 <li><strong>Ajoutez l'e-mail de chacun</strong> : c'est là qu'il recevra son résultat.</li>
 <li><strong>Lancez le tirage</strong> : chacun reçoit aussitôt un e-mail, ouvre son paquet et découvre à qui il offre un cadeau, avec des idées dans son budget.</li>
@@ -168,13 +171,12 @@ SEO_HOME = """<section class="carte"><h2>Comment faire un tirage au sort de cade
 <p class="vid-note">La vidéo YouTube ne se charge que si vous cliquez. <a href="https://www.youtube.com/watch?v=aLBfOgS4u3o" rel="noopener">La voir sur YouTube</a>.</p>
 </section>
 <section class="carte"><h2>Pourquoi utiliser Qui offre à qui ?</h2>
-<ul>
-<li><strong>Vraiment secret</strong> : le tirage est fait sur nos serveurs et chaque résultat part directement par e-mail. Personne ne sait qui offre à qui, pas même l'organisateur, qui peut donc participer.</li>
-<li><strong>Sans compte</strong> : rien à créer, aucun mot de passe. Un lien de suivi permet de renvoyer un e-mail perdu, sans voir le résultat.</li>
-<li><strong>100 % gratuit</strong>, sans limite de participants.</li>
-<li><strong>Jamais son propre nom</strong> : le tirage exclut chaque personne d'elle-même et respecte vos exclusions.</li>
-<li><strong>Idées cadeaux incluses</strong> : chacun voit des idées adaptées au budget, de <a href="/idee-cadeau-5-euros/">5 €</a> à <a href="/idee-cadeau-50-euros/">50 €</a>.</li>
-<li><strong>Pour toutes les occasions</strong> : <a href="/regles-pere-noel-secret/">Père Noël secret</a> en famille, <a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a>, échange entre amis, classe ou club.</li>
+<ul class="pq">
+<li><strong>Vraiment secret</strong> : même l'organisateur ne connaît pas le tirage, il peut donc participer.</li>
+<li><strong>Sans compte et 100 % gratuit</strong>, sans limite de participants.</li>
+<li><strong>Jamais son propre nom</strong>, et vos exclusions sont respectées.</li>
+<li><strong>Idées cadeaux incluses</strong>, de <a href="/idee-cadeau-5-euros/">5 €</a> à <a href="/idee-cadeau-100-euros/">100 €</a>.</li>
+<li><strong>Toutes les occasions</strong> : <a href="/pere-noel-secret-famille/">famille</a>, <a href="/cadeau-secret-santa-collegue/">collègues</a>, amis, classe, <a href="/jeu-ange-gardien/">ange gardien</a>.</li>
 </ul>
 </section>
 """
@@ -200,9 +202,9 @@ faq = [("Le tirage au sort est-il vraiment gratuit ?", "Oui, entièrement gratui
 howto = {"@context": "https://schema.org", "@type": "HowTo", "name": "Faire un tirage au sort de cadeaux en ligne", "totalTime": "PT2M", "step": [{"@type": "HowToStep", "position": 1, "name": "Choisir l'occasion et le budget", "text": "Indiquez l'occasion, le nom de l'événement, le budget par cadeau et la date de l'échange."}, {"@type": "HowToStep", "position": 2, "name": "Ajouter les participants", "text": "Entrez le prénom et l'e-mail de chaque participant, au moins 3, et les éventuelles exclusions."}, {"@type": "HowToStep", "position": 3, "name": "Lancer le tirage", "text": "Cliquez sur Lancer le tirage et envoyer les e-mails : le tirage est fait en secret sur nos serveurs."}, {"@type": "HowToStep", "position": 4, "name": "Chacun reçoit son résultat", "text": "Chaque participant reçoit un e-mail et découvre à qui il offre un cadeau, avec des idées selon le budget. Personne d'autre ne connaît le tirage."}]}
 sch_home = [howto, {"@context": "https://schema.org", "@type": "WebApplication", "name": SITE, "url": BASE + "/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}},
             {"@context": "https://schema.org", "@type": "VideoObject", "name": "Tirage au sort Père Noël secret en ligne gratuit (Secret Santa) : le tuto en 1 minute", "description": "Comment faire un tirage au sort Père Noël secret en ligne, gratuit et sans compte : l'événement, les participants et leur e-mail, les exclusions, le lancement, puis ce que reçoit chaque participant.", "thumbnailUrl": BASE + "/assets/video-tuto.jpg", "uploadDate": "2026-11-26T12:55:00+01:00", "duration": "PT1M12S", "embedUrl": "https://www.youtube-nocookie.com/embed/aLBfOgS4u3o", "contentUrl": "https://www.youtube.com/watch?v=aLBfOgS4u3o", "inLanguage": "fr"},
-            {"@context": "https://schema.org", "@type": "Organization", "name": SITE, "url": BASE + "/", "logo": BASE + "/assets/icon-512.png", "sameAs": ["https://www.youtube.com/channel/UCLPHpSiWZBkdT8f2UvPYF8w", "https://www.facebook.com/122096271843567125"]},
+            {"@context": "https://schema.org", "@type": "Organization", "name": SITE, "url": BASE + "/", "logo": BASE + "/assets/icon-512.png", "sameAs": ["https://www.youtube.com/channel/UCLPHpSiWZBkdT8f2UvPYF8w", "https://www.facebook.com/122096271843567125", "https://www.pinterest.fr/quioffreaqui/"]},
             {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]
-faq_html = '<section class="carte"><h2>Questions fréquentes</h2>' + ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in faq) + '</section>'
+faq_html = '<section class="carte faq"><h2>Questions fréquentes</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in faq) + '</section>'
 tool = tool.replace('<section class="carte"><h2>Idées et conseils</h2>', SEO_HOME + faq_html + '<section class="carte"><h2>Idées et conseils</h2>', 1)
 js = open(os.path.join(HERE, 'tool.js')).read()
 home = head("Tirage au sort cadeau gratuit sans compte : Père Noël secret",
@@ -234,7 +236,7 @@ for p in PAGES:
     w(f'{p["slug"]}/index.html', html_)
 
 # Page hub des guides
-hub = head("Tous les guides : idées cadeaux et Père Noël secret", "Tous nos guides : idées cadeaux par budget de 5 à 50 €, selon la personne, et conseils pour organiser un Père Noël secret ou un échange de cadeaux.", "/guides/", [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Guides Qui offre à qui", "url": BASE + "/guides/"}]) + NAV + '<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Guides</p><h1>Tous les guides</h1><p>Des idées de cadeaux pour chaque budget et chaque personne, et des conseils pour organiser votre échange. Le tirage au sort, lui, se fait en 2 minutes sur <a href="/">la page d\'accueil</a>, sans compte et gratuitement.</p>' + ''.join(f'<h2>{t}</h2>' + cartes([p for p in PAGES if groupe(p) == g]) for g, t in GROUPES) + '</article></main>' + foot()
+hub = head("Tous les guides : idées cadeaux et Père Noël secret", "Tous nos guides : idées cadeaux par budget de 5 à 100 €, selon la personne, et conseils pour organiser un Père Noël secret ou un échange de cadeaux.", "/guides/", [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Guides Qui offre à qui", "url": BASE + "/guides/"}]) + NAV + '<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Guides</p><h1>Tous les guides</h1><p>Des idées de cadeaux pour chaque budget et chaque personne, et des conseils pour organiser votre échange. Le tirage au sort, lui, se fait en 2 minutes sur <a href="/">la page d\'accueil</a>, sans compte et gratuitement.</p>' + ''.join(f'<h2>{t}</h2>' + cartes([p for p in PAGES if groupe(p) == g]) for g, t in GROUPES) + '</article></main>' + foot()
 w('guides/index.html', hub)
 
 # Liste partagée « qui apporte quoi »

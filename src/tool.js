@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var noms=["Marie","Thomas","Julie","Lucas","Emma"],mails=["","","","",""];
+var noms=["Marie","Thomas","Julie","Lucas"],mails=["","","",""];
 var API="https://txvrlvcxfnylnrpdrxtt.supabase.co/functions/v1/qoaq";
 var MSG="Pour votre Père Noël secret ou votre échange de cadeaux : le tirage au sort se fait en 2 minutes, gratuit et sans compte, et chacun reçoit son résultat par e-mail. https://qui-offre-a-qui.fr/";
 function brancherPartage(){
