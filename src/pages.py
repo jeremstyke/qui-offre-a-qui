@@ -10,7 +10,7 @@ AZ = "https://www.awin1.com/cread.php?awinmid=115393&awinaffid=3158017"
 def idee_az(titre, texte, ued=""):
     from urllib.parse import quote
     url = AZ + ("&ued=" + quote(ued, safe="") if ued else "")
-    return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{url}" rel="sponsored nofollow noopener" target="_blank">Voir chez ANITA &amp; ZAHA</a></div>'
+    return f'<div class="idee"><b>{titre}</b><span>{texte}</span><a class="btn s petit" href="{url}" rel="sponsored nofollow">Voir chez ANITA &amp; ZAHA</a></div>'
 
 PAGES = [
 {
