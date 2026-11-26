@@ -15,6 +15,7 @@ PINS = [
  ("jeu-ange-gardien", "Le jeu de", "l'ange gardien", ["Les règles en 4 étapes", "Idées d'attentions", "EVJF, colo, séminaire", "Tirage en ligne gratuit"], "Idées et tirage au sort", "sapin", "liste"),
  ("qui-apporte-quoi", "Repas de Noël :", "qui apporte quoi ?", ["Un tableau partagé", "Chacun note ce qu'il apporte", "Fini les 3 bûches", "Gratuit, sans compte"], "Organiser le repas", "sapin", "liste"),
  ("anita-zaha-40", "Cadeaux Made in France", "-40 %", ["Parfum fabriqué à Grasse", "Coffrets beauté", "Savons végétaux", "Bougies et parfums d'intérieur"], "Code ANITAZAHA40 jusqu'au 31/12", "baie", "etiquette"),
+ ("bonheur-de-lune-10", "Cadeaux zen et bien-être", "-10 %", ["Bracelets en pierres naturelles", "Encens et palo santo", "Bougies d'intention", "Box cadeau de Noël"], "Code FULLMOON valable jusqu'au 30/11", "nuit", "grand"),
  ("", "Tirage au sort", "Secret Santa", ["Prénoms et e-mails", "Exclusions entre couples", "Résultat secret par e-mail", "Gratuit, sans compte"], "Prêt en 2 minutes", "sapin", "liste"),
 ]
 THEMES = {
