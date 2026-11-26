@@ -8,7 +8,7 @@ PAGES_NOEL = [
 "desc": "Vous avez tiré un homme au Secret Santa ? 15 idées de cadeaux classées par budget, de 10 à 50 €, utiles, gourmandes ou drôles, loin des clichés.",
 "date": "2026-11-26",
 "body": """
-<p>Vous avez tiré le nom d'un homme au <strong>Secret Santa</strong> et vous séchez ? C'est le cas le plus fréquent : on pense tout de suite au coffret rasage ou à la cravate, puis on se dit que c'est un peu triste. Voici des idées classées par budget, testées sur le terrain des échanges en famille et entre collègues.</p>
+<p>Vous avez tiré le nom d'un homme au <strong>Secret Santa</strong> et vous séchez ? C'est le cas le plus fréquent : on pense tout de suite au coffret rasage ou à la cravate, puis on se dit que c'est un peu triste. Voici des idées classées par budget, pour un échange en famille ou entre collègues.</p>
 <h2>Moins de 10 € : la petite attention qui tombe juste</h2>
 <div class="idees">
 """ + idee("Chaussettes à motifs", "Le classique qu'on porte vraiment", "chaussettes homme motifs") + idee("Décapsuleur original", "Pour l'apéro, il servira", "decapsuleur original") + idee("Carnet de poche", "Pour les listes et les idées", "carnet de poche homme") + """
