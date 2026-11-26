@@ -46,6 +46,7 @@ article .meta{color:var(--gris);font-size:14px}
 .voir a:hover{border-color:var(--pin2)}
 .voir b{display:block;font-size:16px;line-height:1.3}
 .voir span{display:block;font-size:14px;color:var(--gris);margin-top:2px}
+.promos{background:#fff7e6;border:2px dashed #e9b949;border-radius:16px;padding:18px 20px;margin:28px 0}.promos h2{margin-top:0}.promos ul{padding-left:18px}.promos li{margin:8px 0}.promos code{background:#123d34;color:#fff;padding:2px 8px;border-radius:6px;font-weight:700}.promos .pm{font-size:.85em;color:#6b7a74;margin:8px 0 0}
 footer{background:var(--pin);color:#dfe9e4;text-align:left;margin-top:40px;padding:32px 0 36px}
 footer a{color:#fff}
 .pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -97,6 +98,20 @@ def amz(s):
     return re.sub(r'\{AMZ:([^}]+)\}', lambda m: 'https://www.amazon.fr/s?k=' + quote_plus(m.group(1).strip()) + '&tag=' + TAG, s)
 
 def esc(s): return html.escape(s, quote=True)
+
+
+# Codes promo affichés sur l'accueil et les guides. Chaque code disparaît tout seul après sa date de fin (fin = AAAA-MM-JJ, inclus).
+PROMOS = [
+    ("ANITA &amp; ZAHA", "-40 % sur tout le site : parfums de Grasse, coffrets beauté, savons et bougies Made in France", "ANITAZAHA40", "2026-12-31", "https://www.awin1.com/cread.php?awinmid=115393&amp;awinaffid=3158017"),
+    ("Bonheur de Lune", "-10 % sur la boutique : bracelets en pierres naturelles, encens, bougies", "FULLMOON", "2026-11-30", "https://www.awin1.com/cread.php?awinmid=128881&amp;awinaffid=3158017"),
+]
+def promos_html():
+    import datetime as _d
+    act = [p for p in PROMOS if _d.date.fromisoformat(p[3]) >= _d.date.today()]
+    if not act: return ''
+    li = ''.join(f'<li data-fin="{fin}"><b>{m}</b> : {t}. Code <code>{c}</code> jusqu\'au {int(fin[8:])} {["","janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"][int(fin[5:7])]}. <a href="{u}" rel="sponsored nofollow">J\'en profite</a></li>' for m, t, c, fin, u in act)
+    return ('<section class="promos"><h2>Codes promo du moment</h2><ul>' + li + '</ul><p class="pm">Liens affiliés : le site touche une commission, sans surcoût pour vous.</p></section>'
+            '<script>(function(){var d=new Date().toISOString().slice(0,10);document.querySelectorAll(".promos li").forEach(function(l){if(l.dataset.fin<d)l.remove()});document.querySelectorAll(".promos").forEach(function(s){if(!s.querySelector("li"))s.remove()})})()</script>')
 
 def head(title, desc, path, schema=None, robots='index,follow'):
     _slug = path.strip('/')
@@ -188,7 +203,7 @@ tool = tool.replace('<main class="wrap">', '<main class="wrap" id="outil">', 1)
 _pills = ''.join(f'<a href="/{p["slug"]}/">{p["slug"].split("-")[-2]} €</a>' for p in PAGES if groupe(p) == 'budget')
 _top = [p for c in ["idee-cadeau-secret-santa-homme", "idee-cadeau-secret-santa-femme", "regles-pere-noel-secret", "cadeau-secret-santa-collegue"] for p in PAGES if p["slug"] == c]
 guides = f'<p class="sous">Des idées par budget :</p><div class="pastilles clair">{_pills}</div><h3 style="margin-top:18px">Les guides les plus lus</h3>' + cartes(_top)
-tool = tool.replace('</main>\n</div>\n\n<div id="vue-res"', f'<section class="carte"><h2>Idées et conseils</h2>{guides}<p style="margin-top:14px"><a href="/guides/">Voir tous les guides</a></p></section>\n</main>\n</div>\n\n<div id="vue-res"', 1)
+tool = tool.replace('</main>\n</div>\n\n<div id="vue-res"', f'{promos_html()}<section class="carte"><h2>Idées et conseils</h2>{guides}<p style="margin-top:14px"><a href="/guides/">Voir tous les guides</a></p></section>\n</main>\n</div>\n\n<div id="vue-res"', 1)
 faq = [("Le tirage au sort est-il vraiment gratuit ?", "Oui, entièrement gratuit, sans abonnement et sans option payante cachée."),
        ("Faut-il créer un compte ?", "Non. Vous entrez les prénoms et les e-mails des participants, et c'est tout : aucun compte, aucun mot de passe. Le tirage est prêt en 2 minutes."),
        ("Comment chaque participant reçoit-il son résultat ?", "Par e-mail, dès que le tirage est lancé. Il clique sur le bouton, ouvre son paquet et découvre à qui il offre un cadeau, avec des idées selon le budget."),
@@ -233,7 +248,7 @@ for p in PAGES:
     _i = PAGES.index(p)
     rel = (_g[_i % len(_g):] + _g[:_i % len(_g)])[:3] + (_b[_i % len(_b):] + _b[:_i % len(_b)])[:2]
     related = '<h2>À lire aussi</h2>' + cartes(rel)
-    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{nlencart('guide')}{related}</article></main>' + foot()
+    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{promos_html()}{cta}{nlencart('guide')}{related}</article></main>' + foot()
     w(f'{p["slug"]}/index.html', html_)
 
 # Page hub des guides
