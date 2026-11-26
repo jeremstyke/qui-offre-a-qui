@@ -102,3 +102,9 @@ input.attention{outline:3px solid var(--baie)}
 #res-repas{margin:12px 0 0;font-size:15px}
 .hero .deja{margin:14px 0 0;font-size:15px}
 .hero .deja a{color:#fff;font-weight:700}
+.viral{background:#fdf6e3;border-color:#efd9a0}
+.viral h2{margin-top:0}
+.viral .act,.viral-orga .act{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+.viral .btn.p{width:auto;font-size:17px;padding:13px 22px}
+.viral-orga{background:#fdf6e3;border-radius:12px;padding:12px 14px;margin:14px 0 0}
+.viral-orga p{margin:0}

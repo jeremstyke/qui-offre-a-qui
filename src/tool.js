@@ -2,6 +2,14 @@
 var $=function(i){return document.getElementById(i)};
 var noms=["Marie","Thomas","Julie","Lucas","Emma"],mails=["","","","",""];
 var API="https://txvrlvcxfnylnrpdrxtt.supabase.co/functions/v1/qoaq";
+var MSG="Pour votre Père Noël secret ou votre échange de cadeaux : le tirage au sort se fait en 2 minutes, gratuit et sans compte, et chacun reçoit son résultat par e-mail. https://qui-offre-a-qui.fr/";
+function brancherPartage(){
+  document.querySelectorAll("[data-wa]").forEach(function(a){a.href="https://wa.me/?text="+encodeURIComponent(MSG.replace("https://qui-offre-a-qui.fr/","https://qui-offre-a-qui.fr/?src=wa-"+a.dataset.wa));a.onclick=function(){try{window.qoaqHit&&window.qoaqHit("partage","site-wa-"+a.dataset.wa)}catch(e){}}});
+  document.querySelectorAll("[data-partage]").forEach(function(b){b.onclick=function(){var u="https://qui-offre-a-qui.fr/?src=partage-"+b.dataset.partage;try{window.qoaqHit&&window.qoaqHit("partage","site-"+b.dataset.partage)}catch(e){}
+    if(navigator.share){navigator.share({title:"Qui offre à qui",text:MSG.replace(/ https.*$/,""),url:u}).catch(function(){})}
+    else if(navigator.clipboard){navigator.clipboard.writeText(MSG.replace("https://qui-offre-a-qui.fr/",u)).then(function(){b.textContent="Lien copié"})}}});
+}
+try{if(/[?&]src=participant/.test(location.search))localStorage.setItem("qoaq_src","participant");else if(/[?&]src=/.test(location.search)&&!localStorage.getItem("qoaq_src"))localStorage.setItem("qoaq_src",(location.search.match(/[?&]src=([a-z0-9-]{1,30})/)||[,""])[1])}catch(e){}
 function escH(x){return String(x||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function rendreListe(){
   var l=$("liste");l.innerHTML="";
@@ -104,7 +112,7 @@ $("tirer").onclick=function(){
     if(j.id){
       var T={id:j.id,g:j.g,ev:ev,ts:Date.now(),n:liste.length,liste:j.liste||null};
       memoriser(T);afficherSuivi(T,j.participants,true);
-      try{window.qoaqHit&&window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b);window.qoaqHit("mail",String(j.envoyes))}catch(e){}
+      try{var src="";try{src=localStorage.getItem("qoaq_src")||""}catch(e){}if(window.qoaqHit){window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b+"|"+src);window.qoaqHit("mail",String(j.envoyes))}}catch(e){}
       $("res").scrollIntoView({behavior:"smooth"});
     } else err.textContent=j.raison==="exclusions"?"Impossible avec ces exclusions. Retirez-en une et relancez.":j.raison==="email"?"Une adresse e-mail n'est pas valide : vérifiez la liste.":j._s===429?"Trop de tirages depuis votre connexion. Réessayez dans une heure.":"Le tirage n'a pas marché. Réessayez dans un instant.";
   }).catch(function(){bt.disabled=false;bt.textContent=avant;err.textContent="Pas de connexion. Vérifiez votre réseau et réessayez."});
@@ -122,6 +130,7 @@ var IDEES={
  "50":[["Écouteurs sans fil","Un vrai cadeau plaisir","ecouteurs sans fil"],["Appareil à fondue ou raclette","Pour les repas à plusieurs","appareil raclette"],["Lampe de lecture","Pour les lecteurs du soir","lampe de lecture led"],["Coffret jeu de société expert","Des heures de jeu","jeu de societe strategie"]]
 };
 function afficherRes(o){
+  try{localStorage.setItem("qoaq_src","participant")}catch(e){}
   try{var R=JSON.parse(localStorage.getItem("qoaq_resultats")||"[]").filter(function(x){return x.u!==location.href});R.unshift({u:location.href,ev:o.e,de:o.de,ts:Date.now()});localStorage.setItem("qoaq_resultats",JSON.stringify(R.slice(0,8)))}catch(e){}
   $("vue-orga").classList.add("cache");$("vue-res").classList.remove("cache");
   $("r-titre").textContent="Bonjour "+o.de;
@@ -152,11 +161,12 @@ function afficherRes(o){
     post({action:"liste_lire",id:o.l}).then(function(x){if(x.ok){rendreRepas(x.liste);$("r-repas").dataset.ok="1";if($("paquet").classList.contains("ouvert"))$("r-repas").classList.remove("cache")}}).catch(function(){});
     try{var M=JSON.parse(localStorage.getItem("qoaq_listes")||"[]").filter(function(x){return x.id!==o.l});M.unshift({id:o.l,t:o.e,ts:Date.now()});localStorage.setItem("qoaq_listes",JSON.stringify(M.slice(0,12)));localStorage.setItem("qoaq_prenom",o.de)}catch(e){}
   }
-  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){if(pm){var d0=false;try{d0=localStorage.getItem("qoaq_nl")==="1"}catch(e){}if(!d0)$("nl").classList.remove("cache")}try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache");if($("r-repas").dataset.ok)$("r-repas").classList.remove("cache")}
+  function ouvrir(){if(!$("paquet").classList.contains("ouvert")){if(pm){var d0=false;try{d0=localStorage.getItem("qoaq_nl")==="1"}catch(e){}if(!d0)$("nl").classList.remove("cache")}try{window.qoaqHit&&window.qoaqHit("reveal",o.b)}catch(e){}}$("paquet").classList.add("ouvert");$("nom").classList.remove("cache");$("r-idees").classList.remove("cache");$("r-autre").classList.remove("cache");if($("r-repas").dataset.ok)$("r-repas").classList.remove("cache")}
   $("paquet").onclick=ouvrir;$("paquet").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ouvrir()}};
 }
 window.addEventListener("hashchange",function(){if(/r=/.test(location.hash))location.reload()});
 var gm=location.hash.match(/g=(\d+)\.([a-f0-9]{24})/);
 var m=location.hash.match(/r=([^&]+)/);
 if(m){try{afficherRes(decode(m[1]))}catch(e){rendreListe();rendreExc();rendreMes()}}else{rendreListe();rendreExc();rendreMes();if(gm){var GT={id:+gm[1],g:gm[2],ev:"",ts:Date.now(),n:0};suivre(GT)}}
+brancherPartage();
 })();
