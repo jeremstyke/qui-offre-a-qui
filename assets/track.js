@@ -54,3 +54,14 @@
       }).catch(function(){ b.disabled = false; b.textContent = 'Je m\'inscris'; m.textContent = 'Pas de connexion, réessayez.'; });
   });
 })();
+
+// Vidéo YouTube chargée seulement au clic (pas de cookie avant)
+document.addEventListener('click', function(e){
+  var b = e.target.closest && e.target.closest('.vid button'); if (!b) return;
+  var v = b.parentNode, id = v.getAttribute('data-yt'); if (!id) return;
+  var f = document.createElement('iframe');
+  f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+  f.title = b.getAttribute('aria-label') || 'Vidéo'; f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+  v.innerHTML = ''; v.appendChild(f);
+  try { window.qoaqHit && window.qoaqHit('video', id); } catch(_){}
+});
