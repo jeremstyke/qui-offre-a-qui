@@ -35,7 +35,7 @@ p{{font:400 28px/1.35 A;color:#d6e4de;margin-top:22px;max-width:760px}}
 .gros{{position:absolute;right:280px;top:200px;font:800 190px/1 B;color:#e9b949;letter-spacing:-.03em}}
 </style></head><body><div class="ruban"></div>
 <svg class="noeud" viewBox="0 0 150 90"><path d="M75 80C62 50 22 30 12 52 4 70 40 82 75 80zm0 0c13-30 53-50 63-28 8 18-28 30-63 28z" fill="#e9b949"/><circle cx="75" cy="78" r="11" fill="#f3d27a"/></svg>
-<div class="c"><div class="k">{html.escape(kicker)}</div><h1>{html.escape(titre).replace(' €', '&nbsp;€')}</h1><p>{html.escape(sous).replace(' :', '&nbsp;:').replace(' ?', '&nbsp;?').replace('e-mail', 'e&#8209;mail')}</p><div class="pills"><span>Gratuit</span><span>Sans compte</span><span>2 minutes</span></div>
+<div class="c"><div class="k">{html.escape(kicker)}</div><h1>{html.escape(titre).replace(' €', '&nbsp;€').replace(' ?', '&nbsp;?').replace(' :', '&nbsp;:')}</h1><p>{html.escape(sous).replace(' :', '&nbsp;:').replace(' ?', '&nbsp;?').replace('e-mail', 'e&#8209;mail')}</p><div class="pills"><span>Gratuit</span><span>Sans compte</span><span>2 minutes</span></div>
 <div class="pied"><img src="{ICON}">Qui offre à qui<span>qui-offre-a-qui.fr</span></div></div>{big}</body></html>"""
 
 def main():
