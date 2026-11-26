@@ -82,8 +82,25 @@ article h3{font-size:18px;margin:20px 0 6px}
 article .meta{color:var(--gris);font-size:14px}
 .encart{background:var(--pin);color:#fff;border-radius:14px;padding:20px;margin:28px 0}
 .encart a.btn{background:var(--or);color:var(--encre)}
-.liens{display:flex;flex-wrap:wrap;gap:8px 16px;margin:6px 0 0}
-footer a{color:var(--gris)}
+.voir{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:12px 0 0}
+.voir a{display:block;background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--encre)}
+.voir a:hover{border-color:var(--pin2)}
+.voir b{display:block;font-size:16px;line-height:1.3}
+.voir span{display:block;font-size:14px;color:var(--gris);margin-top:2px}
+footer{background:var(--pin);color:#dfe9e4;text-align:left;margin-top:40px;padding:32px 0 36px}
+footer a{color:#fff}
+.pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
+.pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
+.pied ul{list-style:none;padding:0;margin:0}
+.pied li{margin:0 0 6px}
+.pied li a{text-decoration:none}
+.pied li a:hover,.pastilles a:hover{text-decoration:underline}
+.bas{border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:16px;font-size:14px}
+.bas p{margin:4px 0}
+footer .amz{color:#b9cdc5}
+@media(max-width:600px){.pied{grid-template-columns:1fr}}
 .amz{font-size:13px;color:var(--gris)}
 </style>
 
@@ -91,9 +108,15 @@ footer a{color:var(--gris)}
 </head>
 <body>
 <nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav><main class="wrap"><article><h1>Page introuvable</h1><p>Cette page n'existe pas ou a été déplacée.</p><p><a class="btn p" href="/">Faire un tirage au sort</a></p></article></main><footer><div class="wrap">
-<p class="liens" style="justify-content:center"><a href="/idee-cadeau-5-euros/">Idée cadeau à 5 € </a><a href="/idee-cadeau-10-euros/">Idée cadeau à 10 € </a><a href="/idee-cadeau-15-euros/">Idée cadeau à 15 € </a><a href="/idee-cadeau-20-euros/">Idée cadeau à 20 € </a><a href="/idee-cadeau-30-euros/">Idée cadeau à 30 € </a><a href="/idee-cadeau-50-euros/">Idée cadeau à 50 € </a><a href="/pere-noel-secret-famille/">Père Noël secret en famille </a><a href="/secret-santa-a-distance/">Secret Santa à distance </a><a href="/regles-pere-noel-secret/">Père Noël secret </a><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues </a><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme </a><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme </a><a href="/cadeau-secret-santa-ado/">Cadeau Secret Santa ado </a><a href="/idee-cadeau-humour-secret-santa/">Cadeau rigolo Secret Santa </a><a href="/cadeau-secret-santa-dernier-moment/">Cadeau Secret Santa de dernière minute </a><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp </a><a href="/jeux-echange-cadeaux-noel/">Jeux d&#x27;échange de cadeaux à Noël </a><a href="/liste-envies-secret-santa/">Liste d&#x27;envies Secret Santa </a></p>
-<p>Tirage au sort de cadeaux gratuit, sans inscription. <a href="/mentions-legales/">Mentions légales et confidentialité</a>.</p>
+<div class="pied">
+<div><h2>Idées cadeaux par budget</h2><div class="pastilles"><a href="/idee-cadeau-5-euros/">5 €</a><a href="/idee-cadeau-10-euros/">10 €</a><a href="/idee-cadeau-15-euros/">15 €</a><a href="/idee-cadeau-20-euros/">20 €</a><a href="/idee-cadeau-30-euros/">30 €</a><a href="/idee-cadeau-50-euros/">50 €</a></div>
+<p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
+<div><h2>Guides</h2><ul><li><a href="/regles-pere-noel-secret/">Père Noël secret</a></li><li><a href="/pere-noel-secret-famille/">Père Noël secret en famille</a></li><li><a href="/cadeau-secret-santa-collegue/">Secret Santa entre collègues</a></li><li><a href="/tirage-au-sort-secret-santa-whatsapp/">Secret Santa sur WhatsApp</a></li><li><a href="/idee-cadeau-secret-santa-homme/">Idée cadeau Secret Santa homme</a></li><li><a href="/idee-cadeau-secret-santa-femme/">Idée cadeau Secret Santa femme</a></li><li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+</div>
+<div class="bas">
+<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>
 <p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
+</div>
 </div></footer>
 </body>
 </html>

@@ -21,8 +21,25 @@ article h3{font-size:18px;margin:20px 0 6px}
 article .meta{color:var(--gris);font-size:14px}
 .encart{background:var(--pin);color:#fff;border-radius:14px;padding:20px;margin:28px 0}
 .encart a.btn{background:var(--or);color:var(--encre)}
-.liens{display:flex;flex-wrap:wrap;gap:8px 16px;margin:6px 0 0}
-footer a{color:var(--gris)}
+.voir{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:12px 0 0}
+.voir a{display:block;background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--encre)}
+.voir a:hover{border-color:var(--pin2)}
+.voir b{display:block;font-size:16px;line-height:1.3}
+.voir span{display:block;font-size:14px;color:var(--gris);margin-top:2px}
+footer{background:var(--pin);color:#dfe9e4;text-align:left;margin-top:40px;padding:32px 0 36px}
+footer a{color:#fff}
+.pied{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pied h2{font:800 16px/1.3 "Bricolage Grotesque",sans-serif;color:#fff;margin:0 0 10px}
+.pastilles{display:flex;flex-wrap:wrap;gap:8px}
+.pastilles a{background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;text-decoration:none;font-weight:700;font-size:15px}
+.pied ul{list-style:none;padding:0;margin:0}
+.pied li{margin:0 0 6px}
+.pied li a{text-decoration:none}
+.pied li a:hover,.pastilles a:hover{text-decoration:underline}
+.bas{border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:16px;font-size:14px}
+.bas p{margin:4px 0}
+footer .amz{color:#b9cdc5}
+@media(max-width:600px){.pied{grid-template-columns:1fr}}
 .amz{font-size:13px;color:var(--gris)}
 """
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">'
@@ -35,6 +52,18 @@ def _k(p):
     m = re.search(r'(\d+)-euros', p['slug'])
     return (0, int(m.group(1))) if m else (1, 0)
 PAGES = sorted(PAGES, key=_k)
+POUR_QUI = ("homme", "femme", "ado", "collegue", "humour", "dernier-moment")
+def groupe(p):
+    if 'euros' in p['slug']: return 'budget'
+    if any(k in p['slug'] for k in POUR_QUI): return 'pourqui'
+    return 'organiser'
+GROUPES = [('budget', 'Idées cadeaux par budget'), ('pourqui', 'Idées selon la personne'), ('organiser', 'Organiser son échange')]
+def court_titre(p): return p['title'].split(' : ')[0]
+def sous(t):
+    x = t.split(" : ", 1)[1] if " : " in t else ""
+    return x[:1].upper() + x[1:]
+def cartes(liste):
+    return '<div class="voir">' + ''.join(f'<a href="/{q["slug"]}/"><b>{esc(court_titre(q))}</b><span>{esc(sous(q["title"]))}</span></a>' for q in liste) + '</div>'
 
 def amz(s):
     return re.sub(r'\{AMZ:([^}]+)\}', lambda m: 'https://www.amazon.fr/s?k=' + quote_plus(m.group(1).strip()) + '&tag=' + TAG, s)
@@ -67,11 +96,19 @@ def head(title, desc, path, schema=None, robots='index,follow'):
 NAV = '<nav class="top"><div class="wrap"><a href="/">🎁 Qui offre à qui</a><a class="cta" href="/#outil">Faire un tirage</a></div></nav>'
 
 def foot():
-    links = ''.join(f'<a href="/{p["slug"]}/">{esc(p["title"].split(":")[0])}</a>' for p in PAGES)
+    bud = ''.join(f'<a href="/{p["slug"]}/">{p["slug"].split("-")[-2]} €</a>' for p in PAGES if groupe(p) == 'budget')
+    cles = ["regles-pere-noel-secret", "pere-noel-secret-famille", "cadeau-secret-santa-collegue", "tirage-au-sort-secret-santa-whatsapp", "idee-cadeau-secret-santa-homme", "idee-cadeau-secret-santa-femme"]
+    gd = ''.join(f'<li><a href="/{p["slug"]}/">{esc(court_titre(p))}</a></li>' for c in cles for p in PAGES if p["slug"] == c)
     return f'''<footer><div class="wrap">
-<p class="liens" style="justify-content:center">{links}</p>
-<p>Tirage au sort de cadeaux gratuit, sans inscription. <a href="/mentions-legales/">Mentions légales et confidentialité</a>.</p>
+<div class="pied">
+<div><h2>Idées cadeaux par budget</h2><div class="pastilles">{bud}</div>
+<p style="margin-top:18px"><a class="btn" style="background:var(--or);color:var(--encre)" href="/#outil">Faire un tirage gratuit</a></p></div>
+<div><h2>Guides</h2><ul>{gd}<li><a href="/guides/"><b>Tous les guides</b></a></li></ul></div>
+</div>
+<div class="bas">
+<p>Tirage au sort de cadeaux en ligne, gratuit et sans compte. <a href="/mentions-legales/">Mentions légales et confidentialité</a></p>
 <p class="amz">En tant que Partenaire Amazon, Qui offre à qui réalise un bénéfice sur les achats remplissant les conditions requises.</p>
+</div>
 </div></footer>
 </body>
 </html>
@@ -108,8 +145,8 @@ SEO_HOME = """<section class="carte"><h2>Comment faire un tirage au sort de cade
 # Accueil (outil)
 tool = open(os.path.join(HERE, 'tool_body.html')).read()
 tool = tool.replace('<main class="wrap">', '<main class="wrap" id="outil">', 1)
-guides = ''.join(f'<li><a href="/{p["slug"]}/">{esc(p["title"])}</a></li>' for p in PAGES)
-tool = tool.replace('</main>\n</div>\n\n<div id="vue-res"', f'<section class="carte"><h2>Idées et conseils</h2><ul>{guides}</ul></section>\n</main>\n</div>\n\n<div id="vue-res"', 1)
+guides = ''.join(f'<h3>{t}</h3>' + cartes([p for p in PAGES if groupe(p) == g][:6]) for g, t in GROUPES)
+tool = tool.replace('</main>\n</div>\n\n<div id="vue-res"', f'<section class="carte"><h2>Idées et conseils</h2>{guides}<p style="margin-top:14px"><a href="/guides/">Voir tous les guides</a></p></section>\n</main>\n</div>\n\n<div id="vue-res"', 1)
 faq = [("Le tirage au sort est-il vraiment gratuit ?", "Oui, entièrement gratuit, sans abonnement et sans option payante cachée."),
        ("Faut-il créer un compte ou donner son e-mail ?", "Non. Des prénoms suffisent : aucun compte, aucun mot de passe, et le tirage est prêt en 2 minutes. L'e-mail est facultatif, il sert seulement à envoyer les liens par e-mail."),
        ("Peut-on envoyer les résultats par e-mail ?", "Oui. Ajoutez l'e-mail des participants qui le souhaitent : chacun reçoit son lien privé. L'organisateur peut aussi recevoir un récapitulatif avec tous les liens, pour les renvoyer si quelqu'un perd le sien."),
@@ -150,9 +187,13 @@ for p in PAGES:
     _g = [q for q in oth if 'euros' not in q['slug']]; _b = [q for q in oth if 'euros' in q['slug']]
     _i = PAGES.index(p)
     rel = (_g[_i % len(_g):] + _g[:_i % len(_g)])[:3] + (_b[_i % len(_b):] + _b[:_i % len(_b)])[:2]
-    related = '<h2>À lire aussi</h2><ul>' + ''.join(f'<li><a href="/{q["slug"]}/">{esc(q["title"])}</a></li>' for q in rel) + '</ul>'
-    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Idées et conseils</p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{related}</article></main>' + foot()
+    related = '<h2>À lire aussi</h2>' + cartes(rel)
+    html_ = head(p["title"], p["desc"], path, sch) + NAV + f'<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › <a href="/guides/">Guides</a></p><h1>{esc(p["title"])}</h1><p class="meta">Publié le {d.day} {mois} {d.year}</p>{body}{cta}{related}</article></main>' + foot()
     w(f'{p["slug"]}/index.html', html_)
+
+# Page hub des guides
+hub = head("Tous les guides : idées cadeaux et Père Noël secret", "Tous nos guides : idées cadeaux par budget de 5 à 50 €, selon la personne, et conseils pour organiser un Père Noël secret ou un échange de cadeaux.", "/guides/", [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Guides Qui offre à qui", "url": BASE + "/guides/"}]) + NAV + '<main class="wrap"><article><p class="meta"><a href="/">Accueil</a> › Guides</p><h1>Tous les guides</h1><p>Des idées de cadeaux pour chaque budget et chaque personne, et des conseils pour organiser votre échange. Le tirage au sort, lui, se fait en 2 minutes sur <a href="/">la page d\'accueil</a>, sans compte et gratuitement.</p>' + ''.join(f'<h2>{t}</h2>' + cartes([p for p in PAGES if groupe(p) == g]) for g, t in GROUPES) + '</article></main>' + foot()
+w('guides/index.html', hub)
 
 # Mentions légales
 legal = head("Mentions légales et confidentialité", "Mentions légales, données personnelles et liens affiliés du site Qui offre à qui.", "/mentions-legales/", robots='noindex,follow') + NAV + '''<main class="wrap"><article><h1>Mentions légales et confidentialité</h1>
@@ -167,7 +208,7 @@ w('mentions-legales/index.html', legal)
 w('404.html', head("Page introuvable", "Cette page n'existe pas.", "/404.html", robots='noindex') + NAV + '<main class="wrap"><article><h1>Page introuvable</h1><p>Cette page n\'existe pas ou a été déplacée.</p><p><a class="btn p" href="/">Faire un tirage au sort</a></p></article></main>' + foot())
 
 # Sitemap, robots, CNAME, IndexNow
-urls = [("/", today, "1.0")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
+urls = [("/", today, "1.0"), ("/guides/", today, "0.6")] + [(f'/{p["slug"]}/', p.get("updated", p["date"]), "0.8") for p in PAGES]
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n')
 BOTS = ["Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot", "Applebot-Extended", "DuckDuckBot", "YandexBot", "Qwantbot", "MistralAI-User", "CCBot"]
 w('robots.txt', 'User-agent: *\nAllow: /\nDisallow: /404.html\n\n' + ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in BOTS) + f'Sitemap: {BASE}/sitemap.xml\n')
