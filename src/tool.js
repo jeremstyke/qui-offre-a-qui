@@ -27,6 +27,8 @@ var excs=[];
 function opts(sel){return noms.map(function(n,i){return '<option value="'+i+'"'+(i==sel?" selected":"")+'>'+(n||"Personne "+(i+1))+'</option>'}).join("")}
 function rendreExc(){
   var e=$("excs");e.innerHTML="";
+  var peu=noms.length<4;if(peu)excs=[];
+  $("exc-info").classList.toggle("cache",!peu);$("ajoutExc").classList.toggle("cache",peu);
   excs=excs.filter(function(p){return p[0]<noms.length&&p[1]<noms.length});
   excs.forEach(function(p,k){
     var d=document.createElement("div");d.className="exc";
@@ -38,7 +40,7 @@ function rendreExc(){
   });
 }
 $("ajout").onclick=function(){noms.push("");mails.push("");rendreListe();rendreExc();var ins=document.querySelectorAll("#liste input.nom");ins[ins.length-1].focus()};
-$("ajoutExc").onclick=function(){if(noms.length>1){excs.push([0,1]);rendreExc()}};
+$("ajoutExc").onclick=function(){if(noms.length>3){excs.push([0,1]);rendreExc()}};
 function excValides(){var vu={};return excs.filter(function(p){if(p[0]===p[1])return false;var k=Math.min(p[0],p[1])+"-"+Math.max(p[0],p[1]);if(vu[k])return false;vu[k]=1;return true})}
 function possible(n,ex){var no={};ex.forEach(function(p){no[p[0]+"-"+p[1]]=1;no[p[1]+"-"+p[0]]=1});var pris=[];function f(i){if(i===n)return true;for(var j=0;j<n;j++){if(j!==i&&!pris[j]&&!no[i+"-"+j]){pris[j]=1;if(f(i+1))return true;pris[j]=0}}return false}return n<=12?f(0):true}
 
