@@ -19,11 +19,11 @@ function rendreListe(){
     var ins=d.querySelectorAll("input");
     ins[0].oninput=function(e){noms[i]=e.target.value;rendreExc()};
     ins[1].oninput=function(e){mails[i]=e.target.value.trim()};
-    d.querySelector("button").onclick=function(){noms.splice(i,1);mails.splice(i,1);rendreListe();rendreExc()};
+    d.querySelector("button").onclick=function(){noms.splice(i,1);mails.splice(i,1);excs=excs.filter(function(p){return p[0]!==i&&p[1]!==i}).map(function(p){return [p[0]>i?p[0]-1:p[0],p[1]>i?p[1]-1:p[1]]});rendreListe();rendreExc()};
     l.appendChild(d);
   });
 }
-var excs=[[0,1]];
+var excs=[];
 function opts(sel){return noms.map(function(n,i){return '<option value="'+i+'"'+(i==sel?" selected":"")+'>'+(n||"Personne "+(i+1))+'</option>'}).join("")}
 function rendreExc(){
   var e=$("excs");e.innerHTML="";
@@ -39,6 +39,8 @@ function rendreExc(){
 }
 $("ajout").onclick=function(){noms.push("");mails.push("");rendreListe();rendreExc();var ins=document.querySelectorAll("#liste input.nom");ins[ins.length-1].focus()};
 $("ajoutExc").onclick=function(){if(noms.length>1){excs.push([0,1]);rendreExc()}};
+function excValides(){var vu={};return excs.filter(function(p){if(p[0]===p[1])return false;var k=Math.min(p[0],p[1])+"-"+Math.max(p[0],p[1]);if(vu[k])return false;vu[k]=1;return true})}
+function possible(n,ex){var no={};ex.forEach(function(p){no[p[0]+"-"+p[1]]=1;no[p[1]+"-"+p[0]]=1});var pris=[];function f(i){if(i===n)return true;for(var j=0;j<n;j++){if(j!==i&&!pris[j]&&!no[i+"-"+j]){pris[j]=1;if(f(i+1))return true;pris[j]=0}}return false}return n<=12?f(0):true}
 
 function decode(t){var s=atob(t),r="";for(var i=0;i<s.length;i++)r+=String.fromCharCode(s.charCodeAt(i)^23);return JSON.parse(decodeURIComponent(escape(r)))}
 var EMAIL=/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,24}$/i;
@@ -103,11 +105,13 @@ $("tirer").onclick=function(){
   var liste=noms.map(function(n){return n.trim()});
   if(liste.length<3||liste.some(function(n){return !n})){err.textContent="Il faut au moins 3 prénoms, sans ligne vide.";return}
   for(var q=0;q<liste.length;q++){if(!EMAIL.test(mails[q]||"")){err.textContent=mails[q]?"L'e-mail de "+liste[q]+" n'est pas valide.":"Il manque l'e-mail de "+liste[q]+" : c'est là que son résultat sera envoyé.";var m=document.querySelectorAll("#liste input.mail")[q];m&&m.focus();return}}
+  var exv=excValides();
+  if(exv.length&&!possible(liste.length,exv)){err.textContent=liste.length===3?"À 3 personnes, une exclusion rend le tirage impossible (les 2 personnes exclues devraient offrir à la même). Retirez l'exclusion ou ajoutez une 4e personne.":"Ces exclusions rendent le tirage impossible : retirez-en une ou ajoutez une personne.";return}
   var o=$("m-orga").value.trim();
   if(o&&!EMAIL.test(o)){err.textContent="Votre e-mail n'est pas valide (ou laissez la case vide).";return}
   var ty=$("type").value,ev=$("ev").value.trim()||NOMS[ty],b=$("budget").value,d=$("date").value;
   bt.disabled=true;var avant=bt.textContent;bt.textContent="Tirage et envoi en cours...";
-  post({t:ty,ev:ev,b:b,d:d,orga:o,rappel:$("m-rappel").checked,excl:excs,parts:liste.map(function(n,i){return {nom:n,email:mails[i]}})}).then(function(j){
+  post({t:ty,ev:ev,b:b,d:d,orga:o,rappel:$("m-rappel").checked,excl:exv,parts:liste.map(function(n,i){return {nom:n,email:mails[i]}})}).then(function(j){
     bt.disabled=false;bt.textContent=avant;
     if(j.id){
       try{window.qoaqConv&&window.qoaqConv(liste.length)}catch(e){}
@@ -115,7 +119,7 @@ $("tirer").onclick=function(){
       memoriser(T);afficherSuivi(T,j.participants,true);
       try{var src="";try{src=localStorage.getItem("qoaq_src")||""}catch(e){}if(window.qoaqHit){window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b+"|"+src);window.qoaqHit("mail",String(j.envoyes))}}catch(e){}
       $("res").scrollIntoView({behavior:"smooth"});
-    } else err.textContent=j.raison==="exclusions"?"Impossible avec ces exclusions. Retirez-en une et relancez.":j.raison==="email"?"Une adresse e-mail n'est pas valide : vérifiez la liste.":j._s===429?"Trop de tirages depuis votre connexion. Réessayez dans une heure.":"Le tirage n'a pas marché. Réessayez dans un instant.";
+    } else err.textContent=j.raison==="exclusions"?"Ces exclusions rendent le tirage impossible : retirez-en une ou ajoutez une personne.":j.raison==="email"?"Une adresse e-mail n'est pas valide : vérifiez la liste.":j._s===429?"Trop de tirages depuis votre connexion. Réessayez dans une heure.":"Le tirage n'a pas marché. Réessayez dans un instant.";
   }).catch(function(){bt.disabled=false;bt.textContent=avant;err.textContent="Pas de connexion. Vérifiez votre réseau et réessayez."});
 };
 
