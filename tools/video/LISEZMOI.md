@@ -11,3 +11,11 @@ Fabrication : captures du vrai site avec Playwright (polices locales via fonts.p
 Règle Shorts : l'écran final affiche toujours « 🔗 Lien dans la bio » (les liens ne sont pas cliquables dans les Shorts), et le texte de la publication le rappelle aussi.
 
 Couverture : chaque Short a une image de couverture 1080x1920 (cover.py : accroche en gros + téléphone incliné avec une capture), passée en videoThumbnailUrl à Metricool. La première image de la vidéo montre déjà l'accroche (jamais un fond vide).
+
+## Promos partenaires (règle de Jérémy, 27 nov 2026)
+
+À chaque promo qu'il transmet (code Awin) :
+1. Ajouter la ligne dans PROMOS (src/build.py) : marque, offre, code, date de fin, lien Awin. L'encart des guides et la page /codes-promo/ se mettent à jour, et le code disparaît seul après sa date de fin.
+2. Faire un Reel de 15 s (gen.py, config type az.json ou bdl.json) avec « valable jusqu'au … », plus sa couverture (cover.py).
+3. Faire une épingle (pin.py) dans le tableau Idées cadeaux de Noël, avec un lien vers le guide concerné ou vers /codes-promo/.
+4. Programmer sur Metricool : un Short YouTube seul, avec « Lien en bio : page Codes promo » (les liens n'y sont pas cliquables) ; un Reel Facebook seul, avec le lien direct https://qui-offre-a-qui.fr/codes-promo/ ; l'épingle Pinterest. Toujours écrire « Lien affilié ».
