@@ -19,3 +19,4 @@ Couverture : chaque Short a une image de couverture 1080x1920 (cover.py : accroc
 2. Faire un Reel de 15 s (gen.py, config type az.json ou bdl.json) avec « valable jusqu'au … », plus sa couverture (cover.py).
 3. Faire une épingle (pin.py) dans le tableau Idées cadeaux de Noël, avec un lien vers le guide concerné ou vers /codes-promo/.
 4. Programmer sur Metricool : un Short YouTube seul, avec « Lien en bio : page Codes promo » (les liens n'y sont pas cliquables) ; un Reel Facebook seul, avec le lien direct https://qui-offre-a-qui.fr/codes-promo/ ; l'épingle Pinterest. Toujours écrire « Lien affilié ».
+5. Toujours marquer la source dans les liens : ?src=yt (lien de la bio YouTube), ?src=fb (Facebook), ?src=pin (Pinterest). assets/track.js l'enregistre dans vcs_hits (colonne ref = "src:yt ..."), et chaque clic vers Awin est compté (kind = 'awin').
