@@ -110,6 +110,7 @@ $("tirer").onclick=function(){
   post({t:ty,ev:ev,b:b,d:d,orga:o,rappel:$("m-rappel").checked,excl:excs,parts:liste.map(function(n,i){return {nom:n,email:mails[i]}})}).then(function(j){
     bt.disabled=false;bt.textContent=avant;
     if(j.id){
+      try{window.qoaqConv&&window.qoaqConv(liste.length)}catch(e){}
       var T={id:j.id,g:j.g,ev:ev,ts:Date.now(),n:liste.length,liste:j.liste||null};
       memoriser(T);afficherSuivi(T,j.participants,true);
       try{var src="";try{src=localStorage.getItem("qoaq_src")||""}catch(e){}if(window.qoaqHit){window.qoaqHit("tirage",ty+"|"+liste.length+"|"+b+"|"+src);window.qoaqHit("mail",String(j.envoyes))}}catch(e){}

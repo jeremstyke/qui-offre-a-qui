@@ -73,3 +73,28 @@ document.addEventListener('click', function(e){
   v.innerHTML = ''; v.appendChild(f);
   try { window.qoaqHit && window.qoaqHit('video', id); } catch(_){}
 });
+
+// Publicité Microsoft (Bing UET) : mode consentement, refusé par défaut.
+// Les cookies Microsoft ne sont activés que si le visiteur accepte les cookies publicitaires dans le message de consentement (TCF, finalité 1).
+(function(){
+  var EMB = /[?&]e=1/.test(location.search);
+  if (EMB || /bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent)) return;
+  window.uetq = window.uetq || [];
+  window.uetq.push('consent', 'default', {'ad_storage': 'denied'});
+  (function(w, d, t, u, o){w[u] = w[u] || [], o.ts = (new Date).getTime();var n = d.createElement(t);n.src = "https://bat.bing.net/bat.js?ti=" + o.ti + ("uetq" != u ? "&q=" + u : ""),n.async = 1, n.onload = n.onreadystatechange = function(){var s = this.readyState;s && "loaded" !== s && "complete" !== s || (o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad"), n.onload = n.onreadystatechange = null)};var i = d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n, i);})(window, document, "script", "uetq", {ti: "187301481", enableAutoSpaTracking: true});
+  var essais = 0;
+  function brancherTcf(){
+    if (typeof window.__tcfapi !== 'function') { if (++essais < 40) setTimeout(brancherTcf, 500); return; }
+    window.__tcfapi('addEventListener', 2, function(tc, ok){
+      if (!ok || !tc || (tc.eventStatus !== 'tcloaded' && tc.eventStatus !== 'useractioncomplete')) return;
+      var oui = !tc.gdprApplies || (tc.purpose && tc.purpose.consents && tc.purpose.consents[1]);
+      window.uetq.push('consent', 'update', {'ad_storage': oui ? 'granted' : 'denied'});
+    });
+  }
+  brancherTcf();
+  // Conversion : un tirage vient d'être créé
+  window.qoaqConv = function(n){
+    try { window.uetq.push('event', 'tirage_cree', {'event_category': 'tirage', 'event_label': 'secret_santa', 'event_value': n || 1}); } catch(e){}
+    try { window.qoaqHit && window.qoaqHit('conv', 'tirage ' + (n || '')); } catch(e){}
+  };
+})();
