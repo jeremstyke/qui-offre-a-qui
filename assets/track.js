@@ -10,6 +10,11 @@
   var vid = ls('aff_vid'); if (!vid) { vid = Math.random().toString(36).slice(2, 12); ls('aff_vid', vid); }
   var dev = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
   var ref = document.referrer ? (document.referrer.indexOf(location.host) > -1 ? 'interne' : document.referrer.split('/')[2] || '') : '';
+  // Source marquée dans le lien (?src=yt, fb, pin...) : gardée pour toute la visite et ajoutée à la provenance
+  var sm = location.search.match(/[?&]src=([a-z0-9-]{1,30})/i); if (sm) { try { sessionStorage.setItem('qoaq_s', sm[1]); } catch(e){} }
+  var srcv = sm ? sm[1] : (function(){ try { return sessionStorage.getItem('qoaq_s'); } catch(e){ return null; } })();
+  if (srcv && ref !== 'interne') ref = 'src:' + srcv + (ref ? ' ' + ref : '');
+  else if (srcv) ref = 'interne src:' + srcv;
   function hit(kind, target){
     if (bot || ls('aff_moi') === '1') return;
     var body = JSON.stringify({site: SITE, kind: kind, path: location.pathname.slice(0, 290), ref: ref.slice(0, 290), dev: dev, vid: vid, target: (target || '').slice(0, 290)});
@@ -26,6 +31,8 @@
   document.addEventListener('click', function(e){
     var sh = e.target.closest && e.target.closest('#liens .act a, #liens .act button');
     if (sh) hit('partage', /wa\.me/.test(sh.href || '') ? 'whatsapp' : /^sms/.test(sh.href || '') ? 'sms' : 'copie');
+    var aw = e.target.closest && e.target.closest('a[href*="awin1.com"]');
+    if (aw) { var mm = aw.href.match(/awinmid=(\d+)/); hit('awin', (mm ? mm[1] : '') + ' ' + location.pathname); }
     var a = e.target.closest && e.target.closest('a[href*="amazon.fr"]');
     if (a) { var m = a.href.match(/[?&]k=([^&]+)/); hit('amz', m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : a.href.split('?')[0]); }
   }, true);
