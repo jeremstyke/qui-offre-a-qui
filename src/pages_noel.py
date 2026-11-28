@@ -210,7 +210,7 @@ PAGES_NOEL = [
 <ul>
 <li><strong>Annoncez les règles</strong> dans le groupe : budget, date, lieu, thème éventuel.</li>
 <li><strong>Créez un sondage WhatsApp</strong> pour choisir la date ou le budget.</li>
-<li><strong>Partagez les listes d'envies</strong> : chacun peut écrire deux ou trois idées dans le groupe.</li>
+<li><strong>Partagez les listes d'envies</strong> : chacun peut écrire deux ou trois idées dans le groupe. Pour une idée vue sur un site marchand, un lien court créé avec <a href="https://hoplien.fr/?src=qoaq">Hoplien</a> (gratuit, sans compte) reste lisible et ne se coupe pas dans le message.</li>
 <li><strong>Faites un rappel</strong> une semaine avant l'échange.</li>
 </ul>
 <h2>Ce qu'il faut préparer pour l'échange</h2>
