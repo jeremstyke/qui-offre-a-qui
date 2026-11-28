@@ -1,0 +1,161 @@
+# Guides d'idées cadeaux par tranche de 5 € manquante (25 à 95 €), ajoutés le 28 nov 2026.
+# Règles : vouvoiement, aucun tiret long ni demi-cadratin, aucun prix précis inventé, aucun avis inventé.
+from pages import idee, idee_az
+
+def _bloc(titre, idees):
+    return f"<h2>{titre}</h2>\n<div class=\"idees\">\n" + "".join(idee(*i) if len(i) == 3 else idee_az(i[0], i[1], i[3]) for i in idees) + "\n</div>\n"
+
+def _page(b, titre, desc, intro, sections, conseils, faq_occasion, voisins):
+    corps = f"<p>{intro}</p>\n" + "".join(_bloc(t, l) for t, l in sections)
+    corps += "<h2>Nos conseils pour un cadeau réussi à " + str(b) + " €</h2>\n<ul>\n" + "".join(f"<li>{c}</li>" for c in conseils) + "\n</ul>\n"
+    corps += "<h2>Questions fréquentes</h2>\n"
+    corps += f"<h3>{b} €, c'est un bon budget pour un échange de cadeaux ?</h3>\n<p>{faq_occasion}</p>\n"
+    corps += "<h3>Comment être sûr de rester dans le budget ?</h3>\n<p>Les prix bougent souvent, surtout avant les fêtes : vérifiez le prix affiché au moment de commander, et fixez-vous une marge de quelques euros. Un cadeau un peu en dessous du budget, bien choisi, fait toujours plus plaisir qu'un cadeau au-dessus qui met mal à l'aise.</p>\n"
+    corps += "<h3>Où organiser le tirage gratuitement ?</h3>\n<p>Sur <a href=\"/\">Qui offre à qui</a> : entrez les prénoms et le budget, ajoutez les exclusions si besoin, et chacun reçoit son résultat par e-mail, en secret.</p>\n"
+    corps += "<p>Vous hésitez sur le budget ? Voyez aussi nos idées " + " et ".join(f'<a href="/idee-cadeau-{v}-euros/">à {v} €</a>' for v in voisins) + ", ou <a href=\"/guides/\">tous nos guides par budget</a>.</p>\n"
+    return {"slug": f"idee-cadeau-{b}-euros", "title": titre, "desc": desc, "date": "2026-11-28", "body": corps}
+
+PAGES_BUDGET = [
+_page(25, "Idée cadeau à 25 € : 15 idées qui font vraiment plaisir",
+ "Budget de 25 € pour un Père Noël secret ou un anniversaire ? 15 idées de cadeaux douillets, gourmands, ludiques ou pratiques, classées par profil.",
+ "Avec <strong>25 €</strong>, on peut offrir un objet de bonne qualité plutôt qu'un gadget. C'est un budget très courant pour un Père Noël secret entre amis ou en famille. Voici 15 idées, classées selon la personne.",
+ [("Pour la personne frileuse", [("Bouillotte en peluche", "Douce et réconfortante les soirs d'hiver", "bouillotte peluche"), ("Plaid en sherpa", "Épais, chaud et très doux", "plaid sherpa"), ("Mug isotherme", "Le café reste chaud pendant tout le trajet", "mug isotherme inox")]),
+  ("Pour la personne gourmande", [("Coffret de thés", "Pour découvrir de nouveaux parfums", "coffret the"), ("Service à fondue au chocolat", "Un dessert convivial à partager", "service fondue chocolat"), ("Coffret de pâtes à tartiner", "Gourmand et joli à offrir", "coffret pate a tartiner")]),
+  ("Pour la personne qui aime jouer", [("Escape game en boîte", "Une énigme à résoudre à plusieurs, à la maison", "escape game boite"), ("Jeu de cartes coopératif", "On gagne ensemble, idéal en famille", "jeu de cartes cooperatif"), ("Jeu d'ambiance compact", "Facile à emporter en soirée", "jeu de societe ambiance")]),
+  ("Pour la personne connectée", [("Enceinte Bluetooth de douche", "Pour chanter sous la douche en musique", "enceinte bluetooth douche etanche"), ("Chargeur sans fil", "Le téléphone se recharge simplement posé", "chargeur sans fil"), ("Lampe de lecture rechargeable", "Pour lire au lit sans déranger", "lampe de lecture rechargeable")]),
+  ("Pour la personne qui prend soin d'elle", [("Coffret de crèmes pour les mains", "Indispensable quand il fait froid", "coffret creme mains"), ("Masque de nuit en soie", "Pour des nuits plus reposantes", "masque de nuit soie"), ("Coffret de savons artisanaux", "Des savons Made in France joliment présentés", None, "https://anita-zaha.com/product-category/savons-solides/")])],
+ ["<strong>Visez un seul bel objet</strong> plutôt que plusieurs petits : à 25 €, la qualité fait la différence.", "<strong>Demandez une liste d'envies</strong> au groupe : deux ou trois indices évitent les doublons.", "<strong>Soignez le paquet</strong> : un joli papier et une étiquette mystérieuse ajoutent beaucoup au moment."],
+ "Oui, c'est un budget très répandu, un peu plus confortable que 20 € : il permet un vrai cadeau sans mettre personne en difficulté.", [20, 30]),
+
+_page(35, "Idée cadeau à 35 € : 15 idées originales et utiles",
+ "15 idées de cadeaux à 35 € pour un échange de Noël, un anniversaire ou un collègue : cuisine, bien-être, jeux, déco et plein air.",
+ "Un budget de <strong>35 €</strong> ouvre la porte à des cadeaux qu'on garde longtemps : un bel ustensile, un jeu de société complet, un objet déco qui change une pièce. Voici 15 idées pour viser juste.",
+ [("Pour la personne qui cuisine", [("Mini cocotte en fonte", "Pour mijoter et servir à table", "mini cocotte fonte"), ("Couteau d'office de qualité", "L'outil qu'on utilise tous les jours", "couteau office cuisine"), ("Moulin à épices", "Pour des plats plus parfumés", "moulin a epices")]),
+  ("Pour la personne qui aime se détendre", [("Coussin chauffant cervical", "Pour soulager la nuque après le travail", "coussin chauffant cervical"), ("Peignoir polaire", "Tout doux à la sortie du bain", "peignoir polaire"), ("Coffret de bain moussant", "Pour un vrai moment de pause", "coffret bain moussant")]),
+  ("Pour la personne joueuse", [("Jeu de société de stratégie familial", "Des parties de 30 à 45 minutes", "jeu de societe strategie famille"), ("Casse-tête en bois", "Joli posé sur un bureau", "casse tete bois"), ("Jeu de quiz", "Pour animer les fins de repas", "jeu de quiz famille")]),
+  ("Pour la personne qui aime la déco", [("Guirlande lumineuse à photos", "Pour afficher ses souvenirs", "guirlande lumineuse photo pince"), ("Cadre photo multivues", "Plusieurs photos dans un seul cadre", "cadre photo multivues"), ("Kit pour terrarium", "Un petit jardin à composer soi-même", "kit terrarium")]),
+  ("Pour la personne sportive", [("Gourde isotherme", "Froid 24 h, chaud 12 h", "gourde isotherme inox"), ("Lampe frontale rechargeable", "Pour courir ou marcher de nuit", "lampe frontale rechargeable"), ("Bandes élastiques de fitness", "Une salle de sport à la maison", "bandes elastiques fitness")])],
+ ["<strong>Pensez à l'usage quotidien</strong> : un objet utilisé chaque jour rappelle le cadeau longtemps.", "<strong>Évitez les gadgets</strong> : à 35 €, un bon produit simple vaut mieux qu'un objet amusant cinq minutes.", "<strong>Joignez un petit mot</strong> : il personnalise même un cadeau très pratique."],
+ "Oui, c'est un budget confortable pour un échange entre amis proches ou en famille. Pour un échange entre collègues, mieux vaut souvent rester entre 10 et 20 €.", [30, 40]),
+
+_page(40, "Idée cadeau à 40 € : 15 idées pour faire plaisir",
+ "Budget de 40 € ? 15 idées de cadeaux pour Noël ou un anniversaire : petite tech, cuisine, lecture, confort et loisirs créatifs.",
+ "À <strong>40 €</strong>, on entre dans la catégorie des cadeaux qui impressionnent un peu, sans être excessifs. C'est un bon budget pour un Père Noël secret en famille ou un cadeau d'anniversaire. Voici 15 pistes.",
+ [("Pour la personne connectée", [("Enceinte Bluetooth portable", "Pour la musique partout, à la maison comme dehors", "enceinte bluetooth portable"), ("Clavier sans fil compact", "Plus agréable pour travailler sur tablette", "clavier sans fil compact"), ("Montre connectée de sport", "Pas, sommeil, notifications", "montre connectee sport")]),
+  ("Pour la personne gourmande", [("Gaufrier", "Des gaufres maison le dimanche", "gaufrier"), ("Machine à pop-corn", "Pour les soirées film", "machine a pop corn"), ("Coffret d'épices du monde", "Un voyage à chaque repas", "coffret epices du monde")]),
+  ("Pour la personne qui lit", [("Beau livre illustré", "Voyage, cuisine ou nature, selon ses goûts", "beau livre"), ("Lampe de lecture à pince", "Pour lire au lit sans gêner", "lampe de lecture pince"), ("Coussin de lecture", "Le confort pour les longues lectures", "coussin de lecture")]),
+  ("Pour la personne qui aime son confort", [("Chaussons chauffants", "Pieds au chaud tout l'hiver", "chaussons chauffants"), ("Oreiller ergonomique", "Pour des nuits plus reposantes", "oreiller ergonomique"), ("Plaid épais grand format", "Assez grand pour deux sur le canapé", "plaid grand format")]),
+  ("Pour la personne créative", [("Kit d'aquarelle", "Pour débuter ou reprendre la peinture", "kit aquarelle"), ("Kit de broderie", "Une activité calme et gratifiante", "kit broderie debutant"), ("Peinture par numéros", "Un joli tableau, même sans savoir dessiner", "peinture par numero adulte")])],
+ ["<strong>Personnalisez</strong> : à ce budget, un détail qui montre que vous connaissez la personne compte autant que l'objet.", "<strong>Vérifiez les tailles et les couleurs</strong> pour les chaussons ou les vêtements.", "<strong>Gardez le ticket cadeau</strong> pour qu'un échange reste possible sans gêne."],
+ "Oui, pour un échange en famille ou entre amis proches. C'est un budget généreux pour un Père Noël secret, à fixer quand tout le monde est à l'aise avec.", [35, 45]),
+
+_page(45, "Idée cadeau à 45 € : 15 idées qui marquent",
+ "15 idées de cadeaux à 45 € : coffrets gourmands, bien-être, maison, jeux et voyage. Pour un Secret Santa en famille ou un anniversaire.",
+ "Avec <strong>45 €</strong>, vous pouvez offrir un cadeau qui se remarque : un coffret complet, un objet pour la maison ou un jeu que tout le monde voudra essayer. Voici 15 idées classées par envie.",
+ [("Pour la personne épicurienne", [("Coffret de bières artisanales", "Pour découvrir des brasseries", "coffret bieres artisanales"), ("Service à fondue", "Convivial pour les soirées d'hiver", "service a fondue"), ("Coffret apéritif gourmand", "Tartinades et biscuits à partager", "coffret aperitif gourmand")]),
+  ("Pour la personne qui veut se faire du bien", [("Lampe de luminothérapie", "Pour garder l'énergie quand les jours raccourcissent", "lampe luminotherapie"), ("Bain de pieds relaxant", "Un spa à la maison", "bain de pieds massant"), ("Coussin de méditation", "Pour s'installer confortablement", "coussin meditation")]),
+  ("Pour la maison", [("Réveil lumineux", "Un réveil en douceur, comme un lever de soleil", "reveil lumiere simulateur aube"), ("Station météo", "Température et prévisions d'un coup d'œil", "station meteo"), ("Diffuseur d'ambiance design", "Joli et parfumé", "diffuseur huiles essentielles design")]),
+  ("Pour la personne joueuse", [("Mölkky", "Le jeu de quilles finlandaises pour l'été", "molkky"), ("Puzzle 2000 pièces", "Un vrai défi pour les passionnés", "puzzle 2000 pieces"), ("Jeu coopératif familial", "Tout le monde joue ensemble contre le jeu", "jeu de societe cooperatif famille")]),
+  ("Pour la personne qui voyage", [("Trousse de toilette à suspendre", "Tout est rangé et visible", "trousse de toilette a suspendre"), ("Coussin de voyage à mémoire de forme", "Pour dormir en train ou en avion", "coussin de voyage memoire de forme"), ("Organiseurs de valise", "Une valise enfin bien rangée", "organiseur valise cubes")])],
+ ["<strong>Misez sur l'expérience</strong> : un coffret à partager crée un souvenir commun.", "<strong>Pensez à la place</strong> : un grand objet n'est pas toujours facile à ranger.", "<strong>Ajoutez une petite attention</strong> faite maison, comme des biscuits, pour un cadeau encore plus personnel."],
+ "Oui, c'est un budget généreux, idéal pour un échange entre proches. Pour un groupe plus large, choisissez-le seulement si tout le monde est d'accord.", [40, 50]),
+
+_page(55, "Idée cadeau à 55 € : 15 idées de qualité",
+ "Budget de 55 € pour un cadeau ? 15 idées utiles et originales : tech, cuisine, bien-être, loisirs et accessoires de mode.",
+ "Un budget de <strong>55 €</strong> permet de viser la qualité : un appareil durable, un accessoire en matière noble, un loisir pour lequel la personne n'a jamais osé investir. Voici 15 idées.",
+ [("Pour la personne connectée", [("Casque audio sans fil", "Pour la musique et les appels", "casque audio sans fil"), ("Projecteur ciel étoilé", "Une ambiance magique dans la chambre", "projecteur ciel etoile"), ("Traceur d'objets Bluetooth", "Pour ne plus perdre ses clés", "traceur objet bluetooth")]),
+  ("Pour la personne qui cuisine", [("Blender individuel", "Smoothies et soupes en un instant", "blender individuel"), ("Thermomètre de cuisson", "Pour une viande cuite à la perfection", "thermometre cuisson viande"), ("Set de couteaux", "Une base solide pour bien cuisiner", "set couteaux cuisine")]),
+  ("Pour la personne qui veut se détendre", [("Pistolet de massage compact", "Pour détendre les muscles après le sport", "pistolet de massage compact"), ("Masseur cervical", "Contre les tensions de la nuque", "masseur cervical"), ("Coffret de soins", "Un moment cocooning complet", "coffret soin")]),
+  ("Pour la personne curieuse", [("Kit de calligraphie", "Un loisir créatif et apaisant", "kit calligraphie"), ("Jumelles compactes", "Pour la nature, les concerts ou le voyage", "jumelles compactes"), ("Potager d'intérieur", "Des herbes fraîches toute l'année", "potager interieur")]),
+  ("Pour la personne élégante", [("Écharpe en laine", "Chaude et intemporelle", "echarpe laine"), ("Gants tactiles en cuir", "Pour utiliser son téléphone sans avoir froid", "gants cuir tactiles"), ("Portefeuille en cuir", "Un accessoire qui dure des années", "portefeuille cuir")])],
+ ["<strong>Choisissez une marque reconnue</strong> pour les appareils : à ce budget, la fiabilité compte.", "<strong>Lisez la description en entier</strong> : taille, autonomie, compatibilité.", "<strong>Pensez à l'emballage</strong> : un bel objet mérite un beau paquet."],
+ "C'est un budget élevé pour un échange à plusieurs. Il convient bien à un cadeau en couple, à un proche, ou à un petit groupe qui s'est mis d'accord.", [50, 60]),
+
+_page(60, "Idée cadeau à 60 € : 15 idées pour faire plaisir",
+ "15 idées de cadeaux à 60 € pour Noël ou un anniversaire : maison, gourmandise, bien-être, jeux et loisirs créatifs.",
+ "Avec <strong>60 €</strong>, le choix s'élargit beaucoup. L'important est de bien cibler la personne : ses habitudes, ses envies, ce qu'elle n'achèterait pas pour elle-même. Voici 15 idées par profil.",
+ [("Pour la maison", [("Lampe de bureau LED", "Une bonne lumière pour travailler", "lampe de bureau led"), ("Enceinte connectée", "Musique et minuteur à la voix", "enceinte connectee"), ("Lot de prises connectées", "Pour piloter les lampes depuis le téléphone", "prise connectee lot")]),
+  ("Pour la personne gourmande", [("Coffret de vins", "Pour découvrir de nouvelles régions", "coffret vin"), ("Panier garni", "Un assortiment de bonnes choses", "panier garni gourmand"), ("Coffret de chocolats", "Un classique qui fait toujours plaisir", "coffret chocolat")]),
+  ("Pour la personne qui aime le cocooning", [("Couverture lestée", "Pour des soirées et des nuits plus calmes", "couverture lestee"), ("Peignoir en coton épais", "Comme à l'hôtel", "peignoir coton"), ("Coffret soin du visage", "Pour une routine plaisir", "coffret soin visage")]),
+  ("Pour la personne joueuse", [("Jeu de société expert", "Pour les joueurs qui aiment réfléchir", "jeu de societe expert"), ("Cible de fléchettes électronique", "Le score se compte tout seul", "cible flechettes electronique"), ("Jeu de pétanque", "Pour les après-midi d'été", "jeu de petanque")]),
+  ("Pour la personne créative", [("Kit de poterie sans four", "De l'argile qui sèche à l'air", "kit poterie argile autodurcissante"), ("Kit de fabrication de bougies", "Des bougies parfumées faites maison", "kit fabrication bougies"), ("Kit de tricot pour débuter", "Laine, aiguilles et modèles", "kit tricot debutant")])],
+ ["<strong>Offrez ce qu'on n'ose pas s'offrir</strong> : c'est souvent le cadeau le plus apprécié.", "<strong>Vérifiez la compatibilité</strong> des objets connectés avec le téléphone de la personne.", "<strong>Prévoyez une solution d'échange</strong> : ticket cadeau ou délai de retour."],
+ "C'est un budget élevé pour un échange de groupe, mieux adapté à un cadeau pour un proche ou à un petit groupe très soudé.", [55, 65]),
+
+_page(65, "Idée cadeau à 65 € : 15 idées originales",
+ "Budget de 65 € ? 15 idées de cadeaux originaux et utiles : tech, cuisine conviviale, sport, déco et expériences à faire soi-même.",
+ "Un budget de <strong>65 €</strong> permet de sortir des sentiers battus : un appareil convivial, un kit pour apprendre quelque chose de nouveau, un bel objet de décoration. Voici 15 idées.",
+ [("Pour la personne connectée", [("Casque Bluetooth à arceau", "Confortable pour de longues écoutes", "casque bluetooth"), ("Enceinte étanche puissante", "Pour la plage, la piscine ou la douche", "enceinte bluetooth etanche puissante"), ("Lampe de chevet tactile", "On l'allume d'un simple toucher", "lampe de chevet tactile")]),
+  ("Pour les repas entre amis", [("Appareil à raclette", "Le grand classique des soirées d'hiver", "appareil a raclette"), ("Crêpière électrique", "Pour une soirée crêpes réussie", "crepiere electrique"), ("Plancha de table", "Pour cuisiner tous ensemble", "plancha de table")]),
+  ("Pour la personne sportive", [("Tapis de yoga épais", "Confortable pour le yoga et les étirements", "tapis de yoga epais"), ("Rouleau de massage", "Pour récupérer après l'effort", "rouleau de massage"), ("Corde à sauter lestée", "Du cardio en quelques minutes", "corde a sauter lestee")]),
+  ("Pour la personne qui aime la déco", [("Lampe design", "Elle change l'ambiance d'une pièce", "lampe design"), ("Lot de coussins en velours", "Pour donner un coup de neuf au canapé", "housse coussin velours lot"), ("Miroir rond", "Un classique qui agrandit l'espace", "miroir rond")]),
+  ("Pour la personne curieuse", [("Kit de culture de champignons", "On les voit pousser en quelques jours", "kit culture champignons"), ("Kit de brassage de bière", "Pour brasser sa propre bière", "kit brassage biere"), ("Kit de fabrication de fromage", "Une expérience gourmande à la maison", "kit fabrication fromage")])],
+ ["<strong>Les cadeaux conviviaux</strong> (raclette, plancha) profitent à toute la famille.", "<strong>Les kits « à faire soi-même »</strong> plaisent aux curieux : choisissez-en un adapté au niveau de la personne.", "<strong>Pensez au rangement</strong> : un appareil encombrant doit trouver sa place."],
+ "C'est un budget de cadeau pour un proche plutôt que pour un échange de groupe. À plusieurs, il peut servir pour un cadeau commun.", [60, 70]),
+
+_page(70, "Idée cadeau à 70 € : 15 idées qui font effet",
+ "15 idées de cadeaux à 70 € : gourmet, tech, maison, jeux et plein air. Pour un cadeau de Noël ou d'anniversaire qui marque.",
+ "Avec <strong>70 €</strong>, on peut faire un cadeau qui fait vraiment effet au moment de l'ouverture. Voici 15 idées, des plus gourmandes aux plus technologiques.",
+ [("Pour la personne gourmet", [("Coffret de dégustation de spiritueux", "Plusieurs mignonettes à comparer", "coffret degustation rhum whisky"), ("Kit à sushis", "Pour une soirée japonaise maison", "kit sushi"), ("Coffret de produits du terroir", "Des spécialités régionales", "coffret terroir gourmand")]),
+  ("Pour la personne connectée", [("Écouteurs sans fil", "Légers et pratiques au quotidien", "ecouteurs sans fil"), ("Imprimante photo de poche", "Imprimer ses photos depuis le téléphone", "imprimante photo portable"), ("Cadre photo numérique", "Les photos de famille défilent", "cadre photo numerique")]),
+  ("Pour la maison", [("Plaid chauffant", "Chaleur réglable, idéal l'hiver", "plaid chauffant"), ("Humidificateur d'air", "Pour un air moins sec en hiver", "humidificateur air"), ("Station de recharge 3 en 1", "Téléphone, montre et écouteurs au même endroit", "station de charge 3 en 1")]),
+  ("Pour la personne joueuse", [("Mini console rétro", "Les jeux de son enfance", "console retro mini"), ("Baby-foot de table", "Des matchs endiablés sur la table", "baby foot de table"), ("Grand jeu de société familial", "Pour les longues soirées", "jeu de societe famille")]),
+  ("Pour la personne qui aime le plein air", [("Hamac", "Pour le jardin ou le balcon", "hamac"), ("Sac à dos de randonnée", "Confortable pour la journée", "sac a dos randonnee 20l"), ("Lanternes solaires", "Une jolie lumière le soir au jardin", "lanterne solaire jardin")])],
+ ["<strong>Faites durer le plaisir</strong> : un objet qui servira souvent vaut mieux qu'un effet de surprise passager.", "<strong>Vérifiez l'autonomie et la garantie</strong> pour les appareils électroniques.", "<strong>Un cadeau commun</strong> est une bonne option si plusieurs personnes veulent participer."],
+ "C'est un budget de cadeau individuel pour un proche. Pour un échange à plusieurs, il est rare et doit être accepté par tout le monde.", [65, 75]),
+
+_page(75, "Idée cadeau à 75 € : 15 idées de qualité",
+ "Budget de 75 € ? 15 idées de cadeaux durables : bien-être, cuisine, tech, culture et accessoires élégants.",
+ "Un budget de <strong>75 €</strong> permet d'offrir un objet qui dure des années. C'est le bon moment pour un appareil de qualité ou un accessoire élégant. Voici 15 idées.",
+ [("Pour la personne qui veut se faire du bien", [("Masseur de pieds électrique", "Le luxe après une longue journée", "masseur de pieds electrique"), ("Lampe de luminothérapie grand format", "Pour l'hiver, au bureau ou à la maison", "lampe luminotherapie 10000 lux"), ("Coffret spa à domicile", "Tout pour un moment de détente", "coffret spa")]),
+  ("Pour la personne qui cuisine", [("Cocotte en fonte", "Elle se transmet de génération en génération", "cocotte fonte"), ("Batteur électrique", "Pour la pâtisserie maison", "batteur electrique"), ("Machine sous vide", "Pour conserver plus longtemps", "machine sous vide")]),
+  ("Pour la personne connectée", [("Montre connectée", "Activité, sommeil et notifications", "montre connectee"), ("Enceinte Bluetooth de qualité", "Un son riche dans un format compact", "enceinte bluetooth"), ("Lampe d'ambiance connectée", "Des couleurs pilotées depuis le téléphone", "lampe ambiance connectee")]),
+  ("Pour la personne mélomane ou lectrice", [("Platine vinyle valise", "Pour (re)découvrir les vinyles", "platine vinyle valise"), ("Beau livre de photographie", "À feuilleter et à exposer", "beau livre photographie"), ("Casque audio filaire de qualité", "Pour écouter sa musique comme il faut", "casque audio filaire")]),
+  ("Pour la personne élégante", [("Sac en cuir", "Un accessoire qui se patine avec le temps", "sac cuir"), ("Montre classique", "Simple et intemporelle", "montre classique"), ("Gants en cuir doublés", "Chauds et élégants", "gants cuir doubles")])],
+ ["<strong>Privilégiez la durabilité</strong> : à 75 €, un objet bien fait se garde longtemps.", "<strong>Renseignez-vous sur les goûts</strong> avant un accessoire de mode : couleur, style, matière.", "<strong>Pensez au ticket cadeau</strong>, surtout pour la mode et la tech."],
+ "C'est un budget de cadeau personnel, pour un conjoint, un parent ou un ami très proche, plutôt que pour un échange de groupe.", [70, 80]),
+
+_page(80, "Idée cadeau à 80 € : 15 idées qui font plaisir",
+ "15 idées de cadeaux à 80 € pour Noël ou un anniversaire : tech, maison, gourmandise, loisirs et bien-être.",
+ "Avec <strong>80 €</strong>, vous pouvez offrir un loisir complet ou un appareil qui simplifie la vie. Voici 15 idées classées par passion.",
+ [("Pour la personne connectée", [("Appareil photo instantané", "Des photos à garder tout de suite", "appareil photo instantane"), ("Mini vidéoprojecteur", "Le cinéma à la maison", "mini videoprojecteur"), ("Clavier mécanique", "Agréable pour écrire et jouer", "clavier mecanique")]),
+  ("Pour la maison", [("Aspirateur à main", "Pratique pour les petits dégâts", "aspirateur a main"), ("Purificateur d'air compact", "Pour une chambre ou un bureau", "purificateur air"), ("Machine à café à capsules", "Un bon café en un instant", "machine cafe capsules")]),
+  ("Pour la personne gourmet", [("Panier gourmand de fête", "Pour un réveillon réussi", "panier gourmand noel"), ("Coffret de foie gras", "Un classique des fêtes", "coffret foie gras"), ("Coffret de vins sélectionnés", "Pour les amateurs", "coffret vin prestige")]),
+  ("Pour la personne passionnée", [("Télescope pour débuter", "Pour observer la Lune et les planètes", "telescope debutant"), ("Drone de loisir", "Pour s'amuser et faire de belles images", "drone debutant camera"), ("Coffret de peinture complet", "Tout pour se lancer", "coffret peinture complet")]),
+  ("Pour la personne qui veut se détendre", [("Pistolet de massage", "Pour détendre les muscles en profondeur", "pistolet de massage"), ("Couverture lestée", "Pour mieux dormir", "couverture lestee"), ("Coffret de soins", "Une routine complète", "coffret soin")])],
+ ["<strong>Les loisirs se partagent</strong> : un télescope ou un projecteur profite à toute la famille.", "<strong>Vérifiez les accessoires nécessaires</strong> (cartouches, capsules, piles) pour ne pas gâcher la surprise.", "<strong>Comparez les avis</strong> sur le site marchand avant de choisir un appareil."],
+ "C'est un budget de cadeau important, adapté à un proche ou à un cadeau commun entre plusieurs personnes.", [75, 85]),
+
+_page(85, "Idée cadeau à 85 € : 15 idées originales",
+ "Budget de 85 € ? 15 idées de cadeaux originaux : tech, cuisine, sport, déco et expériences gourmandes.",
+ "Un budget de <strong>85 €</strong> laisse beaucoup de liberté. Le plus difficile est de choisir : voici 15 idées classées selon les goûts de la personne.",
+ [("Pour la personne connectée", [("Écouteurs sans fil à réduction de bruit", "Pour s'isoler dans les transports", "ecouteurs reduction de bruit"), ("Enceinte étanche de voyage", "Robuste et puissante", "enceinte bluetooth etanche"), ("Cadre photo numérique Wi-Fi", "La famille envoie ses photos à distance", "cadre photo numerique wifi")]),
+  ("Pour la personne qui cuisine", [("Machine à pâtes", "Des pâtes fraîches maison", "machine a pates"), ("Gaufrier double", "Deux gaufres à la fois", "gaufrier double"), ("Robot multifonction compact", "Pour hacher, mixer et râper", "robot multifonction compact")]),
+  ("Pour la personne sportive", [("Raquettes de padel", "Pour s'essayer au sport qui monte", "raquette padel"), ("Sac de sport", "Spacieux et bien organisé", "sac de sport"), ("Balance connectée", "Pour suivre ses progrès", "balance connectee")]),
+  ("Pour la maison", [("Lampe à poser design", "Une belle lumière d'ambiance", "lampe a poser design"), ("Horloge murale design", "Elle habille un mur", "horloge murale design"), ("Plaid en laine", "Naturel et très chaud", "plaid laine")]),
+  ("Pour vivre une expérience", [("Coffret de découverte du vin", "Pour apprendre à déguster", "coffret oenologie"), ("Kit de mixologie complet", "Pour des cocktails comme au bar", "kit mixologie"), ("Jeu de société en édition collector", "Pour les fans de jeux", "jeu de societe collector")])],
+ ["<strong>Ciblez une passion</strong> : un cadeau lié à un loisir précis montre que vous avez réfléchi.", "<strong>Regardez la garantie</strong> pour les appareils.", "<strong>Ajoutez un mot</strong> qui explique votre choix : c'est souvent ce qui touche le plus."],
+ "C'est un budget de cadeau individuel pour un proche. Pour un échange à plusieurs, il est inhabituel et doit faire l'unanimité.", [80, 90]),
+
+_page(90, "Idée cadeau à 90 € : 15 idées pour un beau cadeau",
+ "15 idées de cadeaux à 90 € : tech, maison, gourmet, loisirs et soins. Pour Noël, un anniversaire ou un cadeau commun.",
+ "Avec <strong>90 €</strong>, c'est le moment d'offrir un beau cadeau : un appareil de qualité, un coffret d'exception ou le matériel d'une passion. Voici 15 idées.",
+ [("Pour la personne connectée", [("Casque à réduction de bruit", "Le calme partout, même en open space", "casque reduction de bruit"), ("Imprimante photo", "Des tirages de qualité à la maison", "imprimante photo"), ("Station météo connectée", "Toutes les mesures sur le téléphone", "station meteo connectee")]),
+  ("Pour la maison", [("Bouilloire à température réglable", "Parfaite pour le thé", "bouilloire temperature reglable"), ("Lampe de luminothérapie design", "Belle et utile en hiver", "lampe luminotherapie design"), ("Plaid chauffant grand format", "Pour deux sur le canapé", "plaid chauffant grand")]),
+  ("Pour la personne gourmet", [("Coffret de champagne", "Pour trinquer aux grandes occasions", "coffret champagne"), ("Appareil raclette et fondue", "Deux soirées conviviales en un", "appareil raclette fondue"), ("Coffret de cafés de spécialité", "Pour les amateurs de bon café", "coffret cafe specialite")]),
+  ("Pour la personne passionnée", [("Jumelles de qualité", "Pour la nature et les oiseaux", "jumelles 10x42"), ("Kit d'astronomie", "Carte du ciel, lampe rouge et télescope", "kit astronomie"), ("Manette de jeu sans fil", "Pour les joueurs sur console ou PC", "manette sans fil")]),
+  ("Pour prendre soin de soi", [("Rasoir électrique", "Un rasage net au quotidien", "rasoir electrique"), ("Brosse à dents électrique", "Pour une hygiène au top", "brosse a dents electrique"), ("Sèche-cheveux ionique", "Moins de frisottis, séchage rapide", "seche cheveux ionique")])],
+ ["<strong>Pensez cadeau commun</strong> : à plusieurs, 90 € se partagent facilement pour un très beau cadeau.", "<strong>Vérifiez les compatibilités</strong> (console, téléphone) avant d'acheter.", "<strong>Choisissez une livraison fiable</strong> avant les fêtes, en commandant tôt."],
+ "C'est un budget de cadeau important, plutôt pour un proche ou un cadeau commun. Pour un échange à plusieurs, préférez un budget plus modeste.", [85, 95]),
+
+_page(95, "Idée cadeau à 95 € : 15 idées de beaux cadeaux",
+ "Budget de 95 € ? 15 idées de cadeaux haut de gamme accessibles : tech, cuisine, bien-être, loisirs et plein air.",
+ "Un budget de <strong>95 €</strong> frôle la centaine : c'est le moment d'offrir un cadeau marquant, qu'on utilisera pendant des années. Voici 15 idées.",
+ [("Pour la personne connectée", [("Écouteurs à réduction de bruit", "Pour le travail et les voyages", "ecouteurs sans fil reduction de bruit"), ("Montre connectée sport", "Suivi complet de l'activité", "montre connectee sport gps"), ("Vidéoprojecteur Full HD", "Pour des soirées cinéma", "videoprojecteur full hd")]),
+  ("Pour la personne qui cuisine", [("Friteuse sans huile", "Des frites croustillantes sans bain d'huile", "friteuse sans huile"), ("Mixeur plongeant multifonction", "Soupes, purées et sauces", "mixeur plongeant multifonction"), ("Grill électrique", "Pour griller toute l'année", "grill electrique")]),
+  ("Pour la personne qui veut se détendre", [("Masseur dos shiatsu", "Comme un massage à domicile", "masseur dos shiatsu"), ("Couverture chauffante", "Pour des soirées bien au chaud", "couverture chauffante"), ("Brosse nettoyante visage", "Pour une routine beauté", "brosse nettoyante visage")]),
+  ("Pour la personne passionnée", [("Platine vinyle", "Pour redécouvrir ses albums", "platine vinyle"), ("Drone avec caméra", "De belles images vues du ciel", "drone camera"), ("Jeu de société expert collector", "Pour les grands joueurs", "jeu de societe expert")]),
+  ("Pour la personne qui aime le plein air", [("Réchaud de camping", "Pour cuisiner en randonnée", "rechaud camping"), ("Lampe frontale puissante", "Pour le trail ou la randonnée de nuit", "lampe frontale puissante"), ("Sac de couchage léger", "Pour les nuits en bivouac", "sac de couchage leger")])],
+ ["<strong>Visez un objet durable</strong> d'une marque reconnue.", "<strong>Vérifiez les accessoires inclus</strong> pour qu'on puisse l'utiliser tout de suite.", "<strong>Si vous hésitez</strong>, nos <a href=\"/idee-cadeau-100-euros/\">idées à 100 €</a> donnent d'autres pistes du même niveau."],
+ "C'est un budget de très beau cadeau, pour un proche ou un cadeau commun. Il est rarement choisi pour un échange à plusieurs.", [90, 100]),
+]

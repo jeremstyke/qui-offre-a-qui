@@ -147,7 +147,7 @@ function afficherRes(o){
   var dt=o.d?new Date(o.d+"T12:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long"}):"";
   $("r-ev").textContent=o.e+(dt?", échange le "+dt:"");
   if(o.t&&o.t!=="noel"){document.querySelector("#vue-res .hero h1").style.maxWidth="none"}
-  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";if(o.t==="ange"){$("r-intro").textContent="Ton tirage est prêt. Appuie sur le paquet pour découvrir de qui tu es l'ange gardien.";$("r-qui").textContent="Tu es l'ange gardien de";$("r-budget").textContent="Fais-lui de petites attentions en secret, sans te faire démasquer 😇"+(o.b?" (budget : "+o.b+"\u00a0€ environ)":"")}$("r-b").textContent=o.b;var gd={"5":"/idee-cadeau-5-euros/","10":"/idee-cadeau-10-euros/","15":"/idee-cadeau-15-euros/","20":"/idee-cadeau-20-euros/","30":"/idee-cadeau-30-euros/","50":"/idee-cadeau-50-euros/","100":"/idee-cadeau-100-euros/"};$("r-guide").href=$("r-guide2").href=gd[o.b]||"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
+  $("r-pour").textContent=o.a;$("r-budget").textContent="Budget : "+o.b+" € environ";if(o.t==="ange"){$("r-intro").textContent="Ton tirage est prêt. Appuie sur le paquet pour découvrir de qui tu es l'ange gardien.";$("r-qui").textContent="Tu es l'ange gardien de";$("r-budget").textContent="Fais-lui de petites attentions en secret, sans te faire démasquer 😇"+(o.b?" (budget : "+o.b+"\u00a0€ environ)":"")}$("r-b").textContent=o.b;var nb=parseInt(o.b,10);$("r-guide").href=$("r-guide2").href=(nb>=5&&nb<=100&&nb%5===0)?"/idee-cadeau-"+nb+"-euros/":"/idee-cadeau-20-euros/";$("r-b2").textContent=o.b;
   var g=$("grille");g.innerHTML="";
   (IDEES[o.b]||IDEES["20"]).forEach(function(x){
     var a=document.createElement("div");a.className="idee";

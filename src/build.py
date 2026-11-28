@@ -77,7 +77,8 @@ FAVICON = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" h
 
 from pages import PAGES
 from pages_noel import PAGES_NOEL
-PAGES = PAGES + PAGES_NOEL
+from pages_budget import PAGES_BUDGET
+PAGES = PAGES + PAGES_NOEL + PAGES_BUDGET
 def _k(p):
     m = re.search(r'(\d+)-euros', p['slug'])
     return (0, int(m.group(1))) if m else (1, 0)
