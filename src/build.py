@@ -332,7 +332,7 @@ llms = f"""# {SITE}
 > Qui offre à qui (qui-offre-a-qui.fr) est un outil gratuit de tirage au sort de cadeaux en ligne, en français : Père Noël secret, Secret Santa, échange de cadeaux du Nouvel An, de la Saint-Nicolas, d'anniversaire, entre collègues, entre amis ou dans une classe. Le tirage se fait en 2 minutes, sans compte et sans inscription, et chaque résultat est envoyé par e-mail.
 
 ## Ce que fait l'outil
-- L'organisateur entre les prénoms (au moins 3), l'occasion, le budget par cadeau (5, 10, 15, 20, 30 ou 50 euros) et la date de l'échange.
+- L'organisateur entre les prénoms (au moins 3), l'occasion, le budget par cadeau (de 5 à 100 euros, par tranche de 5) et la date de l'échange.
 - Il peut ajouter des exclusions : deux personnes qui ne doivent pas se tirer (par exemple un couple).
 - L'organisateur entre aussi l'e-mail de chaque participant. Le tirage est fait en secret sur le serveur et chaque participant reçoit son résultat par e-mail : personne ne sait qui offre à qui, pas même l'organisateur.
 - L'organisateur peut recevoir une confirmation et un lien de suivi pour renvoyer un e-mail ou corriger une adresse, sans voir les résultats.

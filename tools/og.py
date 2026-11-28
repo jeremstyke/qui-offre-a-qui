@@ -47,7 +47,7 @@ def main():
             pg.set_content(htmls); pg.wait_for_timeout(150); pg.screenshot(path=out)
         # Accueil
         shot(page("Père Noël secret, Secret Santa", "Le tirage au sort de cadeaux, en 2 minutes", "Chacun reçoit son résultat par e-mail. Même l'organisateur ne sait pas qui offre à qui."), os.path.join(ROOT, 'og.png'))
-        shot(page("Idées et conseils", "Tous nos guides cadeaux", "Des idées par budget, de 5 à 50 €, et des conseils pour organiser votre Père Noël secret."), os.path.join(ROOT, 'og', 'guides.png'))
+        shot(page("Idées et conseils", "Tous nos guides cadeaux", "Des idées par budget, de 5 à 100 €, et des conseils pour organiser votre Père Noël secret."), os.path.join(ROOT, 'og', 'guides.png'))
         shot(page("Repas de Noël, Nouvel An, anniversaire", "Qui apporte quoi ? La liste du repas", "Partagez un lien, chacun coche ce qu'il apporte. Fini les trois bûches et zéro pain."), os.path.join(ROOT, 'og', 'qui-apporte-quoi.png'))
         for q in PAGES:
             t = q['title']; titre, _, reste = t.partition(' : ')
