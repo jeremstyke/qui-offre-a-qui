@@ -6,9 +6,10 @@ sys.path.insert(0, os.path.join(ROOT, 'src'))
 from pages import PAGES
 from pages_noel import PAGES_NOEL
 from pages_budget import PAGES_BUDGET
+from pages_mots import PAGES_MOTS
 from playwright.sync_api import sync_playwright
 from PIL import Image
-PAGES = PAGES + PAGES_NOEL + PAGES_BUDGET
+PAGES = PAGES + PAGES_NOEL + PAGES_BUDGET + PAGES_MOTS
 def f64(n): return base64.b64encode(open(os.path.join(HERE, 'fonts', n), 'rb').read()).decode()
 SVG = open(os.path.join(ROOT, 'assets', 'favicon.svg')).read()
 FONTS = f"""@font-face{{font-family:B;font-weight:800;src:url(data:font/woff2;base64,{f64('bricolage-grotesque-latin-800-normal.woff2')}) format('woff2')}}

@@ -1,5 +1,11 @@
 # Sujets à venir pour Qui offre à qui (une page par jour du lundi au vendredi jusqu'au 24 déc 2026, puis 3 par semaine : lundi, mercredi, vendredi, jusqu'à Noël 2027)
 # Format : - [ ] slug/ | requête visée | angle
+- [x] theme-secret-santa/ | idée thème secret santa | 20 thèmes (publié le 28 nov, mots-clés peu concurrentiels)
+- [x] message-secret-santa/ | message secret santa | 6 textes à copier (publié le 28 nov)
+- [ ] appli-secret-santa/ | appli secret santa | comparatif honnête applis et sites, sans téléchargement (peu concurrentiel, prioritaire)
+- [ ] tirage-au-sort-secret-santa-sans-email/ | tirage au sort secret santa sans email | alternatives honnêtes (papiers, SMS, WhatsApp) et pourquoi l'e-mail garde le secret (prioritaire)
+- [ ] tirage-au-sort-cadeau-entre-amis/ | tirage au sort cadeau entre amis | organiser entre amis, budget, soirée (prioritaire)
+- [ ] secret-santa-c-est-quoi/ | c'est quoi un secret santa | définition, origine, différence avec le Père Noël secret, lien vers les règles (prioritaire)
 - [x] idee-cadeau-secret-santa-homme/ | idée cadeau secret santa homme | idées par budget, sans cliché
 - [x] idee-cadeau-secret-santa-femme/ | idée cadeau secret santa femme | idées par budget, sans cliché
 - [x] cadeau-secret-santa-ado/ | cadeau secret santa ado | 12 à 17 ans, par budget

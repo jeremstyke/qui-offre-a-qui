@@ -11,6 +11,7 @@ TAG = 'quioffreaqui-21'
 INDEXNOW = 'da4540821acf4048569bad7fbedc3ee1'
 CSS = open(os.path.join(HERE, 'tool.css')).read()
 EXTRA_CSS = """
+.msg{background:#f3f6f4;border-left:4px solid #1f6b4f;border-radius:10px;padding:12px 16px;margin:0 0 16px}.msg p{margin:0 0 8px}.msg p:last-child{margin:0}
 .faq details{border-top:1px solid #e2e8e5}.faq details:last-child{border-bottom:1px solid #e2e8e5}.faq summary{cursor:pointer;font-weight:700;padding:14px 28px 14px 0;list-style:none;position:relative;line-height:1.35}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";position:absolute;right:4px;top:12px;font-size:22px;color:#1f6b4f}.faq details[open] summary:after{content:"\2212"}.faq details p{margin:0 0 14px}.pq li{margin-bottom:6px}
 
 .vid{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#123d34;margin:10px 0 6px}
@@ -78,7 +79,8 @@ FAVICON = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" h
 from pages import PAGES
 from pages_noel import PAGES_NOEL
 from pages_budget import PAGES_BUDGET
-PAGES = PAGES + PAGES_NOEL + PAGES_BUDGET
+from pages_mots import PAGES_MOTS
+PAGES = PAGES + PAGES_NOEL + PAGES_BUDGET + PAGES_MOTS
 def _k(p):
     m = re.search(r'(\d+)-euros', p['slug'])
     return (0, int(m.group(1))) if m else (1, 0)
