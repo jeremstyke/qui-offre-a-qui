@@ -130,6 +130,7 @@ $("rp-share").onclick=function(){
   if(navigator.share){navigator.share({title:L?L.titre:"Qui apporte quoi ?",text:texte(),url:u}).then(function(){hit("partage","liste-natif")}).catch(function(){})}
   else{window.open($("rp-wa").href,"_blank","noopener");hit("partage","liste-whatsapp")}
 };
+$("rp-hop").onclick=function(){this.href="https://hoplien.fr/?u="+encodeURIComponent(lien())+"&src=qoaq-repas";hit("partage","liste-hoplien")};
 $("rp-copie").onclick=function(){var b=this;try{navigator.clipboard.writeText(lien()).then(function(){b.textContent="Lien copié ✓";hit("partage","liste");setTimeout(function(){b.textContent="Copier le lien"},2500)})}catch(e){}};
 $("rp-wa").addEventListener("click",function(){hit("partage","liste-whatsapp")});
 
