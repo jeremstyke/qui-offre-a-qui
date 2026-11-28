@@ -8,7 +8,7 @@ Fabrication : captures du vrai site avec Playwright (polices locales via fonts.p
 4. `ffmpeg -framerate 30 -i X_f/%04d.jpg -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p v.mp4` puis ajout de son-short.wav.
 5. Copier le mp4 dans /media/ (exclu de Google par robots.txt), pousser, puis programmer sur Metricool (marque 8318595, YouTube + Facebook) avec l'adresse https://qui-offre-a-qui.fr/media/....
 
-Règle Shorts : l'écran final affiche toujours « 🔗 Lien dans la bio » (les liens ne sont pas cliquables dans les Shorts), et le texte de la publication le rappelle aussi.
+Règle Shorts : l'écran final de la vidéo peut afficher « 🔗 Lien dans la bio » (pour YouTube), mais le TEXTE de la publication ne dit jamais « lien en bio » : il porte le lien Hoplien direct de la page (👉 https://hoplien.fr/<nom>, destination ?src=fb), car il part aussi en Reel Facebook où les liens sont cliquables (règle du 28 nov 2026).
 
 Couverture : chaque Short a une image de couverture 1080x1920 (cover.py : accroche en gros + téléphone incliné avec une capture), passée en videoThumbnailUrl à Metricool. La première image de la vidéo montre déjà l'accroche (jamais un fond vide).
 
